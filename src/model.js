@@ -56,10 +56,17 @@ const model = {
 
   //del 3 
 
+  categories: [
+    'baguette',
+    'canapes',
+    'coffee',
+    'cake',
+  ],
+
   products: [
     {
       productId: 1,
-      categoryIndex: '0',
+      categoryIndex: 0,
       productName: 'Rekebaguette',
       unitPrice: 10.0,
       description:
@@ -105,12 +112,6 @@ const model = {
   // ],
 };
 
-const categories = [
-  'baguette',
-  'canapes',
-  'coffee',
-  'cake',
-];
 
 /*
 
