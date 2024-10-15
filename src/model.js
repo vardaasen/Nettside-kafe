@@ -17,7 +17,7 @@ const model = {
   // del 2
   inputs: {
     cafeMenu: {
-      tab: 'Baguette',
+      tab: 'baguette', // baguette, canapes, coffee
       productId: 1,
       quantity: 1,
       message: '',
@@ -59,20 +59,7 @@ const model = {
   // del 3
   categories: ['baguette', 'canapes', 'coffee', 'cake'],
 
-  products: [
-    {
-      productId: 1,
-      categoryIndex: 0,
-      productName: 'Rekebaguette',
-      unitPrice: 10.0,
-      description:
-        'Rekebaguette is a classic Italian baguette made with whole grain flour, shrimps, mayo, and butter. Allergens: Shellfish',
-      image: 'rekebaguette.jpg',
-      preorderRequired: true,
-      customizationAvailable: true,
-      unitsinStock: 10,
-    },
-  ],
+  products: [...products],
 
   orders: [
     {

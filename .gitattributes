@@ -2,5 +2,6 @@
 *.css text eol=lf
 *.html text eol=lf
 
-# kjør for å normalisere i repositoryet
-#
+# Normalize the repository:
+# git add --normalize .
+# git commit -m "Normalize line endings to lf"
