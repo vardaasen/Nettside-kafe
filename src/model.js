@@ -1,7 +1,6 @@
-/*starter arbeid*/
+/* starter arbeid */
 
 const model = {
- 
   /*
     pages:
     cafeManu
@@ -10,12 +9,12 @@ const model = {
     shoppingCart
     */
 
-  //del 1
+  // del 1
   app: {
     currentPage: 'cafeMenu',
   },
 
-  //del 2
+  // del 2
   inputs: {
     cafeMenu: {
       tab: 'Baguette',
@@ -35,7 +34,7 @@ const model = {
       quantity: 1,
     },
     shoppingCart: {
-      case: 'Overview' /*Overview, PickupTime, NameAndNumber, OrderSent*/,
+      case: 'Overview' /* Overview, PickupTime, NameAndNumber, OrderSent */,
       customerName: '',
       contactNumber: '',
       pickUpSchedule: {
@@ -57,14 +56,8 @@ const model = {
     },
   },
 
-  //del 3 
-
-  categories: [
-    'baguette',
-    'canapes',
-    'coffee',
-    'cake',
-  ],
+  // del 3
+  categories: ['baguette', 'canapes', 'coffee', 'cake'],
 
   products: [
     {
@@ -114,7 +107,6 @@ const model = {
   //     }
   // ],
 };
-
 
 /*
 

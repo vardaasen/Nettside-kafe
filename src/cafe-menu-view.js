@@ -1,13 +1,11 @@
 function createCafeMenuHtml() {
-  return /*HTML*/ `
-    
-   `;
+  return /* HTML */ ``;
 }
 
 function createProductHtml() {
-  return /*HTML*/ `
+  return /* HTML */ `
         </div>
-        
+
         <div>
     `;
 }

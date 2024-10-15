@@ -1,7 +1,5 @@
 function updateView() {
-  document.getElementById('app').innerHTML = /*HTML*/ `
-        ${getHtmlPage()}
-    `;
+  document.getElementById('app').innerHTML = /* HTML */ ` ${getHtmlPage()} `;
 }
 
 function getHtmlPage() {
