@@ -1,4 +1,7 @@
+/*starter arbeid*/
+
 const model = {
+ 
   /*
     pages:
     cafeManu
