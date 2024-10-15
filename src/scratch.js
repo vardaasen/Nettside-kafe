@@ -1,11 +1,10 @@
-
 function openTab(productsName) {
   let i;
-  let x = document.getElementsByClassName("tab");
+  const x = document.getElementsByClassName('tab');
   for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
+    x[i].style.display = 'none';
   }
-  document.getElementById(productsName).style.display = "block";
+  document.getElementById(productsName).style.display = 'block';
 }
 
 /*

@@ -1,13 +1,11 @@
-
-
 function updateView() {
-    document.getElementById("app") = /*HTML*/ `
+  document.getElementById('app').innerHTML = /*HTML*/ `
         ${getHtmlPage()}
     `;
 }
 
 function getHtmlPage() {
-    if (model.app.currentPage === "cafeMenu") {
-        return 
-    }
+  if (model.app.currentPage === 'cafeMenu') {
+    return;
+  }
 }
