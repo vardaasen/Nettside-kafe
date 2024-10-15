@@ -1,0 +1,6 @@
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+
+# kjør for å normalisere i repositoryet
+#

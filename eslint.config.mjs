@@ -4,6 +4,7 @@ export default [
   { languageOptions: { globals: globals.browser } },
   {
     rules: {
+      'comma-dangle': ['error', 'always-multiline'],
       indent: ['error', 2], // Indentation with 2 spaces
       'linebreak-style': ['error', 'unix'], // Unix-style line breaks (LF)
       quotes: ['error', 'single'], // Use double quotes for strings
