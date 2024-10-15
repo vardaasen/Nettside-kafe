@@ -1,9 +1,17 @@
 
 const model={
 
+    /*
+    pages:
+    cafeManu
+    themeKakes
+    kakes
+    shoppingCart
+    */
+
     //del 1
     app:{
-        currentPage:"kafeMeny",
+        currentPage:"cafeMenu",
     },
 
 

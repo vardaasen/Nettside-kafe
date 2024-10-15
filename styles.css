@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100vw;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: solid 1px black;
+}
+
+.header-button {
+    height: 100%;
+    text-align: center;
+}
+
+#nav-row {
+    display: flex;
+    height: 100%;
+    gap: 10px;
+    justify-self: start;
+    gap: 20%;
+}
