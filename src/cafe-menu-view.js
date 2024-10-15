@@ -9,9 +9,9 @@ function createTabRowHtml() {
   const selectedTab = model.inputs.cafeMenu.tab;
   return /*HTML*/ `
     <div id="cafe-menu-tab-row">
-      <button class='${selectedTab === 'baguette' ? 'selected': ''}'>Baguetter</button> 
-      <button class='${selectedTab === 'canapes' ? 'selected': ''}'>Snitter</button>
-      <button class='${selectedTab === 'coffee' ? 'selected' : ''}'>Kaffe</button>
+      <button class='${selectedTab === 'baguette' ? 'selected-tab': ''}'>Baguetter</button> 
+      <button class='${selectedTab === 'canapes' ? 'selected-tab': ''}'>Snitter</button>
+      <button class='${selectedTab === 'coffee' ? 'selected-tab': ''}'>Kaffe</button>
     </div>
   `;
 }
