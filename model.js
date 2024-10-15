@@ -29,7 +29,6 @@ const model={
         },
         shoppingCart:{
             case:'Overview', /*Overview, PickupTime, NameAndNumber, OrderSent*/ 
-            orderId: 1,
             customerName:"",
             contactNumber:"",
             pickUpSchedule:{
@@ -38,13 +37,14 @@ const model={
             },
             products:[
                 {
-                productId:1,
-                quantity:1
+                    productId:1,
+                    quantity:1,
+                    comment:"",
                 },
-
                 {
-                productId:3, 
-                quantity:2
+                    productId:3, 
+                    quantity:2,
+                    comment:"",
                 },
             ],
         }
