@@ -1,10 +1,14 @@
 import globals from 'globals';
 
 export default [
-  { languageOptions: { globals: globals.browser } },
+  {
+    languageOptions: {
+      globals: globals.browser,
+    },
+  },
   {
     rules: {
-      'comma-dangle': ['error', 'always-multiline'],
+      'comma-dangle': ['error', 'always-multiline'], // ikke klag på komma, men klag på at det mangler
       indent: ['error', 2], // Indentation with 2 spaces
       'linebreak-style': ['error', 'unix'], // Unix-style line breaks (LF)
       quotes: ['error', 'single'], // Use double quotes for strings

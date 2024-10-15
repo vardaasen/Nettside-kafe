@@ -1,11 +1,12 @@
 function updateView() {
   document.getElementById('app').innerHTML = /*HTML*/ `
-        ${getHtmlPage()}
+        ${createCurrentPageHtml()}
     `;
 }
 
-function getHtmlPage() {
+function createCurrentPageHtml() {
   if (model.app.currentPage === 'cafeMenu') {
-    return;
+    return createCafeMenuHtml();
   }
+  return '';
 }
