@@ -8,7 +8,6 @@ function createCafeMenuHtml() {
 
 function createThemeCakeMenuHtml() {
   return /* HTML */ `
-    ${createTabRowHtml()}
     ${createProductsHtml()}
     `;
 }
@@ -39,11 +38,25 @@ function getProductsForCurrentTab() {
 }
 
 function getProductsForCurrentPage(){
-  const categoryIndex = model.categories.indexOf()
+  const currentPage = model.app.currentPage
+  console.log(currentPage)
+  if (currentPage==='cafeMenu'){
+    return getProductsForCurrentTab()
+  }
+  else if(currentPage==='themeCake'){
+    const list = []
+    for(const product of model.products){
+    const categoryIndex = model.categories.indexOf(currentPage)
+      if(product.categoryIndex === categoryIndex){
+        list.push(product)
+      }
+    }
+    return list
+  }
 }
 
 function createProductsHtml() {
-  const products = getProductsForCurrentTab();
+  const products = getProductsForCurrentPage();
   let cards = '';
   for (const product of products) {
     cards += createProductCardHtml(product);
