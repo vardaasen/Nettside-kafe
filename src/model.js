@@ -18,7 +18,7 @@ const model = {
   //del 2
   inputs: {
     cafeMenu: {
-      tab: 'baguette', // baguette, canapes, coffee
+      tab: 'canapes', // baguette, canapes, coffee
       productId: 1,
       quantity: 1,
       message: '',
