@@ -1,4 +1,3 @@
-
 const products = [
   // Baguette Category (15 Products)
   {
