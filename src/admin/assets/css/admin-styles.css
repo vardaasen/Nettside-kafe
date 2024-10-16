@@ -1,0 +1,109 @@
+@import url("modern-normalize.css");
+
+/* Sorg for å bruke BEM */
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fefefe;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header__logo-image {
+  height: 80px;
+}
+
+.header__navbar {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.header__nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.header__nav-item {
+  margin-right: 20px;
+}
+
+.header__nav-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+}
+
+.header__frontpage-link {
+  margin-left: auto;
+}
+
+.header__link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Main */
+.container {
+  width: 100%;
+  padding: 0 10px;
+}
+
+@media screen and (min-width: 961px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
+.inventory__table,
+.orders__table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inventory__row,
+.orders__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.inventory__header,
+.orders__header {
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+}
+
+.inventory__column,
+.orders__column {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.inventory__column input {
+  width: 80px;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

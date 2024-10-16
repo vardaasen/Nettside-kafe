@@ -57,7 +57,7 @@ const model = {
   },
 
   // del 3
-  categories: ['baguette', 'canapes', 'coffee', 'cake'],
+  categories: ['baguette', 'canapes', 'coffee', 'themeCake'],
 
   products: [],
 
