@@ -8,6 +8,9 @@ function createCurrentPageHtml() {
   if (model.app.currentPage === 'cafeMenu') {
     return createCafeMenuHtml();
   }
+  if (model.app.currentPage === 'themeCakes'){
+    return createThemeCakeMenuHtml();
+  }
   return '';
 }
 
