@@ -39,7 +39,6 @@ function getProductsForCurrentTab() {
 
 function getProductsForCurrentPage(){
   const currentPage = model.app.currentPage
-  console.log(currentPage)
   if (currentPage==='cafeMenu'){
     return getProductsForCurrentTab()
   }
