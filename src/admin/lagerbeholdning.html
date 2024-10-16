@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lagerbeholdning</title>
+  <link rel="stylesheet" href="assets/css/admin-styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__logo">
+      <img src="assets/img/logo.webp" alt="Logo" class="header__logo-image" />
+    </div>
+    <nav class="header__navbar">
+      <ul class="header__nav-list">
+        <li class="header__nav-item"><a href="bestillinger.html" class="header__nav-link">Bestillinger</a></li>
+        <li class="header__nav-item"><a href="#" class="header__nav-link">Lagerbeholdning</a></li>
+      </ul>
+    </nav>
+    <div class="header__frontpage-link">
+      <a href="/src/index.html" class="header__link">Til forsiden</a>
+    </div>
+  </header>
+  <div class="container">
+
+    <h1>Lagerbeholdning</h1>
+    <div class="inventory__table">
+      <div class="inventory__row inventory__header">
+        <div class="inventory__column">Kategori</div>
+        <div class="inventory__column">Produktnavn</div>
+        <div class="inventory__column">På lager</div>
+        <div class="inventory__column">Ny beholdning</div>
+      </div>
+      <div id="inventory">
+        <!-- Dynamisk innhold via javascript -->
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/admin-script.js"></script>
+</body>
+</html>
