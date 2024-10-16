@@ -38,6 +38,10 @@ function getProductsForCurrentTab() {
   return list;
 }
 
+function getProductsForCurrentPage(){
+  const categoryIndex = model.categories.indexOf()
+}
+
 function createProductsHtml() {
   const products = getProductsForCurrentTab();
   let cards = '';
