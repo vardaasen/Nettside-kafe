@@ -59,7 +59,7 @@ const model = {
   // del 3
   categories: ['baguette', 'canapes', 'coffee', 'cake'],
 
-  products: [...products],
+  products: [],
 
   orders: [
     {
