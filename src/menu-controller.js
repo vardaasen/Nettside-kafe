@@ -5,7 +5,6 @@ function switchTab(value){
 
 function switchMenu(value){
     model.app.currentPage = value
-    model.inputs.cafeMenu.tab = 'baguette'
     updateView()
 }
 

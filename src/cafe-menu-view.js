@@ -6,12 +6,14 @@ function createCafeMenuHtml() {
     `;
 }
 
-function createThemeCakeMenuHtml(){
+function createThemeCakeMenuHtml() {
   return /* HTML */ `
-  ${createTabRowHtml()}
-  ${createProductsHtml()}
-  `;
+    ${createTabRowHtml()}
+    ${createProductsHtml()}
+    `;
 }
+
+
 
 function createTabRowHtml() {
   const selectedTab = model.inputs.cafeMenu.tab;
