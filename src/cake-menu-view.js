@@ -11,7 +11,7 @@ function createCakeMenuHtml() {
 }
 
 function createCakeProductInfoOverlayElement() {
-  const product = getProductFromId(model.inputs.cafeMenu.selectedProduct);
+  const product = getProductFromId(model.inputs.cakeMenu.selectedProduct);
   if (product != null) {
     return createOverlayWithContent(/* HTML*/ `
         <h2>${product.productName}</h2>

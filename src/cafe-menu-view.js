@@ -57,7 +57,7 @@ function createProductCardHtml(product) {
       </div>
       <div class="price-row">
         <div>${product.unitPrice} Kr</div>
-        <button>Kjøp 🛒</button>
+        <button >Kjøp 🛒</button>
       </div>
     </div>
   `;

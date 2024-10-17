@@ -9,5 +9,8 @@ function createCurrentPageHtml() {
   if (model.app.currentPage === 'themeCake') {
     return createThemeCakeMenuHtml();
   }
+  if (model.app.currentPage === 'cake') {
+    return createCakeMenuHtml();
+  }
   return '';
 }

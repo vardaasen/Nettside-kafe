@@ -74,7 +74,7 @@ header {
   border: solid 1px black;
   height: 400px;
   width: 300px;
-  padding: 10px 0 10px 0;
+  padding: 10px;
 }
 
 .product-card-header {
@@ -91,17 +91,17 @@ header {
   font-size: 1.5rem;
 }
 
-.product-card > img {
-  width: auto;
-  height: 60%;
-}
-
 .card-header-image {
-  height: 80%;
+  height: 90%;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.card-header-image > img {
+  width: 100%;
+  height: auto;
 }
 
 
