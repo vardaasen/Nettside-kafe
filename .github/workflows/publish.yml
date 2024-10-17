@@ -38,6 +38,6 @@ jobs:
           git add .
           git commit -m "Deploy to GitHub Pages"
            
-          git push --force origin gh-pages
+          git push --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
