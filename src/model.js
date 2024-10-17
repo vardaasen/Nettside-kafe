@@ -1,7 +1,6 @@
-/*starter arbeid*/
+/* starter arbeid */
 
 const model = {
- 
   /*
     pages:
     cafeManu
@@ -10,15 +9,15 @@ const model = {
     shoppingCart
     */
 
-  //del 1
+  // del 1
   app: {
     currentPage: 'cafeMenu',
   },
 
-  //del 2
+  // del 2
   inputs: {
     cafeMenu: {
-      tab: 'Baguette',
+      tab: 'canapes', // baguette, canapes, coffee
       productId: 1,
       quantity: 1,
       message: '',
@@ -35,7 +34,7 @@ const model = {
       quantity: 1,
     },
     shoppingCart: {
-      case: 'Overview' /*Overview, PickupTime, NameAndNumber, OrderSent*/,
+      case: 'Overview' /* Overview, PickupTime, NameAndNumber, OrderSent */,
       customerName: '',
       contactNumber: '',
       pickUpSchedule: {
@@ -57,29 +56,10 @@ const model = {
     },
   },
 
-  //del 3 
+  // del 3
+  categories: ['baguette', 'canapes', 'coffee', 'themeCake'],
 
-  categories: [
-    'baguette',
-    'canapes',
-    'coffee',
-    'cake',
-  ],
-
-  products: [
-    {
-      productId: 1,
-      categoryIndex: 0,
-      productName: 'Rekebaguette',
-      unitPrice: 10.0,
-      description:
-        'Rekebaguette is a classic Italian baguette made with whole grain flour, shrimps, mayo, and butter. Allergens: Shellfish',
-      image: 'rekebaguette.jpg',
-      preorderRequired: true,
-      customizationAvailable: true,
-      unitsinStock: 10,
-    },
-  ],
+  products: [],
 
   orders: [
     {
@@ -114,7 +94,6 @@ const model = {
   //     }
   // ],
 };
-
 
 /*
 
