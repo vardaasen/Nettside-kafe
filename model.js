@@ -3,9 +3,9 @@
 const model = {
   /*
     pages:
-    cafeManu
+    cafeMenu
     themeKakes
-    kakes
+    cakes
     shoppingCart
     */
 
@@ -17,7 +17,7 @@ const model = {
   // del 2
   inputs: {
     cafeMenu: {
-      tab: 'canapes', // baguette, canapes, coffee
+      tab: 'baguette', // baguette, canapes, coffee
       productId: 1,
       quantity: 1,
       message: '',
