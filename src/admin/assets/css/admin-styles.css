@@ -80,13 +80,15 @@
 .inventory__header,
 .orders__header {
   font-weight: bold;
-  border-bottom: 2px solid #333;
+  background-color: #ffd0cf;
+  padding: 15px;
+  border-bottom: 2px solid #ddd;
 }
 
 .inventory__column,
 .orders__column {
   flex: 1;
-  padding: 0 10px;
+  padding: 10px;
 }
 
 .inventory__column input {
@@ -95,9 +97,51 @@
   margin-right: 10px;
 }
 
+.orders__column--customer {
+  flex: 1 1 20%;
+}
+
+.orders__column--products {
+  flex: 1 1 40%;
+}
+
+.orders__column--schedule {
+  flex: 1 1 20%;
+}
+
+.orders__column--status {
+  flex: 1 1 20%;
+}
+
+.orders__product {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.orders__product-name {
+  font-weight: bold;
+}
+
+.orders__product-quantity,
+.orders__product-comment {
+  margin-top: 5px;
+}
+
+.orders__column--status select {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.orders__status {
+  margin-bottom: 1em;
+}
+
 button {
   padding: 5px 10px;
-  background-color: #007bff;
+  background-color: #FE928F;
   color: white;
   border: none;
   border-radius: 5px;
@@ -105,5 +149,87 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #D1534E;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+}
+
+.login-page__logo {
+  margin-bottom: 30px;
+  width: 250px;
+  height: 250px;
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../img/logo.webp');
+}
+
+.login-form {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form__input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.login-form__button {
+  padding: 10px;
+  background-color: #FE928F;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-form__button:hover {
+  background-color: #D1534E;
+}
+
+#loginError {
+  margin-top: 10px;
+  color: red;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .login-form {
+    width: 90%;
+  }
+}
+
+.logout {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.logout__button {
+  padding: 10px 20px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logout__button:hover {
+  background-color: #ff1a1a;
 }

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lagerbeholdning</title>
   <link rel="stylesheet" href="assets/css/admin-styles.css">
+  <script src="assets/js/controller/authController.js" defer></script>
 </head>
 <body>
   <header class="header">
@@ -18,7 +19,7 @@
       </ul>
     </nav>
     <div class="header__frontpage-link">
-      <a href="/src/index.html" class="header__link">Til forsiden</a>
+      <a href="../index.html" class="header__link">Til forsiden</a>
     </div>
   </header>
   <div class="container">
@@ -35,8 +36,13 @@
         <!-- Dynamisk innhold via javascript -->
       </div>
     </div>
+    <div class="logout">
+      <button id="logoutBtn" class="logout__button">Logg ut</button>
+    </div>
   </div>
 
-  <script src="assets/js/admin-script.js"></script>
+  <script src="assets/js/model/model.js" defer></script>
+  <script src="assets/js/view/inventoryView.js" defer></script>
+  <script src="assets/js/controller/inventoryController.js" defer></script>
 </body>
 </html>
