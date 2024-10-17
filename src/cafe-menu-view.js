@@ -51,10 +51,8 @@ function createProductsHtml() {
 function createProductCardHtml(product) {
   return /* HTML*/ `
     <div class="product-card">
-      <div class='card-header-image' onclick='openCafeMenuProductInfo(${product.productId})'>
-        <div class='product-card-header'>${product.productName}</div>
-        <img src="./img/${product.image}">
-      </div>
+      <div class='product-card-header'>${product.productName}</div>
+      <img src="./img/${product.image}" alt="${product.productName}">
       <div class="price-row">
         <div>${product.unitPrice} Kr</div>
         <button >Kjøp 🛒</button>
