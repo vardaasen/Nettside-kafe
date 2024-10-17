@@ -30,14 +30,10 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           
+          git checkout --orphan gh-pages
+
           git remote add origin https://github.com/${{ github.repository }}.git
-
-          if git ls-remote --heads origin gh-pages; then
-            git checkout gh-pages
-          else
-            git checkout --orphan gh-pages
-          fi
-
+          
           git add .
           git commit -m "Deploy to GitHub Pages"
            
