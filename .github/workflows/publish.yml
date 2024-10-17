@@ -30,6 +30,8 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           
+          git remote add origin https://github.com/${{ github.repository }}.git
+
           if git ls-remote --heads origin gh-pages; then
             git checkout gh-pages
           else
@@ -38,7 +40,7 @@ jobs:
 
           git add .
           git commit -m "Deploy to GitHub Pages"
-          
+           
           git push --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" master:gh-pages
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
