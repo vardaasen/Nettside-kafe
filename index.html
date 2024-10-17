@@ -5,10 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kafe</title>
-  <script src="products.js"></script>
   <script src="model.js"></script>
   <script src="cafe-menu-view.js"></script>
   <script src="view.js"></script>
+  <script src="menu-controller.js"></script>
+  <script src="store/products.js"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -16,9 +17,9 @@
   <header id="header-container">
     <div id="nav-row">
       <div id="logo">Logo</div>
-      <button class="header-button">Menu</button>
-      <button class="header-button">Temakaker</button>
-      <button class="header-button">Kaker</button>
+      <button onclick="switchMenu('cafeMenu')" class="header-button">Menu</button>
+      <button onclick="switchMenu('themeCakes')" class="header-button">Temakaker</button>
+      <button onclick="switchMenu('cakes')" class="header-button">Kaker</button>
     </div>
     <button class="header-button">Handlevogn 🛒</button>
   </header>
