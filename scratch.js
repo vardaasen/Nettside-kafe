@@ -1,3 +1,5 @@
+import { require } from 'fs';
+
 const fs = require('fs');
 function saveProducts() {
   const jsonData = JSON.stringify(products, null, 2);

@@ -16,15 +16,6 @@ async function getProducts() {
 
 getProducts();
 
-// async function getProductsFromStore() {
-//   let fromStore = [];
-//   fetch('store/products.json')
-//     .then((response) => response.json())
-//     .then((data) => (fromStore = data))
-//     .catch((err) => alert('Failed to load products from json file: ', err));
-//   return fromStore;
-// }
-
 // const product = [
 //   // Baguette Category (15 Products)
 //   {
