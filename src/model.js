@@ -18,7 +18,7 @@ const model = {
   inputs: {
     cafeMenu: {
       tab: 'baguette', // baguette, canapes, coffee
-      productId: 1,
+      selectedProduct: null,
       quantity: 1,
       message: '',
     },
@@ -29,6 +29,7 @@ const model = {
       quantity: 1,
     },
     cakeMenu: {
+      selectedProduct: null,
       type: 'chocolate',
       size: 8,
       quantity: 1,

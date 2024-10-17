@@ -1,7 +1,5 @@
 function updateView() {
-  document.getElementById('app').innerHTML = /* HTML */ `
-    ${createCurrentPageHtml()}
-  `;
+  document.getElementById('app').replaceChildren(createCurrentPageHtml());
 }
 
 function createCurrentPageHtml() {
