@@ -17,7 +17,7 @@ function createTabRowHtml() {
   `;
 }
 
-function getProductsForCurrentTab(category) {
+function getProductsForCurrentTab() {
   const tab = model.inputs.cafeMenu.tab;
   return getProductsForCategory(tab);
 }
@@ -37,15 +37,8 @@ function getProductsForCurrentPage() {
   const currentPage = model.app.currentPage;
   if (currentPage === 'cafeMenu') {
     return getProductsForCurrentTab();
-  } else if (currentPage === 'themeCake') {
-    const list = [];
-    for (const product of model.products) {
-      const categoryIndex = model.categories.indexOf(currentPage);
-      if (product.categoryIndex === categoryIndex) {
-        list.push(product);
-      }
-    }
-    return list;
+  } else{
+    return getProductsForCategory(currentPage)
   }
 }
 
