@@ -5,39 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bestillinger</title>
   <link rel="stylesheet" href="assets/css/admin-styles.css">
+  <script src="assets/js/controller/authController.js" defer></script>
 </head>
 <body>
-  <header class="header">
-    <div class="header__logo">
-      <img src="assets/img/logo.webp" alt="Logo" class="header__logo-image" />
+<header class="header">
+  <div class="header__logo">
+    <img src="assets/img/logo.webp" alt="Logo" class="header__logo-image" />
+  </div>
+  <nav class="header__navbar">
+    <ul class="header__nav-list">
+      <li class="header__nav-item"><a href="#" class="header__nav-link">Bestillinger</a></li>
+      <li class="header__nav-item"><a href="lagerbeholdning.html" class="header__nav-link">Lagerbeholdning</a></li>
+    </ul>
+  </nav>
+  <div class="header__frontpage-link">
+    <a href="../index.html" class="header__link">Til forsiden</a>
+  </div>
+</header>
+<div class="container">
+  <h1>Bestillinger</h1>
+  <div class="orders__table">
+    <div class="orders__row orders__header">
+      <div class="orders__column orders__column--customer">Kundenavn</div>
+      <div class="orders__column orders__column--products">Produkter</div>
+      <div class="orders__column orders__column--schedule">Hentedato og -tid</div>
+      <div class="orders__column orders__column--status">Status</div>
     </div>
-    <nav class="header__navbar">
-      <ul class="header__nav-list">
-        <li class="header__nav-item"><a href="#" class="header__nav-link">Bestillinger</a></li>
-        <li class="header__nav-item"><a href="lagerbeholdning.html" class="header__nav-link">Lagerbeholdning</a></li>
-      </ul>
-    </nav>
-    <div class="header__frontpage-link">
-      <a href="/src/index.html" class="header__link">Til forsiden</a>
-    </div>
-  </header>
-  <div class="container">
-
-    <h1>Bestillinger</h1>
-    <div class="orders__table">
-      <div class="orders__row orders__header">
-        <div class="orders__column">Ordrenummer</div>
-        <div class="orders__column">Kunde</div>
-        <div class="orders__column">Produktnavn</div>
-        <div class="orders__column">Antall</div>
-        <div class="orders__column">Hentedato og -tid</div>
-      </div>
-      <div id="orders">
-        <p style="font-weight: bolder; color: #FF0000">Under arbeid.</p>
-        <!-- Dynamisk innhold via javascript -->
-      </div>
+    <div id="orders">
+      <!-- Bestillingene blir dynamisk lagt til her via javascript -->
     </div>
   </div>
-  <script src="assets/js/admin-script.js"></script>
+
+  <div class="logout">
+    <button id="logoutBtn" class="logout__button">Logg ut</button>
+  </div>
+</div>
+
+<script src="assets/js/model/model.js" defer></script>
+<script src="assets/js/controller/ordersController.js" defer></script>
+<script src="assets/js/view/ordersView.js" defer></script>
 </body>
 </html>
