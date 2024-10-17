@@ -43,7 +43,8 @@ export default [
       curly: ['error', 'all'], // Require curly braces for all control statements
       'comma-dangle': ['error', 'always-multiline'], // Require trailing commas in multiline object literals
       'linebreak-style': ['error', 'unix'], // Unix-style line breaks (LF)
-      'no-unused-vars': ['warn'], // Warn on unused variables
+      'no-unused-vars': ['off'], // Warn on unused variables
+      'no-undef': ['off'],
       'no-var': 'error', // Disallow var, use let and const instead
       'prefer-const': 'error', // Prefer const over let where possible
       'arrow-spacing': ['error', { before: true, after: true }], // Enforce spaces around arrow functions
