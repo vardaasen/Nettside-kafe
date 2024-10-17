@@ -17,7 +17,7 @@ const model = {
   // del 2
   inputs: {
     cafeMenu: {
-      tab: 'baguette', // baguette, canapes, coffee
+      tab: 'canapes', // baguette, canapes, coffee
       productId: 1,
       quantity: 1,
       message: '',
@@ -57,9 +57,9 @@ const model = {
   },
 
   // del 3
-  categories: ['baguette', 'canapes', 'coffee', 'cake'],
+  categories: ['baguette', 'canapes', 'coffee', 'themeCake'],
 
-  products: [...products],
+  products: [],
 
   orders: [
     {

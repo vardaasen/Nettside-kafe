@@ -30,7 +30,7 @@ export default [
   ...compat.extends(
     'eslint:recommended',
     'google',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ),
   // Override rules and include custom ESLint rules
   {
