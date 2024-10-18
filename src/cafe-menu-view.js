@@ -44,7 +44,7 @@ function createCafeProductCardHtml(product) {
     <div class="product-card">
       <div class='card-header-image' onclick='openProductInfo(${product.productId})'>
         <div class='product-card-header'>${product.productName}</div>
-        <img src="./img/${product.image}" alt="${product.productName}">
+        <img src="./img/cafe_menu/${product.image}" alt="${product.productName}">
       </div>
       <div class="price-row">
         <div>${product.unitPrice} Kr</div>
@@ -59,7 +59,7 @@ function createCafeProductInfoOverlayElement() {
   if (product != null) {
     return createOverlayWithContent(/* HTML*/ `
       <h2>${product.productName}</h2>
-      <img src='./img/${product.image}'>
+      <img src='./img/cafe_menu/${product.image}'>
       <h3>${product.unitPrice} Kr</h3>
       <div id='overlay-description'>${product.description}</div>
       <div id='overlay-comment-row'>

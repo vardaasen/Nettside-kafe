@@ -59,6 +59,17 @@ const model = {
   // del 3
   categories: ['baguette', 'canapes', 'coffee', 'cakes'],
 
+  themes: [
+    'wedding',
+    'birthday_child',
+    'birthday_adult',
+    'anniversary',
+    'christmas',
+    'halloween',
+    'easter',
+    'valentine',
+  ],
+
   products: [],
 
   orders: [
