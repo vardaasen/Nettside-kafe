@@ -8,7 +8,7 @@ const loginModel = {
    */
   users: [
     { employeeID: 'admin', password: 'getFTW!' },
-    { employeeID: 'John', password: 'qwertyFTW!' }
+    { employeeID: 'John', password: 'qwertyFTW!' },
   ],
 
   /**
@@ -18,8 +18,9 @@ const loginModel = {
    * @returns {boolean} Returnerer true hvis innloggingen er riktig.
    */
   checkCredentials(enteredID, enteredPassword) {
-    return this.users.some(user =>
-      user.employeeID === enteredID && user.password === enteredPassword
+    return this.users.some(
+      (user) =>
+        user.employeeID === enteredID && user.password === enteredPassword,
     );
-  }
+  },
 };
