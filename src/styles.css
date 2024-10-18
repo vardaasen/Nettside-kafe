@@ -4,6 +4,8 @@
     padding: 0;
 }
 body {
+  display: grid;
+  grid-template-rows: 1fr 10fr 1fr;
   height: 100vh;
 }
 
@@ -12,7 +14,7 @@ body {
 }
 
 header {
-    height: 50px;
+    /* height: 50px; */
     display: flex;
     justify-content: space-between;
     padding: 10px;
