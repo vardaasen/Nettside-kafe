@@ -1,17 +1,44 @@
 function createCakeMenuHtml() {
-  const cafeMenu = document.createElement('div');
-  cafeMenu.id = 'cafe-menu';
-  cafeMenu.innerHTML = /* HTML */ ` ${createTabRowHtml() +
-  createProductsHtml()}`;
+  const cakes = document.createElement('div');
+  cakes.id = 'cakes';
+  cakes.innerHTML = /* HTML */ ` ${createCakeProductsHtml()}`;
   const overlay = createCakeProductInfoOverlayElement();
   if (overlay) {
-    cafeMenu.appendChild(overlay);
+    cakes.appendChild(overlay);
   }
-  return cafeMenu;
+  return cakes;
+}
+
+function createCakeProductsHtml() {
+  const products = getProductsForCurrentPage();
+  let cards = '';
+  for (const product of products) {
+    cards += createCakeProductCardHtml(product);
+  }
+  return /* HTML*/ `
+      <div id='cards-grid-container'>
+        <div id='cards-grid'>${cards}</div>
+      </div>
+    `;
+}
+
+function createCakeProductCardHtml(product) {
+  return /* HTML*/ `
+      <div class="product-card">
+        <div class='card-header-image' onclick='openProductInfo(${product.productId})'>
+          <div class='product-card-header'>${product.productName}</div>
+          <img src="./img/${product.image}" alt="${product.productName}">
+        </div>
+        <div class="price-row">
+          <div>${product.unitPrice} Kr</div>
+          <button class='button-primary' onclick='addCakeProductToCart(${product.productId})'>Kjøp 🛒</button>
+        </div>
+      </div>
+    `;
 }
 
 function createCakeProductInfoOverlayElement() {
-  const product = getProductFromId(model.inputs.cakeMenu.selectedProduct);
+  const product = getProductFromId(model.app.selectedProduct);
   if (product != null) {
     return createOverlayWithContent(/* HTML*/ `
         <h2>${product.productName}</h2>

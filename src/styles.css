@@ -72,6 +72,7 @@ header {
   align-items: center;
   justify-content: space-between;
   border: solid 1px black;
+  gap: 15px;
   height: 400px;
   width: 300px;
   padding: 10px;
@@ -82,6 +83,19 @@ header {
   font-size: 1.5rem;
   font-weight: bold;
 }
+.card-header-image {
+  height: 300px;
+  width: 280px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header-image > img {
+  width: 100%;
+  height: 80%;
+}
 
 .price-row {
   display: flex; 
@@ -91,19 +105,10 @@ header {
   font-size: 1.5rem;
 }
 
-.card-header-image {
-  height: 90%;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.price-row button {
+  width: 40%;
+  height: 100%;
 }
-
-.card-header-image > img {
-  width: 100%;
-  height: auto;
-}
-
 
 #overlay {
   position: fixed; 

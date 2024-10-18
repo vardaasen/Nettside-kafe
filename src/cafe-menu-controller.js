@@ -8,24 +8,24 @@ function switchMenu(value) {
   updateView();
 }
 
-function openCafeMenuProductInfo(id) {
-  model.inputs.cafeMenu.selectedProduct = id;
-  updateView();
-}
+// function openCafeMenuProductInfo(id) {
+//   model.app.overlayForProductId = id;
+//   updateView();
+// }
 
-function closeCafeProductInfo() {
-  model.inputs.cafeMenu.selectedProduct = null;
-  model.inputs.cafeMenu.quantity = 1;
-  model.inputs.cafeMenu.message = '';
-  updateView();
-}
+// function closeCafeProductInfo() {
+//   model.inputs.cafeMenu.selectedProduct = null;
+//   model.inputs.cafeMenu.quantity = 1;
+//   model.inputs.cafeMenu.message = '';
+//   updateView();
+// }
 
 function updateComment(value) {
   model.inputs.cafeMenu.message = value;
 }
 
 function addCafeProductToCart(id) {
-  const product = getProductById();
+  const product = getProductFromId(id);
   const quantity = model.inputs.cafeMenu.quantity;
   if (quantity > 0) {
     const productId = product.productId;
@@ -36,6 +36,6 @@ function addCafeProductToCart(id) {
       quantity,
       comment,
     });
-    closeCafeProductInfo();
+    closeOverlay();
   }
 }
