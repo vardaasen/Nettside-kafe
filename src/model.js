@@ -4,7 +4,7 @@ const model = {
   /*
     pages:
     cafeMenu
-    themeKakes
+    cakeThemes
     cakes
     shoppingCart
     */
@@ -12,13 +12,13 @@ const model = {
   // del 1
   app: {
     currentPage: 'cafeMenu',
+    selectedProduct: null,
   },
 
   // del 2
   inputs: {
     cafeMenu: {
       tab: 'baguette', // baguette, canapes, coffee
-      productId: 1,
       quantity: 1,
       message: '',
     },
@@ -57,7 +57,7 @@ const model = {
   },
 
   // del 3
-  categories: ['baguette', 'canapes', 'coffee', 'themeCake'],
+  categories: ['baguette', 'canapes', 'coffee', 'cakes'],
 
   products: [],
 

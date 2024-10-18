@@ -1,9 +1,13 @@
 function createCafeMenuHtml() {
-  return /* HTML */ ` ${createTabRowHtml()} ${createProductsHtml()} `;
-}
-
-function createThemeCakeMenuHtml() {
-  return /* HTML */ ` ${createProductsHtml()} `;
+  const cafeMenu = document.createElement('div');
+  cafeMenu.id = 'cafe-menu';
+  cafeMenu.innerHTML = /* HTML */ ` ${createTabRowHtml() +
+  createCafeProductsHtml()}`;
+  const overlay = createCafeProductInfoOverlayElement();
+  if (overlay) {
+    cafeMenu.appendChild(overlay);
+  }
+  return cafeMenu;
 }
 
 function createTabRowHtml() {
@@ -22,31 +26,11 @@ function getProductsForCurrentTab() {
   return getProductsForCategory(tab);
 }
 
-function getProductsForCategory(category) {
-  const categoryIndex = model.categories.indexOf(category);
-  const list = [];
-  for (const product of model.products) {
-    if (product.categoryIndex === categoryIndex) {
-      list.push(product);
-    }
-  }
-  return list;
-}
-
-function getProductsForCurrentPage() {
-  const currentPage = model.app.currentPage;
-  if (currentPage === 'cafeMenu') {
-    return getProductsForCurrentTab();
-  } else{
-    return getProductsForCategory(currentPage)
-  }
-}
-
-function createProductsHtml() {
+function createCafeProductsHtml() {
   const products = getProductsForCurrentPage();
   let cards = '';
   for (const product of products) {
-    cards += createProductCardHtml(product);
+    cards += createCafeProductCardHtml(product);
   }
   return /* HTML*/ `
     <div id='cards-grid-container'>
@@ -55,15 +39,42 @@ function createProductsHtml() {
   `;
 }
 
-function createProductCardHtml(product) {
+function createCafeProductCardHtml(product) {
   return /* HTML*/ `
     <div class="product-card">
-      <div class='product-card-header'>${product.productName}</div>
-      <img src="./img/${product.image}" alt="${product.productName}">
+      <div class='card-header-image' onclick='openProductInfo(${product.productId})'>
+        <div class='product-card-header'>${product.productName}</div>
+        <img src="./img/${product.image}" alt="${product.productName}">
+      </div>
       <div class="price-row">
         <div>${product.unitPrice} Kr</div>
-        <button>Kjøp 🛒</button>
+        <button class='button-primary' onclick='addCafeProductToCart(${product.productId})'>Kjøp 🛒</button>
       </div>
     </div>
   `;
+}
+
+function createCafeProductInfoOverlayElement() {
+  const product = getProductFromId(model.app.selectedProduct);
+  if (product != null) {
+    return createOverlayWithContent(/* HTML*/ `
+      <h2>${product.productName}</h2>
+      <img src='./img/${product.image}'>
+      <h3>${product.unitPrice} Kr</h3>
+      <div id='overlay-description'>${product.description}</div>
+      <div id='overlay-comment-row'>
+        <label for='product-comment'>Tilpasninger:</label>
+        <textarea id='product-comment' oninput='updateComment(this.value)' placeholder='Før opp her om det er noe fu ønsker å ta bort fra produktet'></textarea>
+      </div>
+
+      <div id='overlay-buy-row'>
+        <div id='quantity-row'>
+          <label for='quantity-input'>Antall:</label>
+          <input value=1 type='number' id='quantity-input' oninput='model.inputs.cafeMenu.quantity=this.valueAsNumber'/>
+        </div>
+        <button id='overlay-buy' class='button-primary' onclick='addCafeProductToCart(${product.productId})'>Kjøp 🛒</button>
+      </div>
+    `);
+  }
+  return null;
 }
