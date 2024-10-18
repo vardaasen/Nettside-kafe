@@ -23,6 +23,7 @@ const model = {
       message: '',
     },
     themeCakeMenu: {
+      selectedTheme: null,
       theme: '',
       size: 1,
       message: '',
@@ -60,14 +61,15 @@ const model = {
   categories: ['baguette', 'canapes', 'coffee', 'cakes'],
 
   themes: [
-    'wedding',
-    'birthday_child',
-    'birthday_adult',
-    'anniversary',
-    'christmas',
-    'halloween',
-    'easter',
-    'valentine',
+    'Uten tema',
+    'Bryllup',
+    'Barnebursdag',
+    'Bursdag voksen',
+    'Jubileum',
+    'Jul',
+    'Halloween',
+    'Påske',
+    'Valentin',
   ],
 
   products: [],

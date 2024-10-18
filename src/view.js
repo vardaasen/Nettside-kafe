@@ -7,7 +7,7 @@ function createCurrentPageHtml() {
     return createCafeMenuHtml();
   }
   if (model.app.currentPage === 'cakeThemes') {
-    return createThemeCakeMenuHtml();
+    return createThemesMenuHtml();
   }
   if (model.app.currentPage === 'cakes') {
     return createCakeMenuHtml();

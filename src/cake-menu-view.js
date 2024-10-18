@@ -31,7 +31,7 @@ function createCakeProductCardHtml(product) {
         </div>
         <div class="price-row">
           <div>${product.unitPrice} Kr</div>
-          <button class='button-primary' onclick='addCakeProductToCart(${product.productId})'>Kjøp 🛒</button>
+          <button class='button-primary' onclick='addCakeProductToCart(${product.productId})'>Legg til 🛒</button>
         </div>
       </div>
     `;
@@ -55,7 +55,7 @@ function createCakeProductInfoOverlayElement() {
             <label for='quantity-input'>Antall:</label>
             <input value=1 type='number' id='quantity-input' oninput='model.inputs.cafeMenu.quantity=this.valueAsNumber'/>
           </div>
-          <button id='overlay-buy' class='button-primary' onclick='addCafeProductToCart(${product.productId})'>Kjøp 🛒</button>
+          <button id='overlay-buy' class='button-primary' onclick='addCafeProductToCart(${product.productId})'>Legg til 🛒</button>
         </div>
       `);
   }

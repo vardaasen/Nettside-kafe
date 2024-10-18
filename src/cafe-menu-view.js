@@ -14,9 +14,9 @@ function createTabRowHtml() {
   const selectedTab = model.inputs.cafeMenu.tab;
   return /* HTML*/ `
     <div id="cafe-menu-tab-row">
-      <button onclick="switchTab('baguette')" class='${selectedTab === 'baguette' ? 'selected-tab' : ''}'>Baguetter</button>
-      <button onclick="switchTab('canapes')" class='${selectedTab === 'canapes' ? 'selected-tab' : ''}'>Snitter</button>
-      <button onclick="switchTab('coffee')" class='${selectedTab === 'coffee' ? 'selected-tab' : ''}'>Kaffe</button>
+      <button onclick="switchTab('baguette')" class='${selectedTab === 'baguette' ? 'selected-tab' : 'tab-button'}'>Baguetter</button>
+      <button onclick="switchTab('canapes')" id='middle-tab-button' class='${selectedTab === 'canapes' ? 'selected-tab' : 'tab-button'}'>Snitter</button>
+      <button onclick="switchTab('coffee')" class='${selectedTab === 'coffee' ? 'selected-tab' : 'tab-button'}'>Kaffe</button>
     </div>
   `;
 }
@@ -48,7 +48,7 @@ function createCafeProductCardHtml(product) {
       </div>
       <div class="price-row">
         <div>${product.unitPrice} Kr</div>
-        <button class='button-primary' onclick='addCafeProductToCart(${product.productId})'>Kjøp 🛒</button>
+        <button class='button-primary' onclick='addCafeProductToCart(${product.productId})'>Legg til 🛒</button>
       </div>
     </div>
   `;
@@ -72,7 +72,7 @@ function createCafeProductInfoOverlayElement() {
           <label for='quantity-input'>Antall:</label>
           <input value=1 type='number' id='quantity-input' oninput='model.inputs.cafeMenu.quantity=this.valueAsNumber'/>
         </div>
-        <button id='overlay-buy' class='button-primary' onclick='addCafeProductToCart(${product.productId})'>Kjøp 🛒</button>
+        <button id='overlay-buy' class='button-primary' onclick='addCafeProductToCart(${product.productId})'>Legg til 🛒</button>
       </div>
     `);
   }
