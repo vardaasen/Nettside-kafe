@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Logg inn</title>
   <link rel="stylesheet" href="assets/css/admin-styles.css">
+  <script>
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      window.location.href = 'bestillinger.html';
+    }
+  </script>
   <script src="assets/js/model/loginModel.js" defer></script>
   <script src="assets/js/view/loginView.js" defer></script>
   <script src="assets/js/controller/loginController.js" defer></script>
