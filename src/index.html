@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kafè</title>
+  <title>Bakst og Brygg | Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.</title>
+  <meta name="description" content="Bakst og Brygg - Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.">
   <script src="model.js"></script>
   <script src="common.js"></script>
   <script src="cafe-menu-view.js"></script>
@@ -18,22 +19,56 @@
 </head>
 
 <body>
-  <header id="header-container">
+  <!--<header id="header-container">
     <div id="nav-row">
-      <div id="logo">Logo</div>
+      <div class="header__logo"><a href="./index.html"><img src="admin/assets/img/logo.webp" alt="Bakst og Brygg logo" class="header__logo-image"></a></div>
       <button onclick="switchMenu('cafeMenu')" class="header-button">Menu</button>
       <button onclick="switchMenu('cakeThemes')" class="header-button">Kaketemaer</button>
       <button onclick="switchMenu('cakes')" class="header-button">Kaker</button>
-      <a href="./admin/index.html">Admin</a>
     </div>
     <button class="header-button cart-icon">Handlevogn</button>
+  </header>-->
+
+  <header id="header-container">
+    <div id="nav-row">
+      <nav class="header__nav">
+        <a href="./index.html"><img src="img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo" class="header__logo-image"></a>
+        <button onclick="switchMenu('cafeMenu')" class="header-button">Meny</button>
+        <button onclick="switchMenu('cakeThemes')" class="header-button">Kaketemaer</button>
+        <button onclick="switchMenu('cakes')" class="header-button">Kaker</button>
+      </nav>
+      <button class="header-button cart-icon">Handlevogn</button>
+    </div>
   </header>
 
   <div id="app"></div>
-  <footer style="background-color:  #222; color: white; height: 400px; padding: 20px;">
-    <h2 style='font-size: 400%;'>HER ER FOOTER</h2>
-    <p>Tester hva som skjer når vi har footer</p>
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__section footer__section--contact">
+        <h3 class="footer__title">Kontakt oss</h3>
+        <p class="footer__text">Bakst og Brygg</p>
+        <p class="footer__text">Telefon: 123 45 678</p>
+        <p class="footer__text">E-post: kontakt@example.com</p>
+      </div>
+      <div class="footer__section footer__section--hours">
+        <h3 class="footer__title">Åpningstider</h3>
+        <p class="footer__text">Mandag - Fredag: 08:00 - 16:00</p>
+        <p class="footer__text">Lørdag: 09:00 - 15:00</p>
+        <p class="footer__text">Søndag: Stengt</p>
+      </div>
+      <div class="footer__section footer__section--address">
+        <h3 class="footer__title">Besøk oss</h3>
+        <p class="footer__text">Adresse: Slottsplassen 1, 0010 Oslo</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copyright">&copy; 2024 Bakst og Brygg. Alle rettigheter reservert.</p>
+      <a class="footer__link footer__link--admin" href="/admin/">Gå til adminside</a>
+    </div>
   </footer>
+
+
+
   <script>
     updateView();
   </script>
