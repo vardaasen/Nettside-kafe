@@ -168,7 +168,7 @@ button:hover {
   background-color: transparent;
   background-size: cover;
   background-position: center;
-  background-image: url('../img/logo.webp');
+  background-image: url('../admin/assets/img/logo.webp');
 }
 
 .login-form {

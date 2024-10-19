@@ -1,5 +1,7 @@
 .idea
 .vscode
-/scratch.js
 node_modules
+scratch
 /server.js
+/scratch.js
+

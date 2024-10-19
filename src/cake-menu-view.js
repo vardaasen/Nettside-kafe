@@ -31,7 +31,7 @@ function createCakeProductCardHtml(product) {
         </div>
         <div class="price-row">
           <div>${product.unitPrice} Kr</div>
-          <button class='button-primary' onclick='addCakeProductToCart(${product.productId})'>Legg til 🛒</button>
+          <button class='button-primary cart-icon' onclick='addCakeProductToCart(${product.productId})'>Legg til</button>
         </div>
       </div>
     `;
@@ -43,14 +43,14 @@ function createCakeProductInfoOverlayElement() {
     return createOverlayWithContent(/* HTML*/ `
         <div><button>╳</button></div>
         <h2>${product.productName}</h2>
-        <img src='./img/cakes/${product.image}'>
+        <img src='./img/cakes/${product.image}' alt="Bilde av ${product.productName}">
         <h3>${product.unitPrice} Kr</h3>
         <div id='overlay-description'>${product.description}</div>
         <div id='overlay-comment-row'>
           <label for='product-comment'>Tilpasninger:</label>
           <textarea id='product-comment' oninput='updateComment(this.value)'></textarea>
         </div>
-  
+
         <div id='overlay-buy-row'>
           <div id='quantity-row'>
             <label for='quantity-input'>Antall:</label>
