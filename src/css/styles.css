@@ -21,7 +21,15 @@ button {
 }
 
 #app {
-  height: 92%;
+  width: 100%;
+  margin: 2em auto;
+}
+
+@media (min-width: 961px) {
+  #app {
+    max-width: 1200px;
+    margin: 4em auto;
+  }
 }
 
 #header-container {
