@@ -64,13 +64,13 @@ function createCafeProductInfoOverlayElement() {
       <div id='overlay-description'>${product.description}</div>
       <div id='overlay-comment-row'>
         <label for='product-comment'>Tilpasninger:</label>
-        <textarea id='product-comment' oninput='updateComment(this.value)' placeholder='Før opp her om det er noe fu ønsker å ta bort fra produktet'></textarea>
+        <textarea id='product-comment' oninput='updateComment(this.value)' placeholder='Før opp her om det er noe du ønsker å ta bort fra produktet'></textarea>
       </div>
 
       <div id='overlay-buy-row'>
         <div id='quantity-row'>
           <label for='quantity-input'>Antall:</label>
-          <input value=1 type='number' id='quantity-input' oninput='model.inputs.cafeMenu.quantity=this.valueAsNumber'/>
+          <input value=1 min=1 type='number' id='quantity-input' oninput='model.inputs.cafeMenu.quantity=this.valueAsNumber'/>
         </div>
         <button id='overlay-buy' class='button-primary' onclick='addCafeProductToCart(${product.productId})'>Legg til 🛒</button>
       </div>

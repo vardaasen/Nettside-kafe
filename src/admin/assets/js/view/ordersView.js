@@ -16,9 +16,9 @@ const ordersView = {
     const ordersContainer = document.getElementById('orders');
     ordersContainer.innerHTML = '';
 
-    const visibleOrders = orders.filter(order => order.status !== 'Hentet');
+    const visibleOrders = orders.filter((order) => order.status !== 'Hentet');
 
-    visibleOrders.forEach(order => {
+    visibleOrders.forEach((order) => {
       if (ordersController.isTimeValid(order.pickUpSchedule.time)) {
         const orderRow = document.createElement('div');
         orderRow.classList.add('orders__row');
@@ -26,16 +26,20 @@ const ordersView = {
         orderRow.innerHTML = `
           <div class="orders__column orders__column--customer">${order.customerName}</div>
           <div class="orders__column orders__column--products">
-            ${order.products.map(product => {
-          const productDetails = model.getProducts().find(p => p.productId === product.productId);
-          return `
+            ${order.products
+              .map((product) => {
+                const productDetails = model
+                  .getProducts()
+                  .find((p) => p.productId === product.productId);
+                return `
                 <div class="orders__product">
                   <div class="orders__product-name">${productDetails.productName}</div>
                   <div class="orders__product-quantity">Antall: ${product.quantity}</div>
                   <div class="orders__product-comment">Kommentar: ${product.comment}</div>
                 </div>
               `;
-        }).join('')}
+              })
+              .join('')}
           </div>
           <div class="orders__column orders__column--schedule">${order.pickUpSchedule.date} ${order.pickUpSchedule.time}</div>
           <div class="orders__column orders__column--status">
@@ -54,5 +58,5 @@ const ordersView = {
         ordersContainer.appendChild(orderRow);
       }
     });
-  }
+  },
 };

@@ -41,6 +41,7 @@ function createCakeProductInfoOverlayElement() {
   const product = getProductFromId(model.app.selectedProduct);
   if (product != null) {
     return createOverlayWithContent(/* HTML*/ `
+        <div><button>╳</button></div>
         <h2>${product.productName}</h2>
         <img src='./img/cakes/${product.image}'>
         <h3>${product.unitPrice} Kr</h3>
@@ -53,7 +54,7 @@ function createCakeProductInfoOverlayElement() {
         <div id='overlay-buy-row'>
           <div id='quantity-row'>
             <label for='quantity-input'>Antall:</label>
-            <input value=1 type='number' id='quantity-input' oninput='model.inputs.cafeMenu.quantity=this.valueAsNumber'/>
+            <input value=1 min=1 type='number' id='quantity-input' oninput='model.inputs.cafeMenu.quantity=this.valueAsNumber'/>
           </div>
           <button id='overlay-buy' class='button-primary' onclick='addCafeProductToCart(${product.productId})'>Legg til 🛒</button>
         </div>
