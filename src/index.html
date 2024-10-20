@@ -15,6 +15,7 @@
   <script src="cafe-menu-controller.js"></script>
   <script src="cake-menu-controller.js"></script>
   <script src="store/products.js"></script>
+  <script src="shopping-cart-view.js"></script>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
@@ -32,12 +33,13 @@
   <header id="header-container">
     <div id="nav-row">
       <nav class="header__nav">
-        <a href="./index.html"><img src="img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo" class="header__logo-image"></a>
+        <a href="./index.html"><img src="img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo"
+            class="header__logo-image"></a>
         <button onclick="switchMenu('cafeMenu')" class="header-button">Meny</button>
         <button onclick="switchMenu('cakeThemes')" class="header-button">Kaketemaer</button>
         <button onclick="switchMenu('cakes')" class="header-button">Kaker</button>
       </nav>
-      <button class="header-button cart-icon">Handlevogn</button>
+      <button class="header-button cart-icon" onclick="showShoppingCart()">Handlevogn</button>
     </div>
   </header>
 

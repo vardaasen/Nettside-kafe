@@ -78,3 +78,9 @@ function createCafeProductInfoOverlayElement() {
   }
   return null;
 }
+
+function createShoppingCartHtml(){
+  return /* HTML*/`
+  `
+}
+
