@@ -12,8 +12,8 @@ function createCurrentPageHtml() {
   if (model.app.currentPage === 'cakes') {
     return createCakeMenuHtml();
   }
-  if(model.app.currentPage === 'shoppingCart'){
-    return createShoppingCartHtml()
+  if (model.app.currentPage === 'shoppingCart') {
+    return createShoppingCartHtml();
   }
   return '';
 }
