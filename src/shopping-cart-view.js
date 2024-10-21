@@ -44,6 +44,7 @@ function renderCart() {
       </div>
     `;
     total += item.price * item.quantity;
+    itemCount += item.quantity;
   });
 
   cartTotal.textContent = total;
@@ -74,4 +75,15 @@ function addToCart(name,price,quantity=1){
       });
     }
 }
+
+function removeFromCart(name) {
+  const cart = model.inputs.shoppingCart.products;
+  const itemIndex = cart.findIndex(item => item.name === name);
+  if (itemIndex !== -1) {
+    cart.splice(itemIndex, 1);
+    updateCart();
+  }
+}
+
+document.body.appendChild(createShoppingCartHtml());
   
