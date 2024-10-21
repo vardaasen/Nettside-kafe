@@ -1,0 +1,235 @@
+@import url("modern-normalize.css");
+
+/* Sorg for å bruke BEM */
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fefefe;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header__logo-image {
+  height: 80px;
+}
+
+.header__navbar {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.header__nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.header__nav-item {
+  margin-right: 20px;
+}
+
+.header__nav-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+}
+
+.header__frontpage-link {
+  margin-left: auto;
+}
+
+.header__link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Main */
+.container {
+  width: 100%;
+  padding: 0 10px;
+}
+
+@media screen and (min-width: 961px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
+.inventory__table,
+.orders__table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inventory__row,
+.orders__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.inventory__header,
+.orders__header {
+  font-weight: bold;
+  background-color: #ffd0cf;
+  padding: 15px;
+  border-bottom: 2px solid #ddd;
+}
+
+.inventory__column,
+.orders__column {
+  flex: 1;
+  padding: 10px;
+}
+
+.inventory__column input {
+  width: 80px;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.orders__column--customer {
+  flex: 1 1 20%;
+}
+
+.orders__column--products {
+  flex: 1 1 40%;
+}
+
+.orders__column--schedule {
+  flex: 1 1 20%;
+}
+
+.orders__column--status {
+  flex: 1 1 20%;
+}
+
+.orders__product {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.orders__product-name {
+  font-weight: bold;
+}
+
+.orders__product-quantity,
+.orders__product-comment {
+  margin-top: 5px;
+}
+
+.orders__column--status select {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.orders__status {
+  margin-bottom: 1em;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #FE928F;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #D1534E;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+}
+
+.login-page__logo {
+  margin-bottom: 30px;
+  width: 250px;
+  height: 250px;
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  background-image: url('../admin/assets/img/logo.webp');
+}
+
+.login-form {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form__input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.login-form__button {
+  padding: 10px;
+  background-color: #FE928F;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-form__button:hover {
+  background-color: #D1534E;
+}
+
+#loginError {
+  margin-top: 10px;
+  color: red;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .login-form {
+    width: 90%;
+  }
+}
+
+.logout {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.logout__button {
+  padding: 10px 20px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logout__button:hover {
+  background-color: #ff1a1a;
+}

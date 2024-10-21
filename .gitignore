@@ -1,5 +1,44 @@
+<<<<<<< Updated upstream
 .idea
 .vscode
-scratch.js
 node_modules
+scratch
+/server.js
+/scratch.js
+
+=======
+# IDEs
+.idea/
+.vscode/
+
+# mac system
+.DS_Store
+
+# experiments and temp
+scratch.js
 server.js
+
+.babelrc
+.babelrc.js
+babel.config.js
+babel.config.json
+
+jest.config.js
+coverage/
+
+# node.js
+node_modules/
+
+# npm related not strictly necessary to track
+package-lock.json
+
+# yarn related not strictly necessary to track
+yarn.lock
+.yarn/
+.yarnrc.yml
+.yarn-debug.log
+.yarn-error.log
+
+# eslint cache
+.eslintcache
+>>>>>>> Stashed changes

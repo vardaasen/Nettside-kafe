@@ -4,7 +4,7 @@ const model = {
   /*
     pages:
     cafeMenu
-    themeKakes
+    cakeThemes
     cakes
     shoppingCart
     */
@@ -12,17 +12,18 @@ const model = {
   // del 1
   app: {
     currentPage: 'cafeMenu',
+    selectedProduct: null,
   },
 
   // del 2
   inputs: {
     cafeMenu: {
       tab: 'baguette', // baguette, canapes, coffee
-      productId: 1,
       quantity: 1,
       message: '',
     },
     themeCakeMenu: {
+      selectedTheme: null,
       theme: '',
       size: 1,
       message: '',
@@ -57,7 +58,19 @@ const model = {
   },
 
   // del 3
-  categories: ['baguette', 'canapes', 'coffee', 'themeCake'],
+  categories: ['baguette', 'canapes', 'coffee', 'cakes'],
+
+  themes: [
+    'Uten tema',
+    'Bryllup',
+    'Barnebursdag',
+    'Bursdag voksen',
+    'Jubileum',
+    'Jul',
+    'Halloween',
+    'Påske',
+    'Valentin',
+  ],
 
   products: [],
 
