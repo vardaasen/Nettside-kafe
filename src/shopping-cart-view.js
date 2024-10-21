@@ -1,8 +1,10 @@
 // Funksjon for å vise handlekurven
 function showShoppingCart() {
+  // Sjekk om handlekurvstrukturen finnes, hvis ikke, opprett den
   if (!document.getElementById('shopping-cart-container')) {
     createShoppingCartHtml();  // Sørg for at handlekurven opprettes hvis den ikke finnes
   }
+  
   model.app.currentPage = 'shoppingCart';
   updateView();  // Kall updateView for å vise handlekurven
 }
@@ -23,12 +25,11 @@ function createShoppingCartHtml() {
       <button disabled id="checkoutButton">Til kassen</button>
     </div>
   </div>`;
-  
-  // Legger handlekurven til i DOM hvis den ikke finnes allerede
+
+  // Forsøk å finne 'shopping-cart-container' på nytt før vi legger det til
   if (!document.getElementById('shopping-cart-container')) {
-    document.body.appendChild(shoppingCartDiv);
+    document.body.appendChild(shoppingCartDiv);  // Legg til handlekurven i DOM
   }
-  return shoppingCartDiv;
 }
 
 // Funksjon for å oppdatere innholdet i handlekurven
