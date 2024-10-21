@@ -84,6 +84,4 @@ function removeFromCart(name) {
     updateCart();
   }
 }
-
-document.body.appendChild(createShoppingCartHtml());
   
