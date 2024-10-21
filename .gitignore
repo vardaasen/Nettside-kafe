@@ -10,6 +10,8 @@
 /scratch.js
 /server.js
 scratch/
+/crud-routes.js
+src/server-requests.js
 
 /.babelrc
 /.babelrc.js
