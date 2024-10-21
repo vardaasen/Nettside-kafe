@@ -48,7 +48,7 @@ function createCafeProductCardHtml(product) {
       </div>
       <div class="price-row">
         <div>${product.unitPrice} Kr</div>
-        <button class="button__add-to-cart cart-icon" onclick="addToCart('${product.productName}', ${product.unitPrice}); updateCart();">Legg til</button>
+        <button class="button__add-to-cart cart-icon" onclick="addToCart('${product.productName}', ${product.unitPrice});">Legg til</button>
       </div>
     </div>
   `;
@@ -70,9 +70,12 @@ function createCafeProductInfoOverlayElement() {
       <div id='overlay-buy-row'>
         <div id='quantity-row'>
           <label for='quantity-input'>Antall:</label>
-          <input value=1 min=1 type='number' id='quantity-input' oninput='model.inputs.cafeMenu.quantity=this.valueAsNumber'/>
+          <input type='number' value="1" min="1" id='quantity-input' oninput='model.inputs.cafeMenu.quantity=this.valueAsNumber'/>
         </div>
-        <button id='overlay-buy' class='button__add-to-cart cart-icon' onclick='addCafeProductToCart(${product.productId})'>Legg til</button>
+         <button id='overlay-buy' class="button__add-to-cart cart-icon"
+  onclick="console.log('Quantity from model:', model.inputs.cafeMenu.quantity); addToCart('${product.productName}', ${product.unitPrice}, model.inputs.cafeMenu.quantity);">
+  Legg til
+</button>
       </div>
     `);
   }

@@ -11,7 +11,7 @@ const model = {
 
   // del 1
   app: {
-    currentPage: 'shoppingCart',
+    currentPage: 'cafeMenu',
     selectedProduct: null,
   },
 

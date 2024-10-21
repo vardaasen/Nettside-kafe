@@ -15,65 +15,60 @@
   <script src="cafe-menu-controller.js"></script>
   <script src="cake-menu-controller.js"></script>
   <script src="store/products.js"></script>
-  <script src="shopping-cart-view.js"></script>
+  <script src="js/cartView.js"></script>
+  <script src="js/cartController.js"></script>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
-  <!--<header id="header-container">
-    <div id="nav-row">
-      <div class="header__logo"><a href="./index.html"><img src="admin/assets/img/logo.webp" alt="Bakst og Brygg logo" class="header__logo-image"></a></div>
-      <button onclick="switchMenu('cafeMenu')" class="header-button">Menu</button>
+<header id="header-container">
+  <div id="nav-row">
+    <nav class="header__nav">
+      <a href="./index.html"><img src="img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo"
+                                  class="header__logo-image"></a>
+      <button onclick="switchMenu('cafeMenu')" class="header-button">Meny</button>
       <button onclick="switchMenu('cakeThemes')" class="header-button">Kaketemaer</button>
       <button onclick="switchMenu('cakes')" class="header-button">Kaker</button>
+    </nav>
+    <button class="header-button cart-icon" id="cartLink" onclick="showShoppingCart()">Handlevogn (<span class="cart-count"
+                                                                                   id="cartCount">0</span>)
+    </button>
+  </div>
+</header>
+
+<div class="cart-notification" id="cartNotification">Produkt lagt til i handlekurven!</div>
+
+<div id="app"></div>
+
+<footer class="footer">
+  <div class="footer__content">
+    <div class="footer__section footer__section--contact">
+      <h3 class="footer__title">Kontakt oss</h3>
+      <p class="footer__text">Bakst og Brygg</p>
+      <p class="footer__text">Telefon: 123 45 678</p>
+      <p class="footer__text">E-post: kontakt@example.com</p>
     </div>
-    <button class="header-button cart-icon">Handlevogn</button>
-  </header>-->
-
-  <header id="header-container">
-    <div id="nav-row">
-      <nav class="header__nav">
-        <a href="./index.html"><img src="img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo"
-            class="header__logo-image"></a>
-        <button onclick="switchMenu('cafeMenu')" class="header-button">Meny</button>
-        <button onclick="switchMenu('cakeThemes')" class="header-button">Kaketemaer</button>
-        <button onclick="switchMenu('cakes')" class="header-button">Kaker</button>
-      </nav>
-      <button class="header-button cart-icon" onclick="showShoppingCart()">Handlevogn</button>
+    <div class="footer__section footer__section--hours">-+
+      <h3 class="footer__title">Åpningstider</h3>
+      <p class="footer__text">Mandag - Fredag: 08:00 - 16:00</p>
+      <p class="footer__text">Lørdag: 09:00 - 15:00</p>
+      <p class="footer__text">Søndag: Stengt</p>
     </div>
-  </header>
-
-  <div id="app"></div>
-  <footer class="footer">
-    <div class="footer__content">
-      <div class="footer__section footer__section--contact">
-        <h3 class="footer__title">Kontakt oss</h3>
-        <p class="footer__text">Bakst og Brygg</p>
-        <p class="footer__text">Telefon: 123 45 678</p>
-        <p class="footer__text">E-post: kontakt@example.com</p>
-      </div>
-      <div class="footer__section footer__section--hours">-+
-        <h3 class="footer__title">Åpningstider</h3>
-        <p class="footer__text">Mandag - Fredag: 08:00 - 16:00</p>
-        <p class="footer__text">Lørdag: 09:00 - 15:00</p>
-        <p class="footer__text">Søndag: Stengt</p>
-      </div>
-      <div class="footer__section footer__section--address">
-        <h3 class="footer__title">Besøk oss</h3>
-        <p class="footer__text">Adresse: Slottsplassen 1, 0010 Oslo</p>
-      </div>
+    <div class="footer__section footer__section--address">
+      <h3 class="footer__title">Besøk oss</h3>
+      <p class="footer__text">Adresse: Slottsplassen 1, 0010 Oslo</p>
     </div>
-    <div class="footer__bottom">
-      <p class="footer__copyright">&copy; 2024 Bakst og Brygg. Alle rettigheter reservert.</p>
-      <a class="footer__link footer__link--admin" href="admin/">Gå til adminside</a>
-    </div>
-  </footer>
+  </div>
+  <div class="footer__bottom">
+    <p class="footer__copyright">&copy; 2024 Bakst og Brygg. Alle rettigheter reservert.</p>
+    <a class="footer__link footer__link--admin" href="admin/">Gå til adminside</a>
+  </div>
+</footer>
 
 
-
-  <script>
-    updateView();
-  </script>
+<script>
+  updateView();
+</script>
 </body>
 
 </html>
