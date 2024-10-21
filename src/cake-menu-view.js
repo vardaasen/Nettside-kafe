@@ -40,28 +40,43 @@ function createCakeProductCardHtml(product) {
 function createCakeProductInfoOverlayElement() {
   const product = getProductFromId(model.app.selectedProduct);
   if (product != null) {
-    return createOverlayWithContent(/* HTML*/ `
-        <div><button>╳</button></div>
-        <h2>${product.productName}</h2>
-        <img src='./img/cakes/${product.image}' alt="Bilde av ${product.productName}">
-        <h3>${product.unitPrice} Kr</h3>
-        <div id='overlay-description'>${product.description}</div>
-        <div id='overlay-comment-row'>
-          <label for='product-comment'>Tilpasninger:</label>
-          <textarea id='product-comment' oninput='updateComment(this.value)'></textarea>
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+
+    overlay.innerHTML = `
+      <div class="overlay__content">
+        <button class="overlay__close-button" onclick="closeOverlay()">╳</button>
+        <h2 class="overlay__title">${product.productName}</h2>
+        <img src='./img/cakes/${product.image}' alt="${product.productName}" class="overlay__image">
+        <p class="overlay__price">${product.unitPrice} Kr</p>
+        <p class="overlay__description">${product.description}</p>
+
+        <div class="overlay__section overlay__section--comment">
+          <label for="product-comment" class="overlay__label">Tilpasninger:</label>
+          <textarea id="product-comment" class="overlay__textarea" placeholder="Skriv inn eventuelle tilpasninger her..." oninput='updateComment(this.value)'></textarea>
         </div>
 
-        <div id='overlay-buy-row'>
-          <div id='quantity-row'>
-            <label for='quantity-input'>Antall:</label>
-            <input value=1 min=1 type='number' id='quantity-input' oninput='model.inputs.cafeMenu.quantity=this.valueAsNumber'/>
+        <div class="overlay__section overlay__section--buy">
+          <div class="overlay__quantity">
+            <label for="quantity-input" class="overlay__label">Antall:</label>
+            <input type="number" value="1" min="1" id="quantity-input" class="overlay__input" oninput="model.inputs.cakeMenu.quantity=this.valueAsNumber"/>
           </div>
-          <button id='overlay-buy' class="button__add-to-cart cart-icon"
-  onclick="console.log('Quantity from model:', model.inputs.cafeMenu.quantity); addToCart('${product.productName}', ${product.unitPrice}, model.inputs.cafeMenu.quantity);">
-  Legg til
-</button>
-          </div>
-      `);
+          <button id="overlay-buy" class="button"
+            onclick="addToCart('${product.productName}', ${product.unitPrice}, model.inputs.cakeMenu.quantity)">
+            Legg til i handlekurv
+          </button>
+        </div>
+      </div>
+    `;
+
+    overlay.addEventListener('click', (event) => {
+      if (event.target === overlay) {
+        closeOverlay();
+      }
+    });
+
+    return overlay;
   }
   return null;
 }
+
