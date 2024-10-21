@@ -4,7 +4,9 @@ function showShoppingCart() {
 }
 
 function createShoppingCartHtml() {
-  return /* HTML*/ `
-    <div></div>
+  const shoppingCart = document.createElement('div');
+  shoppingCart.innerHTML = /* HTML*/ `
+        <div></div>
     `;
+  return shoppingCart;
 }
