@@ -1,11 +1,14 @@
 function showShoppingCart() {
+  if (!document.getElementById('shopping-cart-container')) {
+    createShoppingCartHtml();
+  }
   model.app.currentPage = 'shoppingCart';
   updateView();
 }
 
 function createShoppingCartHtml() {
   const shoppingCartDiv = document.createElement('div')
-  
+  shoppingCartDiv.id = 'shopping-cart-container'; 
 
   shoppingCartDiv.innerHTML = /* HTML */ `
   <div class="cart" id="cart">
@@ -15,12 +18,16 @@ function createShoppingCartHtml() {
       <div class="cart-total-container">
         Totalt: <span id="cart-total">0</span> kr
       </div>
-
       <button disabled id="checkoutButton">Til kassen</button>
     </div>
-  </div>`
+  </div>`;
+  return shoppingCartDiv;
+  if (!document.getElementById('shopping-cart-container')) {
+    document.body.appendChild(shoppingCartDiv);
+  }
   return shoppingCartDiv;
 }
+
 
 
 function renderCart() {
@@ -28,27 +35,31 @@ function renderCart() {
   const cartTotal = document.getElementById('cart-total');
   const checkoutButton = document.getElementById('checkoutButton');
   const cart = model.inputs.shoppingCart.products
-  
-  cartItems.innerHTML = '';
-  let total = 0;
-  let itemCount = 0;
 
-  cart.forEach((item) => {
-    cartItems.innerHTML += `
-      <div class="cart-item">
-        <div class="cart-item-info">
-          <div class="cart-item-name"><strong>${item.name}</strong></div>
-          <div class="cart-item-details">${item.quantity} x ${item.price} kr</div>
+  if (cartItems && cartTotal && checkoutButton) {
+    cartItems.innerHTML = '';
+    let total = 0;
+    let itemCount = 0;
+
+    cart.forEach((item) => {
+      cartItems.innerHTML += `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <div class="cart-item-name"><strong>${item.name}</strong></div>
+            <div class="cart-item-details">${item.quantity} x ${item.price} kr</div>
+          </div>
+          <button class="remove-btn" onclick="removeFromCart('${item.name}'); updateCart();">Fjern</button>
         </div>
-        <button class="remove-btn" onclick="removeFromCart('${item.name}'); updateCart();">Fjern</button>
-      </div>
-    `;
-    total += item.price * item.quantity;
-    itemCount += item.quantity;
-  });
+      `;
+      total += item.price * item.quantity;
+      itemCount += item.quantity;
+    });
 
-  cartTotal.textContent = total;
-  checkoutButton.disabled = itemCount === 0;
+    cartTotal.textContent = total;
+    checkoutButton.disabled = itemCount === 0;
+  } else {
+    console.error('Noe gikk galt: handle kurv-elementer mangler i DOM.');
+  }
 }
 
 function updateCart() {
@@ -85,5 +96,6 @@ function removeFromCart(name) {
   }
 }
 
-document.body.appendChild(createShoppingCartHtml());
-  
+function updateCart() {
+renderCart();
+}  
