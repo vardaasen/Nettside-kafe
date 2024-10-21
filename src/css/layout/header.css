@@ -1,0 +1,92 @@
+#header-container {
+  background-color: #3E6A16;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px var(--color-shadow);
+}
+
+#nav-row {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.header__logo-image {
+  height: 80px;
+  width: auto;
+  margin-right: 1em;
+  cursor: pointer;
+}
+
+.header__nav {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: flex-start;
+}
+
+.header-button {
+  background-color: var(--color-primary);
+  color: var(--color-text-dark-bg);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header-button:hover {
+  background-color: #66A22B;
+}
+
+.cart-icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-dark-bg);
+}
+
+.cart-icon::before {
+  content: '';
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 3px;
+  margin-bottom: -2px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" fill="white"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+@media (max-width: 960px) {
+  #header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #nav-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .header__nav {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .header-button {
+    flex: 1;
+    margin: 5px 0;
+  }
+
+  .cart-icon {
+    width: 100%;
+    text-align: center;
+  }
+}
