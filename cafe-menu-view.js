@@ -1,18 +1,22 @@
 function createCafeMenuHtml() {
-  return /* HTML */ ` ${createTabRowHtml()} ${createProductsHtml()} `;
-}
-
-function createThemeCakeMenuHtml() {
-  return /* HTML */ ` ${createProductsHtml()} `;
+  const cafeMenu = document.createElement('div');
+  cafeMenu.id = 'cafe-menu';
+  cafeMenu.innerHTML = /* HTML */ ` ${createTabRowHtml() +
+  createCafeProductsHtml()}`;
+  const overlay = createCafeProductInfoOverlayElement();
+  if (overlay) {
+    cafeMenu.appendChild(overlay);
+  }
+  return cafeMenu;
 }
 
 function createTabRowHtml() {
   const selectedTab = model.inputs.cafeMenu.tab;
   return /* HTML*/ `
     <div id="cafe-menu-tab-row">
-      <button onclick="switchTab('baguette')" class='${selectedTab === 'baguette' ? 'selected-tab' : ''}'>Baguetter</button>
-      <button onclick="switchTab('canapes')" class='${selectedTab === 'canapes' ? 'selected-tab' : ''}'>Snitter</button>
-      <button onclick="switchTab('coffee')" class='${selectedTab === 'coffee' ? 'selected-tab' : ''}'>Kaffe</button>
+      <button onclick="switchTab('baguette')" class='${selectedTab === 'baguette' ? 'selected-tab' : 'tab-button'}'>Baguetter</button>
+      <button onclick="switchTab('canapes')" id='middle-tab-button' class='${selectedTab === 'canapes' ? 'selected-tab' : 'tab-button'}'>Snitter</button>
+      <button onclick="switchTab('coffee')" class='${selectedTab === 'coffee' ? 'selected-tab' : 'tab-button'}'>Kaffe</button>
     </div>
   `;
 }
@@ -22,31 +26,11 @@ function getProductsForCurrentTab() {
   return getProductsForCategory(tab);
 }
 
-function getProductsForCategory(category) {
-  const categoryIndex = model.categories.indexOf(category);
-  const list = [];
-  for (const product of model.products) {
-    if (product.categoryIndex === categoryIndex) {
-      list.push(product);
-    }
-  }
-  return list;
-}
-
-function getProductsForCurrentPage() {
-  const currentPage = model.app.currentPage;
-  if (currentPage === 'cafeMenu') {
-    return getProductsForCurrentTab();
-  } else{
-    return getProductsForCategory(currentPage)
-  }
-}
-
-function createProductsHtml() {
+function createCafeProductsHtml() {
   const products = getProductsForCurrentPage();
   let cards = '';
   for (const product of products) {
-    cards += createProductCardHtml(product);
+    cards += createCafeProductCardHtml(product);
   }
   return /* HTML*/ `
     <div id='cards-grid-container'>
@@ -55,15 +39,42 @@ function createProductsHtml() {
   `;
 }
 
-function createProductCardHtml(product) {
+function createCafeProductCardHtml(product) {
   return /* HTML*/ `
     <div class="product-card">
-      <div class='product-card-header'>${product.productName}</div>
-      <img src="./img/${product.image}">
+      <div class='card-header-image' onclick='openProductInfo(${product.productId})'>
+        <div class='product-card-header'>${product.productName}</div>
+        <img src="./img/cafe_menu/${product.image}" alt="${product.productName}">
+      </div>
       <div class="price-row">
         <div>${product.unitPrice} Kr</div>
-        <button>Kjøp 🛒</button>
+        <button class='button__add-to-cart cart-icon' onclick='addCafeProductToCart(${product.productId})'>Legg til</button>
       </div>
     </div>
   `;
+}
+
+function createCafeProductInfoOverlayElement() {
+  const product = getProductFromId(model.app.selectedProduct);
+  if (product != null) {
+    return createOverlayWithContent(/* HTML*/ `
+      <h2>${product.productName}</h2>
+      <img src='./img/cafe_menu/${product.image}' alt="Bilde av ${product.productName}">
+      <h3>${product.unitPrice} Kr</h3>
+      <div id='overlay-description'>${product.description}</div>
+      <div id='overlay-comment-row'>
+        <label for='product-comment'>Tilpasninger:</label>
+        <textarea id='product-comment' oninput='updateComment(this.value)' placeholder='Før opp her om det er noe du ønsker å ta bort fra produktet'></textarea>
+      </div>
+
+      <div id='overlay-buy-row'>
+        <div id='quantity-row'>
+          <label for='quantity-input'>Antall:</label>
+          <input value=1 min=1 type='number' id='quantity-input' oninput='model.inputs.cafeMenu.quantity=this.valueAsNumber'/>
+        </div>
+        <button id='overlay-buy' class='button__add-to-cart cart-icon' onclick='addCafeProductToCart(${product.productId})'>Legg til</button>
+      </div>
+    `);
+  }
+  return null;
 }

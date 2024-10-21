@@ -1,15 +1,19 @@
 function updateView() {
-  document.getElementById('app').innerHTML = /* HTML */ `
-    ${createCurrentPageHtml()}
-  `;
+  document.getElementById('app').replaceChildren(createCurrentPageHtml());
 }
 
 function createCurrentPageHtml() {
   if (model.app.currentPage === 'cafeMenu') {
     return createCafeMenuHtml();
   }
-  if (model.app.currentPage === 'themeCake') {
-    return createThemeCakeMenuHtml();
+  if (model.app.currentPage === 'cakeThemes') {
+    return createThemesMenuHtml();
+  }
+  if (model.app.currentPage === 'cakes') {
+    return createCakeMenuHtml();
+  }
+  if (model.app.currentPage === 'shoppingCart') {
+    return createShoppingCartHtml();
   }
   return '';
 }
