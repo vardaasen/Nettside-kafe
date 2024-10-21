@@ -5,6 +5,5 @@ function showShoppingCart() {
 
 function createShoppingCartHtml() {
   return /* HTML*/ `
-    <div></div>
     `;
 }
