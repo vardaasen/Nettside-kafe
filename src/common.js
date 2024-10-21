@@ -9,7 +9,6 @@ function getProductsForCategory(category) {
   return list;
 }
 
-
 function getProductFromId(id) {
   return model.products.find((product) => product.productId === id) || null;
 }

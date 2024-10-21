@@ -54,8 +54,6 @@ function createCafeProductCardHtml(product) {
   `;
 }
 
-
-
 function createCafeProductInfoOverlayElement() {
   const product = getProductFromId(model.app.selectedProduct);
   if (product != null) {

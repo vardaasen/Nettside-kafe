@@ -4,11 +4,9 @@ function showShoppingCart() {
 }
 
 function createShoppingCartHtml() {
-  const shoppingCartDiv = document.createElement('div')
-  
+  const shoppingCartDiv = document.createElement('div');
 
-  shoppingCartDiv.innerHTML = /* HTML */ `
-  <div class="cart" id="cart">
+  shoppingCartDiv.innerHTML = /* HTML */ ` <div class="cart" id="cart">
     <div class="cart-content">
       <h2>Handlekurv</h2>
       <div class="cart-items" id="cart-items"></div>
@@ -18,17 +16,16 @@ function createShoppingCartHtml() {
 
       <button disabled id="checkoutButton">Til kassen</button>
     </div>
-  </div>`
+  </div>`;
   return shoppingCartDiv;
 }
-
 
 function renderCart() {
   const cartItems = document.getElementById('cart-items');
   const cartTotal = document.getElementById('cart-total');
   const checkoutButton = document.getElementById('checkoutButton');
-  const cart = model.inputs.shoppingCart.products
-  
+  const cart = model.inputs.shoppingCart.products;
+
   cartItems.innerHTML = '';
   let total = 0;
   let itemCount = 0;
@@ -61,27 +58,26 @@ function getCartItems() {
 
 */
 
-function addToCart(name,price,quantity=1){
-  let itemsInCart =  model.inputs.shoppingCart.products
-  const existingItem = itemsInCart.find((item)=> item.name===name);
-    if (existingItem) {
-      existingItem.quantity += quantity
-    }
-    else{
-      model.inputs.shoppingCart.products.push({
-        name,
-        price,
-        quantity
-      });
-    }
+function addToCart(name, price, quantity = 1) {
+  const itemsInCart = model.inputs.shoppingCart.products;
+  const existingItem = itemsInCart.find((item) => item.name === name);
+  if (existingItem) {
+    existingItem.quantity += quantity;
+  } else {
+    model.inputs.shoppingCart.products.push({
+      name,
+      price,
+      quantity,
+    });
+  }
 }
 
 function removeFromCart(name) {
   const cart = model.inputs.shoppingCart.products;
-  const itemIndex = cart.findIndex(item => item.name === name);
+  const itemIndex = cart.findIndex((item) => item.name === name);
   if (itemIndex !== -1) {
     cart.splice(itemIndex, 1);
     updateCart();
   }
 }
-  
+
