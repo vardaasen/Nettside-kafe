@@ -3,8 +3,10 @@
 :root {
   --color-background: #E3D4AD;
   --color-primary: #79B52F;
-  --color-secondary: #D1534E;
-  --color-accent: #F59692;
+  --color-secondary--dark: #568C20;
+  --color-secondary--light: #A6D656;
+  --color-accent--cold: #F0E68C;
+  --color-accent--warm: #FFA500;
   --color-text-dark-bg: #FFFFFF;
   --color-shadow: rgba(0, 0, 0, 0.5);
   --color-border: #79B52F;
@@ -33,7 +35,7 @@ button {
 }
 
 #header-container {
-  background-color: #4A4A48;
+  background-color: #3E6A16;
   padding: 15px 20px;
   display: flex;
   align-items: center;
@@ -310,7 +312,7 @@ button {
 }
 
 .footer {
-  background-color: var(--color-secondary);
+  background-color: var(--color-secondary--dark);
   color: var(--color-text-dark-bg);
   padding: 20px;
 }
