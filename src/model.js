@@ -11,7 +11,7 @@ const model = {
 
   // del 1
   app: {
-    currentPage: 'cafeMenu',
+    currentPage: 'shoppingCart',
     selectedProduct: null,
   },
 
@@ -42,18 +42,7 @@ const model = {
         date: '',
         time: '',
       },
-      products: [
-        {
-          productId: 1,
-          quantity: 1,
-          comment: '',
-        },
-        {
-          productId: 3,
-          quantity: 2,
-          comment: '',
-        },
-      ],
+      products: [],
     },
   },
 

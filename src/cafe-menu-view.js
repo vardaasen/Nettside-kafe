@@ -48,11 +48,13 @@ function createCafeProductCardHtml(product) {
       </div>
       <div class="price-row">
         <div>${product.unitPrice} Kr</div>
-        <button class='button__add-to-cart cart-icon' onclick='addCafeProductToCart(${product.productId})'>Legg til</button>
+        <button class="button__add-to-cart cart-icon" onclick="addToCart('${product.productName}', ${product.unitPrice}); updateCart();">Legg til</button>
       </div>
     </div>
   `;
 }
+
+
 
 function createCafeProductInfoOverlayElement() {
   const product = getProductFromId(model.app.selectedProduct);
