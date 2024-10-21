@@ -4,7 +4,6 @@
  * @param {string} action - Handlingen som ble utført, kan være 'add', 'remove' eller 'clear'
  */
 function updateCart(action) {
-  console.log('updateCart called with action:', action);
   const cartLink = document.getElementById('cartLink');
   const cartCount = document.getElementById('cartCount');
 
@@ -18,10 +17,10 @@ function updateCart(action) {
     showCartNotification('Handlekurven er nå tom!');
   }
 
-  cartLink.classList.add('cart-bounce', 'cart-pulse');
+  cartLink.classList.add('bounce', 'pulse');
 
   setTimeout(() => {
-    cartLink.classList.remove('cart-bounce', 'cart-pulse');
+    cartLink.classList.remove('bounce', 'pulse');
   }, 600);
 
   if (model.app.currentPage === 'shoppingCart') {

@@ -5,6 +5,7 @@
 @import url("layout/footer.css");
 @import url("components/buttons.css");
 @import url("components/cart.css");
+@import url("state/animation.css");
 
 :root {
   --color-background: #E3D4AD;
