@@ -1,3 +1,8 @@
+/**
+ * Oppretter HTML-strukturen for handlekurven.
+ *
+ * @returns {HTMLElement} Handlekurv-elementet
+ */
 function createShoppingCartHtml() {
   const shoppingCart = document.createElement('div');
   shoppingCart.id = 'cart';
@@ -16,9 +21,12 @@ function createShoppingCartHtml() {
       <button disabled id="checkoutButton">Til kassen</button>
     </div>
   `;
-  return shoppingCart;  // Return the shopping cart element
+  return shoppingCart;
 }
 
+/**
+ * Gjengir handlekurvens innhold på siden.
+ */
 function renderCart() {
   const cartItems = document.getElementById('cartItems');
   const cartCount = document.getElementById('cartCount');
@@ -49,12 +57,20 @@ function renderCart() {
   checkoutButton.disabled = itemCount === 0;
 }
 
+/**
+ * Viser handlekurven på siden.
+ */
 function showShoppingCart() {
   model.app.currentPage = 'shoppingCart';
   updateView();
-  setTimeout(renderCart, 100);  // Ensure the DOM is updated before rendering the cart
+  setTimeout(renderCart, 100);
 }
 
+/**
+ * Viser en melding i handlekurv-varslingen.
+ *
+ * @param {string} message - Melding som skal vises i varselet
+ */
 function showCartNotification(message) {
   const notification = document.getElementById('cartNotification');
   notification.textContent = message;
@@ -102,7 +118,11 @@ function clearCart() {
   updateCart('clear');
 }
 
-
+/**
+ * Henter alle produkter som er lagt til i handlekurven.
+ *
+ * @returns {Array} En liste over produkter i handlekurven
+ */
 function getCartItems() {
   return cart;
 }

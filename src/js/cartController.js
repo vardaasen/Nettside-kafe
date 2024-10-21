@@ -1,3 +1,8 @@
+/**
+ * Oppdaterer handlekurven med antall varer og viser relevant varselmelding basert på handlingen.
+ *
+ * @param {string} action - Handlingen som ble utført, kan være 'add', 'remove' eller 'clear'
+ */
 function updateCart(action) {
   console.log('updateCart called with action:', action);
   const cartLink = document.getElementById('cartLink');
@@ -22,5 +27,4 @@ function updateCart(action) {
   if (model.app.currentPage === 'shoppingCart') {
     renderCart();
   }
-
 }
