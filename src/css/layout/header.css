@@ -19,6 +19,7 @@
   height: 80px;
   width: auto;
   margin-right: 1em;
+  cursor: pointer;
 }
 
 .header__nav {
