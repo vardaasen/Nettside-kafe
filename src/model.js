@@ -147,23 +147,22 @@ const model = {
       ],
     },
   ],
-
   /**
-   * Henter alle produkter.
-   * @returns {Array<{
-   * productId: number,
-   * categoryIndex: number,
-   * productName: string,
-   * unitPrice: number,
-   * description: string,
-   * image: string,
-   * preorderRequired: boolean,
-   * customizationAvailable: boolean,
-   * unitsInStock: number
-   * }>} Listen av produkter.
+   * Tar inn en liste av produkter fra en ordre og justerer tilgjengeligheten på hver produkt
+   * @type {Array<{
+   *  productId: number,
+   *  quantity: number,
+   *  comment: string,
+   * }>}
    */
-  getProducts() {
-    return this.products;
+  subtractQuantityFromOrder(products) {
+    for (const product of this.products) {
+      for (const orderProduct of products) {
+        if (product.productId === orderProduct.productId) {
+          product.unitsInStock -= orderProduct.quantity;
+        }
+      }
+    }
   },
 
   /**
@@ -179,20 +178,30 @@ const model = {
     } else {
       throw new Error('Produkt ikke funnet');
     }
+    saveModel();
   },
 
   /**
-   * Henter alle bestillinger.
-   * @returns {Array<{
-   *   orderId: number,
-   *   customerName: string,
-   *   status: string,
-   *   pickUpSchedule: { date: string, time: string },
-   *   products: Array<{ productId: number, quantity: number, comment: string }>
-   * }>} Listen av bestillinger.
+   * @typedef {Object} Order
+   * @property {string} customerName - The name of the customer.
+   * @property {string} productName - The name of the product.
+   * @property {string} contactNumber - The contact number of the customer.
+   * @property {PickUpSchedule} pickUpSchedule - The schedule for pick-up.
+   * @property {Product[]} products - The list of products.
+   * @param {Order} order - The order details.
    */
-  getOrders() {
-    return this.orders;
+  submitOrder(order) {
+    let orderId = 0;
+    for (const order of this.orders) {
+      if (order.orderId > orderId) {
+        orderId = order.orderId + 1;
+      }
+    }
+    order.orderId = orderId;
+    order.status = 'Ny';
+    this.orders.push(order);
+    this.subtractQuantityFromOrder(order.products);
+    saveModel();
   },
 
   /**
