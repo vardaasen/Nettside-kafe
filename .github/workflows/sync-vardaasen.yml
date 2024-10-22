@@ -1,6 +1,5 @@
 name: Sync vardaasen with Main
 
-# Denne trigges når det skjer en oppdatering på main
 on:
   push:
     branches:
@@ -8,7 +7,7 @@ on:
 
 jobs:
   sync-vardaasen:
-    if: github.repository_owner == 'vardaasen'  # Sørger for at dette kun kjører på kontoen 'vardaasen'
+    if: github.repository_owner == 'vardaasen'
     runs-on: ubuntu-latest
 
     steps:
@@ -18,20 +17,23 @@ jobs:
         fetch-depth: 0  # Hent hele historikken
         fetch: true     # Hent alle grener
 
-    - name: Vis tilgjengelige grener (for feilsøking, valgfritt)
+    - name: Sett opp Git-bruker for Actions
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+
+    - name: Vis tilgjengelige grener (valgfritt for feilsøking)
       run: git branch -r
 
-    # Hent oppdateringer fra main og slå dem sammen med vardaasen
     - name: Hent main og slå sammen inn i vardaasen
       run: |
         git fetch origin main
-        git checkout vardaasen  # Sjekk ut vardaasen-grenen
-        git merge origin/main   # Slå sammen endringer fra main til vardaasen
+        git checkout vardaasen
+        git merge origin/main  # Slå sammen endringer fra main til vardaasen
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    # Push oppdaterte vardaasen tilbake til GitHub
-    - name: Push oppdaterte vardaasen-gren til GitHub
+    - name: Push oppdaterte vardaasen tilbake til GitHub
       run: |
         git push origin vardaasen
       env:
