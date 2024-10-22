@@ -15,7 +15,7 @@ jobs:
 
     - name: Hent dagens dato som versjon
       id: date
-      run: echo "verion=$(date +'%Y.%m.%d.%H%M')" >> $GITHUB_ENV
+      run: echo "version=$(date +'%Y.%m.%d.%H%M')" >> $GITHUB_ENV
 
     - name: Oppdater versjon.js
       run: |
