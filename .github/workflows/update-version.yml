@@ -1,9 +1,9 @@
-name: Update Version
+name: Update Version on Main
 
 on:
   push:
     branches:
-      - main # kjøres når det pushes til main
+      - main  # Kjøres når det pushes til main
 
 jobs:
   update-version:
@@ -17,7 +17,7 @@ jobs:
       id: date
       run: echo "version=$(date +'%Y.%m.%d.%H%M')" >> $GITHUB_ENV
 
-    - name: Oppdater versjon.js
+    - name: Oppdater version.js
       run: |
         sed -i 's/const appVersion = .*/const appVersion = "'"$VERSION"'";/' src/version.js
       env:
@@ -29,29 +29,12 @@ jobs:
     - name: Sjekk git status før commit
       run: git status
 
-    - name: Commit og push oppdatert versjon
+    - name: Commit og push oppdatert versjon til main
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
         git add src/version.js
-        git commit -m "Update version to ${{ env.version }}"
-        git push
+        git commit -m "Update version to $VERSION"
+        git push origin main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Hent main og slå sammen inn i feature-grenen
-      if: github.repository == 'vardaasen/Nettside-kafe'
-      run: |
-        git fetch origin main
-        git checkout vardaasen
-        git merge origin/main
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Push oppdaterte vardaasen-gren til GitHub
-      if: github.repository == 'vardaasen/Nettside-kafe'
-      run: |
-        git push origin vardaasen
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
