@@ -1,0 +1,29 @@
+#cafe-menu {
+  width: 100%;
+  height: 100%;
+}
+
+#cafe-menu-tab-row {
+  display: flex;
+  height: 40px;
+}
+
+.tab-button {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background-color: #e2c887;
+  border: none;
+}
+
+.selected-tab {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primary);
+  border: none;
+}
+
+#middle-tab-button {
+  border-right: solid 1px black;
+  border-left: solid 1px black;
+}
