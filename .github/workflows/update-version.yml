@@ -36,3 +36,5 @@ jobs:
         git add src/version.js
         git commit -m "Update version to ${{ env.version }}"
         git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
