@@ -30,5 +30,5 @@ const loginView = {
    */
   hideError() {
     document.getElementById('loginError').style.display = 'none';
-  }
+  },
 };

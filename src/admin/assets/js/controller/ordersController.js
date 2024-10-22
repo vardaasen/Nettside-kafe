@@ -2,7 +2,6 @@
  * Kontroller for ordre.
  */
 const ordersController = {
-
   /**
    * Initialiserer ordrekontrolleren ved å vise bestillinger.
    */
@@ -14,7 +13,7 @@ const ordersController = {
    * Henter bestillinger fra modellen og viser dem i visningen.
    */
   displayOrders() {
-    const orders = model.getOrders();
+    const orders = model.orders;
     ordersView.renderOrders(orders);
   },
 
@@ -38,7 +37,7 @@ const ordersController = {
     const timeInMinutes = hours * 60 + minutes;
     const minTimeInMinutes = 9 * 60 + 30; // 09:30 i minutter
     return timeInMinutes >= minTimeInMinutes;
-  }
+  },
 };
 
 // Initialiserer ordrekontrolleren når DOM er lastet
