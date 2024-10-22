@@ -1,5 +1,5 @@
 {
-  
+  "type": "module",
   "name": "kafe.loc",
   "version": "1.0.0",
   "main": "cafe-menu-view.js",
