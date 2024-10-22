@@ -32,7 +32,7 @@
 
 .header-button {
   background-color: var(--color-primary);
-  color: var(--color-text-dark-bg);
+  color: var(--color-text--dark-bg);
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
@@ -47,7 +47,7 @@
 .cart-icon {
   display: inline-flex;
   align-items: center;
-  color: var(--color-text-dark-bg);
+  color: var(--color-text--dark-bg);
 }
 
 .cart-icon::before {

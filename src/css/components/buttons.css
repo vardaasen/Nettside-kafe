@@ -12,7 +12,7 @@ button {
 
 .button__add-to-cart {
   background-color: var(--color-primary);
-  color: var(--color-text-dark-bg);
+  color: var(--color-text--dark-bg);
   border: none;
   border-radius: 5px;
   padding: 10px 15px;

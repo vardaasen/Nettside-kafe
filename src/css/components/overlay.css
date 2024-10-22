@@ -138,7 +138,7 @@
 .button {
   padding: 12px;
   background-color: var(--color-primary);
-  color: var(--color-text-dark-bg);
+  color: var(--color-text--dark-bg);
   border: none;
   border-radius: 8px;
   cursor: pointer;

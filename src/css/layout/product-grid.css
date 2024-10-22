@@ -1,0 +1,12 @@
+#cards-grid-container {
+  width: 100%;
+  padding: 5%;
+}
+
+#cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: 3rem;
+  height: 100%;
+  width: 100%;
+}
