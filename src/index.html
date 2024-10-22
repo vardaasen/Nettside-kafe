@@ -17,7 +17,7 @@ versionScript.onload = function(){
   const appVersion = window.appVersion || "default_version";
  
   const mainCss = document.getElementById('main-css');
-  mainCss.href = `css/styles.css?v=$(appVersion)`;
+  mainCss.href = `css/styles.css?v=${appVersion}`;
   
   const scripts = [
     "model.js",
@@ -31,10 +31,10 @@ versionScript.onload = function(){
     "store/products.js",
     "js/cartView.js",
     "js/cartController.js",
-    "server-rewuests.js",
+    "server-requests.js",
     ];
   scripts.forEach(script =>{
-    const scriptElement = documment.createElement('script');
+    const scriptElement = document.createElement('script');
     scriptElement.src = `${script}?v=${appVersion}`;
     document.head.appendChild(scriptElement);
   });
