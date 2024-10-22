@@ -19,7 +19,7 @@ jobs:
 
     - name: Oppdater versjon.js
       run: |
-        sed -i "s/const appVersion = .*/const appVersion = '$(echo ${{ steps.date.outputs.version }})';/" /src/version.js
+        sed -i "s/const appVersion = .*/const appVersion = '${{ steps.date.outputs.version }}';/" /src/version.js
 
     - name: Commit og push oppdatert versjon
       run: |
@@ -27,4 +27,4 @@ jobs:
         git config --global user.email "actions@github.com"
         git add version.js
         git commit -m "Update version to ${{ steps.date.outputs.version }}"
-	git push
+        git push
