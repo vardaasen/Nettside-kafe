@@ -38,3 +38,19 @@ jobs:
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Hent main og slå sammen inn i feature-grenen
+      if: github.repository == 'vardaasen/Nettside-kafe'
+      run: |
+        git fetch origin main
+        git checkout vardaasen
+        git merge origin/main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Push oppdaterte vardaasen-gren til GitHub
+      run: |
+        git push origin vardaasen
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
