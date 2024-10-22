@@ -23,6 +23,12 @@ jobs:
       env:
         VERSION: ${{ env.version }}
 
+    - name: Vis innholdet i version.js etter sed
+      run: cat src/version.js
+
+    - name: Sjekk git status før commit
+      run: git status
+
     - name: Commit og push oppdatert versjon
       run: |
         git config --global user.name "GitHub Actions"
