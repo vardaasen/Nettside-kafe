@@ -7,7 +7,7 @@ const inventoryController = {
    * Initialiserer varelageret ved å hente produkter og kategorier.
    * @function
    */
-  init: function() {
+  init: function () {
     const products = model.getProducts();
     const categories = model.categories;
 
@@ -20,10 +20,10 @@ const inventoryController = {
    * @param {number} productId - ID-en til produktet som skal oppdateres.
    * @param {number} addedQuantity - Mengden som skal legges til.
    */
-  updateProductQuantity: function(productId, addedQuantity) {
+  updateProductQuantity: function (productId, addedQuantity) {
     model.addCustomQuantity(productId, addedQuantity);
     this.init();
-  }
+  },
 };
 
 // Initialiser varelageret når siden lastes

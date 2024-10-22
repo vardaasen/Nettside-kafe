@@ -13,11 +13,36 @@ const model = {
    * @type {Array<{productId: number, categoryIndex: number, productName: string, unitsInStock: number}>}
    */
   products: [
-    { productId: 1, categoryIndex: 0, productName: 'Rekebaguette', unitsInStock: 10 },
-    { productId: 2, categoryIndex: 1, productName: 'Assortert', unitsInStock: 25 },
-    { productId: 3, categoryIndex: 2, productName: 'Espresso', unitsInStock: 15 },
-    { productId: 4, categoryIndex: 3, productName: 'Bursdagskake', unitsInStock: 0 },
-    { productId: 5, categoryIndex: 3, productName: 'Princesskake', unitsInStock: 15 },
+    {
+      productId: 1,
+      categoryIndex: 0,
+      productName: 'Rekebaguette',
+      unitsInStock: 10,
+    },
+    {
+      productId: 2,
+      categoryIndex: 1,
+      productName: 'Assortert',
+      unitsInStock: 25,
+    },
+    {
+      productId: 3,
+      categoryIndex: 2,
+      productName: 'Espresso',
+      unitsInStock: 15,
+    },
+    {
+      productId: 4,
+      categoryIndex: 3,
+      productName: 'Bursdagskake',
+      unitsInStock: 0,
+    },
+    {
+      productId: 5,
+      categoryIndex: 3,
+      productName: 'Princesskake',
+      unitsInStock: 15,
+    },
   ],
 
   /**
@@ -35,7 +60,7 @@ const model = {
    * @throws {Error} Hvis produktet med den angitte productId ikke finnes.
    */
   addCustomQuantity(productId, addedQuantity) {
-    const product = this.products.find(p => p.productId === productId);
+    const product = this.products.find((p) => p.productId === productId);
     if (product) {
       product.unitsInStock += addedQuantity;
     } else {
@@ -63,8 +88,16 @@ const model = {
         time: '14:00',
       },
       products: [
-        { productId: 1, quantity: 1, comment: 'Vennligst legg til ekstra majones' },
-        { productId: 5, quantity: 3, comment: 'Vennligst bruk rosa dekorasjoner' },
+        {
+          productId: 1,
+          quantity: 1,
+          comment: 'Vennligst legg til ekstra majones',
+        },
+        {
+          productId: 5,
+          quantity: 3,
+          comment: 'Vennligst bruk rosa dekorasjoner',
+        },
       ],
     },
     {
@@ -76,8 +109,16 @@ const model = {
         time: '11:00',
       },
       products: [
-        { productId: 3, quantity: 2, comment: 'Lag den med dobbel shot, uten sukker' },
-        { productId: 4, quantity: 1, comment: 'Skriv "Gratulerer med dagen" på kaken' },
+        {
+          productId: 3,
+          quantity: 2,
+          comment: 'Lag den med dobbel shot, uten sukker',
+        },
+        {
+          productId: 4,
+          quantity: 1,
+          comment: 'Skriv "Gratulerer med dagen" på kaken',
+        },
       ],
     },
     {
@@ -115,9 +156,9 @@ const model = {
    * @param {string} newStatus - Den nye statusen for bestillingen.
    */
   updateOrderStatus(orderId, newStatus) {
-    const order = this.orders.find(o => o.orderId === orderId);
+    const order = this.orders.find((o) => o.orderId === orderId);
     if (order) {
       order.status = newStatus;
     }
-  }
+  },
 };

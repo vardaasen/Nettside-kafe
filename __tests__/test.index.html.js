@@ -4,7 +4,7 @@
  * and basic accessibility of buttons.
  */
 
-describe("Index HTML structure and behavior", () => {
+describe('Index HTML structure and behavior', () => {
   beforeEach(() => {
     document.body.innerHTML = `
       <header id="header-container">
@@ -18,67 +18,67 @@ describe("Index HTML structure and behavior", () => {
       </header>
       <div id="app"></div>
     `;
-    
+
     global.switchMenu = jest.fn();
   });
 
-  describe("Header structure", () => {
-    test("should have a header with correct ID", () => {
+  describe('Header structure', () => {
+    test('should have a header with correct ID', () => {
       expect(document.getElementById('header-container')).toBeTruthy();
     });
 
-    test("should have a navigation row", () => {
+    test('should have a navigation row', () => {
       expect(document.getElementById('nav-row')).toBeTruthy();
     });
 
-    test("should have a logo", () => {
+    test('should have a logo', () => {
       const logo = document.getElementById('logo');
       expect(logo).toBeTruthy();
       expect(logo.textContent).toBe('Logo');
     });
 
-    test("should have correct number of header buttons", () => {
-      const buttons = document.querySelectorAll(".header-button");
+    test('should have correct number of header buttons', () => {
+      const buttons = document.querySelectorAll('.header-button');
       expect(buttons.length).toBe(3);
     });
 
-    test("should have a cart button", () => {
+    test('should have a cart button', () => {
       const cartButton = document.getElementById('cart-button');
       expect(cartButton).toBeTruthy();
       expect(cartButton.textContent).toBe('Handlevogn 🛒');
     });
   });
 
-  describe("Navigation functionality", () => {
+  describe('Navigation functionality', () => {
     test("should call switchMenu with 'cafeMenu' when Menu button is clicked", () => {
-      const menuButton = document.querySelector(".header-button");
+      const menuButton = document.querySelector('.header-button');
       menuButton.click();
-      expect(switchMenu).toHaveBeenCalledWith("cafeMenu");
+      expect(switchMenu).toHaveBeenCalledWith('cafeMenu');
     });
 
     test("should call switchMenu with 'themeCake' when Temakaker button is clicked", () => {
-      const themeCakeButton = document.querySelectorAll(".header-button")[1];
+      const themeCakeButton = document.querySelectorAll('.header-button')[1];
       themeCakeButton.click();
-      expect(switchMenu).toHaveBeenCalledWith("themeCake");
+      expect(switchMenu).toHaveBeenCalledWith('themeCake');
     });
 
     test("should call switchMenu with 'cakes' when Kaker button is clicked", () => {
-      const cakesButton = document.querySelectorAll(".header-button")[2];
+      const cakesButton = document.querySelectorAll('.header-button')[2];
       cakesButton.click();
-      expect(switchMenu).toHaveBeenCalledWith("cakes");
+      expect(switchMenu).toHaveBeenCalledWith('cakes');
     });
   });
 
-  describe("App container", () => {
-    test("should have an app container", () => {
+  describe('App container', () => {
+    test('should have an app container', () => {
       expect(document.getElementById('app')).toBeTruthy();
     });
   });
 
-  describe("Accessibility", () => {
-    test("buttons should have accessible names", () => {
+  describe('Accessibility', () => {
+    test('buttons should have accessible names', () => {
       const buttons = document.querySelectorAll('button');
-      buttons.forEach(button => {
+      buttons.forEach((button) => {
         expect(button.textContent.trim()).not.toBe('');
       });
     });

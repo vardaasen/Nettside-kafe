@@ -96,5 +96,3 @@ function createCafeProductInfoOverlayElement() {
   }
   return null;
 }
-
-
