@@ -1,8 +1,7 @@
 function createCafeMenuHtml() {
   const cafeMenu = document.createElement('div');
   cafeMenu.id = 'cafe-menu';
-  cafeMenu.innerHTML = /* HTML */ ` ${createTabRowHtml() +
-  createCafeProductsHtml()}`;
+  cafeMenu.innerHTML = createTabRowHtml() + createCafeProductsHtml();
   const overlay = createCafeProductInfoOverlayElement();
   if (overlay) {
     cafeMenu.appendChild(overlay);
@@ -60,7 +59,7 @@ function createCafeProductInfoOverlayElement() {
     const overlay = document.createElement('div');
     overlay.classList.add('overlay');
 
-    overlay.innerHTML = `
+    overlay.innerHTML = /* HTML*/ `
       <div class="overlay__content">
         <button class="overlay__close-button" onclick="closeOverlay()">╳</button>
         <h2 class="overlay__title">${product.productName}</h2>

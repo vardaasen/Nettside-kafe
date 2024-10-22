@@ -1,7 +1,7 @@
 function createCakeMenuHtml() {
   const cakes = document.createElement('div');
   cakes.id = 'cakes';
-  cakes.innerHTML = /* HTML */ ` ${createCakeProductsHtml()}`;
+  cakes.innerHTML = createCakeProductsHtml();
   const overlay = createCakeProductInfoOverlayElement();
   if (overlay) {
     cakes.appendChild(overlay);
@@ -43,7 +43,7 @@ function createCakeProductInfoOverlayElement() {
     const overlay = document.createElement('div');
     overlay.classList.add('overlay');
 
-    overlay.innerHTML = `
+    overlay.innerHTML = /* HTML*/ `
       <div class="overlay__content">
         <button class="overlay__close-button" onclick="closeOverlay()">╳</button>
         <h2 class="overlay__title">${product.productName}</h2>
