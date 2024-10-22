@@ -49,6 +49,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Push oppdaterte vardaasen-gren til GitHub
+      if: github.repository == 'vardaasen/Nettside-kafe'
       run: |
         git push origin vardaasen
       env:
