@@ -1,0 +1,38 @@
+name: Sync vardaasen with Main
+
+# Denne trigges når det skjer en oppdatering på main
+on:
+  push:
+    branches:
+      - main  # Trigger når main oppdateres
+
+jobs:
+  sync-vardaasen:
+    if: github.repository_owner == 'vardaasen'  # Sørger for at dette kun kjører på kontoen 'vardaasen'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Sjekk ut repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Hent hele historikken
+        fetch: true     # Hent alle grener
+
+    - name: Vis tilgjengelige grener (for feilsøking, valgfritt)
+      run: git branch -r
+
+    # Hent oppdateringer fra main og slå dem sammen med vardaasen
+    - name: Hent main og slå sammen inn i vardaasen
+      run: |
+        git fetch origin main
+        git checkout vardaasen  # Sjekk ut vardaasen-grenen
+        git merge origin/main   # Slå sammen endringer fra main til vardaasen
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # Push oppdaterte vardaasen tilbake til GitHub
+    - name: Push oppdaterte vardaasen-gren til GitHub
+      run: |
+        git push origin vardaasen
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
