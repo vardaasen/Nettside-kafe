@@ -1,2 +1,2 @@
-const appVersion = '1.0.0'; // Dette vil bli automatisk oppdatert av workflow
+const appVersion = '2024.10.22.1210';
 console.log('App versjon: ${appVersion}');
