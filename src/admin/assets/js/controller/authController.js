@@ -9,7 +9,7 @@ if (localStorage.getItem('isLoggedIn') !== 'true') {
  * Legger til en lytter for logg ut-knappen.
  * @function
  */
-document.getElementById('logoutBtn')?.addEventListener('click', function() {
+document.getElementById('logoutBtn')?.addEventListener('click', function () {
   localStorage.removeItem('isLoggedIn');
   window.location.href = '../index.html';
 });

@@ -1,20 +1,20 @@
-// async function getProductsFromStore() {
-//   try {
-//     const response = await fetch('store/products.json');
-//     const fromStore = await response.json();
-//     return fromStore;
-//   } catch (err) {
-//     alert('Failed to load products from json file: ', err);
-//     return [];
-//   }
-// }
+async function getProductsFromStore() {
+  try {
+    const response = await fetch('store/products.json');
+    const fromStore = await response.json();
+    return fromStore;
+  } catch (err) {
+    alert('Failed to load products from json file: ', err);
+    return [];
+  }
+}
 
-// async function getProducts() {
-//   model.products = await getProductsFromStore();
-//   updateView();
-// }
+async function getProducts() {
+  model.products = await getProductsFromStore();
+  updateView();
+}
 
-// getProducts();
+getProducts();
 
 // const product = [
 //   // Baguette Category (15 Products)
