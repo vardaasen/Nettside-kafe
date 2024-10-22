@@ -28,7 +28,7 @@ const loginController = {
    */
   setLoggedIn() {
     localStorage.setItem('isLoggedIn', 'true');
-  }
+  },
 };
 
 // Starter kontrolleren når siden lastes
