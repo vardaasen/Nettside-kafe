@@ -69,4 +69,5 @@ function goToPickupTime() {
     model.inputs.shoppingCart.contactNumber = number;
   }
   
- 
+  console.log('checkoutController.js loaded');
+  console.log('goToPickupTime function:', typeof goToPickupTime);
