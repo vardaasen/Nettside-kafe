@@ -45,10 +45,21 @@ function getProductsForCurrentPage() {
   }
 }
 
+/**
+ * Håndterer toggling av hamburger-menyen og lukker menyen når en navigasjonsknapp klikkes.
+ */
 function hamburger() {
   document
     .getElementById('hamburger-menu')
     .addEventListener('click', function () {
       document.querySelector('#header-container').classList.toggle('is-active');
     });
+
+  const navButtons = document.querySelectorAll('.header__nav button');
+
+  navButtons.forEach((button) => {
+    button.addEventListener('click', function () {
+      document.querySelector('#header-container').classList.remove('is-active');
+    });
+  });
 }
