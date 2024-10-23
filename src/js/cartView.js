@@ -1,3 +1,4 @@
+// cartView.js
 function createShoppingCartHtml() {
   const shoppingCart = document.createElement('div');
   shoppingCart.id = 'cart';
@@ -31,27 +32,44 @@ function renderCart() {
   const checkoutButton = document.getElementById('checkoutButton');
   const cart = getCartItems();
 
-  if (!cartItems) return; // Guard clause if elements don't exist
+  if (!cartItems) return;
 
   cartItems.innerHTML = '';
   let total = 0;
   let itemCount = 0;
 
   cart.forEach((item) => {
-    cartItems.innerHTML += `
-      <div class="cart-item">
-        <div class="cart-item-info">
-          <div class="cart-item-name"><strong>${item.name}</strong></div>
-          <div class="cart-item-details">${item.quantity} x ${item.price} kr</div>
-        </div>
-        <button class="remove-btn" onclick="removeFromCart('${item.name}')">Fjern</button>
-      </div>
-    `;
-    total += item.price * item.quantity;
-    itemCount += item.quantity;
+      cartItems.innerHTML += `
+          <div class="cart-item">
+              <div class="cart-item-info">
+                  <div class="cart-item-name"><strong>${item.name}</strong></div>
+                  <div class="cart-item-details">${item.quantity} x ${item.price} kr</div>
+              </div>
+              <button class="remove-btn" onclick="removeFromCart('${item.name}')">Fjern</button>
+          </div>
+      `;
+      total += item.price * item.quantity;
+      itemCount += item.quantity;
   });
 
   if (cartCount) cartCount.textContent = itemCount;
   if (cartTotal) cartTotal.textContent = total;
   if (checkoutButton) checkoutButton.disabled = itemCount === 0;
 }
+
+function showCartNotification(message) {
+  const notification = document.getElementById('cartNotification');
+  if (notification) {
+      notification.textContent = message;
+      notification.classList.add('show');
+      setTimeout(() => {
+          notification.classList.remove('show');
+      }, 3000);
+  }
+}
+
+// Gjør funksjonene globalt tilgjengelige
+window.renderCart = renderCart;
+window.showCartNotification = showCartNotification;
+
+console.log('cartView.js loaded');
