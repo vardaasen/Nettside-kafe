@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bakst og Brygg | Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.</title>
   <meta name="description" content="Bakst og Brygg - Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.">
-  <!-- Dynamisk last inn verion.js og cache-busting via timestamp -->
-
-
   <link rel="stylesheet" id="main-css" href="css/styles.css" />
 </head>
 
@@ -77,6 +74,7 @@
 
 </html>
 
+<!-- Dynamisk last inn verion.js og cache-busting via timestamp -->
 <script>
   const timestamp = new Date().getTime();
   const versionScript = document.createElement('script');
@@ -86,8 +84,8 @@
   versionScript.onload = function () {
     const appVersion = window.appVersion || "default_version";
 
-    // const mainCss = document.getElementById('main-css');
-    // mainCss.href = `css/styles.css?v=${appVersion}`;
+    const mainCss = document.getElementById('main-css');
+    mainCss.href = `css/styles.css?v=${appVersion}`;
 
     const scripts = [
       "model.js",
