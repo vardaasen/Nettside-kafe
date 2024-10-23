@@ -410,6 +410,3 @@ async function getProducts() {
   saveModel();
   updateView();
 }
-
-// initiateModelLocalStorage();
-// getProducts();
