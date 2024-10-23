@@ -13,7 +13,11 @@ function createCurrentPageHtml() {
     return createCakeMenuHtml();
   }
   if (model.app.currentPage === 'shoppingCart') {
-    return createShoppingCartHtml();
-  }
+    const cart = createShoppingCartHtml();
+    if (model.inputs.shoppingCart.case !== 'Overview') {
+        return createCheckoutView();
+    }
+    return cart;
+}
   return '';
 }
