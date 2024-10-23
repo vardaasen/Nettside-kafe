@@ -1,4 +1,5 @@
 @import url("modern-normalize.css");
+@import url("variables.css");
 @import url("base/base.css");
 @import url("layout/header.css");
 @import url("layout/page.css");
@@ -10,15 +11,3 @@
 @import url("components/overlay.css");
 @import url("components/cart.css");
 @import url("state/animation.css");
-
-:root {
-  --color-background: #E3D4AD;
-  --color-primary: #79B52F;
-  --color-secondary--dark: #568C20;
-  --color-secondary--light: #A6D656;
-  --color-accent--cold: #F0E68C;
-  --color-accent--warm: #FFA500;
-  --color-text--dark-bg: #FFFFFF;
-  --color-shadow: rgba(0, 0, 0, 0.5);
-  --color-border: #79B52F;
-}
