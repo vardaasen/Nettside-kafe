@@ -7,40 +7,6 @@
   <title>Bakst og Brygg | Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.</title>
   <meta name="description" content="Bakst og Brygg - Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.">
 <link rel="stylesheet" id="main-css" href="css/styles.css" />
-<!-- Dynamisk last inn verion.js med cache-busting via timestamp -->
-<script>
-const timestamp = new Date().getTime();
-const versionScript = document.createElement('script');
-versionScript.src = `version.js?v=${timestamp}`;
-document.head.appendChild(versionScript);
-
-versionScript.onload = function(){
-  const appVersion = window.appVersion || "default_version";
- 
-  const mainCss = document.getElementById('main-css');
-  mainCss.href = `css/styles.css?v=${appVersion}`;
-  
-  const scripts = [
-    "model.js",
-    "common.js",
-    "cafe-menu-view.js",
-    "cake-menu-view.js",
-    "theme-menu-view.js",
-    "view.js",
-    "cafe-menu-controller.js",
-    "cake-menu-controller.js",
-    "store/products.js",
-    "js/cartView.js",
-    "js/cartController.js",
-    "server-requests.js",
-    ];
-  scripts.forEach(script =>{
-    const scriptElement = document.createElement('script');
-    scriptElement.src = `${script}?v=${appVersion}`;
-    document.head.appendChild(scriptElement);
-  });
-};
-</script>
 </head>
 
 <body>
@@ -89,7 +55,42 @@ versionScript.onload = function(){
   </footer>
 
 
-  <script>
+<!-- Dynamisk last inn verion.js med cache-busting via timestamp -->
+<script>
+
+const timestamp = new Date().getTime();
+const versionScript = document.createElement('script');
+versionScript.src = `version.js?v=${timestamp}`;
+document.head.appendChild(versionScript);
+
+versionScript.onload = function(){
+  const appVersion = window.appVersion || "default_version";
+ 
+  const mainCss = document.getElementById('main-css');
+  mainCss.href = `css/styles.css?v=${appVersion}`;
+  
+  const scripts = [
+    "model.js",
+    "common.js",
+    "cafe-menu-view.js",
+    "cake-menu-view.js",
+    "theme-menu-view.js",
+    "view.js",
+    "cafe-menu-controller.js",
+    "cake-menu-controller.js",
+    "store/products.js",
+    "js/cartView.js",
+    "js/cartController.js",
+    "server-requests.js",
+    ];
+  scripts.forEach(script =>{
+    const scriptElement = document.createElement('script');
+    scriptElement.src = `${script}?v=${appVersion}`;
+    document.head.appendChild(scriptElement);
+  });
+};
+
+
      let loadedScripts = 0;
      const totalScripts = scripts.length;
      scripts.forEach(script => {
@@ -105,7 +106,7 @@ versionScript.onload = function(){
        };
        document.head.appendChild(scriptElement);
      });
-  </script>
+</script>
 </body>
 
 </html>
