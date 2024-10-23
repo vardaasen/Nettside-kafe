@@ -108,6 +108,8 @@
       scriptElement.onload = () => {
         loadedScripts++;
         if (loadedScripts === scripts.length) {
+          initiateModelLocalStorage(); // Kommenter ut denne linjen og ta bort kommentar fra getProducts() for å ikke bruke localStorage
+          // getProducts();
           updateView();
           hamburger();
         }

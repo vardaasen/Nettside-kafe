@@ -387,7 +387,6 @@ function initiateModelLocalStorage() {
     model.replaceModel(savedModel);
   } else {
     getProducts();
-    saveModel();
   }
 }
 
@@ -408,8 +407,9 @@ async function getProductsFromStore() {
 
 async function getProducts() {
   model.products = await getProductsFromStore();
+  saveModel();
   updateView();
 }
 
-initiateModelLocalStorage();
+// initiateModelLocalStorage();
 // getProducts();
