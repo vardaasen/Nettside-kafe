@@ -18,7 +18,9 @@ function createShoppingCartHtml() {
         <p>Totalt: &nbsp;</p>
         <span id="cartTotal">0</span>&nbsp; kr
       </div>
-      <button disabled id="checkoutButton" onclick="">Til kassen</button>
+      <button id="checkoutButton" onclick="goToPickupTime()" ${cart.length === 0 ? 'disabled' : ''}>
+  Til kassen
+</button>
     </div>
   `;
   return shoppingCart;
