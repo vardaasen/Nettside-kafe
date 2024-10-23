@@ -90,7 +90,11 @@ versionScript.onload = function(){
 
 
   <script>
-    window.onload = updateView;
+    window.onload = function() {
+      if (typeof updateView === "function") {
+        updateView();
+      }
+    };
   </script>
 </body>
 
