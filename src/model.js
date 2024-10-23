@@ -411,5 +411,5 @@ async function getProducts() {
   updateView();
 }
 
-// initiateModelLocalStorage();
-getProducts();
+initiateModelLocalStorage();
+// getProducts();
