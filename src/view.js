@@ -1,5 +1,7 @@
 function updateView() {
+  const currentPage = model.app.currentPage;
   document.getElementById('app').replaceChildren(createCurrentPageHtml());
+  history.pushState({ page: currentPage }, '', `#${currentPage}`);
 }
 
 function createCurrentPageHtml() {
@@ -17,3 +19,15 @@ function createCurrentPageHtml() {
   }
   return '';
 }
+
+window.addEventListener('popstate', (event) => {
+  if (event.state && event.state.page) {
+    model.app.currentPage = event.state.page;
+    document.getElementById('app').replaceChildren(createCurrentPageHtml());
+  }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  model.app.currentPage = window.location.hash ? window.location.hash.substring(1) : 'cafeMenu';
+  updateView();
+});

@@ -30,7 +30,7 @@
     "image": "vegetarbaguette.webp",
     "preorderRequired": false,
     "customizationAvailable": true,
-    "unitsInStock": 12
+    "unitsInStock": 0
   },
   {
     "productId": 4,
@@ -52,7 +52,7 @@
     "image": "tunfiskbaguette.webp",
     "preorderRequired": false,
     "customizationAvailable": true,
-    "unitsInStock": 10
+    "unitsInStock": 0
   },
   {
     "productId": 6,
@@ -310,13 +310,13 @@
   {
     "productId": 29,
     "categoryIndex": 2,
-    "productName": "Mocha",
+    "productName": "Cafe Mocha",
     "unitPrice": 55,
     "description": "En sjokoladeinfusert kaffe latte laget med espresso, steamet melk og sjokoladesirup. Allergener: Melk.",
     "image": "mocha.webp",
     "preorderRequired": false,
     "customizationAvailable": true,
-    "unitsInStock": 40
+    "unitsInStock": 0
   },
   {
     "productId": 30,
@@ -338,7 +338,7 @@
     "image": "kaffe_frappe.webp",
     "preorderRequired": false,
     "customizationAvailable": true,
-    "unitsInStock": 25
+    "unitsInStock": 0
   },
   {
     "productId": 32,
@@ -371,7 +371,7 @@
     "image": "gulrotkake.webp",
     "preorderRequired": true,
     "customizationAvailable": true,
-    "unitsInStock": 35
+    "unitsInStock": 0
   },
   {
     "productId": 35,
@@ -393,7 +393,7 @@
     "image": "eplekake.webp",
     "preorderRequired": true,
     "customizationAvailable": true,
-    "unitsInStock": 40
+    "unitsInStock": 0
   },
   {
     "productId": 37,
