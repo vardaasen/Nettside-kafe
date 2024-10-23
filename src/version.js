@@ -1,3 +1,3 @@
-const appVersion = "2024.10.23.1236";
+const appVersion = "2024.10.23.1254";
 window.appVersion = appVersion;
 console.log(`App versjon: ${appVersion}`);
