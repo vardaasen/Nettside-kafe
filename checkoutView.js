@@ -53,7 +53,25 @@ function createPickupTimeView() {
   `;
 }
 
+function generateTimeOptions() {
+  const openingTime = 8; // 08:00
+  const closingTime = 16; // 16:00
+  let options = '';
+  
+  for (let hour = openingTime; hour < closingTime; hour++) {
+      const time24 = `${hour.toString().padStart(2, '0')}:00`;
+      options += `<option value="${time24}">${time24}</option>`;
+      if (hour !== closingTime - 1) {
+          const time24Half = `${hour.toString().padStart(2, '0')}:30`;
+          options += `<option value="${time24Half}">${time24Half}</option>`;
+      }
+  }
+  
+  return options;
+}
+
 // Sørg for at alle funksjoner er globalt tilgjengelige
+window.generateTimeOptions = generateTimeOptions;
 window.updatePickupDate = updatePickupDate;
 window.updatePickupTime = updatePickupTime;
 window.goToCustomerInfo = goToCustomerInfo;
