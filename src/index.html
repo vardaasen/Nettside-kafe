@@ -12,9 +12,8 @@
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/locale/nb.js"></script>
   <script>dayjs.locale('nb')</script>
 
-  <script src="checkoutController.js"></script>
-<script src="checkoutView.js"></script>
-<link rel="stylesheet" href="checkoutStyles.css">
+
+<link rel="stylesheet" id="checkout-testing" href="checkoutStyles.css">
 </head>
 
 <body>
@@ -93,7 +92,9 @@
     const appVersion = window.appVersion || "default_version";
 
     const mainCss = document.getElementById('main-css');
+    const chekoutTesting = document.getElementById('checkout-testing');
     mainCss.href = `css/styles.css?v=${appVersion}`;
+    checkoutTesting.href = `checkoutStyles.css?v=${appVersion}`;
 
     const scripts = [
       "model.js",
@@ -107,6 +108,8 @@
       "store/products.js",
       "js/cartView.js",
       "js/cartController.js",
+      "checkoutController.js",
+      "checkoutView.js",
     ];
 
     let loadedScripts = 0;
