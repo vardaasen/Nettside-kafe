@@ -8,7 +8,7 @@ const inventoryController = {
    * @function
    */
   init: function () {
-    const products = model.getProducts();
+    const products = model.products;
     const categories = model.categories;
 
     inventoryView.renderInventory(products, categories);

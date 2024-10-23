@@ -13,7 +13,7 @@ const ordersController = {
    * Henter bestillinger fra modellen og viser dem i visningen.
    */
   displayOrders() {
-    const orders = model.getOrders();
+    const orders = model.orders;
     ordersView.renderOrders(orders);
   },
 

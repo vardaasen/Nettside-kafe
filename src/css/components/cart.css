@@ -1,19 +1,8 @@
-:root {
-  --creamy-white: #F5F5DC;
-  --olive-green: #808A71;
-  --sage-green: #A3B5A5;
-  --moss-green: #6B7B6D;
-  --light-cream: #F1E6D1;
-  --charcoal: #4A4A48;
-}
-
-/* Handlekurvens elementer */
 #cartItems {
   margin-bottom: 20px;
   width: 100%;
 }
 
-/* Container for totalpris i handlekurven */
 .cart-total-container {
   display: flex;
   justify-content: space-between;
@@ -26,7 +15,6 @@
   text-align: right;
 }
 
-/* Handlekurv innhold */
 .cart-content {
   padding: 20px;
   text-align: left;
@@ -40,15 +28,15 @@
 }
 
 .cart-content h1 {
-  color: var(--charcoal);
+  color: var(--color-secondary--dark);
   margin-bottom: 20px;
   font-weight: 600;
 }
 
 #clearCartButton {
   background-color: transparent;
-  border: 1px solid #f00;
-  color: #f00;
+  border: 1px solid #800000;
+  color: #800000;
   cursor: pointer;
   padding: 5px 10px;
 }
@@ -57,14 +45,13 @@
   margin-bottom: 20px;
 }
 
-/* Stil for individuelle elementer i handlekurven */
 .cart-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
   padding: 10px;
-  border-bottom: 1px solid var(--olive-green);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .cart-item-info {
@@ -76,18 +63,17 @@
 .cart-item-name {
   font-size: 16px;
   font-weight: bold;
-  color: var(--charcoal);
+  color: var(--color-secondary--dark);
 }
 
 .cart-item-details {
   font-size: 14px;
-  color: var(--moss-green);
+  color: var(--color-secondary--dark);
 }
 
-/* Fjern-knappen for elementer i handlekurven */
 .cart-item button {
   background-color: var(--color-primary);
-  color: #fff;
+  color: var(--color-text--dark-bg);
   border: none;
   padding: 6px 12px;
   font-size: 14px;
@@ -100,14 +86,13 @@
   background-color: var(--color-secondary--dark);
 }
 
-/* Stil for totalpris container */
 .cart-total-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   font-size: 18px;
   font-weight: bold;
-  color: var(--charcoal);
+  color: var(--color-secondary--dark);
   margin: 20px 0;
 }
 
@@ -116,14 +101,13 @@
   text-align: right;
 }
 
-/* Stil for Til kassen-knappen */
 #checkoutButton {
   width: 100%;
   padding: 15px;
   font-size: 16px;
   font-weight: bold;
   background-color: var(--color-primary);
-  color: #fff;
+  color: var(--color-text--dark-bg);
   border: none;
   cursor: pointer;
   border-radius: 6px;
@@ -134,17 +118,16 @@
   background-color: var(--color-secondary--dark);
 }
 
-/* Stil for varsel når noe legges i handlekurven */
 .cart-notification {
   position: fixed;
   top: 100px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #FFA500;
-  color: white;
+  background-color: var(--color-accent--warm);
+  color: var(--color-text--dark-bg);
   padding: 1em 2em;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--color-shadow);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
