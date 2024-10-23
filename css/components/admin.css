@@ -1,14 +1,17 @@
-@import url("modern-normalize.css");
+@import url("../modern-normalize.css");
+@import url("../variables.css");
 
-/* Sorg for å bruke BEM */
-/* Header */
+body {
+  background-color: #F1E6D1;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #fefefe;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-primary);
+  box-shadow: 0 4px 6px var(--color-shadow);
 }
 
 .header__logo-image {
@@ -35,7 +38,7 @@
 .header__nav-link {
   text-decoration: none;
   font-weight: bold;
-  color: #333;
+  color: var(--color-text--dark-bg);
 }
 
 .header__frontpage-link {
@@ -45,10 +48,9 @@
 .header__link {
   text-decoration: none;
   font-weight: bold;
-  color: #333;
+  color: var(--color-text--dark-bg);
 }
 
-/* Main */
 .container {
   width: 100%;
   padding: 0 10px;
@@ -74,15 +76,15 @@
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .inventory__header,
 .orders__header {
   font-weight: bold;
-  background-color: #ffd0cf;
+  background-color: var(--color-accent--cold);
   padding: 15px;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid var(--color-border);
 }
 
 .inventory__column,
@@ -116,8 +118,8 @@
 .orders__product {
   margin-bottom: 15px;
   padding: 10px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  background-color: var(--color-background-alt);
+  border: 1px solid var(--color-border);
   border-radius: 5px;
 }
 
@@ -141,15 +143,15 @@
 
 button {
   padding: 5px 10px;
-  background-color: #FE928F;
-  color: white;
+  background-color: var(--color-secondary--light);
+  color: var(--color-text--dark-bg);
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #D1534E;
+  background-color: var(--color-secondary--dark);
 }
 
 .login-page {
@@ -157,7 +159,7 @@ button:hover {
   flex-direction: column;
   align-items: center;
   padding-top: 40px;
-  background-color: #f4f4f4;
+  background-color: var(--color-background-alt);
   min-height: 100vh;
 }
 
@@ -168,13 +170,13 @@ button:hover {
   background-color: transparent;
   background-size: cover;
   background-position: center;
-  background-image: url('../admin/assets/img/logo.webp');
+  background-image: url('../../admin/assets/img/logo.png');
 }
 
 .login-form {
-  background-color: #fff;
+  background-color: var(--color-background);
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--color-shadow);
   border-radius: 8px;
   width: 300px;
   display: flex;
@@ -185,21 +187,21 @@ button:hover {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
 }
 
 .login-form__button {
   padding: 10px;
-  background-color: #FE928F;
-  color: white;
+  background-color: var(--color-secondary--light);
+  color: var(--color-text--dark-bg);
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .login-form__button:hover {
-  background-color: #D1534E;
+  background-color: var(--color-secondary--dark);
 }
 
 #loginError {
@@ -222,8 +224,8 @@ button:hover {
 
 .logout__button {
   padding: 10px 20px;
-  background-color: #ff4d4d;
-  color: white;
+  background-color: var(--color-secondary--light);
+  color: var(--color-text--dark-bg);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -231,5 +233,5 @@ button:hover {
 }
 
 .logout__button:hover {
-  background-color: #ff1a1a;
+  background-color: var(--color-secondary--dark);
 }
