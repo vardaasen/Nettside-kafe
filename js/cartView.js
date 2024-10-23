@@ -130,3 +130,4 @@ function clearCart() {
 function getCartItems() {
   return cart;
 }
+console.log('cartView.js loaded');
