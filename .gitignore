@@ -20,6 +20,7 @@ src/server-requests.js
 /jest.config.js
 
 coverage/
+archive/
 
 # node.js
 node_modules/
