@@ -1,7 +1,19 @@
+// checkoutController.js
+
 function goToPickupTime() {
     console.log('Going to pickup time');
     model.inputs.shoppingCart.case = 'PickupTime';
     updateView();
+}
+
+function updatePickupDate(date) {
+    console.log('Updating pickup date:', date);
+    model.inputs.shoppingCart.pickUpSchedule.date = date;
+}
+
+function updatePickupTime(time) {
+    console.log('Updating pickup time:', time);
+    model.inputs.shoppingCart.pickUpSchedule.time = time;
 }
 
 function goToCustomerInfo() {
@@ -44,10 +56,15 @@ function submitOrder() {
     updateView();
 }
 
-function isValidPhoneNumber(number) {
-    const phoneRegex = /^(\+47)?[2-9]\d{7}$/;
-    return phoneRegex.test(number.replace(/\s/g, ''));
-}
-// På bunnen av filen
-console.log('checkoutController.js loaded');
-window.goToPickupTime = goToPickupTime; // Gjør funksjonen globalt tilgjengelig
+// Gjør alle funksjonene globalt tilgjengelige
+window.goToPickupTime = goToPickupTime;
+window.updatePickupDate = updatePickupDate;
+window.updatePickupTime = updatePickupTime;
+window.goToCustomerInfo = goToCustomerInfo;
+window.submitOrder = submitOrder;
+
+console.log('checkoutController.js loaded. Functions available:', {
+    goToPickupTime: typeof window.goToPickupTime,
+    updatePickupDate: typeof window.updatePickupDate,
+    updatePickupTime: typeof window.updatePickupTime
+});
