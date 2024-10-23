@@ -90,11 +90,21 @@ versionScript.onload = function(){
 
 
   <script>
-    window.onload = function() {
-      if (typeof updateView === "function") {
-        updateView();
-      }
-    };
+     let loadedScripts = 0;
+     const = totalScripts = scripts.length;
+     scripts.forEach(script => {
+       const scriptElement = document.createElement('script');
+       scriptElement.src = `${script}?v={appVersion}`;
+       scriptElement.onload = function () {
+         loadedScripts++;
+         if (loadedScripts === totalScripts) {
+           if (typeof updateView === "function") {
+             updateView();
+           }
+         }
+       };
+       document.head.appendChild(scriptElement);
+     });
   </script>
 </body>
 
