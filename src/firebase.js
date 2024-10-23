@@ -25,6 +25,29 @@ const auth = getAuth(app);
 
 import { onAuthStateChanged } from 'firebase/auth';
 
+function authSignInWithEmail() {
+  /*  Challenge:
+  Import the signInWithEmailAndPassword function from 'firebase/auth'
+
+      Use the code from the documentaion to make this function work.
+      
+      Make sure to first create two consts, 'email' and 'password', to fetch the values from the input fields emailInputEl and passwordInputEl.
+     
+      If the login is successful then you should show the logged in view using showLoggedInView()
+      If something went wrong, then you should log the error message using console.error.
+  */
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+}
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, see docs for a list of available properties

@@ -44,3 +44,11 @@ function getProductsForCurrentPage() {
     return getProductsForCategory(currentPage);
   }
 }
+
+function hamburger() {
+  document
+    .getElementById('hamburger-menu')
+    .addEventListener('click', function () {
+      document.querySelector('#header-container').classList.toggle('is-active');
+    });
+}

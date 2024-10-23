@@ -93,60 +93,213 @@ const model = {
   orders: [
     {
       orderId: 1,
-      customerName: 'Kari Nordmann',
+      customerName: 'Erik Hansen',
       status: 'Ny',
       pickUpSchedule: {
-        date: '2024-11-05',
-        time: '14:00',
+        date: '2024-11-04',
+        time: '10:15',
       },
       products: [
         {
-          productId: 1,
-          quantity: 1,
-          comment: 'Vennligst legg til ekstra majones',
+          productId: 5,
+          productName: 'Tunfiskbaguette',
+          quantity: 2,
+          comment: 'Ingen rødløk, takk',
         },
         {
-          productId: 5,
-          quantity: 3,
-          comment: 'Vennligst bruk rosa dekorasjoner',
+          productId: 38,
+          productName: 'Mocha',
+          quantity: 2,
+          comment: 'Ekstra sjokolade',
         },
       ],
     },
     {
       orderId: 2,
-      customerName: 'Ola Hansen',
-      status: 'Ny',
+      customerName: 'Anna Johansen',
+      status: 'Under arbeid',
       pickUpSchedule: {
-        date: '2024-11-10',
-        time: '11:00',
+        date: '2024-11-05',
+        time: '11:30',
       },
       products: [
         {
-          productId: 3,
-          quantity: 2,
-          comment: 'Lag den med dobbel shot, uten sukker',
+          productId: 8,
+          productName: 'Brie og avokadobaguette',
+          quantity: 1,
+          comment: 'Ingen tomat',
         },
         {
-          productId: 4,
+          productId: 31,
+          productName: 'Cappuccino',
           quantity: 1,
-          comment: 'Skriv "Gratulerer med dagen" på kaken',
+          comment: 'Med soyamelk',
         },
       ],
     },
     {
       orderId: 3,
-      customerName: 'Lise Berg',
+      customerName: 'Ola Nordmann',
       status: 'Ny',
       pickUpSchedule: {
-        date: '2024-11-15',
-        time: '09:30',
+        date: '2024-11-06',
+        time: '12:00',
       },
       products: [
-        { productId: 2, quantity: 4, comment: 'Vennligst fjern løken' },
-        { productId: 3, quantity: 2, comment: 'Server med mandelmelk' },
+        {
+          productId: 9,
+          productName: 'Falafelbaguette',
+          quantity: 3,
+          comment: 'Ekstra tahinisaus',
+        },
+        {
+          productId: 37,
+          productName: 'Flat White',
+          quantity: 3,
+          comment: 'Laktosefri melk',
+        },
+      ],
+    },
+    {
+      orderId: 4,
+      customerName: 'Kari Olsen',
+      status: 'Klar til Henting',
+      pickUpSchedule: {
+        date: '2024-11-07',
+        time: '14:45',
+      },
+      products: [
+        {
+          productId: 50,
+          productName: 'Sjokolademousse',
+          quantity: 5,
+          comment: 'Pyntet med friske bær',
+        },
+      ],
+    },
+    {
+      orderId: 5,
+      customerName: 'Hans Pettersen',
+      status: 'Under arbeid',
+      pickUpSchedule: {
+        date: '2024-11-08',
+        time: '09:45',
+      },
+      products: [
+        {
+          productId: 41,
+          productName: 'Sjokoladekake',
+          quantity: 1,
+          comment: 'Gratulerer med dagen på toppen',
+        },
+      ],
+    },
+    {
+      orderId: 6,
+      customerName: 'Maria Nilsen',
+      status: 'Ny',
+      pickUpSchedule: {
+        date: '2024-11-09',
+        time: '10:30',
+      },
+      products: [
+        {
+          productId: 14,
+          productName: 'Biff og løkbaguette',
+          quantity: 2,
+          comment: 'Ekstra løk',
+        },
+        { productId: 33, productName: 'Espresso', quantity: 2, comment: '' },
+      ],
+    },
+    {
+      orderId: 7,
+      customerName: 'Peter Larsen',
+      status: 'Under arbeid',
+      pickUpSchedule: {
+        date: '2024-11-11',
+        time: '13:15',
+      },
+      products: [
+        {
+          productId: 54,
+          productName: 'Pavlova',
+          quantity: 1,
+          comment: 'Tilpasset for glutenfri',
+        },
+      ],
+    },
+    {
+      orderId: 8,
+      customerName: 'Ingrid Svendsen',
+      status: 'Ny',
+      pickUpSchedule: {
+        date: '2024-11-12',
+        time: '11:00',
+      },
+      products: [
+        {
+          productId: 13,
+          productName: 'Egg- og rekebaguette',
+          quantity: 3,
+          comment: 'Uten majones',
+        },
+        {
+          productId: 32,
+          productName: 'Latte',
+          quantity: 3,
+          comment: 'Med havremelk',
+        },
+      ],
+    },
+    {
+      orderId: 9,
+      customerName: 'Thomas Andersen',
+      status: 'Klar til Henting',
+      pickUpSchedule: {
+        date: '2024-11-13',
+        time: '14:00',
+      },
+      products: [
+        {
+          productId: 49,
+          productName: 'Brownies',
+          quantity: 1,
+          comment: 'Ekstra nøtter',
+        },
+        {
+          productId: 35,
+          productName: 'Cortado',
+          quantity: 1,
+          comment: 'Vanlig melk',
+        },
+      ],
+    },
+    {
+      orderId: 10,
+      customerName: 'Sofie Berg',
+      status: 'Ny',
+      pickUpSchedule: {
+        date: '2024-11-14',
+        time: '09:15',
+      },
+      products: [
+        {
+          productId: 3,
+          productName: 'Vegetarbaguette',
+          quantity: 2,
+          comment: 'Ekstra avokado',
+        },
+        {
+          productId: 52,
+          productName: 'Makroner',
+          quantity: 1,
+          comment: 'Blandede smaker',
+        },
       ],
     },
   ],
+
   /**
    * Tar inn en liste av produkter fra en ordre og justerer tilgjengeligheten på hver produkt
    * @type {Array<{
@@ -186,8 +339,6 @@ const model = {
    * @property {string} customerName - The name of the customer.
    * @property {string} productName - The name of the product.
    * @property {string} contactNumber - The contact number of the customer.
-   * @property {PickUpSchedule} pickUpSchedule - The schedule for pick-up.
-   * @property {Product[]} products - The list of products.
    * @param {Order} order - The order details.
    */
   submitOrder(order) {
@@ -228,14 +379,15 @@ const model = {
 
 const localStorageModelName = 'model';
 
-function initiateModel() {
-  const savedModelString = localStorage.getItem(localStorageModelName);
+function initiateModelLocalStorage() {
+  const savedModelJson = localStorage.getItem(localStorageModelName);
 
-  if (savedModelString) {
-    const savedModel = JSON.parse(savedModelString);
+  if (savedModelJson) {
+    const savedModel = JSON.parse(savedModelJson);
     model.replaceModel(savedModel);
   } else {
     getProducts();
+    saveModel();
   }
 }
 
@@ -256,8 +408,8 @@ async function getProductsFromStore() {
 
 async function getProducts() {
   model.products = await getProductsFromStore();
-  saveModel();
   updateView();
 }
 
-initiateModel();
+// initiateModelLocalStorage();
+getProducts();

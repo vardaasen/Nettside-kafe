@@ -6,36 +6,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bakst og Brygg | Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.</title>
   <meta name="description" content="Bakst og Brygg - Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.">
-  <script src="model.js"></script>
-  <script src="common.js"></script>
-  <script src="cafe-menu-view.js"></script>
-  <script src="cake-menu-view.js"></script>
-  <script src="theme-menu-view.js"></script>
-  <script src="view.js"></script>
-  <script src="cafe-menu-controller.js"></script>
-  <script src="cake-menu-controller.js"></script>
-  <script src="store/products.js"></script>
-  <script src="js/cartView.js"></script>
-  <script src="js/cartController.js"></script>
-  <script src="firebase.js"></script>
+  <!-- Dynamisk last inn verion.js og cache-busting via timestamp -->
+  <script>
+    const timestamp = new Date().getTime();
+    const versionScript = document.createElement('script');
+    versionScript.src = `version.js?v=${timestamp}`;
+    document.head.appendChild(versionScript);
 
+    versionScript.onload = function () {
+      const appVersion = window.appVersion || "default_version";
 
-  <script src="server-requests.js"></script>
-  <link rel="stylesheet" href="css/styles.css" />
+      const mainCss = document.getElementById('main-css');
+      mainCss.href = `css/styles.css?v=${appVersion}`;
+
+      const scripts = [
+        "model.js",
+        "common.js",
+        "cafe-menu-view.js",
+        "cake-menu-view.js",
+        "theme-menu-view.js",
+        "view.js",
+        "cafe-menu-controller.js",
+        "cake-menu-controller.js",
+        "store/products.js",
+        "js/cartView.js",
+        "js/cartController.js",
+        "server-requests.js",
+      ];
+      scripts.forEach(script => {
+        const scriptElement = document.createElement('script');
+        scriptElement.src = `${script}?v=${appVersion}`;
+        document.head.appendChild(scriptElement);
+      });
+    };
+  </script>
+
+  <link rel="stylesheet" id="main-css" href="css/styles.css" />
 </head>
 
 <body>
   <header id="header-container">
     <div id="nav-row">
+      <img onclick="switchMenu('cafeMenu')" src="img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo"
+        class="header__logo-image">
+
+      <button id="hamburger-menu" class="header-hamburger" aria-label="Toggle navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
       <nav class="header__nav">
-        <img onclick="switchMenu('cafeMenu')" src="img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo"
-          class="header__logo-image">
         <button onclick="switchMenu('cafeMenu')" class="header-button">Meny</button>
-        <button onclick="switchMenu('cakeThemes')" class="header-button">Kaketemaer</button>
+        <button onclick="switchMenu('cakeThemes')" class="header-button">Temakaker</button>
         <button onclick="switchMenu('cakes')" class="header-button">Kaker</button>
       </nav>
-      <button class="header-button cart-icon" id="cartLink" onclick="showShoppingCart()">Handlevogn (<span
-          class="cart-count" id="cartCount">0</span>)
+
+      <button class="header-button header-cart" id="cartLink" onclick="showShoppingCart()">
+        <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        Handlevogn (<span class="cart-count" id="cartCount">0</span>)
       </button>
     </div>
   </header>
@@ -64,14 +101,16 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <p class="footer__copyright">&copy; 2024 Bakst og Brygg. Alle rettigheter reservert.</p>
-      <a class="footer__link footer__link--admin" href="admin/">Gå til adminside</a>
+      <p class="footer__copyright">© 2024 Bakst og Brygg. Alle rettigheter reservert.</p>
+      <a class="footer__link footer__link--admin" href="admin/">Ansattportal</a>
     </div>
   </footer>
 
 
+
   <script>
-    updateView();
+    /* Hamburger menu */
+    hamburger();
   </script>
 </body>
 

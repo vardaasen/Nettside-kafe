@@ -1,3 +1,4 @@
+src/version.js merge=ours
 *.js text eol=lf
 *.css text eol=lf
 *.html text eol=lf
