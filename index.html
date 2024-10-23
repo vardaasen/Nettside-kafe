@@ -102,10 +102,9 @@
 
 window.onload = function() {
   let url = window.location.href;
-  url = url.replace(/(\?v=)[^&]+/, `?v=${timestamp}`);
-  if (!url.includes('?=')) {
-    if (url.includes('?')) {
-      url = url + `&v=${timestamp}`;
+if (!url.includes('?v=')) {
+  if (url.includes('?')) {
+    url = url + `&v=${timestamp}`
     } else {
       url = url + `?v=${timestamp}`;
     }
