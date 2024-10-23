@@ -14,7 +14,7 @@ const compat = new FlatCompat({
 export default [
   {
     // Specify folders to ignore
-    ignores: ['node_modules/**', 'scratch/**'],
+    ignores: ['node_modules/**', 'scratch/**', 'src/version.js'],
 
     // Include browser globals if needed
     languageOptions: {

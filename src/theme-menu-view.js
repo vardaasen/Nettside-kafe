@@ -69,22 +69,35 @@ function createThemeInfoOverlayElement() {
   if (theme != null) {
     return createOverlayWithContent(/* HTML */ `
       <h2>${theme}</h2>
-      <img src="./img/themes/${theme}.webp" alt="${theme} bilde">
+      <img src="./img/themes/${theme}.webp" alt="${theme} bilde" />
       <div id="overlay-description">${product.description}</div>
       <div id="overlay-comment-row">
         <label for="product-comment">Tilpasninger:</label>
-        <textarea id="product-comment" oninput="updateComment(this.value)"></textarea>
+        <textarea
+          id="product-comment"
+          oninput="updateComment(this.value)"
+        ></textarea>
       </div>
 
       <div id="overlay-buy-row">
         <div id="quantity-row">
           <label for="quantity-input">Antall:</label>
-          <input value="1" type="number" id="quantity-input" oninput="model.inputs.cafeMenu.quantity=this.valueAsNumber"/>
+          <input
+            value="1"
+            type="number"
+            id="quantity-input"
+            oninput="model.inputs.cafeMenu.quantity=this.valueAsNumber"
+          />
         </div>
-        <button id="overlay-buy" class="button-primary" onclick="addCafeProductToCart(${product.productId})">Kjøp 🛒</button>
+        <button
+          id="overlay-buy"
+          class="button-primary"
+          onclick="addCafeProductToCart(${product.productId})"
+        >
+          Kjøp 🛒
+        </button>
       </div>
     `);
   }
   return null;
 }
-
