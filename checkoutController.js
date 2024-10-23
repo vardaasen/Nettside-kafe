@@ -66,8 +66,9 @@ function submitOrder() {
 }
 
 function isValidPhoneNumber(number) {
-    const phoneRegex = /^(\+47)?[2-9]\d{7}$/;
-    return phoneRegex.test(number.replace(/\s/g, ''));
+    const cleanNumber = number.replace(/\s/g, '');
+    const phoneRegex = /^(\+47)?\d{8}$/;
+    return phoneRegex.test(cleanNumber);
 }
 
 // Gjør alle funksjoner globalt tilgjengelige
