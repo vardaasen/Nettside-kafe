@@ -99,18 +99,18 @@
        document.head.appendChild(scriptElement);
      });
 };
-
-window.onload = function() {
-  let url = window.location.href;
-if (!url.includes('?v=')) {
-  if (url.includes('?')) {
-    url = url + `&v=${timestamp}`
-    } else {
-      url = url + `?v=${timestamp}`;
-    }
-  }
-  window.location.href = url;
-};
+// sett inn url med unik url
+//window.onload = function() {
+//  let url = window.location.href;
+//if (!url.includes('?v=')) {
+//  if (url.includes('?')) {
+//    url = url + `&v=${timestamp}`
+//    } else {
+//      url = url + `?v=${timestamp}`;
+//    }
+//  }
+//  window.location.href = url;
+//};
 </script>
 </body>
 
