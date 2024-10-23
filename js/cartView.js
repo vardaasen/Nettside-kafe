@@ -4,28 +4,30 @@
  * @returns {HTMLElement} Handlekurv-elementet
  */
 function createShoppingCartHtml() {
+  console.log('Creating shopping cart HTML');
   const shoppingCart = document.createElement('div');
   shoppingCart.id = 'cart';
   shoppingCart.classList.add('cart');
   shoppingCart.innerHTML = `
-    <div class="cart-content">
-      <div class="cart-header">
-        <h1>Handlekurv</h1>
-        <button id="clearCartButton" onclick="clearCart()">Tøm handlekurven</button>
+      <div class="cart-content">
+          <div class="cart-header">
+              <h1>Handlekurv</h1>
+              <button id="clearCartButton" onclick="clearCart()">Tøm handlekurven</button>
+          </div>
+          <div class="cart-items" id="cartItems"></div>
+          <div class="cart-total-container">
+              <p>Totalt: &nbsp;</p>
+              <span id="cartTotal">0</span>&nbsp; kr
+          </div>
+          <button id="checkoutButton" 
+                  onclick="goToPickupTime()" 
+                  ${cart.length === 0 ? 'disabled' : ''}>
+              Til kassen
+          </button>
       </div>
-      <div class="cart-items" id="cartItems"></div>
-      <div class="cart-total-container">
-        <p>Totalt: &nbsp;</p>
-        <span id="cartTotal">0</span>&nbsp; kr
-      </div>
-      <button id="checkoutButton" onclick="goToPickupTime()" ${cart.length === 0 ? 'disabled' : ''}>
-  Til kassen
-</button>
-    </div>
   `;
   return shoppingCart;
 }
-
 /**
  * Gjengir handlekurvens innhold på siden.
  */
