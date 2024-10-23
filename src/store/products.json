@@ -371,7 +371,7 @@
     "image": "gulrotkake.webp",
     "preorderRequired": true,
     "customizationAvailable": true,
-    "unitsInStock": 0
+    "unitsInStock": 40
   },
   {
     "productId": 35,
@@ -382,7 +382,7 @@
     "image": "red_velvet.webp",
     "preorderRequired": true,
     "customizationAvailable": true,
-    "unitsInStock": 20
+    "unitsInStock": 0
   },
   {
     "productId": 36,
@@ -393,7 +393,7 @@
     "image": "eplekake.webp",
     "preorderRequired": true,
     "customizationAvailable": true,
-    "unitsInStock": 0
+    "unitsInStock": 65
   },
   {
     "productId": 37,
@@ -404,7 +404,7 @@
     "image": "sitronkake.webp",
     "preorderRequired": true,
     "customizationAvailable": true,
-    "unitsInStock": 25
+    "unitsInStock": 0
   },
   {
     "productId": 38,
