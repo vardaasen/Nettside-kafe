@@ -1,5 +1,4 @@
 // checkoutController.js
-
 function goToPickupTime() {
     console.log('Going to pickup time');
     model.inputs.shoppingCart.case = 'PickupTime';
@@ -14,6 +13,16 @@ function updatePickupDate(date) {
 function updatePickupTime(time) {
     console.log('Updating pickup time:', time);
     model.inputs.shoppingCart.pickUpSchedule.time = time;
+}
+
+function updateCustomerName(name) {
+    console.log('Updating customer name:', name);
+    model.inputs.shoppingCart.customerName = name;
+}
+
+function updateContactNumber(number) {
+    console.log('Updating contact number:', number);
+    model.inputs.shoppingCart.contactNumber = number;
 }
 
 function goToCustomerInfo() {
@@ -56,15 +65,24 @@ function submitOrder() {
     updateView();
 }
 
-// Gjør alle funksjonene globalt tilgjengelige
+function isValidPhoneNumber(number) {
+    const phoneRegex = /^(\+47)?[2-9]\d{7}$/;
+    return phoneRegex.test(number.replace(/\s/g, ''));
+}
+
+// Gjør alle funksjoner globalt tilgjengelige
 window.goToPickupTime = goToPickupTime;
 window.updatePickupDate = updatePickupDate;
 window.updatePickupTime = updatePickupTime;
+window.updateCustomerName = updateCustomerName;
+window.updateContactNumber = updateContactNumber;
 window.goToCustomerInfo = goToCustomerInfo;
 window.submitOrder = submitOrder;
 
 console.log('checkoutController.js loaded. Functions available:', {
     goToPickupTime: typeof window.goToPickupTime,
     updatePickupDate: typeof window.updatePickupDate,
-    updatePickupTime: typeof window.updatePickupTime
+    updatePickupTime: typeof window.updatePickupTime,
+    updateCustomerName: typeof window.updateCustomerName,
+    updateContactNumber: typeof window.updateContactNumber
 });
