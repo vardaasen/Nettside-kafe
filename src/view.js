@@ -28,6 +28,8 @@ window.addEventListener('popstate', (event) => {
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-  model.app.currentPage = window.location.hash ? window.location.hash.substring(1) : 'cafeMenu';
+  model.app.currentPage = window.location.hash
+    ? window.location.hash.substring(1)
+    : 'cafeMenu';
   updateView();
 });
