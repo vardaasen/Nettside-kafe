@@ -1,9 +1,10 @@
 name: Sync vardaasen with Main
 
 on:
-  push:
-    branches:
-      - main  # Trigger når main oppdateres
+  workflow_run:
+    workflows: ["Update Version on Main"]
+    types:
+      - completed
 
 jobs:
   sync-vardaasen:
