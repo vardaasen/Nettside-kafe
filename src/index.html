@@ -6,22 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bakst og Brygg | Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.</title>
   <meta name="description" content="Bakst og Brygg - Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.">
-  <script src="model.js"></script>
-  <script src="common.js"></script>
-  <script src="cafe-menu-view.js"></script>
-  <script src="cake-menu-view.js"></script>
-  <script src="theme-menu-view.js"></script>
-  <script src="view.js"></script>
-  <script src="cafe-menu-controller.js"></script>
-  <script src="cake-menu-controller.js"></script>
-  <script src="store/products.js"></script>
-  <script src="js/cartView.js"></script>
-  <script src="js/cartController.js"></script>
-  <script src="firebase.js"></script>
-
-
-  <script src="server-requests.js"></script>
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" id="main-css" href="css/styles.css" />
 </head>
 
 <body>
@@ -85,17 +70,51 @@
       <a class="footer__link footer__link--admin" href="admin/">Ansattportal</a>
     </div>
   </footer>
-
-
-
-  <script>
-    /* Hamburger menu */
-    document.getElementById('hamburger-menu').addEventListener('click', function () {
-      document.querySelector('#header-container').classList.toggle('is-active');
-    });
-    /* App */
-    updateView();
-  </script>
 </body>
 
 </html>
+
+<!-- Dynamisk last inn verion.js og cache-busting via timestamp -->
+<script>
+  const timestamp = new Date().getTime();
+  const versionScript = document.createElement('script');
+  versionScript.src = `version.js?v=${timestamp}`;
+  document.head.appendChild(versionScript);
+
+  versionScript.onload = function () {
+    const appVersion = window.appVersion || "default_version";
+
+    const mainCss = document.getElementById('main-css');
+    mainCss.href = `css/styles.css?v=${appVersion}`;
+
+    const scripts = [
+      "model.js",
+      "common.js",
+      "cafe-menu-view.js",
+      "cake-menu-view.js",
+      "theme-menu-view.js",
+      "view.js",
+      "cafe-menu-controller.js",
+      "cake-menu-controller.js",
+      "store/products.js",
+      "js/cartView.js",
+      "js/cartController.js",
+    ];
+
+    let loadedScripts = 0;
+    scripts.forEach(script => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = `${script}?v=${appVersion}`;
+      scriptElement.onload = () => {
+        loadedScripts++;
+        if (loadedScripts === scripts.length) {
+          initiateModelLocalStorage(); // Kommenter ut denne linjen og ta bort kommentar fra getProducts() for å ikke bruke localStorage
+          // getProducts();
+          updateView();
+          hamburger();
+        }
+      }
+      document.head.appendChild(scriptElement);
+    });
+  };
+</script>

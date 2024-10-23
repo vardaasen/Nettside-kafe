@@ -100,8 +100,18 @@ const model = {
         time: '10:15',
       },
       products: [
-        { productId: 5, productName: 'Tunfiskbaguette', quantity: 2, comment: 'Ingen rødløk, takk' },
-        { productId: 38, productName: 'Mocha', quantity: 2, comment: 'Ekstra sjokolade' },
+        {
+          productId: 5,
+          productName: 'Tunfiskbaguette',
+          quantity: 2,
+          comment: 'Ingen rødløk, takk',
+        },
+        {
+          productId: 38,
+          productName: 'Mocha',
+          quantity: 2,
+          comment: 'Ekstra sjokolade',
+        },
       ],
     },
     {
@@ -113,8 +123,18 @@ const model = {
         time: '11:30',
       },
       products: [
-        { productId: 8, productName: 'Brie og avokadobaguette', quantity: 1, comment: 'Ingen tomat' },
-        { productId: 31, productName: 'Cappuccino', quantity: 1, comment: 'Med soyamelk' },
+        {
+          productId: 8,
+          productName: 'Brie og avokadobaguette',
+          quantity: 1,
+          comment: 'Ingen tomat',
+        },
+        {
+          productId: 31,
+          productName: 'Cappuccino',
+          quantity: 1,
+          comment: 'Med soyamelk',
+        },
       ],
     },
     {
@@ -126,8 +146,18 @@ const model = {
         time: '12:00',
       },
       products: [
-        { productId: 9, productName: 'Falafelbaguette', quantity: 3, comment: 'Ekstra tahinisaus' },
-        { productId: 37, productName: 'Flat White', quantity: 3, comment: 'Laktosefri melk' },
+        {
+          productId: 9,
+          productName: 'Falafelbaguette',
+          quantity: 3,
+          comment: 'Ekstra tahinisaus',
+        },
+        {
+          productId: 37,
+          productName: 'Flat White',
+          quantity: 3,
+          comment: 'Laktosefri melk',
+        },
       ],
     },
     {
@@ -139,7 +169,12 @@ const model = {
         time: '14:45',
       },
       products: [
-        { productId: 50, productName: 'Sjokolademousse', quantity: 5, comment: 'Pyntet med friske bær' },
+        {
+          productId: 50,
+          productName: 'Sjokolademousse',
+          quantity: 5,
+          comment: 'Pyntet med friske bær',
+        },
       ],
     },
     {
@@ -151,7 +186,12 @@ const model = {
         time: '09:45',
       },
       products: [
-        { productId: 41, productName: 'Sjokoladekake', quantity: 1, comment: 'Gratulerer med dagen på toppen' },
+        {
+          productId: 41,
+          productName: 'Sjokoladekake',
+          quantity: 1,
+          comment: 'Gratulerer med dagen på toppen',
+        },
       ],
     },
     {
@@ -163,7 +203,12 @@ const model = {
         time: '10:30',
       },
       products: [
-        { productId: 14, productName: 'Biff og løkbaguette', quantity: 2, comment: 'Ekstra løk' },
+        {
+          productId: 14,
+          productName: 'Biff og løkbaguette',
+          quantity: 2,
+          comment: 'Ekstra løk',
+        },
         { productId: 33, productName: 'Espresso', quantity: 2, comment: '' },
       ],
     },
@@ -176,7 +221,12 @@ const model = {
         time: '13:15',
       },
       products: [
-        { productId: 54, productName: 'Pavlova', quantity: 1, comment: 'Tilpasset for glutenfri' },
+        {
+          productId: 54,
+          productName: 'Pavlova',
+          quantity: 1,
+          comment: 'Tilpasset for glutenfri',
+        },
       ],
     },
     {
@@ -188,8 +238,18 @@ const model = {
         time: '11:00',
       },
       products: [
-        { productId: 13, productName: 'Egg- og rekebaguette', quantity: 3, comment: 'Uten majones' },
-        { productId: 32, productName: 'Latte', quantity: 3, comment: 'Med havremelk' },
+        {
+          productId: 13,
+          productName: 'Egg- og rekebaguette',
+          quantity: 3,
+          comment: 'Uten majones',
+        },
+        {
+          productId: 32,
+          productName: 'Latte',
+          quantity: 3,
+          comment: 'Med havremelk',
+        },
       ],
     },
     {
@@ -201,8 +261,18 @@ const model = {
         time: '14:00',
       },
       products: [
-        { productId: 49, productName: 'Brownies', quantity: 1, comment: 'Ekstra nøtter' },
-        { productId: 35, productName: 'Cortado', quantity: 1, comment: 'Vanlig melk' },
+        {
+          productId: 49,
+          productName: 'Brownies',
+          quantity: 1,
+          comment: 'Ekstra nøtter',
+        },
+        {
+          productId: 35,
+          productName: 'Cortado',
+          quantity: 1,
+          comment: 'Vanlig melk',
+        },
       ],
     },
     {
@@ -214,8 +284,18 @@ const model = {
         time: '09:15',
       },
       products: [
-        { productId: 3, productName: 'Vegetarbaguette', quantity: 2, comment: 'Ekstra avokado' },
-        { productId: 52, productName: 'Makroner', quantity: 1, comment: 'Blandede smaker' },
+        {
+          productId: 3,
+          productName: 'Vegetarbaguette',
+          quantity: 2,
+          comment: 'Ekstra avokado',
+        },
+        {
+          productId: 52,
+          productName: 'Makroner',
+          quantity: 1,
+          comment: 'Blandede smaker',
+        },
       ],
     },
   ],
@@ -299,11 +379,11 @@ const model = {
 
 const localStorageModelName = 'model';
 
-function initiateModel() {
-  const savedModelString = localStorage.getItem(localStorageModelName);
+function initiateModelLocalStorage() {
+  const savedModelJson = localStorage.getItem(localStorageModelName);
 
-  if (savedModelString) {
-    const savedModel = JSON.parse(savedModelString);
+  if (savedModelJson) {
+    const savedModel = JSON.parse(savedModelJson);
     model.replaceModel(savedModel);
   } else {
     getProducts();
@@ -330,5 +410,3 @@ async function getProducts() {
   saveModel();
   updateView();
 }
-
-initiateModel();
