@@ -91,9 +91,13 @@
   filter: grayscale(100%);
 }
 
+.product-card--inactive .product-card__title {
+  color: #ccc;
+}
+
 .product-card__button-add[disabled] {
   background-color: #555;
-  color: #999;
+  color: #eee;
   cursor: not-allowed;
 }
 
