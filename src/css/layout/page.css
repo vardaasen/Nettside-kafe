@@ -10,3 +10,8 @@
     margin: 4em auto;
   }
 }
+
+#cakes,
+#cafe-menu {
+  padding: 0 1em;
+}

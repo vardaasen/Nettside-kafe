@@ -51,7 +51,7 @@ const ordersView = {
  */
 function renderOrderedProductsHtml(orderProducts) {
   let html = '';
-  orderProducts.forEach(product => {
+  orderProducts.forEach((product) => {
     html += `
       <div class="orders__product">
         <div class="orders__product-name">${product.productName}</div>
