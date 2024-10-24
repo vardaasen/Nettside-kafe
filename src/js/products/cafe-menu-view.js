@@ -50,7 +50,8 @@ function createCafeProductCardHtml(product) {
       <footer class="product-card__footer">
         <div class="product-card__price">${product.unitPrice} Kr</div>
         <button class="product-card__button-add button__add-to-cart" 
-                onclick="addToCart('${product.productName}', ${product.unitPrice}, ${product.productId});">
+                onclick="addToCart('${product.productName}', ${product.unitPrice}, ${product.productId});"
+                ${isOutOfStock ? 'disabled' : ''}>
           <svg class="cart-icon" fill="currentColor" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 487.1 487.1" xml:space="preserve">
             <path d="M342.3,137.978H385l-63.3-108.6c-5.1-8.8-16.4-11.8-25.2-6.6c-8.8,5.1-11.8,16.4-6.6,25.2L342.3,137.978z" />
             <path d="M197.4,47.978c5.1-8.8,2.2-20.1-6.6-25.2s-20.1-2.2-25.2,6.6l-63.3,108.7H145L197.4,47.978z" />

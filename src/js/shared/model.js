@@ -308,7 +308,7 @@ const model = {
    *  comment: string,
    * }>}
    */
-  subtractQuantityFromOrder(products) {
+  subtractOrderedQuantityFromUnitsInStock(products) {
     for (const product of this.products) {
       for (const orderProduct of products) {
         if (product.productId === orderProduct.productId) {
@@ -351,7 +351,7 @@ const model = {
     order.orderId = orderId;
     order.status = 'Ny';
     this.orders.push(order);
-    this.subtractQuantityFromOrder(order.products);
+    this.subtractOrderedQuantityFromUnitsInStock(order.products);
     saveModel();
   },
 
