@@ -48,7 +48,8 @@ function createCafeProductCardHtml(product) {
       </header>
       <footer class="product-card__footer">
         <div class="product-card__price">${product.unitPrice} Kr</div>
-        <button class="product-card__button-add button__add-to-cart" onclick="addToCart('${product.productName}', ${product.unitPrice});">
+        <button class="product-card__button-add button__add-to-cart" 
+                onclick="addToCart('${product.productName}', ${product.unitPrice}, ${product.productId});">
           <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="9" cy="21" r="1"></circle>
             <circle cx="20" cy="21" r="1"></circle>
@@ -96,7 +97,7 @@ function createCafeProductInfoOverlayElement() {
             <input type="number" value="1" min="1" id="quantity-input" class="overlay__input" oninput="model.inputs.cafeMenu.quantity=this.valueAsNumber"/>
           </div>
           <button id="overlay-buy" class="overlay-button"
-            onclick="addToCart('${product.productName}', ${product.unitPrice}, model.inputs.cafeMenu.quantity)">
+            onclick="addToCart('${product.productName}', ${product.unitPrice}, ${product.productId}, model.inputs.cafeMenu.quantity)">
             Legg til i handlekurv
           </button>
         </footer>
