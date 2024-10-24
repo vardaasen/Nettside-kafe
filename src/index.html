@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <header id="header-container" role="banner">
+  <header id="header-container">
     <div id="nav-row">
       <img onclick="switchMenu('cafeMenu')" src="img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo"
         class="header__logo-image" role="button">
@@ -24,7 +24,7 @@
         </svg>
       </button>
 
-      <nav class="header__nav" role="navigation" aria-label="Hovedmeny">
+      <nav class="header__nav" aria-label="Hovedmeny">
         <button onclick="switchMenu('cafeMenu')" class="header-button" aria-label="Vis kafémenyen">Meny</button>
         <button onclick="switchMenu('cakeThemes')" class="header-button" aria-label="Vis temakakemenyen">Temakaker</button>
         <button onclick="switchMenu('cakes')" class="header-button" aria-label="Vis kakemenyen">Kaker</button>
@@ -52,9 +52,9 @@
 
   <div class="cart-notification" id="cartNotification">Produkt lagt til i handlekurven!</div>
 
-  <main id="app" role="main"></main>
+  <main id="app"></main>
 
-  <footer class="footer" role="contentinfo">
+  <footer class="footer">
     <div class="footer__content">
       <div class="footer__section footer__section--contact">
         <h3 class="footer__title">Kontakt oss</h3>
