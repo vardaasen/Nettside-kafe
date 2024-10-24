@@ -1,4 +1,5 @@
 function clearLocalStorage() {
   localStorage.clear();
-  alert("Local storage has been cleared!");
+  alert('"Local storage" har blitt tømt!');
+  location.reload();
 }
