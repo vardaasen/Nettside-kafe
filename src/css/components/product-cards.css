@@ -71,11 +71,36 @@
 }
 
 .cart-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   margin-right: 0.5rem;
   fill: currentColor;
 }
+
+.product-card--inactive {
+  background-color: #333;
+  color: #fff;
+  opacity: 0.5;
+}
+
+.product-card--inactive .product-card__header {
+  pointer-events: none;
+}
+
+.product-card--inactive .product-card__image {
+  filter: grayscale(100%);
+}
+
+.product-card--inactive .product-card__title {
+  color: #ccc;
+}
+
+.product-card__button-add[disabled] {
+  background-color: #555;
+  color: #eee;
+  cursor: not-allowed;
+}
+
 
 @media (min-width: 768px) {
   .product-card {

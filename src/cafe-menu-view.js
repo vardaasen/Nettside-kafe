@@ -1,8 +1,7 @@
 function createCafeMenuHtml() {
   const cafeMenu = document.createElement('div');
   cafeMenu.id = 'cafe-menu';
-  cafeMenu.innerHTML = /* HTML */ ` ${createTabRowHtml() +
-  createCafeProductsHtml()}`;
+  cafeMenu.innerHTML = createTabRowHtml() + createCafeProductsHtml();
   const overlay = createCafeProductInfoOverlayElement();
   if (overlay) {
     cafeMenu.appendChild(overlay);
@@ -40,9 +39,11 @@ function createCafeProductsHtml() {
 }
 
 function createCafeProductCardHtml(product) {
+  const isOutOfStock = product.unitsInStock === 0;
+
   return /* HTML*/ `
-    <article class="product-card">
-      <header class="product-card__header" onclick="openProductInfo(${product.productId})">
+    <article class="product-card ${isOutOfStock ? 'product-card--inactive' : ''}">
+      <header class="product-card__header" ${!isOutOfStock ? `onclick="openProductInfo(${product.productId})"` : ''}>
         <img class="product-card__image" src="./img/cafe_menu/${product.image}" alt="${product.productName}">
         <h2 class="product-card__title">${product.productName}</h2>
       </header>
@@ -50,12 +51,19 @@ function createCafeProductCardHtml(product) {
         <div class="product-card__price">${product.unitPrice} Kr</div>
         <button class="product-card__button-add button__add-to-cart" 
                 onclick="addToCart('${product.productName}', ${product.unitPrice}, ${product.productId});">
-          <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          <svg class="cart-icon" fill="currentColor" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 487.1 487.1" xml:space="preserve">
+            <path d="M342.3,137.978H385l-63.3-108.6c-5.1-8.8-16.4-11.8-25.2-6.6c-8.8,5.1-11.8,16.4-6.6,25.2L342.3,137.978z" />
+            <path d="M197.4,47.978c5.1-8.8,2.2-20.1-6.6-25.2s-20.1-2.2-25.2,6.6l-63.3,108.7H145L197.4,47.978z" />
+            <path d="M455.7,171.278H31.3c-17.3,0-31.3,14-31.3,31.3v34.7c0,17.3,14,31.3,31.3,31.3h9.8l30.2,163.7
+              c3.8,19.3,21.4,34.6,39.7,34.6h12h78.8c8,0,18.4,0,29,0l0,0h9.6h9.6l0,0c10.6,0,21,0,29,0h78.8h12c18.3,0,35.9-15.3,39.7-34.6
+              l30.4-163.8h15.9c17.3,0,31.3-14,31.3-31.3v-34.7C487,185.278,473,171.278,455.7,171.278z M172.8,334.878v70.6
+              c0,10.1-8.2,17.7-17.7,17.7c-10.1,0-17.7-8.2-17.7-17.7v-29.6v-69.4c0-10.1,8.2-17.7,17.7-17.7c10.1,0,17.7,8.2,17.7,17.7V334.878
+              z M229.6,334.878v70.6c0,10.1-8.2,17.7-17.7,17.7c-10.1,0-17.7-8.2-17.7-17.7v-29.6v-69.4c0-10.1,8.2-17.7,17.7-17.7
+              s17.7,8.2,17.7,17.7V334.878z M286.7,375.878v29.6c0,9.5-7.6,17.7-17.7,17.7c-9.5,0-17.7-7.6-17.7-17.7v-70.6v-28.4
+              c0-9.5,8.2-17.7,17.7-17.7s17.7,7.6,17.7,17.7V375.878z M343.5,375.878v29.6c0,9.5-7.6,17.7-17.7,17.7c-9.5,0-17.7-7.6-17.7-17.7
+              v-70.6v-28.4c0-9.5,7.6-17.7,17.7-17.7c9.5,0,17.7,7.6,17.7,17.7V375.878z" />
           </svg>
-          Legg til
+          ${isOutOfStock ? 'Utsolgt' : 'Legg til'}
         </button>
       </footer>
     </article>
@@ -68,7 +76,7 @@ function createCafeProductInfoOverlayElement() {
     const overlay = document.createElement('section');
     overlay.classList.add('overlay');
 
-    overlay.innerHTML = `
+    overlay.innerHTML = /* HTML*/ `
       <div class="overlay__content">
         <header class="overlay-header">
           <h2 class="overlay__title">${product.productName}</h2>

@@ -170,7 +170,7 @@ button:hover {
   background-color: transparent;
   background-size: cover;
   background-position: center;
-  background-image: url('../../admin/assets/img/logo.png');
+  background-image: url('../../admin/assets/img/logo.webp');
 }
 
 .login-form {
@@ -208,6 +208,36 @@ button:hover {
   margin-top: 10px;
   color: red;
   text-align: center;
+}
+
+.password-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 20px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.toggle-password svg {
+  width: 24px;
+  height: 24px;
+  fill: #666;
+  transition: fill 0.3s;
+}
+
+.toggle-password:hover svg {
+  fill: #333;
 }
 
 @media screen and (max-width: 600px) {
