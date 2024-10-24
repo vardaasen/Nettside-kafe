@@ -70,7 +70,10 @@ function submitOrder() {
     
     // Legg til i orders array
     model.orders.push(newOrder);
-    
+
+    // Oppdater lagerbeholdningen her
+    model.subtractQuantityFromOrder(orderProducts);
+
     // Lagre til localStorage
     localStorage.setItem('model', JSON.stringify(model));
     
@@ -81,6 +84,7 @@ function submitOrder() {
     model.inputs.shoppingCart.case = 'OrderSent';
     updateView();
 }
+
 
 function isValidPhoneNumber(number) {
     const cleanNumber = number.replace(/\s/g, '');
