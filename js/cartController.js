@@ -1,10 +1,9 @@
-// cartController.js
-function addToCart(name, price, quantity = 1) {
+function addToCart(name, price, productId, quantity = 1) {
   const existingItem = cart.find((item) => item.name === name);
   if (existingItem) {
       existingItem.quantity += quantity;
   } else {
-      cart.push({ name, price, quantity });
+      cart.push({ name, price, quantity, productId });
   }
   updateCart('add');
 }
