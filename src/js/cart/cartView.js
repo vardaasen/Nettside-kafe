@@ -39,7 +39,7 @@ function renderCart() {
   let itemCount = 0;
 
   cart.forEach((item) => {
-      cartItems.innerHTML += `
+    cartItems.innerHTML += `
           <div class="cart-item">
               <div class="cart-item-info">
                   <div class="cart-item-name"><strong>${item.name}</strong></div>
@@ -48,8 +48,8 @@ function renderCart() {
               <button class="remove-btn" onclick="removeFromCart('${item.name}')">Fjern</button>
           </div>
       `;
-      total += item.price * item.quantity;
-      itemCount += item.quantity;
+    total += item.price * item.quantity;
+    itemCount += item.quantity;
   });
 
   if (cartCount) cartCount.textContent = itemCount;
@@ -60,11 +60,11 @@ function renderCart() {
 function showCartNotification(message) {
   const notification = document.getElementById('cartNotification');
   if (notification) {
-      notification.textContent = message;
-      notification.classList.add('show');
-      setTimeout(() => {
-          notification.classList.remove('show');
-      }, 3000);
+    notification.textContent = message;
+    notification.classList.add('show');
+    setTimeout(() => {
+      notification.classList.remove('show');
+    }, 3000);
   }
 }
 
