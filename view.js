@@ -1,16 +1,37 @@
 function updateView() {
   const app = document.getElementById('app');
   const content = createCurrentPageHtml();
+  const currentPage = model.app.currentPage;
   
-  // Hvis content er et HTML element
+  // Håndter innholdet basert på type
   if (content instanceof HTMLElement) {
       app.replaceChildren(content);
   } else {
-      // Hvis content er en string, lag et div element
       const container = document.createElement('div');
       container.innerHTML = content;
       app.replaceChildren(container);
   }
+
+  // Oppdater nettleserhistorikken
+  history.pushState({ page: currentPage }, '', `#${currentPage}`);
+}
+
+function updateView() {
+  const app = document.getElementById('app');
+  const content = createCurrentPageHtml();
+  const currentPage = model.app.currentPage;
+  
+  // Håndter innholdet basert på type
+  if (content instanceof HTMLElement) {
+      app.replaceChildren(content);
+  } else {
+      const container = document.createElement('div');
+      container.innerHTML = content;
+      app.replaceChildren(container);
+  }
+
+  // Oppdater nettleserhistorikken
+  history.pushState({ page: currentPage }, '', `#${currentPage}`);
 }
 
 function createCurrentPageHtml() {
@@ -31,3 +52,19 @@ function createCurrentPageHtml() {
   }
   return '';
 }
+
+// Håndter tilbake/frem-knapper i nettleseren
+window.addEventListener('popstate', (event) => {
+  if (event.state && event.state.page) {
+    model.app.currentPage = event.state.page;
+    document.getElementById('app').replaceChildren(createCurrentPageHtml());
+  }
+});
+
+// Håndter initial sidelasting
+window.addEventListener('DOMContentLoaded', () => {
+  model.app.currentPage = window.location.hash
+    ? window.location.hash.substring(1)
+    : 'cafeMenu';
+  updateView();
+});
