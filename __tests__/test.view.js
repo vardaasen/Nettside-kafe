@@ -4,11 +4,11 @@
  * the appropriate content based on the current page in the model.
  */
 
-jest.mock('../src/view', () => ({
+jest.mock('../src/js/shared/view', () => ({
   updateView: jest.fn(),
 }));
 
-jest.mock('../src/cafe-menu-view', () => ({
+jest.mock('../src/js/products/cafe-menu-view', () => ({
   createCafeMenuHtml: jest.fn(
     () => '<div id="cafe-menu-tab-row"><button>Baguette</button></div>',
   ),
@@ -18,11 +18,11 @@ jest.mock('../src/cafe-menu-view', () => ({
   ),
 }));
 
-import { updateView } from '../src/view';
+import { updateView } from '../src/js/shared/view';
 import {
   createCafeMenuHtml,
   createThemeCakeMenuHtml,
-} from '../src/cafe-menu-view';
+} from '../src/js/products/cafe-menu-view';
 
 describe('View Updates', () => {
   beforeEach(() => {
