@@ -49,8 +49,8 @@ function createCafeProductCardHtml(product) {
       </header>
       <footer class="product-card__footer">
         <div class="product-card__price">${product.unitPrice} Kr</div>
-        <button class="product-card__button-add button__add-to-cart" ${isOutOfStock ? 'disabled' : ''}
-          ${!isOutOfStock ? `onclick="addToCart('${product.productName}', ${product.unitPrice});"` : ''}>
+        <button class="product-card__button-add button__add-to-cart" 
+                onclick="addToCart('${product.productName}', ${product.unitPrice}, ${product.productId});">
           <svg class="cart-icon" fill="currentColor" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 487.1 487.1" xml:space="preserve">
             <path d="M342.3,137.978H385l-63.3-108.6c-5.1-8.8-16.4-11.8-25.2-6.6c-8.8,5.1-11.8,16.4-6.6,25.2L342.3,137.978z" />
             <path d="M197.4,47.978c5.1-8.8,2.2-20.1-6.6-25.2s-20.1-2.2-25.2,6.6l-63.3,108.7H145L197.4,47.978z" />
@@ -105,7 +105,7 @@ function createCafeProductInfoOverlayElement() {
             <input type="number" value="1" min="1" id="quantity-input" class="overlay__input" oninput="model.inputs.cafeMenu.quantity=this.valueAsNumber"/>
           </div>
           <button id="overlay-buy" class="overlay-button"
-            onclick="addToCart('${product.productName}', ${product.unitPrice}, model.inputs.cafeMenu.quantity)">
+            onclick="addToCart('${product.productName}', ${product.unitPrice}, ${product.productId}, model.inputs.cafeMenu.quantity)">
             Legg til i handlekurv
           </button>
         </footer>
