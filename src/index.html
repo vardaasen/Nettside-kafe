@@ -93,29 +93,29 @@
     versionScript.src = `js/utils/version.js?v=${timestamp}`;
     document.head.appendChild(versionScript);
 
-  versionScript.onload = function () {
-    const appVersion = window.appVersion || "default_version";
+    versionScript.onload = function () {
+      const appVersion = window.appVersion || "default_version";
 
-    const mainCss = document.getElementById('main-css');
-    const checkoutTesting = document.getElementById('checkout-testing');
-    mainCss.href = `css/styles.css?v=${appVersion}`;
-    checkoutTesting.href = `css/checkout/checkoutStyles.css?v=${appVersion}`;
+      const mainCss = document.getElementById('main-css');
+      const checkoutTesting = document.getElementById('checkout-testing');
+      mainCss.href = `css/styles.css?v=${appVersion}`;
+      checkoutTesting.href = `css/checkout/checkoutStyles.css?v=${appVersion}`;
 
-    const scripts = [
-    'js/shared/model.js',
-    'js/shared/common.js',
-    'js/products/cafe-menu-view.js',
-    'js/products/cake-menu-view.js',
-    'js/products/theme-menu-view.js',
-    'js/shared/view.js',
-    'js/products/cafe-menu-controller.js',
-    'js/products/cake-menu-controller.js',
-    'data/products.js',
-    'js/cart/cartView.js',
-    'js/cart/cartController.js',
-    'js/checkout/checkoutController.js',
-    'js/checkout/checkoutView.js',
-];
+      const scripts = [
+        'js/shared/model.js',
+        'js/shared/common.js',
+        'js/products/cafe-menu-view.js',
+        'js/products/cake-menu-view.js',
+        'js/products/theme-menu-view.js',
+        'js/shared/view.js',
+        'js/products/cafe-menu-controller.js',
+        'js/products/cake-menu-controller.js',
+        'data/products.js',
+        'js/cart/cartView.js',
+        'js/cart/cartController.js',
+        'js/checkout/checkoutController.js',
+        'js/checkout/checkoutView.js',
+      ];
 
       let loadedScripts = 0;
       scripts.forEach(script => {
