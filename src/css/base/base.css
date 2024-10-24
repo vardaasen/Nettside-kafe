@@ -5,6 +5,11 @@ body {
   background-color: var(--color-background-alt);
 }
 
+a {
+  text-decoration: none;
+  color: var(--color-accent--cold);
+}
+
 img {
   max-width: 100%;
   height: auto;
