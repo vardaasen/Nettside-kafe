@@ -7,13 +7,10 @@
   <title>Bakst og Brygg | Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.</title>
   <meta name="description" content="Bakst og Brygg - Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.">
   <link rel="stylesheet" id="main-css" href="css/styles.css" />
-  
+
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/dayjs.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/locale/nb.js"></script>
   <script>dayjs.locale('nb')</script>
-
-
-<link rel="stylesheet" id="checkout-testing" href=" `css/checkout/checkoutStyles.css">
 </head>
 
 <body>
@@ -81,7 +78,7 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <p class="footer__copyright">© 2024 Bakst og Brygg. Alle rettigheter reservert.</p>
+      <p class="footer__copyright"><a href="#" onclick="clearLocalStorage(); return false;">© 2024 Bakst og Brygg. Alle rettigheter reservert.</a></p>
       <a class="footer__link footer__link--admin" href="admin/" aria-label="Gå til ansattportalen">Ansattportal</a>
     </div>
   </footer>
@@ -97,9 +94,7 @@
       const appVersion = window.appVersion || "default_version";
 
       const mainCss = document.getElementById('main-css');
-      const checkoutTesting = document.getElementById('checkout-testing');
       mainCss.href = `css/styles.css?v=${appVersion}`;
-      checkoutTesting.href = `css/checkout/checkoutStyles.css?v=${appVersion}`;
 
       const scripts = [
         'js/shared/model.js',
@@ -115,6 +110,7 @@
         'js/cart/cartController.js',
         'js/checkout/checkoutController.js',
         'js/checkout/checkoutView.js',
+        'js/utils/clearLocalStorage.js',
       ];
 
       let loadedScripts = 0;
