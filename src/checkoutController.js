@@ -51,17 +51,34 @@ function submitOrder() {
         return;
     }
     
+    // Konverter handlekurv til produktliste for bestillingen
+    const cartItems = getCartItems();
+    const orderProducts = cartItems.map(item => ({
+        productId: item.productId,
+        productName: item.name,
+        quantity: item.quantity,
+        comment: item.comment || ''
+    }));
+    
     const newOrder = {
         orderId: model.orders.length + 1,
         customerName: customerName,
         status: 'Ny',
         pickUpSchedule: { ...model.inputs.shoppingCart.pickUpSchedule },
-        products: [...model.inputs.shoppingCart.products]
+        products: orderProducts
     };
     
+    // Legg til i orders array
     model.orders.push(newOrder);
-    model.inputs.shoppingCart.case = 'OrderSent';
+    
+    // Lagre til localStorage
+    localStorage.setItem('model', JSON.stringify(model));
+    
+    // Tøm handlekurven
     clearCart();
+    
+    // Oppdater view
+    model.inputs.shoppingCart.case = 'OrderSent';
     updateView();
 }
 
