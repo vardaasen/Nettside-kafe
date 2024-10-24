@@ -4,7 +4,7 @@
  * functions, ensuring they generate the correct HTML structure for different scenarios.
  */
 
-jest.mock('../src/cafe-menu-view', () => ({
+jest.mock('../src/js/products/cafe-menu-view', () => ({
   createCafeMenuHtml: jest.fn(
     () => '<div id="cafe-menu-tab-row"><button>Baguette</button></div>',
   ),
@@ -22,7 +22,7 @@ import {
   createCafeMenuHtml,
   createThemeCakeMenuHtml,
   createProductCardHtml,
-} from '../src/cafe-menu-view';
+} from '../src/js/products/cafe-menu-view';
 
 describe('Cafe Menu View', () => {
   beforeEach(() => {

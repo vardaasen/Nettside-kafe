@@ -27,11 +27,11 @@ const mockModel = {
   ],
 };
 
-jest.mock('../src/model', () => ({
+jest.mock('../src/js/shared/model', () => ({
   model: mockModel,
 }));
 
-const { model } = require('../src/model');
+const { model } = require('../src/js/shared/model');
 
 describe('Model Structure', () => {
   test('should have all expected categories', () => {

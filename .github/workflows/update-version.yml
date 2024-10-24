@@ -19,12 +19,12 @@ jobs:
 
     - name: Oppdater version.js
       run: |
-        sed -i 's/const appVersion = .*/const appVersion = "'"$VERSION"'";/' src/version.js
+        sed -i 's/const appVersion = .*/const appVersion = "'"$VERSION"'";/' js/utils/version.js
       env:
         VERSION: ${{ env.version }}
 
     - name: Vis innholdet i version.js etter sed
-      run: cat src/version.js
+      run: cat js/utils/version.js
 
     - name: Sjekk git status før commit
       run: git status
@@ -33,7 +33,7 @@ jobs:
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
-        git add src/version.js
+        git add js/utils/version.js
         git commit -m "Update version to $VERSION"
         git push origin main
       env:

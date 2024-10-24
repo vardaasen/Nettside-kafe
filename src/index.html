@@ -86,12 +86,12 @@
     </div>
   </footer>
 
- <!-- Dynamisk last inn verion.js og cache-busting via timestamp -->
-<script>
-  const timestamp = new Date().getTime();
-  const versionScript = document.createElement('script');
-  versionScript.src = `version.js?v=${timestamp}`;
-  document.head.appendChild(versionScript);
+  <!-- Dynamisk last inn version.js og cache-busting via timestamp -->
+  <script>
+    const timestamp = new Date().getTime();
+    const versionScript = document.createElement('script');
+    versionScript.src = `js/utils/version.js?v=${timestamp}`;
+    document.head.appendChild(versionScript);
 
   versionScript.onload = function () {
     const appVersion = window.appVersion || "default_version";
@@ -99,23 +99,23 @@
     const mainCss = document.getElementById('main-css');
     const checkoutTesting = document.getElementById('checkout-testing');
     mainCss.href = `css/styles.css?v=${appVersion}`;
-    checkoutTesting.href = `checkoutStyles.css?v=${appVersion}`;
+    checkoutTesting.href = `css/checkout/checkoutStyles.css?v=${appVersion}`;
 
     const scripts = [
-      "model.js",
-      "common.js",
-      "cafe-menu-view.js",
-      "cake-menu-view.js",
-      "theme-menu-view.js",
-      "view.js",
-      "cafe-menu-controller.js",
-      "cake-menu-controller.js",
-      "store/products.js",
-      "js/cartView.js",
-      "js/cartController.js",
-      "checkoutController.js",
-      "checkoutView.js",
-    ];
+    'js/shared/model.js',
+    'js/shared/common.js',
+    'js/products/cafe-menu-view.js',
+    'js/products/cake-menu-view.js',
+    'js/products/theme-menu-view.js',
+    'js/shared/view.js',
+    'js/products/cafe-menu-controller.js',
+    'js/products/cake-menu-controller.js',
+    'data/products.js',
+    'js/cart/cartView.js',
+    'js/cart/cartController.js',
+    'js/checkout/checkoutController.js',
+    'js/checkout/checkoutView.js',
+];
 
       let loadedScripts = 0;
       scripts.forEach(script => {

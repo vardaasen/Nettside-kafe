@@ -4,17 +4,17 @@
  * update the model and call the updateView function when appropriate.
  */
 
-jest.mock('../src/menu-controller', () => ({
+jest.mock('test.menu-controller', () => ({
   switchTab: jest.fn(),
   switchMenu: jest.fn(),
 }));
 
-jest.mock('../src/view', () => ({
+jest.mock('../src/js/shared/view', () => ({
   updateView: jest.fn(),
 }));
 
-import { switchTab, switchMenu } from '../src/menu-controller';
-import { updateView } from '../src/view';
+import { switchTab, switchMenu } from 'test.menu-controller';
+import { updateView } from './test.view';
 
 describe('Menu Controller', () => {
   beforeEach(() => {

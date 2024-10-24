@@ -2,11 +2,6 @@
  * Visning for varelageret.
  */
 const inventoryView = {
-  /**
-   * Gjengir varelageret i brukergrensesnittet.
-   * @param {Array<{productId: number, categoryIndex: number, productName: string, unitsInStock: number}>} products - Listen av produkter.
-   * @param {string[]} categories - Listen av produktkategorier.
-   */
   renderInventory() {
     const categories = model.categories;
     const products = model.products;

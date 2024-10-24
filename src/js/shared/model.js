@@ -396,9 +396,8 @@ function saveModel() {
 
 async function getProductsFromStore() {
   try {
-    const response = await fetch('store/products.json');
-    const fromStore = await response.json();
-    return fromStore;
+    const response = await fetch('data/products.json');
+    return await response.json();
   } catch (err) {
     alert('Failed to load products from json file: ', err);
     return [];
