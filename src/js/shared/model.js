@@ -54,9 +54,6 @@ const model = {
 
   flavors: {
     vanilje,
-    sjokolade,
-    sitron,
-    jordbær,
   },
 
   /**
