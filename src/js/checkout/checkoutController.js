@@ -63,6 +63,7 @@ function submitOrder() {
   const newOrder = {
     orderId: model.orders.length + 1,
     customerName: customerName,
+    contactNumber: contactNumber,
     status: 'Ny',
     pickUpSchedule: { ...model.inputs.shoppingCart.pickUpSchedule },
     products: orderProducts,
