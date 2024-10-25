@@ -2,32 +2,14 @@ function updateView() {
   const app = document.getElementById('app');
   const content = createCurrentPageHtml();
   const currentPage = model.app.currentPage;
-  
+
   // Håndter innholdet basert på type
   if (content instanceof HTMLElement) {
-      app.replaceChildren(content);
+    app.replaceChildren(content);
   } else {
-      const container = document.createElement('div');
-      container.innerHTML = content;
-      app.replaceChildren(container);
-  }
-
-  // Oppdater nettleserhistorikken
-  history.pushState({ page: currentPage }, '', `#${currentPage}`);
-}
-
-function updateView() {
-  const app = document.getElementById('app');
-  const content = createCurrentPageHtml();
-  const currentPage = model.app.currentPage;
-  
-  // Håndter innholdet basert på type
-  if (content instanceof HTMLElement) {
-      app.replaceChildren(content);
-  } else {
-      const container = document.createElement('div');
-      container.innerHTML = content;
-      app.replaceChildren(container);
+    const container = document.createElement('div');
+    container.innerHTML = content;
+    app.replaceChildren(container);
   }
 
   // Oppdater nettleserhistorikken
@@ -36,19 +18,19 @@ function updateView() {
 
 function createCurrentPageHtml() {
   if (model.app.currentPage === 'cafeMenu') {
-      return createCafeMenuHtml();
+    return createCafeMenuHtml();
   }
   if (model.app.currentPage === 'cakeThemes') {
-      return createThemesMenuHtml();
+    return createThemesMenuHtml();
   }
   if (model.app.currentPage === 'cakes') {
-      return createCakeMenuHtml();
+    return createCakeMenuHtml();
   }
   if (model.app.currentPage === 'shoppingCart') {
-      if (model.inputs.shoppingCart.case !== 'Overview') {
-          return createCheckoutView();
-      }
-      return createShoppingCartHtml();
+    if (model.inputs.shoppingCart.case !== 'Overview') {
+      return createCheckoutView();
+    }
+    return createShoppingCartHtml();
   }
   return '';
 }
