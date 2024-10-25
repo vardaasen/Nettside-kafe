@@ -343,7 +343,21 @@
   {
     "productId": 32,
     "categoryIndex": 3,
+    "productName": "Lag din egen kake",
+    "type": "customizable",
+    "basePrice": 250,
+    "unitPrice": 250,
+    "image": "uten-tema.webp",
+    "description": "Tilpass din kake med et valg av tema, smak, og størrelse.",
+    "preorderRequired": true,
+    "customizationAvailable": true,
+    "unitsInStock": 10
+  },
+  {
+    "productId": 33,
+    "categoryIndex": 3,
     "productName": "Sjokoladekake",
+    "type": "standard",
     "unitPrice": 300,
     "description": "En rik og fyldig sjokoladekake med kremglasur. Allergener: Melk, Egg, Hvete",
     "image": "sjokoladekake.webp",
@@ -352,9 +366,10 @@
     "unitsInStock": 30
   },
   {
-    "productId": 33,
+    "productId": 34,
     "categoryIndex": 3,
     "productName": "Ostekake med bær",
+    "type": "standard",
     "unitPrice": 400,
     "description": "En kremet ostekake toppet med friske bær. Allergener: Melk, Egg, Hvete",
     "image": "ostekake_baer.webp",
@@ -363,9 +378,10 @@
     "unitsInStock": 25
   },
   {
-    "productId": 34,
+    "productId": 35,
     "categoryIndex": 3,
     "productName": "Gulrotkake",
+    "type": "standard",
     "unitPrice": 290,
     "description": "Saftig gulrotkake med kremostglasur. Allergener: Melk, Egg, Hvete",
     "image": "gulrotkake.webp",
@@ -374,9 +390,10 @@
     "unitsInStock": 40
   },
   {
-    "productId": 35,
+    "productId": 36,
     "categoryIndex": 3,
     "productName": "Red Velvet kake",
+    "type": "standard",
     "unitPrice": 450,
     "description": "En elegant Red Velvet kake med kremostglasur. Allergener: Melk, Egg, Hvete",
     "image": "red_velvet.webp",
@@ -385,9 +402,10 @@
     "unitsInStock": 0
   },
   {
-    "productId": 36,
+    "productId": 37,
     "categoryIndex": 3,
     "productName": "Eplekake",
+    "type": "standard",
     "unitPrice": 270,
     "description": "En klassisk eplekake med kanel og sukker. Allergener: Hvete, Egg",
     "image": "eplekake.webp",
@@ -396,9 +414,10 @@
     "unitsInStock": 65
   },
   {
-    "productId": 37,
+    "productId": 38,
     "categoryIndex": 3,
     "productName": "Sitronkake",
+    "type": "standard",
     "unitPrice": 310,
     "description": "Frisk sitronkake med glasur. Allergener: Egg, Hvete",
     "image": "sitronkake.webp",
@@ -407,102 +426,15 @@
     "unitsInStock": 0
   },
   {
-    "productId": 38,
+    "productId": 39,
     "categoryIndex": 3,
     "productName": "Marmorkake",
+    "type": "standard",
     "unitPrice": 280,
     "description": "En klassisk marmorkake med vanilje- og sjokoladesmak. Allergener: Melk, Egg, Hvete",
     "image": "marmorkake.webp",
     "preorderRequired": true,
     "customizationAvailable": true,
     "unitsInStock": 30
-  },
-  {
-    "productId": 39,
-    "categoryIndex": 3,
-    "productName": "Cupcakes",
-    "unitPrice": 320,
-    "description": "Dekorative cupcakes med smørkrem. Allergener: Melk, Egg, Hvete",
-    "image": "cupcakes.webp",
-    "preorderRequired": true,
-    "customizationAvailable": true,
-    "unitsInStock": 50
-  },
-  {
-    "productId": 40,
-    "categoryIndex": 3,
-    "productName": "Brownies",
-    "unitPrice": 350,
-    "description": "Seige brownies med sjokoladebiter. Allergener: Melk, Egg, Hvete",
-    "image": "brownies.webp",
-    "preorderRequired": true,
-    "customizationAvailable": true,
-    "unitsInStock": 40
-  },
-  {
-    "productId": 41,
-    "categoryIndex": 3,
-    "productName": "Sjokolademousse",
-    "unitPrice": 310,
-    "description": "En luftig sjokolademousse servert i glass. Allergener: Melk, Egg",
-    "image": "sjokolademousse.webp",
-    "preorderRequired": true,
-    "customizationAvailable": true,
-    "unitsInStock": 20
-  },
-  {
-    "productId": 42,
-    "categoryIndex": 3,
-    "productName": "Frukttærte",
-    "unitPrice": 370,
-    "description": "Sprø frukttærte med vaniljekrem og sesongens frukt. Allergener: Melk, Egg, Hvete",
-    "image": "frukttaerte.webp",
-    "preorderRequired": true,
-    "customizationAvailable": true,
-    "unitsInStock": 30
-  },
-  {
-    "productId": 43,
-    "categoryIndex": 3,
-    "productName": "Makroner",
-    "unitPrice": 270,
-    "description": "Franske makroner i ulike smaker. Allergener: Nøtter, Egg",
-    "image": "makroner.webp",
-    "preorderRequired": true,
-    "customizationAvailable": true,
-    "unitsInStock": 100
-  },
-  {
-    "productId": 44,
-    "categoryIndex": 3,
-    "productName": "Tiramisu",
-    "unitPrice": 420,
-    "description": "Klassisk italiensk dessert med mascarpone og kaffe. Allergener: Melk, Egg, Hvete",
-    "image": "tiramisu.webp",
-    "preorderRequired": true,
-    "customizationAvailable": true,
-    "unitsInStock": 15
-  },
-  {
-    "productId": 45,
-    "categoryIndex": 3,
-    "productName": "Pavlova",
-    "unitPrice": 300,
-    "description": "Luftig pavlova med krem og frukt. Allergener: Melk, Egg",
-    "image": "pavlova.webp",
-    "preorderRequired": true,
-    "customizationAvailable": true,
-    "unitsInStock": 20
-  },
-  {
-    "productId": 46,
-    "categoryIndex": 3,
-    "productName": "Sjokoladefondant",
-    "unitPrice": 450,
-    "description": "Varm sjokoladefondant med flytende kjerne. Allergener: Melk, Egg, Hvete",
-    "image": "sjokoladefondant.webp",
-    "preorderRequired": true,
-    "customizationAvailable": true,
-    "unitsInStock": 10
   }
 ]

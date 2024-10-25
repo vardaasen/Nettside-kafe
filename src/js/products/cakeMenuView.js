@@ -57,6 +57,21 @@ function createCakeProductCardHtml(product) {
 function createCakeProductInfoOverlayElement() {
   const product = getProductFromId(model.app.selectedProduct);
   if (product != null) {
+    const isCustomizable = product.type === 'customizable';
+
+    const defaultImage = isCustomizable
+      ? model.themeImages[model.inputs.themeCakeMenu.selectedThemeId]
+      : product.image;
+    const defaultPrice = isCustomizable
+      ? model.calculateCustomCakePrice(
+          model.inputs.themeCakeMenu.selectedThemeId,
+          model.inputs.themeCakeMenu.size,
+        )
+      : model.calculateStandardCakePrice(
+          product.productId,
+          model.inputs.cakeMenu.size,
+        );
+
     const overlay = document.createElement('section');
     overlay.classList.add('overlay');
 
@@ -73,9 +88,43 @@ function createCakeProductInfoOverlayElement() {
         </header>
 
         <div class="overlay__body">
-          <img src='./img/cakes/${product.image}' alt="${product.productName}" class="overlay__image">
-          <p class="overlay__price">${product.unitPrice ? `${product.unitPrice} Kr` : 'Pris ikke tilgjengelig'}</p>
+          <img src='./img/cakes/${defaultImage}' alt="${product.productName}" class="overlay__image">
+          <p class="overlay__price">${defaultPrice} Kr.</p>          
           <p class="overlay__description">${product.description}</p>
+          
+          ${
+            isCustomizable
+              ? /* HTML*/
+                `
+                  <label for="themeSelect">Velg Tema:</label>
+                  <select name="themeSelect" onChange="updateTheme(this.value)">
+                    <option value="8">Bryllup</option>
+                    <option value="12">Bursdag</option>
+                    <option value="16">Valentin</option>
+                  </select>
+                `
+              : /* HTML*/
+                `
+
+
+              
+                `
+          } 
+
+
+
+
+
+
+
+          <label for="cake-select">Velg størrelse:</label>
+        <select name="cake-select" onChange="updateCakeSize(this.value)">
+          <option value="8">8 pax</option>
+          <option value="12">12 pax</option>
+          <option value="16">16 pax</option>
+        </select>
+
+          
 
           <div class="overlay__section overlay__section--comment">
             <label for="product-comment" class="overlay__label">Tilpasninger:</label>
