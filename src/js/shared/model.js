@@ -52,9 +52,7 @@ const model = {
     16: 2,
   },
 
-  flavors: {
-    vanilje,
-  },
+  flavors: ['vanilje', 'sjokolade', 'sitron', 'jordbær'],
 
   /**
    * Kategorier av produkter.
