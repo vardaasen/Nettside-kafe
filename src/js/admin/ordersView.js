@@ -15,9 +15,10 @@ const ordersView = {
       const orderRow = document.createElement('div');
       orderRow.classList.add('orders__row');
 
-      orderRow.innerHTML = `
+      orderRow.innerHTML = /* HTML*/ `
         <div class="orders__column orders__column--customer">
-          ${order.customerName}
+          <div>${order.customerName}</div>
+          <div>${order.contactNumber}</div>
         </div>
         <div class="orders__column orders__column--products">
           ${renderOrderedProductsHtml(order.products)}
