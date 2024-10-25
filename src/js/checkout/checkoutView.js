@@ -72,46 +72,70 @@ function createPickupTimeView() {
 }
 
 function createCustomerInfoView() {
-  return /* HTML */`
-      <div class="checkout-container">
-          <h2>Dine opplysninger</h2>
-          
-          <div class="form-group">
-              <label for="customer-name">Navn:</label>
-              <input 
-                  type="text" 
-                  id="customer-name" 
-                  required
-                  oninput="updateCustomerName(this.value)"
-                  value="${model.inputs.shoppingCart.customerName}"
-              >
-          </div>
-          
-          <div class="form-group">
-              <label for="contact-number">Telefonnummer:</label>
-              <input 
-                  type="tel" 
-                  id="contact-number" 
-                  required
-                  placeholder="(+47) 12345678"
-                  oninput="updateContactNumber(this.value)"
-                  value="${model.inputs.shoppingCart.contactNumber}"
-              >
-          </div>
-          
-          <div class="order-summary">
-              <h3>Din bestilling vil være klar:</h3>
-              <p>${dayjs(model.inputs.shoppingCart.pickUpSchedule.date).format('DD. MMMM YYYY')} 
-                 kl. ${model.inputs.shoppingCart.pickUpSchedule.time}</p>
-          </div>
-          
-          <div class="button-row">
-              <button onclick="model.inputs.shoppingCart.case='PickupTime'; updateView();">Tilbake</button>
-              <button onclick="submitOrder()">Send bestilling</button>
-          </div>
-      </div>
-  `;
-}
+    return /* HTML */`
+        <div class="checkout-container">
+            <h2>Dine opplysninger</h2>
+            <form id="customer-info-form">
+                <div class="form-group">
+                    <label for="customer-name">Navn:</label>
+                    <input 
+                        type="text" 
+                        id="customer-name" 
+                        required
+                        oninput="updateCustomerName(this.value)"
+                        value="${model.inputs.shoppingCart.customerName}"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-number">Telefonnummer:</label>
+                    <input 
+                        type="tel" 
+                        id="contact-number" 
+                        required
+                        placeholder="12345678"
+                        oninput="updateContactNumber(this.value)"
+                        value="${model.inputs.shoppingCart.contactNumber}"
+                    >
+                </div>
+                
+                <div class="order-summary">
+                    <h3>Din bestilling vil være klar:</h3>
+                    <p>${dayjs(model.inputs.shoppingCart.pickUpSchedule.date).format('DD. MMMM YYYY')} 
+                       kl. ${model.inputs.shoppingCart.pickUpSchedule.time}</p>
+                </div>
+                
+                <div class="button-row">
+                    <button type="button" onclick="model.inputs.shoppingCart.case='PickupTime'; updateView();">Tilbake</button>
+                    <button type="submit">Send bestilling</button>
+                </div>
+            </form>
+        </div>
+    `;
+  }
+  
+  // Initialiser intl-tel-input og validering
+  window.addEventListener('load', function() {
+      const phoneInput = document.querySelector("#contact-number");
+      const iti = window.intlTelInput(phoneInput, {
+          initialCountry: "no",
+          separateDialCode: true,
+          utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.13/build/js/utils.js"
+      });
+  
+      document.getElementById("customer-info-form").addEventListener("submit", function(event) {
+          event.preventDefault();
+  
+          const phoneNumber = iti.getNumber();
+          if (!window.libphonenumber.isValidPhoneNumber(phoneNumber, iti.getSelectedCountryData().iso2)) {
+              alert("Vennligst skriv inn et gyldig telefonnummer");
+              return;
+          }
+  
+          submitOrder();
+      });
+  });
+  
 
 function createOrderConfirmation() {
   return /* HTML */`
