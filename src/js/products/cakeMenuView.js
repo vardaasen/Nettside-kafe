@@ -66,8 +66,7 @@ function createCakeProductCardHtml(product) {
           ${isOutOfStock ? 'disabled' : ''}
           ${
       !isOutOfStock
-        ? /* HTML */ `onclick="console.log('Button clicked for product:',
-                product.productId); addProductToCart(${product.productId})"`
+        ? /* HTML */ `onclick="addCakeProductToCart(${product.productId})"`
         : ''
     }
         >
@@ -221,7 +220,7 @@ function createCakeProductInfoOverlayElement() {
               <label for="quantityInput" class="overlay__label">Antall:</label>
               <input type="number" id="quantityInput" class="overlay__quantity-input" value="${isCustomizable ? model.inputs.themeCakeMenu.quantity : model.inputs.cakeMenu.quantity}" min="1" oninput="model.inputs.${isCustomizable ? 'themeCakeMenu' : 'cakeMenu'}.quantity = this.valueAsNumber" />
             </div>
-            <button id="overlay-buy" class="overlay-button" onclick="console.log('Button clicked for product:', product.productId); addProductToCart(${model.app.selectedProduct.productId})">Legg til i handlekurv</button>
+            <button id="overlay-buy" class="overlay-button" onclick="addCakeProductToCart(${product.productId})">Legg til i handlekurv</button>
           </footer>
 
         </div>
