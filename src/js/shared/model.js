@@ -31,7 +31,7 @@ const model = {
     cakeMenu: {
       type: 'chocolate',
       size: 8, // 8, 12, 16
-      basePrice:300,
+      basePrice: 300,
       quantity: 1,
     },
     shoppingCart: {
@@ -49,16 +49,15 @@ const model = {
   sizeMultipliers: {
     8: 1.0,
     12: 1.5,
-    16: 2
+    16: 2,
   },
 
-  flavors:{
+  flavors: {
     vanilje,
     sjokolade,
     sitron,
-    jordbær
+    jordbær,
   },
-
 
   /**
    * Kategorier av produkter.
@@ -67,15 +66,61 @@ const model = {
   categories: ['baguette', 'canapes', 'coffee', 'cakes'],
 
   themes: [
-    { themeId: 1, themeName: 'Uten tema', basePrice: 450, description: 'Ingen dekorasjon. Enkel og elegant.' },
-    { themeId: 2, themeName: 'Bryllup', basePrice: 550, description: 'Perfekt for bryllupsfeiring, med elegante dekorasjoner.' },
-    { themeId: 3, themeName: 'Barnebursdag', basePrice: 400, description: 'En morsom kake for barnas bursdag, med fargerik pynt.' },
-    { themeId: 4, themeName: 'Bursdag voksen', basePrice: 420, description: 'En sofistikert kake for voksne bursdagsfeiringer.' },
-    { themeId: 5, themeName: 'Jubileum', basePrice: 440, description: 'Feir store milepæler med en spesiell jubileumskake.' },
-    { themeId: 6, themeName: 'Jul', basePrice: 480, description: 'En festlig kake for juletiden, pyntet med sesongens farger.' },
-    { themeId: 7, themeName: 'Halloween', basePrice: 490, description: 'Skummel og morsom kake for Halloween, med kreativ pynt.' },
-    { themeId: 8, themeName: 'Konfirmasjon', basePrice: 430, description: 'En elegant kake til konfirmasjonsfeiringer.' },
-    { themeId: 9, themeName: 'Valentin', basePrice: 470, description: 'En romantisk kake for Valentinsdag, pyntet med hjerter.',},
+    {
+      themeId: 1,
+      themeName: 'Uten tema',
+      basePrice: 450,
+      description: 'Ingen dekorasjon. Enkel og elegant.',
+    },
+    {
+      themeId: 2,
+      themeName: 'Bryllup',
+      basePrice: 550,
+      description: 'Perfekt for bryllupsfeiring, med elegante dekorasjoner.',
+    },
+    {
+      themeId: 3,
+      themeName: 'Barnebursdag',
+      basePrice: 400,
+      description: 'En morsom kake for barnas bursdag, med fargerik pynt.',
+    },
+    {
+      themeId: 4,
+      themeName: 'Bursdag voksen',
+      basePrice: 420,
+      description: 'En sofistikert kake for voksne bursdagsfeiringer.',
+    },
+    {
+      themeId: 5,
+      themeName: 'Jubileum',
+      basePrice: 440,
+      description: 'Feir store milepæler med en spesiell jubileumskake.',
+    },
+    {
+      themeId: 6,
+      themeName: 'Jul',
+      basePrice: 480,
+      description:
+        'En festlig kake for juletiden, pyntet med sesongens farger.',
+    },
+    {
+      themeId: 7,
+      themeName: 'Halloween',
+      basePrice: 490,
+      description: 'Skummel og morsom kake for Halloween, med kreativ pynt.',
+    },
+    {
+      themeId: 8,
+      themeName: 'Konfirmasjon',
+      basePrice: 430,
+      description: 'En elegant kake til konfirmasjonsfeiringer.',
+    },
+    {
+      themeId: 9,
+      themeName: 'Valentin',
+      basePrice: 470,
+      description: 'En romantisk kake for Valentinsdag, pyntet med hjerter.',
+    },
   ],
 
   themeImages: {
@@ -336,20 +381,20 @@ const model = {
     },
   ],
 
-  calculateCustomCakePrice(themeId, size){
-    const theme = this.themes.find(t => t.themeId === themeId);
+  calculateCustomCakePrice(themeId, size) {
+    const theme = this.themes.find((t) => t.themeId === themeId);
     const basePrice = theme ? theme.basePrice : 250;
-    const sizeMultiplier = this.sizeMultipliers[size] || 1 ;
+    const sizeMultiplier = this.sizeMultipliers[size] || 1;
 
     return basePrice * sizeMultiplier;
   },
 
-  calculateStandardCakePrice(productId, size ) {
-    const product = this.products.find(p=>p.productId === productId )
+  calculateStandardCakePrice(productId, size) {
+    const product = this.products.find((p) => p.productId === productId);
     const basePrice = product ? product.unitPrice : 200;
     const sizeMultiplier = this.sizeMultipliers[size] || 1;
 
-    return basePrice * sizeMultiplier
+    return basePrice * sizeMultiplier;
   },
 
   /**
