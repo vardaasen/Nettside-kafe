@@ -1,7 +1,7 @@
 function updateView() {
   const app = document.getElementById('app');
   const content = createCurrentPageHtml();
-  const currentPage = model.app.currentPage;
+  const currentPage = model.pages[model.app.currentPageIndex];
 
   // Håndter innholdet basert på type
   if (content instanceof HTMLElement) {
@@ -17,16 +17,16 @@ function updateView() {
 }
 
 function createCurrentPageHtml() {
-  if (model.app.currentPage === 'cafeMenu') {
+  if (model.app.currentPageIndex === cafeMenu) {
     return createCafeMenuHtml();
   }
-  if (model.app.currentPage === 'cakeThemes') {
+  if (model.app.currentPageIndex === cakeThemes) {
     return createThemesMenuHtml();
   }
-  if (model.app.currentPage === 'cakes') {
+  if (model.app.currentPageIndex === cakes) {
     return createCakeMenuHtml();
   }
-  if (model.app.currentPage === 'shoppingCart') {
+  if (model.app.currentPageIndex === shoppingCart) {
     if (model.inputs.shoppingCart.case !== 'Overview') {
       return createCheckoutView();
     }
@@ -38,15 +38,15 @@ function createCurrentPageHtml() {
 // Håndter tilbake/frem-knapper i nettleseren
 window.addEventListener('popstate', (event) => {
   if (event.state && event.state.page) {
-    model.app.currentPage = event.state.page;
+    model.app.currentPageIndex = model.pages.indexOf(event.state.page);
     document.getElementById('app').replaceChildren(createCurrentPageHtml());
   }
 });
 
 // Håndter initial sidelasting
 window.addEventListener('DOMContentLoaded', () => {
-  model.app.currentPage = window.location.hash
+  model.app.currentPageIndex = model.pages.indexOf(window.location.hash)
     ? window.location.hash.substring(1)
-    : 'cafeMenu';
+    : model.pages[cafeMenu];
   updateView();
 });

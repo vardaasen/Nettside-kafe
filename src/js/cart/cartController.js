@@ -48,13 +48,13 @@ function updateCart(action) {
     }, 600);
   }
 
-  if (model.app.currentPage === 'shoppingCart') {
+  if (model.app.currentPageIndex === shoppingCart) {
     renderCart();
   }
 }
 
 function showShoppingCart() {
-  model.app.currentPage = 'shoppingCart';
+  model.app.currentPageIndex = shoppingCart;
   model.inputs.shoppingCart.case = 'Overview';
   updateView();
 }

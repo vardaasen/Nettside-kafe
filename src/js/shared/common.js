@@ -37,11 +37,10 @@ function closeOverlay() {
 }
 
 function getProductsForCurrentPage() {
-  const currentPage = model.app.currentPage;
-  if (currentPage === 'cafeMenu') {
+  if (model.app.currentPageIndex === cafeMenu) {
     return getProductsForCurrentTab();
-  } else {
-    return getProductsForCategory(currentPage);
+  } else if (model.app.currentPageIndex === cakes) {
+    return getProductsForCategory('cakes');
   }
 }
 

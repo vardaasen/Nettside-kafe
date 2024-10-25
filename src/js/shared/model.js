@@ -1,17 +1,15 @@
 /* starter arbeid */
+const cafeMenu = 0;
+const cakeThemes = 1;
+const cakes = 2;
+const shoppingCart = 3;
 
 const model = {
-  /*
-    pages:
-    cafeMenu
-    cakeThemes
-    cakes
-    shoppingCart
-    */
+  pages: ['kafeMeny', 'kakeTemaer', 'kaker', 'handlevogn'],
 
   // del 1
   app: {
-    currentPage: 'cafeMenu',
+    currentPageIndex: 0,
     selectedProduct: null,
   },
 

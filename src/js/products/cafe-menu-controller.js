@@ -2,12 +2,6 @@ function switchTab(value) {
   model.inputs.cafeMenu.tab = value;
   updateView();
 }
-
-function switchMenu(value) {
-  model.app.currentPage = value;
-  updateView();
-}
-
 // function openCafeMenuProductInfo(id) {
 //   model.app.overlayForProductId = id;
 //   updateView();
