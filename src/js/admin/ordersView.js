@@ -9,14 +9,16 @@ const ordersView = {
     ordersContainer.innerHTML = '';
 
     const visibleOrders = orders.filter((order) => order.status !== 'Hentet');
+    const sortedOrders = sortByPickupDateAndTime(visibleOrders);
 
-    visibleOrders.forEach((order) => {
+    sortedOrders.forEach((order) => {
       const orderRow = document.createElement('div');
       orderRow.classList.add('orders__row');
 
-      orderRow.innerHTML = `
+      orderRow.innerHTML = /* HTML*/ `
         <div class="orders__column orders__column--customer">
-          ${order.customerName}
+          <div>${order.customerName}</div>
+          <div>${order.contactNumber}</div>
         </div>
         <div class="orders__column orders__column--products">
           ${renderOrderedProductsHtml(order.products)}
@@ -44,6 +46,26 @@ const ordersView = {
     });
   },
 };
+
+function sortByPickupDateAndTime(orders) {
+  return orders.sort((a, b) => {
+    const aDate = new Date(a.pickUpSchedule.date);
+    const bDate = new Date(b.pickUpSchedule.date);
+
+    if (aDate.getTime() === bDate.getTime()) {
+      const aTime = a.pickUpSchedule.time.split(':');
+      const bTime = b.pickUpSchedule.time.split(':');
+
+      return (
+        parseInt(aTime[0]) * 60 +
+        parseInt(aTime[1]) -
+        (parseInt(bTime[0]) * 60 + parseInt(bTime[1]))
+      );
+    }
+
+    return aDate.getTime() - bDate.getTime();
+  });
+}
 
 /**
  * Gjengir produkter for en bestilling.

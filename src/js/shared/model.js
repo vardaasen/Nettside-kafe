@@ -1,17 +1,15 @@
 /* starter arbeid */
+const cafeMenu = 0;
+const cakeThemes = 1;
+const cakes = 2;
+const shoppingCart = 3;
 
 const model = {
-  /*
-    pages:
-    cafeMenu
-    cakeThemes
-    cakes
-    shoppingCart
-    */
+  pages: ['kafeMeny', 'kakeTemaer', 'kaker', 'handlevogn'],
 
   // del 1
   app: {
-    currentPage: 'cafeMenu',
+    currentPageIndex: 0,
     selectedProduct: null,
   },
 
@@ -122,6 +120,7 @@ const model = {
     {
       orderId: 1,
       customerName: 'Erik Hansen',
+      contactNumber: '+47 23829382',
       status: 'Ny',
       pickUpSchedule: {
         date: '2024-11-04',
@@ -145,6 +144,7 @@ const model = {
     {
       orderId: 2,
       customerName: 'Anna Johansen',
+      contactNumber: '+47 48392783',
       status: 'Under arbeid',
       pickUpSchedule: {
         date: '2024-11-05',
@@ -168,6 +168,7 @@ const model = {
     {
       orderId: 3,
       customerName: 'Ola Nordmann',
+      contactNumber: '+47 38299283',
       status: 'Ny',
       pickUpSchedule: {
         date: '2024-11-06',
@@ -191,6 +192,7 @@ const model = {
     {
       orderId: 4,
       customerName: 'Kari Olsen',
+      contactNumber: '+47 43289283',
       status: 'Klar til Henting',
       pickUpSchedule: {
         date: '2024-11-07',
@@ -208,6 +210,7 @@ const model = {
     {
       orderId: 5,
       customerName: 'Hans Pettersen',
+      contactNumber: '+47 87499283',
       status: 'Under arbeid',
       pickUpSchedule: {
         date: '2024-11-08',
@@ -225,6 +228,7 @@ const model = {
     {
       orderId: 6,
       customerName: 'Maria Nilsen',
+      contactNumber: '+47 87493827',
       status: 'Ny',
       pickUpSchedule: {
         date: '2024-11-09',
@@ -243,6 +247,7 @@ const model = {
     {
       orderId: 7,
       customerName: 'Peter Larsen',
+      contactNumber: '+47 38392839',
       status: 'Under arbeid',
       pickUpSchedule: {
         date: '2024-11-11',
@@ -260,6 +265,7 @@ const model = {
     {
       orderId: 8,
       customerName: 'Ingrid Svendsen',
+      contactNumber: '+47 38374738',
       status: 'Ny',
       pickUpSchedule: {
         date: '2024-11-12',
@@ -283,6 +289,7 @@ const model = {
     {
       orderId: 9,
       customerName: 'Thomas Andersen',
+      contactNumber: '+47 48292838',
       status: 'Klar til Henting',
       pickUpSchedule: {
         date: '2024-11-13',
@@ -306,6 +313,7 @@ const model = {
     {
       orderId: 10,
       customerName: 'Sofie Berg',
+      contactNumber: '+47 93847483',
       status: 'Ny',
       pickUpSchedule: {
         date: '2024-11-14',

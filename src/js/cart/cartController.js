@@ -1,58 +1,66 @@
 function addToCart(name, price, productId, quantity = 1) {
+  const cart = model.inputs.shoppingCart.products;
   const existingItem = cart.find((item) => item.name === name);
   if (existingItem) {
-      existingItem.quantity += quantity;
+    existingItem.quantity += quantity;
   } else {
-      cart.push({ name, price, quantity, productId });
+    cart.push({ name, price, quantity, productId });
   }
   updateCart('add');
 }
 
 function removeFromCart(name) {
-  cart = cart.filter((item) => item.name !== name);
+  const cart = model.inputs.shoppingCart.products;
+  model.inputs.shoppingCart.products = cart.filter(
+    (item) => item.name !== name,
+  );
   updateCart('remove');
 }
 
 function clearCart() {
-  cart = [];
+  model.inputs.shoppingCart.products = [];
+  // updateView();
   updateCart('clear');
 }
 
 function updateCart(action) {
   const cartLink = document.getElementById('cartLink');
   const cartCount = document.getElementById('cartCount');
-  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const count = model.inputs.shoppingCart.products.reduce(
+    (sum, item) => sum + item.quantity,
+    0,
+  );
 
   if (cartCount) cartCount.textContent = count;
 
   if (action === 'add') {
-      showCartNotification('Produkt lagt til i handlekurven!');
+    showCartNotification('Produkt lagt til i handlekurven!');
   } else if (action === 'remove') {
-      showCartNotification('Produkt fjernet fra handlekurven!');
+    showCartNotification('Produkt fjernet fra handlekurven!');
   } else if (action === 'clear') {
-      showCartNotification('Handlekurven er nå tom!');
+    showCartNotification('Handlekurven er nå tom!');
   }
 
   if (cartLink) {
-      cartLink.classList.add('bounce', 'pulse');
-      setTimeout(() => {
-          cartLink.classList.remove('bounce', 'pulse');
-      }, 600);
+    cartLink.classList.add('bounce', 'pulse');
+    setTimeout(() => {
+      cartLink.classList.remove('bounce', 'pulse');
+    }, 600);
   }
 
-  if (model.app.currentPage === 'shoppingCart') {
-      renderCart();
+  if (model.app.currentPageIndex === shoppingCart) {
+    renderCart();
   }
 }
 
 function showShoppingCart() {
-  model.app.currentPage = 'shoppingCart';
+  model.app.currentPageIndex = shoppingCart;
   model.inputs.shoppingCart.case = 'Overview';
   updateView();
 }
 
 function getCartItems() {
-  return cart;
+  return model.inputs.shoppingCart.products;
 }
 
 // Gjør funksjonene globalt tilgjengelige
@@ -63,6 +71,5 @@ window.showShoppingCart = showShoppingCart;
 window.getCartItems = getCartItems;
 
 // Initialisering av handlevogn
-let cart = [];
 
 console.log('cartController.js loaded');
