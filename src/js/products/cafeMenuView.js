@@ -49,8 +49,8 @@ function createCafeProductCardHtml(product) {
       </header>
       <footer class="product-card__footer">
         <div class="product-card__price">${product.unitPrice} Kr</div>
-        <button class="product-card__button-add button__add-to-cart" 
-                onclick="addToCart('${product.productName}', ${product.unitPrice}, ${product.productId});"
+        <button class="product-card__button-add button__add-to-cart"
+                onclick="addCafeProductToCart(${product.productId})"
                 ${isOutOfStock ? 'disabled' : ''}>
           <svg class="cart-icon" fill="currentColor" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 487.1 487.1" xml:space="preserve">
             <path d="M342.3,137.978H385l-63.3-108.6c-5.1-8.8-16.4-11.8-25.2-6.6c-8.8,5.1-11.8,16.4-6.6,25.2L342.3,137.978z" />
@@ -69,6 +69,7 @@ function createCafeProductCardHtml(product) {
       </footer>
     </article>
   `;
+
 }
 
 function createCafeProductInfoOverlayElement() {
@@ -78,7 +79,7 @@ function createCafeProductInfoOverlayElement() {
     overlay.classList.add('overlay');
 
     overlay.innerHTML = /* HTML*/ `
-      <div class="overlay__content">
+      <section class="overlay__content">
         <header class="overlay-header">
           <h2 class="overlay__title">${product.productName}</h2>
           <button class="overlay-close-button" aria-label="Lukk" onclick="closeOverlay()">
@@ -103,14 +104,14 @@ function createCafeProductInfoOverlayElement() {
         <footer class="overlay-footer">
           <div class="overlay__quantity">
             <label for="quantity-input" class="overlay__label">Antall:</label>
-            <input type="number" value="1" min="1" id="quantity-input" class="overlay__input" oninput="model.inputs.cafeMenu.quantity=this.valueAsNumber"/>
+            <input type="number" value="1" min="1" id="quantity-input" class="overlay__quantity-input" oninput="model.inputs.cafeMenu.quantity=this.valueAsNumber"/>
           </div>
           <button id="overlay-buy" class="overlay-button"
-            onclick="addToCart('${product.productName}', ${product.unitPrice}, ${product.productId}, model.inputs.cafeMenu.quantity)">
+            onclick="addCafeProductToCart(${product.productId})">
             Legg til i handlekurv
           </button>
         </footer>
-      </div>
+      </section
     `;
 
     overlay.addEventListener('click', (event) => {

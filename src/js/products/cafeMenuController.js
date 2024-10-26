@@ -20,16 +20,27 @@ function updateComment(value) {
 
 function addCafeProductToCart(id) {
   const product = getProductFromId(id);
-  const quantity = model.inputs.cafeMenu.quantity;
-  if (quantity > 0) {
-    const productId = product.productId;
-    const comment = model.inputs.cafeMenu.message;
-    const quantity = model.inputs.cafeMenu.quantity;
-    model.inputs.shoppingCart.products.push({
-      productId,
-      quantity,
-      comment,
-    });
-    closeOverlay();
+
+  if (!product) {
+    console.error("Produktet ble ikke funnet.");
+    return;
   }
+
+  const quantity = model.inputs.cafeMenu.quantity || 1;
+  const comment = model.inputs.cafeMenu.message || '';
+
+  // Kombiner produktnavn med eventuelle tilpasninger (f.eks. kommentar)
+  let productName = product.productName;
+  if (comment) {
+    productName += ` - ${comment}`;
+  }
+
+  // Kall `addToCart` direkte med alle nødvendige parametere
+  addToCart(productName, product.unitPrice, product.productId, quantity);
+
+  // Lukk overlay hvis det er åpent
+  closeOverlay();
+  updateView();
 }
+
+window.addCafeProductToCart = addCafeProductToCart;
