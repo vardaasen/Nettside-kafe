@@ -9,11 +9,8 @@ function addToCart(name, price, productId, quantity = 1) {
   updateCart('add');
 }
 
-function removeFromCart(name) {
-  const cart = model.inputs.shoppingCart.products;
-  model.inputs.shoppingCart.products = cart.filter(
-    (item) => item.name !== name,
-  );
+function removeFromCart(itemIndex) {
+  model.inputs.shoppingCart.products.splice(itemIndex, 1);
   updateCart('remove');
 }
 
@@ -51,6 +48,16 @@ function updateCart(action) {
   if (model.app.currentPageIndex === shoppingCart) {
     renderCart();
   }
+}
+
+function setCartItemQuantity(itemIndex, quantity) {
+  if (quantity <= 0 || isNaN(quantity)) {
+    quantity = 1;
+  }
+
+  model.inputs.shoppingCart.products[itemIndex].quantity = quantity;
+
+  renderCart();
 }
 
 function showShoppingCart() {

@@ -3,7 +3,7 @@ function createShoppingCartHtml() {
   const shoppingCart = document.createElement('div');
   shoppingCart.id = 'cart';
   shoppingCart.classList.add('cart');
-  shoppingCart.innerHTML = `
+  shoppingCart.innerHTML = /* HTML*/ `
       <div class="cart-content">
           <div class="cart-header">
               <h1>Handlekurv</h1>
@@ -38,8 +38,8 @@ function renderCart() {
   let total = 0;
   let itemCount = 0;
 
-  cart.forEach((item) => {
-    cartItems.innerHTML += createCartItemHtml(item);
+  cart.forEach((item, itemIndex) => {
+    cartItems.innerHTML += createCartItemHtml(itemIndex, item);
     total += item.price * item.quantity;
     itemCount += item.quantity;
   });
@@ -49,14 +49,22 @@ function renderCart() {
   if (checkoutButton) checkoutButton.disabled = itemCount === 0;
 }
 
-function createCartItemHtml(item) {
+function createCartItemHtml(itemIndex, item) {
+  const totalProductCost = item.price * item.quantity;
   return /* HTML*/ `
     <div class="cart-item">
         <div class="cart-item-info">
             <div class="cart-item-name"><strong>${item.name}</strong></div>
-            <div class="cart-item-details">${item.quantity} x ${item.price} kr</div>
         </div>
-        <button class="remove-btn" onclick="removeFromCart('${item.name}')">Fjern</button>
+        <div class="cart-item-aligned-right">
+          <div class="cart-item-price">${item.price} Kr</div>
+          <div class="cart-item-quantity-container">
+            <label for="cart-item-input-${itemIndex}">Antall:</label>
+            <input id="cart-item-input-${itemIndex}" type="number" min=1 class="cart-item-quantity" value=${item.quantity} onchange="setCartItemQuantity(${itemIndex}, this.valueAsNumber)">
+          </div>
+          <div class="cart-item-total">Totalt ${totalProductCost} Kr</div>
+          <button class="remove-btn" onclick="removeFromCart('${item.name}')">Fjern</button>
+        </div>
     </div>
   `;
 }
