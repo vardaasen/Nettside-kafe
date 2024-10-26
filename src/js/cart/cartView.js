@@ -9,7 +9,9 @@ function createShoppingCartHtml() {
               <h1>Handlekurv</h1>
               <button id="clearCartButton" onclick="clearCart()">Tøm handlekurven</button>
           </div>
-          <div class="cart-items" id="cartItems"></div>
+          <div class="cart-items" id="cartItems">
+            ${createCartItemsHtml()}
+          </div>
           <div class="cart-total-container">
               <p>Totalt: &nbsp;</p>
               <span id="cartTotal">0</span>&nbsp; kr
@@ -21,7 +23,7 @@ function createShoppingCartHtml() {
           </button>
       </div>
   `;
-  setTimeout(renderCart, 0);
+  // setTimeout(renderCart, 0);
   return shoppingCart;
 }
 
@@ -49,6 +51,14 @@ function renderCart() {
   if (checkoutButton) checkoutButton.disabled = itemCount === 0;
 }
 
+function createCartItemsHtml() {
+  let items = '';
+  model.inputs.shoppingCart.products.forEach((item, itemIndex) => {
+    items += createCartItemHtml(itemIndex, item);
+  });
+  return items;
+}
+
 function createCartItemHtml(itemIndex, item) {
   const totalProductCost = item.price * item.quantity;
   return /* HTML*/ `
@@ -63,7 +73,7 @@ function createCartItemHtml(itemIndex, item) {
             <input id="cart-item-input-${itemIndex}" type="number" min=1 class="cart-item-quantity" value=${item.quantity} onchange="setCartItemQuantity(${itemIndex}, this.valueAsNumber)">
           </div>
           <div class="cart-item-total">Totalt ${totalProductCost} Kr</div>
-          <button class="remove-btn" onclick="removeFromCart('${item.name}')">Fjern</button>
+          <button class="remove-btn" onclick="removeFromCart(${itemIndex})">Fjern</button>
         </div>
     </div>
   `;
@@ -77,6 +87,16 @@ function showCartNotification(message) {
     setTimeout(() => {
       notification.classList.remove('show');
     }, 3000);
+  }
+}
+
+function updateCartButtonView() {
+  const cartLink = document.getElementById('cartLink');
+  if (cartLink) {
+    cartLink.classList.add('bounce', 'pulse');
+    setTimeout(() => {
+      cartLink.classList.remove('bounce', 'pulse');
+    }, 600);
   }
 }
 

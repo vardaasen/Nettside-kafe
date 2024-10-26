@@ -11,7 +11,10 @@ function addToCart(name, price, productId, quantity = 1) {
 
 function removeFromCart(itemIndex) {
   model.inputs.shoppingCart.products.splice(itemIndex, 1);
-  updateCart('remove');
+  updateView();
+  updateCartButtonView();
+  showCartNotification('Produkt fjernet fra handlevogn');
+  // updateCart('remove');
 }
 
 function clearCart() {

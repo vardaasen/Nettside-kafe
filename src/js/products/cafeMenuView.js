@@ -69,7 +69,6 @@ function createCafeProductCardHtml(product) {
       </footer>
     </article>
   `;
-
 }
 
 function createCafeProductInfoOverlayElement() {
