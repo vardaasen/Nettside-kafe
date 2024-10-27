@@ -6,7 +6,9 @@ function addToCart(name, price, productId, quantity = 1) {
   } else {
     cart.push({ name, price, quantity, productId });
   }
-  updateCart('add');
+  updateCartButtonView();
+  showCartNotification('Produkt lagt til i handlekurv');
+  // updateCart('add');
 }
 
 function removeFromCart(itemIndex) {
@@ -19,8 +21,10 @@ function removeFromCart(itemIndex) {
 
 function clearCart() {
   model.inputs.shoppingCart.products = [];
-  // updateView();
-  updateCart('clear');
+  updateView();
+  updateCartButtonView();
+  showCartNotification('Handlevognen er nå tom');
+  // updateCart('clear');
 }
 
 function updateCart(action) {
@@ -60,7 +64,9 @@ function setCartItemQuantity(itemIndex, quantity) {
 
   model.inputs.shoppingCart.products[itemIndex].quantity = quantity;
 
-  renderCart();
+  updateView();
+  updateCartButtonView();
+  // renderCart();
 }
 
 function showShoppingCart() {
@@ -71,6 +77,20 @@ function showShoppingCart() {
 
 function getCartItems() {
   return model.inputs.shoppingCart.products;
+}
+
+function getNrOfItemsInCart() {
+  return model.inputs.shoppingCart.products.reduce(
+    (sum, item) => sum + item.quantity,
+    0,
+  );
+}
+
+function getSumOfAllItemsInCart() {
+  return model.inputs.shoppingCart.products.reduce(
+    (sum, item) => sum + item.quantity * item.price,
+    0,
+  );
 }
 
 // Gjør funksjonene globalt tilgjengelige

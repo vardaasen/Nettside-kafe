@@ -14,7 +14,7 @@ function createShoppingCartHtml() {
           </div>
           <div class="cart-total-container">
               <p>Totalt: &nbsp;</p>
-              <span id="cartTotal">0</span>&nbsp; kr
+              <span id="cartTotal">${getSumOfAllItemsInCart()}</span>&nbsp; kr
           </div>
           <button id="checkoutButton" 
                   onclick="goToPickupTime()" 
@@ -92,12 +92,18 @@ function showCartNotification(message) {
 
 function updateCartButtonView() {
   const cartLink = document.getElementById('cartLink');
+  document.getElementById('cartCount').innerText = getNrOfItemsInCart();
+
   if (cartLink) {
     cartLink.classList.add('bounce', 'pulse');
     setTimeout(() => {
       cartLink.classList.remove('bounce', 'pulse');
     }, 600);
   }
+}
+
+function updateCartView() {
+  const cart = document.getElementById();
 }
 
 // Gjør funksjonene globalt tilgjengelige
