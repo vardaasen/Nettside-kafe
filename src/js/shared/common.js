@@ -18,19 +18,6 @@ function openProductInfo(id) {
   updateView();
 }
 
-/*
-function createOverlayWithContent(content) {
-  const overlay = document.createElement('div');
-  overlay.id = 'overlay';
-  overlay.innerHTML = `<div id="overlay-content">${content}</div>`;
-  overlay.addEventListener('click', (event) => {
-    if (event.target === overlay) {
-      closeOverlay();
-    }
-  });
-  return overlay;
-} */
-
 function closeOverlay() {
   const selectedProduct = model.app.selectedProduct;
 
@@ -76,42 +63,21 @@ function hamburger() {
   });
 }
 
-function addProductToCart(productId) {
-  const product = getProductFromId(productId);
-  const isCustomizable = product.type === 'customizable';
-  let name = product.productName;
-  let price = product.unitPrice;
-  let quantity;
-  let message = '';
-
-  if (isCustomizable) {
-    name += ` - ${model.inputs.themeCakeMenu.selectedFlavor} (${model.inputs.themeCakeMenu.size} personer)`;
-    price = model.calculateCustomCakePrice(
-      model.inputs.themeCakeMenu.selectedThemeId,
-      model.inputs.themeCakeMenu.size,
-    );
-    quantity = model.inputs.themeCakeMenu.quantity;
-    message = model.inputs.themeCakeMenu.message || '';
-  } else {
-    quantity = model.inputs.cafeMenu
-      ? model.inputs.cafeMenu.quantity
-      : model.inputs.cakeMenu.quantity;
-    message = model.inputs.cafeMenu
-      ? model.inputs.cafeMenu.message
-      : model.inputs.cakeMenu.message;
-  }
-
-  addToCart(name, price, productId, quantity);
-
-  console.log('Lagt til handlekurven:', {
-    name,
-    price,
-    productId,
-    quantity,
-    message,
-  });
-
-  closeOverlay();
-
-  window.addProductToCart = addProductToCart;
+/**
+ * Formaterer en dato- og tidsstreng til formatet `DD-MM-YYYY HH:mm`.
+ *
+ * Denne funksjonen tar en dato i formatet `YYYY-MM-DD` og en tid i
+ * formatet `HH:mm`, og returnerer en kombinert streng i formatet `DD-MM-YYYY HH:mm`.
+ *
+ * @param {string} dateString - Dato-strengen i formatet `YYYY-MM-DD`.
+ * @param {string} timeString - Tidsstrengen i formatet `HH:mm`.
+ * @returns {string} Den formaterte dato- og tidsstrengen som `DD-MM-YYYY HH:mm`.
+ *
+ * @example
+ * // Returnerer '20-02-1974 14:00'
+ * formatDateTime('1974-02-20', '14:00');
+ */
+function formatDateTime(dateString, timeString) {
+  const [year, month, day] = dateString.split('-');
+  return `${day}-${month}-${year} ${timeString}`;
 }
