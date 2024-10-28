@@ -20,16 +20,20 @@
 
 <body class="login-page">
 
+  <h1 class="visually-hidden">Logg inn på Bakst og Brygg ansatteportal</h1>
+
   <div class="login-page__logo"></div>
 
-  <form id="loginForm" class="login-form">
+  <form id="loginForm" class="login-form" aria-labelledby="loginFormTitle">
+    <h2 id="loginFormTitle" class="visually-hidden">Logg inn</h2>
     <label for="employeeID">Ansatt ID:</label>
-    <input type="text" id="employeeID" class="login-form__input" required><br>
+    <input type="text" id="employeeID" class="login-form__input" required aria-required="true"><br>
 
     <label for="password">Passord:</label>
     <div class="password-wrapper">
-      <input type="password" id="password" class="login-form__input" required>
-      <span id="togglePassword" class="toggle-password">
+      <input type="password" id="password" class="login-form__input" required aria-required="true" aria-describedby="passwordHelp">
+      <span id="passwordHelp" class="visually-hidden">Tast inn ditt passord</span>
+      <span id="togglePassword" class="toggle-password" role="button" aria-label="Vis passord" aria-pressed="false">
         <!-- Eye icon (vis passord) -->
         <svg width="24px" height="24px" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path clip-rule="evenodd"
@@ -55,11 +59,11 @@
     </div>
     <br>
 
-    <button type="submit" class="login-form__button">Logg inn</button>
+    <button type="submit" class="login-form__button" aria-label="Logg inn på kontoen din">Logg inn</button>
   </form>
 
 
-  <div id="loginError" style="color: red; display: none;">Ugyldig Ansatt ID eller passord</div>
+  <div id="loginError" style="color: red; display: none;" role="alert" aria-live="assertive">Ugyldig Ansatt ID eller passord</div>
 
   <script>
    initiateModelLocalStorage();

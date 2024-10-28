@@ -18,9 +18,9 @@
   <header id="header-container">
     <div id="nav-row">
       <img onclick="switchMenu(0)" src="img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo"
-        class="header__logo-image" role="button">
+        class="header__logo-image" role="button" aria-label="Gå til hovedsiden">
 
-      <button id="hamburger-menu" class="header-hamburger" aria-label="Åpne/lukke navigering">
+      <button id="hamburger-menu" class="header-hamburger" aria-label="Åpne/lukke navigering" aria-expanded="false" aria-controls="header__nav">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -29,12 +29,12 @@
         </svg>
       </button>
 
-      <nav class="header__nav" aria-label="Hovedmeny">
+      <nav class="header__nav" role="navigation" aria-label="Hovedmeny">
         <button onclick="switchMenu(0)" class="header-button" aria-label="Vis kafémenyen">Meny</button>
         <button onclick="switchMenu(2)" class="header-button" aria-label="Vis kakemenyen">Kaker</button>
       </nav>
 
-      <button class="header-button header-cart" id="cartLink" onclick="showShoppingCart()" aria-label="Vis handlekurv">
+      <button class="header-button header-cart" id="cartLink" onclick="showShoppingCart()" aria-label="Vis handlekurv med antall varer">
         <svg class="cart-icon" fill="currentColor" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 487.1 487.1" xml:space="preserve">
           <path
@@ -54,7 +54,7 @@
     </div>
   </header>
 
-  <div class="cart-notification" id="cartNotification">Produkt lagt til i handlekurven!</div>
+  <div class="cart-notification" id="cartNotification" aria-live="assertive" aria-hidden="true">Produkt lagt til i handlekurven!</div>
 
   <main id="app"></main>
 
