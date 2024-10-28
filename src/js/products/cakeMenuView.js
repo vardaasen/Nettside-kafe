@@ -55,6 +55,9 @@ function createCakeProductsHtml() {
   return `
 <h1 class="page__title">Kaker for enhver anledning</h1>
 <p class="menu-introduction">Uansett om du feirer en spesiell dag eller bare vil unne deg noe ekstra godt, har vi kaken for deg! Utforsk vårt utvalg av håndlagde kaker, fra klassiske smaker til kreative temakaker som passer til enhver anledning. La oss gjøre øyeblikkene dine enda søtere!</p>
+<div class="order-notice">
+    <p class="notice-message">Kaker må bestilles minst 7 dager før ønsket hentetid.</p>
+</div>
     <div id='cards-grid-container'>
       <div id='cards-grid'>${cards}</div>
     </div>
