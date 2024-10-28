@@ -17,19 +17,19 @@ const ordersView = {
 
       orderRow.innerHTML = /* HTML*/ `
         <div class="orders__column orders__column--customer">
-          <div>${order.customerName}</div>
-          <div>${order.contactNumber}</div>
+          <div>${safeText(order.customerName)}</div>
+          <div>${safeText(order.contactNumber)}</div>
         </div>
         <div class="orders__column orders__column--products">
           ${renderOrderedProductsHtml(order.products)}
         </div>
         <div class="orders__column orders__column--schedule">
-          ${order.pickUpSchedule.date} ${order.pickUpSchedule.time}
+          ${order.pickUpSchedule.date} ${safeText(order.pickUpSchedule.time)}
         </div>
         <div class="orders__column orders__column--status">
           <div class="orders__status">Status: ${order.status}</div>
           <div class="orders__status-change-label">Oppdater statusen:</div>
-          <select id="statusSelect-${order.orderId}">
+          <select id="statusSelect-${safeText(order.orderId)}">
             <option value="Ny" ${order.status === 'Ny' ? 'selected' : ''}>Ny</option>
             <option value="Under arbeid" ${order.status === 'Under arbeid' ? 'selected' : ''}>Under arbeid</option>
             <option value="Klar til henting" ${order.status === 'Klar til henting' ? 'selected' : ''}>Klar til henting</option>
@@ -76,9 +76,9 @@ function renderOrderedProductsHtml(orderProducts) {
   orderProducts.forEach((product) => {
     html += `
       <div class="orders__product">
-        <div class="orders__product-name">${product.productName}</div>
-        <div class="orders__product-quantity">Antall: ${product.quantity}</div>
-        <div class="orders__product-comment">${product.comment}</div>
+        <div class="orders__product-name">${safeText(product.productName)}</div>
+        <div class="orders__product-quantity">Antall: ${safeText(product.quantity)}</div>
+        <div class="orders__product-comment">${safeText(product.comment)}</div>
       </div>
     `;
   });

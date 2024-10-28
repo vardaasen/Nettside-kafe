@@ -49,6 +49,15 @@ function getProductsForCurrentPage() {
   }
 }
 
+function safeText(text) {
+  const sanitizedText = DOMPurify.sanitize(text);
+  return sanitizedText
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;');
+}
+
 /**
  * Håndterer toggling av hamburger-menyen og lukker menyen når en navigasjonsknapp klikkes.
  */
