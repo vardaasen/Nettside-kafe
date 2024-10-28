@@ -33,6 +33,7 @@ const model = {
       size: 8, // 8, 12, 16
       basePrice: 300,
       quantity: 1,
+      message: '',
     },
     shoppingCart: {
       case: 'Overview' /* Overview, PickupTime, NameAndNumber, OrderSent */,

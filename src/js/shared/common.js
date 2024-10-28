@@ -37,6 +37,7 @@ function closeOverlay() {
   model.inputs.cafeMenu.quantity = 1;
   model.inputs.cakeMenu.size = 8;
   model.inputs.cakeMenu.quantity = 1;
+  model.inputs.cakeMenu.message = '';
   updateView();
 }
 

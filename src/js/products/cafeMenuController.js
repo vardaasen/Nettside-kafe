@@ -21,7 +21,7 @@ function switchTab(value) {
 //   updateView();
 // }
 
-function updateComment(value) {
+function updateCafeProductComment(value) {
   model.inputs.cafeMenu.message = value;
 }
 

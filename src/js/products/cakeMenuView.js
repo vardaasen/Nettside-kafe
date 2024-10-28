@@ -40,8 +40,8 @@ function createCakeProductCardHtml(product) {
       <header
         class="product-card__header"
         ${!isOutOfStock
-    ? `onclick="openProductInfo(${product.productId})"`
-    : ''}
+          ? `onclick="openProductInfo(${product.productId})"`
+          : ''}
       >
         <img
           class="product-card__image"
@@ -52,23 +52,23 @@ function createCakeProductCardHtml(product) {
       </header>
       <footer class="product-card__footer">
         ${isCustomizable
-    ? /* HTML*/
-    `
+          ? /* HTML*/
+            `
             <div class="product-card__price">Fra 400 Kr</div>
             <button class="product-card__button-add button__add-to-cart" onclick="openProductInfo(${product.productId})">Tilpass</button>
 
                 `
-    : /* HTML*/
-    `
+          : /* HTML*/
+            `
         <div class="product-card__price">${product.unitPrice} Kr</div>
             <button
           class="product-card__button-add button__add-to-cart"
           ${isOutOfStock ? 'disabled' : ''}
           ${
-      !isOutOfStock
-        ? /* HTML */ `onclick="addCakeProductToCart(${product.productId})"`
-        : ''
-    }
+            !isOutOfStock
+              ? /* HTML */ `onclick="addCakeProductToCart(${product.productId})"`
+              : ''
+          }
         >
           <svg
             class="cart-icon"
@@ -99,12 +99,6 @@ function createCakeProductCardHtml(product) {
           ${isOutOfStock ? 'Utsolgt' : 'Legg til'}
         </button>
                 `}
-
-
-
-
-
-
       </footer>
     </article>
   `;
@@ -123,13 +117,13 @@ function createCakeProductInfoOverlayElement() {
       : product.image;
     const defaultPrice = isCustomizable
       ? model.calculateCustomCakePrice(
-        model.inputs.themeCakeMenu.selectedThemeId,
-        model.inputs.themeCakeMenu.size,
-      )
+          model.inputs.themeCakeMenu.selectedThemeId,
+          model.inputs.themeCakeMenu.size,
+        )
       : model.calculateStandardCakePrice(
-        product.productId,
-        model.inputs.cakeMenu.size,
-      );
+          product.productId,
+          model.inputs.cakeMenu.size,
+        );
 
     const overlay = document.createElement('section');
     overlay.classList.add('overlay');
@@ -151,22 +145,22 @@ function createCakeProductInfoOverlayElement() {
           <p class="overlay__price" id="cakePrice">${defaultPrice} Kr</p>
           <p id="productDescription">${product.description}</p>
           ${
-      isCustomizable
-        ? /* HTML*/ `
+            isCustomizable
+              ? /* HTML*/ `
           <div class="overlay__row">
             <!-- Theme selection -->
             <div class="overlay__section overlay__section--half">
               <label for="themeSelect" class="overlay__themeLabel">Velg tema:</label>
               <select id="themeSelect" class="overlay__themeSelect" onchange="updateTheme(this.value)">
                 ${model.themes
-          .map(
-            (theme) => `
+                  .map(
+                    (theme) => `
                   <option value="${theme.themeId}" ${theme.themeId === model.inputs.themeCakeMenu.selectedThemeId ? 'selected' : ''}>
                     ${theme.themeName}
                   </option>
                 `,
-          )
-          .join('')}
+                  )
+                  .join('')}
               </select>
             </div>
 
@@ -180,7 +174,7 @@ function createCakeProductInfoOverlayElement() {
             </div>
           </div>
               `
-        : /* HTML*/ `
+              : /* HTML*/ `
           <div class="overlay__section">
             <label for="sizeSelect" class="overlay__sizeLabel">Velg størrelse:</label>
             <select id="sizeSelect" class="overlay__sizeSelect" onchange="updateCakeSize(this.value)">
@@ -190,29 +184,29 @@ function createCakeProductInfoOverlayElement() {
             </select>
           </div>
               `
-    }
+          }
          ${
-      isCustomizable
-        ? /* HTML*/ `
+           isCustomizable
+             ? /* HTML*/ `
           <div class="overlay__section"><label for="flavorSelect" class="overlay__flavorLabel">Velg smak:</label>
           <select id="flavorSelect" class="overlay__flavorSelect" onchange="updateFlavor(this.value)">
             ${model.flavors
-          .map(
-            (flavor) => `
+              .map(
+                (flavor) => `
               <option value="${flavor}" ${flavor === model.inputs.themeCakeMenu.selectedFlavor ? 'selected' : ''}>
                 ${flavor}
               </option>
             `,
-          )
-          .join('')}
+              )
+              .join('')}
           </select></div>
           `
-        : ''
-    }
+             : ''
+         }
 
           <div class="overlay__section overlay__section--comment">
             <label for="product-comment" class="overlay__label">Tilpasninger:</label>
-            <textarea id="product-comment" class="overlay__textarea" placeholder="Skriv inn eventuelle tilpasninger her..." oninput="updateComment(this.value)">${isCustomizable ? model.inputs.themeCakeMenu.message : ''}</textarea>
+            <textarea id="product-comment" class="overlay__textarea" placeholder="Skriv inn eventuelle tilpasninger her..." oninput="updateCakeProductComment(this.value)">${isCustomizable ? model.inputs.themeCakeMenu.message : ''}</textarea>
           </div>
 
           <footer class="overlay-footer">

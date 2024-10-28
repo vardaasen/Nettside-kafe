@@ -96,7 +96,7 @@ function createCafeProductInfoOverlayElement() {
 
           <div class="overlay__section overlay__section--comment">
             <label for="product-comment" class="overlay__label">Tilpasninger:</label>
-            <textarea id="product-comment" class="overlay__textarea" placeholder="Skriv inn eventuelle tilpasninger her..." oninput='updateComment(this.value)'></textarea>
+            <textarea id="product-comment" class="overlay__textarea" placeholder="Skriv inn eventuelle tilpasninger her..." oninput='updateCafeProductComment(this.value)'></textarea>
           </div>
         </div>
 

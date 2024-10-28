@@ -84,6 +84,7 @@ function addCakeProductToCart(productId) {
         model.inputs.themeCakeMenu.size,
       )
     : model.calculateStandardCakePrice(productId, model.inputs.cakeMenu.size);
+  const message = model.inputs.cakeMenu.message;
 
   // Lag produktnavn med tema, størrelse og smak for tilpassbare kaker
   let productName = product.productName;
@@ -103,6 +104,10 @@ function addCakeProductToCart(productId) {
   }
 
   // Legg produktet til i handlekurven med oppdatert navn
-  addToCart(productName, price, productId, quantity);
+  addToCart(productName, price, productId, quantity, message);
   closeOverlay(); // Lukk overlay etter å ha lagt til i handlekurven
+}
+
+function updateCakeProductComment(text) {
+  model.inputs.cakeMenu.message = text;
 }
