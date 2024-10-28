@@ -57,7 +57,7 @@ function submitOrder() {
     productId: item.productId,
     productName: item.name,
     quantity: item.quantity,
-    comment: item.comment || '',
+    comment: item.message || '',
   }));
 
   const newOrder = {
