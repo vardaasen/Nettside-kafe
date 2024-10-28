@@ -1,0 +1,62 @@
+:root {
+  /*********
+  TYPOGRAPHY
+  *********/
+  --color-background: #F1E6D1;
+  --color-text--light-bg: rgba(0, 0, 0, 0.87);
+
+  --baseFontSize: 16px;
+  --sizeM: var(--baseFontSize);
+
+  --sizeL: calc(var(--sizeM) * 1.333);
+  --sizeXl: calc(var(--sizeL) * 1.333);
+  --sizeXxl: calc(var(--sizeXl) * 1.333);
+  --sizeXxxl: calc(var(--sizeXxl) * 1.333);
+
+  --sizeS: calc(var(--sizeM) / 1.333);
+  --sizeXs: calc(var(--sizeS) / 1.333);
+  --sizeXxs: calc(var(--sizeXs) / 1.333);
+  --sizeXxxs: calc(var(--sizeXxs) / 1.333);
+}
+
+body {
+  font-size: var(--sizeM);
+  line-height: 1.33;
+  color: var(--color-text--light-bg);
+}
+
+article {
+  margin-bottom: 2em;
+}
+
+.usertext {
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.33;
+  }
+
+  h1 {
+    font-size: var(--sizeXxl);
+    margin-top: 1.33em;
+  }
+
+  h2 {
+    font-size: var(--sizeXl);
+  }
+
+  h3 {
+    font-size: var(--sizeL);
+  }
+
+  h4, h5, h6 {
+    font-size: var(--sizeM);
+  }
+}
+
+ol li strong:first-of-type {
+  font-size: 1.2em;
+}
+
+ul li {
+  margin-left: var(--sizeXl);
+}
