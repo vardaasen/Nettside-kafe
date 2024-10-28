@@ -32,7 +32,20 @@ function createOverlayWithContent(content) {
 } */
 
 function closeOverlay() {
+  const selectedProduct = model.app.selectedProduct;
+
+  if (selectedProduct && selectedProduct.type === 'customizable') {
+    model.inputs.themeCakeMenu.size = 8;
+    model.inputs.themeCakeMenu.selectedThemeId = 1;
+    model.inputs.themeCakeMenu.selectedFlavor = 'Vanilje';
+    model.inputs.themeCakeMenu.quantity = 1;
+  } else if (selectedProduct) {
+    model.inputs.cakeMenu.size = 8;
+    model.inputs.cakeMenu.quantity = 1;
+  }
+
   model.app.selectedProduct = null;
+
   updateView();
 }
 
@@ -61,4 +74,44 @@ function hamburger() {
       document.querySelector('#header-container').classList.remove('is-active');
     });
   });
+}
+
+function addProductToCart(productId) {
+  const product = getProductFromId(productId);
+  const isCustomizable = product.type === 'customizable';
+  let name = product.productName;
+  let price = product.unitPrice;
+  let quantity;
+  let message = '';
+
+  if (isCustomizable) {
+    name += ` - ${model.inputs.themeCakeMenu.selectedFlavor} (${model.inputs.themeCakeMenu.size} personer)`;
+    price = model.calculateCustomCakePrice(
+      model.inputs.themeCakeMenu.selectedThemeId,
+      model.inputs.themeCakeMenu.size,
+    );
+    quantity = model.inputs.themeCakeMenu.quantity;
+    message = model.inputs.themeCakeMenu.message || '';
+  } else {
+    quantity = model.inputs.cafeMenu
+      ? model.inputs.cafeMenu.quantity
+      : model.inputs.cakeMenu.quantity;
+    message = model.inputs.cafeMenu
+      ? model.inputs.cafeMenu.message
+      : model.inputs.cakeMenu.message;
+  }
+
+  addToCart(name, price, productId, quantity);
+
+  console.log('Lagt til handlekurven:', {
+    name,
+    price,
+    productId,
+    quantity,
+    message,
+  });
+
+  closeOverlay();
+
+  window.addProductToCart = addProductToCart;
 }

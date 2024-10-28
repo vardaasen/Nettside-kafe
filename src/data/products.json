@@ -6,7 +6,7 @@
     "unitPrice": 69,
     "description": "En klassisk baguette fylt med ferske reker, majones og smør. Perfekt for sjømatelskere. Allergener: Skalldyr",
     "image": "rekebaguette.webp",
-    "preorderRequired": true,
+    "preorderRequired": false,
     "customizationAvailable": true,
     "unitsInStock": 10
   },
@@ -233,6 +233,17 @@
   {
     "productId": 22,
     "categoryIndex": 2,
+    "productName": "Nybrygget kaffe",
+    "unitPrice": 35,
+    "description": "En nybrygget kaffe laget med ferskmalte bønner for en rik og aromatisk smaksopplevelse.",
+    "image": "nybrygget-kaffe.webp",
+    "preorderRequired": false,
+    "customizationAvailable": false,
+    "unitsInStock": 100
+  },
+  {
+    "productId": 23,
+    "categoryIndex": 2,
     "productName": "Cappuccino",
     "unitPrice": 45,
     "description": "En klassisk cappuccino laget med espresso, steamet melk og et lag melkeskum. Allergener: Melk.",
@@ -242,7 +253,7 @@
     "unitsInStock": 50
   },
   {
-    "productId": 23,
+    "productId": 24,
     "categoryIndex": 2,
     "productName": "Latte",
     "unitPrice": 48,
@@ -253,7 +264,7 @@
     "unitsInStock": 40
   },
   {
-    "productId": 24,
+    "productId": 25,
     "categoryIndex": 2,
     "productName": "Espresso",
     "unitPrice": 35,
@@ -264,7 +275,7 @@
     "unitsInStock": 60
   },
   {
-    "productId": 25,
+    "productId": 26,
     "categoryIndex": 2,
     "productName": "Americano",
     "unitPrice": 40,
@@ -275,7 +286,7 @@
     "unitsInStock": 45
   },
   {
-    "productId": 26,
+    "productId": 27,
     "categoryIndex": 2,
     "productName": "Cortado",
     "unitPrice": 42,
@@ -286,7 +297,7 @@
     "unitsInStock": 30
   },
   {
-    "productId": 27,
+    "productId": 28,
     "categoryIndex": 2,
     "productName": "Macchiato",
     "unitPrice": 38,
@@ -297,7 +308,7 @@
     "unitsInStock": 25
   },
   {
-    "productId": 28,
+    "productId": 29,
     "categoryIndex": 2,
     "productName": "Flat White",
     "unitPrice": 50,
@@ -308,7 +319,7 @@
     "unitsInStock": 35
   },
   {
-    "productId": 29,
+    "productId": 30,
     "categoryIndex": 2,
     "productName": "Cafe Mocha",
     "unitPrice": 55,
@@ -319,7 +330,7 @@
     "unitsInStock": 0
   },
   {
-    "productId": 30,
+    "productId": 31,
     "categoryIndex": 2,
     "productName": "Iskaffe",
     "unitPrice": 48,
@@ -330,7 +341,7 @@
     "unitsInStock": 20
   },
   {
-    "productId": 31,
+    "productId": 32,
     "categoryIndex": 2,
     "productName": "Kaffe Frappé",
     "unitPrice": 52,
@@ -341,7 +352,7 @@
     "unitsInStock": 0
   },
   {
-    "productId": 32,
+    "productId": 33,
     "categoryIndex": 3,
     "productName": "Lag din egen kake",
     "type": "customizable",
@@ -354,7 +365,7 @@
     "unitsInStock": 10
   },
   {
-    "productId": 33,
+    "productId": 34,
     "categoryIndex": 3,
     "productName": "Sjokoladekake",
     "type": "standard",
@@ -366,7 +377,7 @@
     "unitsInStock": 30
   },
   {
-    "productId": 34,
+    "productId": 35,
     "categoryIndex": 3,
     "productName": "Ostekake med bær",
     "type": "standard",
@@ -378,7 +389,7 @@
     "unitsInStock": 25
   },
   {
-    "productId": 35,
+    "productId": 36,
     "categoryIndex": 3,
     "productName": "Gulrotkake",
     "type": "standard",
@@ -390,7 +401,7 @@
     "unitsInStock": 40
   },
   {
-    "productId": 36,
+    "productId": 37,
     "categoryIndex": 3,
     "productName": "Red Velvet kake",
     "type": "standard",
@@ -402,7 +413,7 @@
     "unitsInStock": 0
   },
   {
-    "productId": 37,
+    "productId": 38,
     "categoryIndex": 3,
     "productName": "Eplekake",
     "type": "standard",
@@ -414,7 +425,7 @@
     "unitsInStock": 65
   },
   {
-    "productId": 38,
+    "productId": 39,
     "categoryIndex": 3,
     "productName": "Sitronkake",
     "type": "standard",
@@ -426,7 +437,7 @@
     "unitsInStock": 0
   },
   {
-    "productId": 39,
+    "productId": 40,
     "categoryIndex": 3,
     "productName": "Marmorkake",
     "type": "standard",

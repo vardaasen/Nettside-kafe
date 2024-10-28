@@ -1,0 +1,20 @@
+{
+  "source": {
+    "include": ["src"]
+  },
+  "opts": {
+    "destination": "./docs",
+    "template": "node_modules/docdash",
+    "recurse": true,
+    "readme": "./docs/docs-assets/index.html.md"
+  },
+  "templates": {
+    "docdash": {
+      "staticFiles": {
+        "include": [
+          "./docs/docs-assets/docs.custom.css"
+        ]
+      }
+    }
+  }
+}

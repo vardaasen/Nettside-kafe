@@ -5,15 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Logg inn</title>
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../css/components/admin.css">
   <script>
-    if (localStorage.getItem('isLoggedIn') === 'true') {
-      window.location.href = 'bestillinger.html';
-    }
+   if (localStorage.getItem('isLoggedIn') === 'true') {
+     window.location.href = 'bestillinger.html';
+   }
   </script>
   <script src="../js/shared/model.js"></script>
-  <script src="../js/auth/loginModel.js" defer></script>
-  <script src="../js/auth/loginView.js" defer></script>
+  <script src="../js/auth/loginModel.js"></script>
+  <script src="../js/auth/loginView.js"></script>
   <script src="../js/auth/loginController.js" defer></script>
 </head>
 
@@ -61,7 +62,7 @@
   <div id="loginError" style="color: red; display: none;">Ugyldig Ansatt ID eller passord</div>
 
   <script>
-    initiateModelLocalStorage();
+   initiateModelLocalStorage();
   </script>
 
 </body>

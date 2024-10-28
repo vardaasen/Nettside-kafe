@@ -1,46 +1,63 @@
-/**
- * Kontroller for ordre.
- */
+// ordersController.js
+
 const ordersController = {
-  /**
-   * Initialiserer ordrekontrolleren ved å vise bestillinger.
-   */
   init() {
     this.displayOrders();
+    this.setupSearchListener();
   },
 
-  /**
-   * Henter bestillinger fra modellen og viser dem i visningen.
-   */
-  displayOrders() {
-    const orders = model.orders;
+  searchOrders() {
+    this.filterOrders();
+  },
+
+  setupSearchListener() {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim();
+      if (isNaN(query)) { // Only trigger live filter if the input is text
+        this.filterOrders();
+      }
+    });
+  },
+
+  filterOrders() {
+    const searchQuery = document.getElementById('searchInput').value.trim();
+    const statusFilter = document.getElementById('statusFilter').value;
+
+    if (!isNaN(searchQuery) && searchQuery !== '') { // Numeric input for exact orderId search
+      const orderId = parseInt(searchQuery, 10);
+      const orders = model.orders.filter(order => order.orderId === orderId);
+
+      if (orders.length > 0) {
+        ordersView.renderOrders(orders);
+      } else {
+        ordersView.renderNoResultsMessage(`Ingen bestilling funnet med ID ${orderId}`);
+      }
+    } else { // Live filtering for text input
+      this.displayOrders(statusFilter, searchQuery.toLowerCase());
+    }
+  },
+
+  displayOrders(statusFilter = 'Alle', searchQuery = '') {
+    const orders = model.orders.filter(order =>
+      (statusFilter === 'Alle' || order.status === statusFilter) &&
+      (searchQuery === '' || order.customerName.toLowerCase().includes(searchQuery))
+    );
     ordersView.renderOrders(orders);
   },
 
-  /**
-   * Oppdaterer statusen til en spesifikk bestilling.
-   * @param {number} orderId - ID-en til bestillingen som skal oppdateres.
-   * @param {string} newStatus - Den nye statusen for bestillingen.
-   */
+  resetSearch() {
+    document.getElementById('searchInput').value = '';
+    document.getElementById('statusFilter').value = 'Alle';
+    this.displayOrders();
+  },
+
   updateStatus(orderId, newStatus) {
     model.updateOrderStatus(orderId, newStatus);
     this.displayOrders();
   },
-
-  /**
-   * Sjekker om den oppgitte tiden er gyldig (ikke før 09:30).
-   * @param {string} time - Tiden som skal valideres i formatet "HH:MM".
-   * @returns {boolean} True hvis tiden er gyldig, ellers false.
-   */
-  isTimeValid(time) {
-    const [hours, minutes] = time.split(':').map(Number);
-    const timeInMinutes = hours * 60 + minutes;
-    const minTimeInMinutes = 9 * 60 + 30; // 09:30 i minutter
-    return timeInMinutes >= minTimeInMinutes;
-  },
 };
 
-// Initialiserer ordrekontrolleren når DOM er lastet
 document.addEventListener('DOMContentLoaded', () => {
   ordersController.init();
 });
