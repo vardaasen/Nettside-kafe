@@ -6,7 +6,8 @@
   --color-secondary--light: #A3B5A5;
   --color-accent--cold: #E8D6B6;
   --color-accent--warm: #FFB347;
-  --color-text--dark-bg: #FFFFFF;
+  --color-text--light-bg: rgba(0, 0, 0, 0.87);
+  --color-text--dark-bg: rgba(255, 255, 255, 0.87);
   --color-shadow: rgba(49, 63, 44, 0.5);
   --color-border: #6B7B6D;
 }

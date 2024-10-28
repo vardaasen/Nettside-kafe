@@ -1,3 +1,18 @@
+/**
+ * Oppretter og returnerer HTML-elementet for kake-menyen.
+ *
+ * Denne funksjonen lager et `div`-element med `id` satt til "cakes", og fyller det
+ * med HTML-innhold for kakeproduktene ved å kalle `createCakeProductsHtml()`.
+ * Hvis det finnes en overleggskomponent for produktinformasjon (overlay), legges denne
+ * til som et barn av `cakes`-elementet.
+ *
+ * @function
+ * @name createCakeMenuHtml
+ * @returns {HTMLElement} Div-elementet som representerer kake-menyen med produktliste og eventuelt overlay.
+ * @example
+ * // Bruk createCakeMenuHtml til å hente kake-menyen og legge til i DOM-en:
+ * document.getElementById('app').appendChild(createCakeMenuHtml());
+ */
 function createCakeMenuHtml() {
   const cakes = document.createElement('div');
   cakes.id = 'cakes';
@@ -12,6 +27,21 @@ function createCakeMenuHtml() {
   return cakes;
 }
 
+/**
+ * Genererer og returnerer HTML-innhold for alle kakeprodukter.
+ *
+ * Funksjonen filtrerer produktlisten i `model.products` for å hente alle produkter
+ * som tilhører kategorien med `categoryIndex` lik 3 (kaker). Deretter genererer den
+ * HTML for hvert enkelt produktkort ved å kalle `createCakeProductCardHtml` for hvert produkt.
+ * HTML-koden for alle produktkortene settes inn i en container med en sidetittel.
+ *
+ * @function
+ * @name createCakeProductsHtml
+ * @returns {string} HTML-innholdet for kakeproduktene, inkludert en tittel og en grid-container for produktkort.
+ * @example
+ * // Henter HTML-innholdet for kakeproduktene og legger det til i DOM-en:
+ * document.getElementById('app').innerHTML = createCakeProductsHtml();
+ */
 function createCakeProductsHtml() {
   const products = model.products.filter(
     (product) => product.categoryIndex === 3,
@@ -23,12 +53,36 @@ function createCakeProductsHtml() {
   }
 
   return `
+<h1 class="page__title">Kaker for enhver anledning</h1>
+<p class="menu-introduction">Uansett om du feirer en spesiell dag eller bare vil unne deg noe ekstra godt, har vi kaken for deg! Utforsk vårt utvalg av håndlagde kaker, fra klassiske smaker til kreative temakaker som passer til enhver anledning. La oss gjøre øyeblikkene dine enda søtere!</p>
     <div id='cards-grid-container'>
       <div id='cards-grid'>${cards}</div>
     </div>
   `;
 }
 
+/**
+ * Genererer HTML-innholdet for et enkelt kakeproduktkort.
+ *
+ * Denne funksjonen tar inn et produktobjekt og bygger et HTML-kort med detaljer
+ * om produktet, inkludert bilde, navn, pris og en "Legg til"-knapp. Knappen
+ * tilpasses basert på produktstatus (tilpassbar eller ikke, på lager eller utsolgt).
+ *
+ * - Hvis produktet er utsolgt, deaktiveres knappen, og kortet får en inaktiv stil.
+ * - Hvis produktet er tilpassbart, viser knappen "Tilpass" og åpner en
+ *   tilpasningsvisning ved klikk.
+ * - Hvis produktet ikke er tilpassbart, viser knappen produktets pris og legger
+ *   produktet direkte i handlekurven ved klikk.
+ *
+ * @function
+ * @name createCakeProductCardHtml
+ * @param {Object} product - Et produktobjekt som inneholder detaljer om produktet, som `productId`, `productName`, `unitPrice`, `type`, `image`, og `unitsInStock`.
+ * @returns {string} HTML-innholdet for produktkortet, klar til å bli lagt til i DOM-en.
+ * @example
+ * // Genererer et HTML-produktkort og legger det til i en container:
+ * const productCardHtml = createCakeProductCardHtml(product);
+ * document.getElementById('cards-grid').innerHTML += productCardHtml;
+ */
 function createCakeProductCardHtml(product) {
   const isOutOfStock = product.unitsInStock === 0;
   const isCustomizable = product.type === 'customizable';
@@ -40,8 +94,8 @@ function createCakeProductCardHtml(product) {
       <header
         class="product-card__header"
         ${!isOutOfStock
-    ? `onclick="openProductInfo(${product.productId})"`
-    : ''}
+          ? `onclick="openProductInfo(${product.productId})"`
+          : ''}
       >
         <img
           class="product-card__image"
@@ -52,23 +106,23 @@ function createCakeProductCardHtml(product) {
       </header>
       <footer class="product-card__footer">
         ${isCustomizable
-    ? /* HTML*/
-    `
+          ? /* HTML*/
+            `
             <div class="product-card__price">Fra 400 Kr</div>
             <button class="product-card__button-add button__add-to-cart" onclick="openProductInfo(${product.productId})">Tilpass</button>
 
                 `
-    : /* HTML*/
-    `
+          : /* HTML*/
+            `
         <div class="product-card__price">${product.unitPrice} Kr</div>
             <button
           class="product-card__button-add button__add-to-cart"
           ${isOutOfStock ? 'disabled' : ''}
           ${
-      !isOutOfStock
-        ? /* HTML */ `onclick="addCakeProductToCart(${product.productId})"`
-        : ''
-    }
+            !isOutOfStock
+              ? /* HTML */ `onclick="addCakeProductToCart(${product.productId})"`
+              : ''
+          }
         >
           <svg
             class="cart-icon"
@@ -99,17 +153,32 @@ function createCakeProductCardHtml(product) {
           ${isOutOfStock ? 'Utsolgt' : 'Legg til'}
         </button>
                 `}
-
-
-
-
-
-
       </footer>
     </article>
   `;
 }
 
+/**
+ * Oppretter et overleggselement som viser detaljert informasjon om det valgte kakeproduktet.
+ *
+ * Funksjonen henter produktdata basert på `model.app.selectedProduct`, og oppretter et
+ * HTML-seksjonselement for å vise informasjonen. Dette overlayet inkluderer produktnavn,
+ * bilde, pris, og eventuelle tilpasningsalternativer (tema, størrelse, smak). Hvis produktet
+ * er tilpassbart, får brukeren flere valg. Overlegget har også en "Lukk"-knapp og en
+ * "Legg til i handlekurv"-knapp.
+ *
+ * - Produktdata hentes basert på `selectedProduct` fra modellen.
+ * - Hvis produktet er tilpassbart, tilbys flere valg (tema, størrelse, smak).
+ * - Hvis brukeren klikker utenfor innholdsområdet, lukkes overlayet.
+ *
+ * @function
+ * @name createCakeProductInfoOverlayElement
+ * @returns {HTMLElement|null} Overleggselementet med produktinformasjon, eller `null` hvis produktet ikke finnes.
+ * @example
+ * // Opprett og legg til overlayet i DOM-en:
+ * const overlay = createCakeProductInfoOverlayElement();
+ * if (overlay) document.body.appendChild(overlay);
+ */
 function createCakeProductInfoOverlayElement() {
   const product = getProductFromId(model.app.selectedProduct);
 
@@ -123,13 +192,13 @@ function createCakeProductInfoOverlayElement() {
       : product.image;
     const defaultPrice = isCustomizable
       ? model.calculateCustomCakePrice(
-        model.inputs.themeCakeMenu.selectedThemeId,
-        model.inputs.themeCakeMenu.size,
-      )
+          model.inputs.themeCakeMenu.selectedThemeId,
+          model.inputs.themeCakeMenu.size,
+        )
       : model.calculateStandardCakePrice(
-        product.productId,
-        model.inputs.cakeMenu.size,
-      );
+          product.productId,
+          model.inputs.cakeMenu.size,
+        );
 
     const overlay = document.createElement('section');
     overlay.classList.add('overlay');
@@ -151,22 +220,22 @@ function createCakeProductInfoOverlayElement() {
           <p class="overlay__price" id="cakePrice">${defaultPrice} Kr</p>
           <p id="productDescription">${product.description}</p>
           ${
-      isCustomizable
-        ? /* HTML*/ `
+            isCustomizable
+              ? /* HTML*/ `
           <div class="overlay__row">
             <!-- Theme selection -->
             <div class="overlay__section overlay__section--half">
               <label for="themeSelect" class="overlay__themeLabel">Velg tema:</label>
               <select id="themeSelect" class="overlay__themeSelect" onchange="updateTheme(this.value)">
                 ${model.themes
-          .map(
-            (theme) => `
+                  .map(
+                    (theme) => `
                   <option value="${theme.themeId}" ${theme.themeId === model.inputs.themeCakeMenu.selectedThemeId ? 'selected' : ''}>
                     ${theme.themeName}
                   </option>
                 `,
-          )
-          .join('')}
+                  )
+                  .join('')}
               </select>
             </div>
 
@@ -180,7 +249,7 @@ function createCakeProductInfoOverlayElement() {
             </div>
           </div>
               `
-        : /* HTML*/ `
+              : /* HTML*/ `
           <div class="overlay__section">
             <label for="sizeSelect" class="overlay__sizeLabel">Velg størrelse:</label>
             <select id="sizeSelect" class="overlay__sizeSelect" onchange="updateCakeSize(this.value)">
@@ -190,25 +259,25 @@ function createCakeProductInfoOverlayElement() {
             </select>
           </div>
               `
-    }
+          }
          ${
-      isCustomizable
-        ? /* HTML*/ `
+           isCustomizable
+             ? /* HTML*/ `
           <div class="overlay__section"><label for="flavorSelect" class="overlay__flavorLabel">Velg smak:</label>
           <select id="flavorSelect" class="overlay__flavorSelect" onchange="updateFlavor(this.value)">
             ${model.flavors
-          .map(
-            (flavor) => `
+              .map(
+                (flavor) => `
               <option value="${flavor}" ${flavor === model.inputs.themeCakeMenu.selectedFlavor ? 'selected' : ''}>
                 ${flavor}
               </option>
             `,
-          )
-          .join('')}
+              )
+              .join('')}
           </select></div>
           `
-        : ''
-    }
+             : ''
+         }
 
           <div class="overlay__section overlay__section--comment">
             <label for="product-comment" class="overlay__label">Tilpasninger:</label>

@@ -42,6 +42,7 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 1em;
+    margin-top: 3em;
   }
 
   .tab-button, .selected-tab {

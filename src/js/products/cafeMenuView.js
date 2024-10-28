@@ -1,3 +1,18 @@
+/**
+ * Genererer og returnerer HTML-elementet for kafémenyen.
+ *
+ * Denne funksjonen oppretter et `div`-element med `id` satt til "cafe-menu" og fyller det
+ * med HTML-innhold for faner og produkter ved å kalle `createTabRowHtml()` og `createCafeProductsHtml()`.
+ * Hvis et overleggselement (overlay) for produktinformasjon er tilgjengelig, legges dette til
+ * som et barn av `cafeMenu`-elementet.
+ *
+ * @function
+ * @name createCafeMenuHtml
+ * @returns {HTMLElement} Div-elementet som representerer kafémenyen, inkludert produkter og eventuelt overlay.
+ * @example
+ * // Hent kafémenyen og legg til i DOM-en:
+ * document.getElementById('app').appendChild(createCafeMenuHtml());
+ */
 function createCafeMenuHtml() {
   const cafeMenu = document.createElement('div');
   cafeMenu.id = 'cafe-menu';
@@ -9,9 +24,25 @@ function createCafeMenuHtml() {
   return cafeMenu;
 }
 
+/**
+ * Genererer HTML for faneraden i kafémenyen.
+ *
+ * Funksjonen lager HTML som inkluderer en velkomsttittel, en introduksjonstekst, og
+ * en rad med faneknapper for de ulike kaféproduktene: baguetter, snitter, og kaffe.
+ * Fanene oppdateres dynamisk for å indikere hvilken som er valgt, basert på `model.inputs.cafeMenu.tab`.
+ *
+ * @function
+ * @name createTabRowHtml
+ * @returns {string} HTML-strukturen for kafémenyens fanerad.
+ * @example
+ * // Legg til faneraden i kafémenyen:
+ * document.getElementById('cafe-menu').innerHTML = createTabRowHtml();
+ */
 function createTabRowHtml() {
   const selectedTab = model.inputs.cafeMenu.tab;
   return /* HTML*/ `
+    <h1 class="page__title">Velkommen til vår koselige kafé!</h1>
+    <p class="menu-introduction">Klar for noe digg? Dykk inn i vårt utvalg av deilige baguetter, knallgode snitter og toppkaffe. Perfekt for en velfortjent pause eller en hyggelig prat. Finn din nye smakfavoritt eller en herlig smakbit å kose deg med!</p>
     <div id="cafe-menu-tab-row">
       <button onclick="switchTab('baguette')" class='${selectedTab === 'baguette' ? 'selected-tab' : 'tab-button'}'>Baguetter</button>
       <button onclick="switchTab('canapes')" id='middle-tab-button' class='${selectedTab === 'canapes' ? 'selected-tab' : 'tab-button'}'>Snitter</button>
@@ -25,6 +56,20 @@ function getProductsForCurrentTab() {
   return getProductsForCategory(tab);
 }
 
+/**
+ * Henter produktene for den gjeldende fanen i kafémenyen.
+ *
+ * Funksjonen finner den aktive fanen fra `model.inputs.cafeMenu.tab`
+ * og henter produktene som tilhører den kategorien ved å kalle `getProductsForCategory`.
+ *
+ * @function
+ * @name getProductsForCurrentTab
+ * @returns {Array<Object>} En liste med produkter som tilhører den gjeldende kategorien.
+ * @example
+ * // Hent produktene for den valgte fanen og vis dem:
+ * const products = getProductsForCurrentTab();
+ * displayProducts(products);
+ */
 function createCafeProductsHtml() {
   const products = getProductsForCurrentPage();
   let cards = '';
@@ -38,6 +83,26 @@ function createCafeProductsHtml() {
   `;
 }
 
+/**
+ * Genererer HTML-innholdet for et kaféproduktkort.
+ *
+ * Funksjonen tar inn et produktobjekt og bygger et HTML-kort som viser produktdetaljer,
+ * inkludert bilde, navn, pris, og en "Legg til i handlekurv"-knapp. Knappen tilpasses
+ * basert på om produktet er på lager eller utsolgt.
+ *
+ * - Hvis produktet er utsolgt, deaktiveres "Legg til i handlekurv"-knappen, og kortet får
+ *   en inaktiv stil.
+ * - Ved klikk på produktbildet eller tittelen åpnes produktets detaljerte visning, hvis produktet er på lager.
+ *
+ * @function
+ * @name createCafeProductCardHtml
+ * @param {Object} product - Produktobjekt som inneholder detaljer som `productId`, `productName`, `unitPrice`, `image`, og `unitsInStock`.
+ * @returns {string} HTML-innholdet for produktkortet, klar til å bli lagt til i DOM-en.
+ * @example
+ * // Genererer et HTML-produktkort for et kaféprodukt:
+ * const productCardHtml = createCafeProductCardHtml(product);
+ * document.getElementById('cafe-menu').innerHTML += productCardHtml;
+ */
 function createCafeProductCardHtml(product) {
   const isOutOfStock = product.unitsInStock === 0;
 
@@ -71,6 +136,25 @@ function createCafeProductCardHtml(product) {
   `;
 }
 
+/**
+ * Oppretter et overleggselement for å vise detaljert informasjon om et valgt kaféprodukt.
+ *
+ * Funksjonen henter produktdata basert på `model.app.selectedProduct` og oppretter et
+ * HTML-seksjonselement som inneholder produktinformasjon. Overlayet viser produktnavn, bilde,
+ * pris, beskrivelse, tilpasningsfelt, og knappene for å angi mengde og legge til i handlekurven.
+ *
+ * - Produktdata hentes fra modellen basert på valgt produkt.
+ * - Overlayet har en lukkeknapp og lukkes også ved klikk utenfor innholdsområdet.
+ * - Brukeren kan angi tilpasninger og antall for produktet.
+ *
+ * @function
+ * @name createCafeProductInfoOverlayElement
+ * @returns {HTMLElement|null} Overleggselementet med produktinformasjon, eller `null` hvis produktet ikke finnes.
+ * @example
+ * // Opprett og vis produktoverlegget i DOM-en:
+ * const overlay = createCafeProductInfoOverlayElement();
+ * if (overlay) document.body.appendChild(overlay);
+ */
 function createCafeProductInfoOverlayElement() {
   const product = getProductFromId(model.app.selectedProduct);
   if (product != null) {

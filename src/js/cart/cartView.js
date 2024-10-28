@@ -16,8 +16,8 @@ function createShoppingCartHtml() {
               <p>Totalt: &nbsp;</p>
               <span id="cartTotal">${getSumOfAllItemsInCart()}</span>&nbsp; kr
           </div>
-          <button id="checkoutButton" 
-                  onclick="goToPickupTime()" 
+          <button id="checkoutButton"
+                  onclick="goToPickupTime()"
                   ${getCartItems().length === 0 ? 'disabled' : ''}>
               Til kassen
           </button>
@@ -34,7 +34,9 @@ function renderCart() {
   const checkoutButton = document.getElementById('checkoutButton');
   const cart = getCartItems();
 
-  if (!cartItems) return;
+  if (!cartItems) {
+    return;
+  }
 
   cartItems.innerHTML = '';
   let total = 0;
@@ -46,9 +48,15 @@ function renderCart() {
     itemCount += item.quantity;
   });
 
-  if (cartCount) cartCount.textContent = itemCount;
-  if (cartTotal) cartTotal.textContent = total;
-  if (checkoutButton) checkoutButton.disabled = itemCount === 0;
+  if (cartCount) {
+    cartCount.textContent = itemCount;
+  }
+  if (cartTotal) {
+    cartTotal.textContent = total;
+  }
+  if (checkoutButton) {
+    checkoutButton.disabled = itemCount === 0;
+  }
 }
 
 function createCartItemsHtml() {
