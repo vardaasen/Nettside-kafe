@@ -61,3 +61,12 @@ const ordersController = {
 document.addEventListener('DOMContentLoaded', () => {
   ordersController.init();
 });
+
+function safeText(text) {
+  const sanitizedText = DOMPurify.sanitize(text);
+  return sanitizedText
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;');
+}

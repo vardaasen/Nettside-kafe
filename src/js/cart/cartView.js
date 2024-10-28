@@ -74,6 +74,10 @@ function createCartItemHtml(itemIndex, item) {
         <div class="cart-item-info">
             <div class="cart-item-name"><strong>${item.name}</strong></div>
         </div>
+        <div class="cart-item-message">
+          <label for="cart-item-message-input-${itemIndex}">Tilpasninger:</label>
+          <textarea id='cart-item-message-input-${itemIndex}' value='${item.message}' onchange="setCartItemMessage(${itemIndex}, this.value)">${item.message}</textarea>
+        </div>
         <div class="cart-item-aligned-right">
           <div class="cart-item-price">${item.price} Kr</div>
           <div class="cart-item-quantity-container">
@@ -110,12 +114,10 @@ function updateCartButtonView() {
   }
 }
 
-function updateCartView() {
-  const cart = document.getElementById();
-}
+function updateCartView() {}
 
 // Gjør funksjonene globalt tilgjengelige
-window.renderCart = renderCart;
+// window.renderCart = renderCart;
 window.showCartNotification = showCartNotification;
 
 console.log('cartView.js loaded');

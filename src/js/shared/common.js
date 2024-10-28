@@ -46,6 +46,11 @@ function closeOverlay() {
 
   model.app.selectedProduct = null;
 
+  model.inputs.cafeMenu.message = '';
+  model.inputs.cafeMenu.quantity = 1;
+  model.inputs.cakeMenu.size = 8;
+  model.inputs.cakeMenu.quantity = 1;
+  model.inputs.cakeMenu.message = '';
   updateView();
 }
 
@@ -55,6 +60,15 @@ function getProductsForCurrentPage() {
   } else if (model.app.currentPageIndex === cakes) {
     return getProductsForCategory('cakes');
   }
+}
+
+function safeText(text) {
+  const sanitizedText = DOMPurify.sanitize(text);
+  return sanitizedText
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;');
 }
 
 /**

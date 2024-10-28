@@ -1,8 +1,8 @@
 /* starter arbeid */
 const cafeMenu = 0;
-const cakeThemes = 1;
-const cakes = 2;
-const shoppingCart = 3;
+// const cakeThemes = 1;
+const cakes = 1;
+const shoppingCart = 2;
 
 /**
  * Modell for applikasjonens data og tilstand.
@@ -60,6 +60,7 @@ const model = {
       size: 8, // 8, 12, 16
       basePrice: 300,
       quantity: 1,
+      message: '',
     },
     shoppingCart: {
       case: 'Overview' /* Overview, PickupTime, NameAndNumber, OrderSent */,
@@ -69,6 +70,14 @@ const model = {
         date: '',
         time: '',
       },
+      /*
+      {
+      productId: 1,
+      productName: 'Biff og løkbaguette',
+      quantity: 2,
+      comment: 'Ekstra løk',
+      },
+      */
       products: [],
     },
   },
@@ -620,7 +629,6 @@ const model = {
     },
   ],
 
-
   /**
    * Beregner prisen for en tilpassbar kake basert på valgt tema og størrelse.
    *
@@ -771,7 +779,9 @@ const model = {
     if (product) {
       product.unitsInStock = parseInt(newStock, 10);
       saveModel();
-      console.log(`Oppdatert lagerbeholdning for "${product.productName}" til ${product.unitsInStock}`);
+      console.log(
+        `Oppdatert lagerbeholdning for "${product.productName}" til ${product.unitsInStock}`,
+      );
     } else {
       console.error(`Produkt med ID ${productId} ikke funnet.`);
     }

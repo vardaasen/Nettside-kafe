@@ -9,13 +9,15 @@
   <link rel="stylesheet" href="../css/components/admin.css">
   <script src="../js/auth/authController.js" defer></script>
   <script src="../js/shared/model.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
   <script src="../js/shared/common.js"></script>
 </head>
 
 <body>
   <header id="header-container" class="header-container">
     <div id="nav-row">
-      <a href="../index.html"><img src="../img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo" class="header__logo-image" role="button"></a>
+      <a href="../index.html"><img src="../img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo"
+          class="header__logo-image" role="button"></a>
 
       <button id="hamburger-menu" class="header-hamburger" aria-label="Åpne/lukke navigering">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -27,8 +29,10 @@
       </button>
 
       <nav class="header__nav" aria-label="Hovedmeny">
-        <button class="header-button" aria-label="Vis bestillinger"><a href="#" class="header__nav-link">Bestillinger</a></button>
-        <button class="header-button" aria-label="Vis lagerbeholdning"><a href="produkter/index.html" class="header__nav-link">Lagerbeholdning</a></button>
+        <button class="header-button" aria-label="Vis bestillinger"><a href="#"
+            class="header__nav-link">Bestillinger</a></button>
+        <button class="header-button" aria-label="Vis lagerbeholdning"><a href="produkter/index.html"
+            class="header__nav-link">Lagerbeholdning</a></button>
       </nav>
 
       <button class="header-button header-frontpage-link" aria-label="Tilbake til hovedsiden">
@@ -44,7 +48,8 @@
       <label for="searchInput" class="orders-search__label">Søk etter kunde eller bestillings-ID:</label>
       <input type="text" id="searchInput" class="orders-search__input" placeholder="Skriv inn navn eller ID" />
       <button class="orders-search__button" onclick="ordersController.searchOrders()">Søk</button>
-      <button class="orders-search__button orders-search__button--reset" onclick="ordersController.resetSearch()">Nullstill</button>
+      <button class="orders-search__button orders-search__button--reset"
+        onclick="ordersController.resetSearch()">Nullstill</button>
     </div>
 
     <div class="orders-filter">

@@ -284,7 +284,7 @@ function createCakeProductInfoOverlayElement() {
 
           <div class="overlay__section overlay__section--comment">
             <label for="product-comment" class="overlay__label">Tilpasninger:</label>
-            <textarea id="product-comment" class="overlay__textarea" placeholder="Skriv inn eventuelle tilpasninger her..." oninput="updateComment(this.value)">${isCustomizable ? model.inputs.themeCakeMenu.message : ''}</textarea>
+            <textarea id="product-comment" class="overlay__textarea" placeholder="Skriv inn eventuelle tilpasninger her..." oninput="updateCakeProductComment(this.value)">${isCustomizable ? model.inputs.themeCakeMenu.message : ''}</textarea>
           </div>
 
           <footer class="overlay-footer">
