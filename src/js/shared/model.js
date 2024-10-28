@@ -1,11 +1,11 @@
 /* starter arbeid */
 const cafeMenu = 0;
-const cakeThemes = 1;
-const cakes = 2;
-const shoppingCart = 3;
+// const cakeThemes = 1;
+const cakes = 1;
+const shoppingCart = 2;
 
 const model = {
-  pages: ['kafeMeny', 'kakeTemaer', 'kaker', 'handlevogn'],
+  pages: ['kafeMeny', 'kaker', 'handlevogn'],
 
   // del 1
   app: {
@@ -42,6 +42,14 @@ const model = {
         date: '',
         time: '',
       },
+      /*
+      {
+      productId: 1,
+      productName: 'Biff og løkbaguette',
+      quantity: 2,
+      comment: 'Ekstra løk',
+      },
+      */
       products: [],
     },
   },

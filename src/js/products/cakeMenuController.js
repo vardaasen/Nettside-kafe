@@ -11,11 +11,17 @@ function updateCakeSize(size) {
   if (selectedProduct.type === 'customizable') {
     // For customizable cakes
     model.inputs.themeCakeMenu.size = parseInt(size);
-    price = model.calculateCustomCakePrice(model.inputs.themeCakeMenu.selectedThemeId, model.inputs.themeCakeMenu.size);
+    price = model.calculateCustomCakePrice(
+      model.inputs.themeCakeMenu.selectedThemeId,
+      model.inputs.themeCakeMenu.size,
+    );
   } else {
     // For standard cakes
     model.inputs.cakeMenu.size = parseInt(size);
-    price = model.calculateStandardCakePrice(selectedProduct.productId, model.inputs.cakeMenu.size);
+    price = model.calculateStandardCakePrice(
+      selectedProduct.productId,
+      model.inputs.cakeMenu.size,
+    );
   }
 
   // Update the price display
@@ -25,7 +31,10 @@ function updateCakeSize(size) {
 function updateTheme(themeId) {
   model.inputs.themeCakeMenu.selectedThemeId = parseInt(themeId);
 
-  const price = model.calculateCustomCakePrice(model.inputs.themeCakeMenu.selectedThemeId, model.inputs.themeCakeMenu.size);
+  const price = model.calculateCustomCakePrice(
+    model.inputs.themeCakeMenu.selectedThemeId,
+    model.inputs.themeCakeMenu.size,
+  );
   updatePriceDisplay(price);
 
   const themeImage = model.themeImages[themeId];
@@ -34,7 +43,6 @@ function updateTheme(themeId) {
     cakeImageElement.src = `./img/cakes/${themeImage}`;
   }
 }
-
 
 function updatePriceDisplay(price) {
   const priceElement = document.getElementById('cakePrice');
@@ -48,14 +56,22 @@ function updateFlavor(flavor) {
 
 function addCakeProductToCart(productId) {
   const product = getProductFromId(productId);
-  if (!product) return; // Avslutt hvis produktet ikke finnes
+  if (!product) {
+    return;
+  } // Avslutt hvis produktet ikke finnes
 
   const isCustomizable = product.type === 'customizable';
 
   // Sett størrelse til 8 dersom ingen annen størrelse er valgt
-  if (isCustomizable && (!model.inputs.themeCakeMenu.size || model.inputs.themeCakeMenu.size === 1)) {
+  if (
+    isCustomizable &&
+    (!model.inputs.themeCakeMenu.size || model.inputs.themeCakeMenu.size === 1)
+  ) {
     model.inputs.themeCakeMenu.size = 8;
-  } else if (!isCustomizable && (!model.inputs.cakeMenu.size || model.inputs.cakeMenu.size === 1)) {
+  } else if (
+    !isCustomizable &&
+    (!model.inputs.cakeMenu.size || model.inputs.cakeMenu.size === 1)
+  ) {
     model.inputs.cakeMenu.size = 8;
   }
 
@@ -63,13 +79,18 @@ function addCakeProductToCart(productId) {
     ? model.inputs.themeCakeMenu.quantity
     : model.inputs.cakeMenu.quantity;
   const price = isCustomizable
-    ? model.calculateCustomCakePrice(model.inputs.themeCakeMenu.selectedThemeId, model.inputs.themeCakeMenu.size)
+    ? model.calculateCustomCakePrice(
+        model.inputs.themeCakeMenu.selectedThemeId,
+        model.inputs.themeCakeMenu.size,
+      )
     : model.calculateStandardCakePrice(productId, model.inputs.cakeMenu.size);
 
   // Lag produktnavn med tema, størrelse og smak for tilpassbare kaker
   let productName = product.productName;
   if (isCustomizable) {
-    const theme = model.themes.find(t => t.themeId === model.inputs.themeCakeMenu.selectedThemeId);
+    const theme = model.themes.find(
+      (t) => t.themeId === model.inputs.themeCakeMenu.selectedThemeId,
+    );
     const themeName = theme ? ` - ${theme.themeName}` : '';
     const sizeLabel = ` (${model.inputs.themeCakeMenu.size} personer)`;
     const flavor = model.inputs.themeCakeMenu.selectedFlavor || 'Vanilje';

@@ -33,6 +33,10 @@ function createOverlayWithContent(content) {
 
 function closeOverlay() {
   model.app.selectedProduct = null;
+  model.inputs.cafeMenu.message = '';
+  model.inputs.cafeMenu.quantity = 1;
+  model.inputs.cakeMenu.size = 8;
+  model.inputs.cakeMenu.quantity = 1;
   updateView();
 }
 

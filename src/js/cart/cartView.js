@@ -27,29 +27,29 @@ function createShoppingCartHtml() {
   return shoppingCart;
 }
 
-function renderCart() {
-  const cartItems = document.getElementById('cartItems');
-  const cartCount = document.getElementById('cartCount');
-  const cartTotal = document.getElementById('cartTotal');
-  const checkoutButton = document.getElementById('checkoutButton');
-  const cart = getCartItems();
+// function renderCart() {
+//   const cartItems = document.getElementById('cartItems');
+//   const cartCount = document.getElementById('cartCount');
+//   const cartTotal = document.getElementById('cartTotal');
+//   const checkoutButton = document.getElementById('checkoutButton');
+//   const cart = getCartItems();
 
-  if (!cartItems) return;
+//   if (!cartItems) return;
 
-  cartItems.innerHTML = '';
-  let total = 0;
-  let itemCount = 0;
+//   cartItems.innerHTML = '';
+//   let total = 0;
+//   let itemCount = 0;
 
-  cart.forEach((item, itemIndex) => {
-    cartItems.innerHTML += createCartItemHtml(itemIndex, item);
-    total += item.price * item.quantity;
-    itemCount += item.quantity;
-  });
+//   cart.forEach((item, itemIndex) => {
+//     cartItems.innerHTML += createCartItemHtml(itemIndex, item);
+//     total += item.price * item.quantity;
+//     itemCount += item.quantity;
+//   });
 
-  if (cartCount) cartCount.textContent = itemCount;
-  if (cartTotal) cartTotal.textContent = total;
-  if (checkoutButton) checkoutButton.disabled = itemCount === 0;
-}
+//   if (cartCount) cartCount.textContent = itemCount;
+//   if (cartTotal) cartTotal.textContent = total;
+//   if (checkoutButton) checkoutButton.disabled = itemCount === 0;
+// }
 
 function createCartItemsHtml() {
   let items = '';
@@ -65,6 +65,10 @@ function createCartItemHtml(itemIndex, item) {
     <div class="cart-item">
         <div class="cart-item-info">
             <div class="cart-item-name"><strong>${item.name}</strong></div>
+        </div>
+        <div class="cart-item-message">
+          <label for="cart-item-message-input-${itemIndex}">Tilpasninger:</label>
+          <textarea id='cart-item-message-input-${itemIndex}' value='${item.message}' onchange="setCartItemMessage(${itemIndex}, this.value)">${item.message}</textarea>
         </div>
         <div class="cart-item-aligned-right">
           <div class="cart-item-price">${item.price} Kr</div>
@@ -102,12 +106,10 @@ function updateCartButtonView() {
   }
 }
 
-function updateCartView() {
-  const cart = document.getElementById();
-}
+function updateCartView() {}
 
 // Gjør funksjonene globalt tilgjengelige
-window.renderCart = renderCart;
+// window.renderCart = renderCart;
 window.showCartNotification = showCartNotification;
 
 console.log('cartView.js loaded');

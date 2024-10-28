@@ -20,9 +20,6 @@ function createCurrentPageHtml() {
   if (model.app.currentPageIndex === cafeMenu) {
     return createCafeMenuHtml();
   }
-  if (model.app.currentPageIndex === cakeThemes) {
-    return createThemesMenuHtml();
-  }
   if (model.app.currentPageIndex === cakes) {
     return createCakeMenuHtml();
   }

@@ -1,14 +1,19 @@
-function addToCart(name, price, productId, quantity = 1) {
+function addToCart(name, price, productId, quantity = 1, message) {
   const cart = model.inputs.shoppingCart.products;
   const existingItem = cart.find((item) => item.name === name);
   if (existingItem) {
     existingItem.quantity += quantity;
+    existingItem.message += message;
   } else {
-    cart.push({ name, price, quantity, productId });
+    cart.push({ name, price, quantity, productId, message });
   }
   updateCartButtonView();
   showCartNotification('Produkt lagt til i handlekurv');
   // updateCart('add');
+}
+
+function setCartItemMessage(itemIndex, text) {
+  model.inputs.shoppingCart.products[itemIndex].message = text;
 }
 
 function removeFromCart(itemIndex) {
@@ -27,35 +32,35 @@ function clearCart() {
   // updateCart('clear');
 }
 
-function updateCart(action) {
-  const cartLink = document.getElementById('cartLink');
-  const cartCount = document.getElementById('cartCount');
-  const count = model.inputs.shoppingCart.products.reduce(
-    (sum, item) => sum + item.quantity,
-    0,
-  );
+// function updateCart(action) {
+//   const cartLink = document.getElementById('cartLink');
+//   const cartCount = document.getElementById('cartCount');
+//   const count = model.inputs.shoppingCart.products.reduce(
+//     (sum, item) => sum + item.quantity,
+//     0,
+//   );
 
-  if (cartCount) cartCount.textContent = count;
+//   if (cartCount) cartCount.textContent = count;
 
-  if (action === 'add') {
-    showCartNotification('Produkt lagt til i handlekurven!');
-  } else if (action === 'remove') {
-    showCartNotification('Produkt fjernet fra handlekurven!');
-  } else if (action === 'clear') {
-    showCartNotification('Handlekurven er nå tom!');
-  }
+//   if (action === 'add') {
+//     showCartNotification('Produkt lagt til i handlekurven!');
+//   } else if (action === 'remove') {
+//     showCartNotification('Produkt fjernet fra handlekurven!');
+//   } else if (action === 'clear') {
+//     showCartNotification('Handlekurven er nå tom!');
+//   }
 
-  if (cartLink) {
-    cartLink.classList.add('bounce', 'pulse');
-    setTimeout(() => {
-      cartLink.classList.remove('bounce', 'pulse');
-    }, 600);
-  }
+//   if (cartLink) {
+//     cartLink.classList.add('bounce', 'pulse');
+//     setTimeout(() => {
+//       cartLink.classList.remove('bounce', 'pulse');
+//     }, 600);
+//   }
 
-  if (model.app.currentPageIndex === shoppingCart) {
-    renderCart();
-  }
-}
+//   if (model.app.currentPageIndex === shoppingCart) {
+//     renderCart();
+//   }
+// }
 
 function setCartItemQuantity(itemIndex, quantity) {
   if (quantity <= 0 || isNaN(quantity)) {
