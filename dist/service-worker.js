@@ -58,7 +58,7 @@ const urlsToCache = [
   "./img/cakes/Barnebursdag.webp",
   "./img/cakes/brownies.webp",
   "./img/cakes/Bryllup.webp",
-  "./img/cakes/Bursdag_voksen.webp",
+  "./img/cakes/bursdag-voksen.webp",
   "./img/cakes/cupcakes.webp",
   "./img/cakes/eplekake.webp",
   "./img/cakes/frukttaerte.webp",

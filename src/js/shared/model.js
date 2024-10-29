@@ -179,7 +179,7 @@ const model = {
     1: 'uten-tema.webp',
     2: 'Bryllup.webp',
     3: 'Barnebursdag.webp',
-    4: 'Bursdag voksen.webp',
+    4: 'bursdag-voksen.webp',
     5: 'Jubileum.webp',
     6: 'Jul.webp',
     7: 'Halloween.webp',
