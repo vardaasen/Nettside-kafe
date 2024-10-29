@@ -132,11 +132,14 @@ function createOrderConfirmation() {
       <h2>Takk for din bestilling!</h2>
 
       <div class="confirmation-details">
-        <p>Vi har mottatt din bestilling med bestillings-ID: ${latestOrder.orderId}</p>
+        <p>
+          Vi har mottatt din bestilling med bestillings-ID:
+          ${latestOrder.orderId}
+        </p>
         <p>Din bestilling vil være klar til henting:</p>
         <p class="pickup-time">
-          ${dayjs(latestOrder.pickUpSchedule.date).format('DD. MMMM YYYY')}
-          kl. ${latestOrder.pickUpSchedule.time}
+          ${dayjs(latestOrder.pickUpSchedule.date).format('DD. MMMM YYYY')} kl.
+          ${latestOrder.pickUpSchedule.time}
         </p>
 
         <p>En ansatt vil snart bekrefte bestillingen din via SMS.</p>
