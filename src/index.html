@@ -85,7 +85,7 @@
     </div>
   </footer>
 
-  <!-- Dynamisk last inn version.js og cache-busting via timestamp -->
+  <!-- Dynamisk last inn script  -->
   <script>
     const timestamp = new Date().getTime();
     const versionScript = document.createElement('script');
@@ -96,7 +96,7 @@
       const appVersion = window.appVersion || "default_version";
 
 //      const mainCss = document.getElementById('main-css');
-//      mainCss.href = `css/styles.css?v=${appVersion}`;
+// cache-busting via timestamp     mainCss.href = `css/styles.css?v=${appVersion}`;
 
       const scripts = [
         'js/shared/model.js',
