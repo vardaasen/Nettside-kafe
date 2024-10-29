@@ -29,7 +29,7 @@ function switchTab(value) {
  * // Oppdater kommentaren til en tilpasset tekst:
  * updateComment('Ekstra sterk kaffe');
  */
-function updateComment(value) {
+function updateCafeProductComment(value) {
   model.inputs.cafeMenu.message = value;
 }
 
