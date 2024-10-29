@@ -14,7 +14,8 @@ const ordersController = {
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', () => {
       const query = searchInput.value.trim();
-      if (isNaN(query)) { // Only trigger live filter if the input is text
+      if (isNaN(query)) {
+        // Only trigger live filter if the input is text
         this.filterOrders();
       }
     });
@@ -24,24 +25,30 @@ const ordersController = {
     const searchQuery = document.getElementById('searchInput').value.trim();
     const statusFilter = document.getElementById('statusFilter').value;
 
-    if (!isNaN(searchQuery) && searchQuery !== '') { // Numeric input for exact orderId search
+    if (!isNaN(searchQuery) && searchQuery !== '') {
+      // Numeric input for exact orderId search
       const orderId = parseInt(searchQuery, 10);
-      const orders = model.orders.filter(order => order.orderId === orderId);
+      const orders = model.orders.filter((order) => order.orderId === orderId);
 
       if (orders.length > 0) {
         ordersView.renderOrders(orders);
       } else {
-        ordersView.renderNoResultsMessage(`Ingen bestilling funnet med ID ${orderId}`);
+        ordersView.renderNoResultsMessage(
+          `Ingen bestilling funnet med ID ${orderId}`,
+        );
       }
-    } else { // Live filtering for text input
+    } else {
+      // Live filtering for text input
       this.displayOrders(statusFilter, searchQuery.toLowerCase());
     }
   },
 
   displayOrders(statusFilter = 'Alle', searchQuery = '') {
-    const orders = model.orders.filter(order =>
-      (statusFilter === 'Alle' || order.status === statusFilter) &&
-      (searchQuery === '' || order.customerName.toLowerCase().includes(searchQuery))
+    const orders = model.orders.filter(
+      (order) =>
+        (statusFilter === 'Alle' || order.status === statusFilter) &&
+        (searchQuery === '' ||
+          order.customerName.toLowerCase().includes(searchQuery)),
     );
     ordersView.renderOrders(orders);
   },
