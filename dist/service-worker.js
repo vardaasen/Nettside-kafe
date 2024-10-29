@@ -106,11 +106,29 @@ const urlsToCache = [
 ];
 
 
-self.addEventListener("install", event => {
+self.addEventListener("install", (event) => {
+  urlsToCache.forEach((url) => {
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to load ${url}`);
+        }
+        console.log(`Cached successfully: ${url}`);
+      })
+      .catch(error => console.error(error.message));
+  });
+
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
+    caches.open(CACHE_NAME).then((cache) => {
+      try {
+        return cache.addAll(urlsToCache);
+      } catch (error) {
+        console.error("Error caching files:", error);
+      }
+    })
   );
 });
+
 
 self.addEventListener("fetch", event => {
   const { request } = event;
