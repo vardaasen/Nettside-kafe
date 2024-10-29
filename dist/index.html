@@ -11,6 +11,8 @@
       name="description"
       content="Bakst og Brygg - Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online."
     />
+    <link rel="manifest" href="manifest.json">
+
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
     <link rel="stylesheet" href="css/styles.min.css">
@@ -109,6 +111,9 @@
       </div>
     </header>
 
+    <button id="installButton" style="display: none;">Installer webappen</button>
+
+
     <div
       class="cart-notification"
       id="cartNotification"
@@ -172,6 +177,44 @@
       updateView();
       hamburger();
       dayjs.locale('nb');
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js").then(registration => {
+            console.log("Service Worker registered with scope:", registration.scope);
+          }).catch(error => {
+            console.error("Service Worker registration failed:", error);
+          });
+        });
+      }
+
+      let deferredPrompt;
+      const addButton = document.getElementById("installButton");
+
+      if (addButton) {
+
+        window.addEventListener("beforeinstallprompt", (e) => {
+          e.preventDefault();
+          deferredPrompt = e;
+          addButton.style.display = "block";
+        });
+
+
+        addButton.addEventListener("click", () => {
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+
+            deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === "accepted") {
+                console.log("Bruker aksepterte A2HS-forespørselen");
+              } else {
+                console.log("Bruker avviste A2HS-forespørselen");
+              }
+              deferredPrompt = null;
+              addButton.style.display = "none";
+            });
+          }
+        });
+      }
     </script>
   </body>
 </html>

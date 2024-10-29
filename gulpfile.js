@@ -144,6 +144,8 @@ gulp.task('copy-files', () => {
       'src/docs/**/*',
       'src/img/**/*',
       'src/favicon.ico',
+      'src/manifest.json',
+      'src/service-worker.js',
       'src/js/vendors/dayjs.min.js',
       'src/js/vendors/nb.js',
       'src/js/vendors/purify.min.js',

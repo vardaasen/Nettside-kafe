@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "cafe-menu-view.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "gulp",
     "lint": "eslint ./src",
     "format": "prettier --write ./src",
     "doc": "jsdoc -c jsdoc.json",

@@ -51,6 +51,20 @@
       <p class="project-approach__point-description"> .editorconfig sikrer at koden er formattet likt på tvers av
         utviklingsmiljøer,
         noe som reduserer inkonsistenser og forbedrer samarbeidet. </p>
+      <h3 class="project-approach__point">
+        <a href="https://developer.chrome.com/docs/lighthouse/overview" target="_blank">4. Lighthouse fra Google</a>
+      </h3>
+      <p class="project-approach__point-description"> Vi bruker Lighthouse fra Google for å måle og forbedre ytelse,
+         tilgjengelighet, beste praksiser, og SEO. Gjennom regelmessige kjøringer kan vi identifisere flaskehalser og
+         optimaliseringsmuligheter, noe som bidrar til en bedre brukeropplevelse og høyere kvalitet i prosjektet. <br><br>
+        <img src="docs-assets/lighthouse.webp" alt="Lighthouse"></p>
+      <h3 class="project-approach__point">
+        <a href="https://gulpjs.com/" target="_blank">5. Gulp: JavaScript Task Automation</a>
+      </h3>
+      <p class="project-approach__point-description"> Vår kildekode er organisert i <code>src</code>-mappen. Siden vår
+          CSS- og JavaScript-struktur er modulær, trenger vi å slå sammen disse filene for optimalisering. Vi bruker
+          Gulp til å slå sammen og minifisere våre ressurser, som deretter genererer en <code>dist</code>-mappe for den
+          optimaliserte versjonen av webapplikasjonen. </p>
     </section>
     <section class="project-technologies">
       <h2 class="project-technologies__subtitle">HTML</h2>
