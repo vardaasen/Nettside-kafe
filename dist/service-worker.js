@@ -11,8 +11,6 @@ const urlsToCache = [
   "./css/styles.min.css",
   "./data/products.js",
   "./data/products.json",
-  "./img/logo.webp",
-  "./img/logo_bakst-og-brygg.webp",
 
   "./img/cafe_menu/americano.webp",
   "./img/cafe_menu/biff_lakbaguette.webp",
@@ -102,7 +100,7 @@ const urlsToCache = [
   "./js/vendors/dayjs.min.js",
   "./js/vendors/nb.js",
   "./js/vendors/purify.min.js",
-  "./js/vendors/scripts.min.js",
+  "./js/scripts.min.js",
 
   "./favicon.ico",
   "./img/icons/icon-192x192.png",
