@@ -10,7 +10,15 @@
   <link rel="stylesheet" href="../../css/admin-styles.min.css">
 
 
-  <script src="../../js/auth/authController.js" defer></script>
+  <script>
+    if (localStorage.getItem('isLoggedIn') !== 'true') {
+      window.location.href = '../index.html';
+    }
+    document.getElementById('logoutBtn')?.addEventListener('click', function () {
+      localStorage.removeItem('isLoggedIn');
+      window.location.href = '../../index.html';
+    });
+  </script>
   <script src="../../js/shared/model.js"></script>
   <script src="../../js/shared/common.js"></script>
   <script src="../../js/products/productEditController.js" defer></script>
