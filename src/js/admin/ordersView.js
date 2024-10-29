@@ -60,7 +60,7 @@ const ordersView = {
         </div>
         <div class="orders-table__column orders-table__column--customer">
           <div>${safeText(order.customerName)}</div>
-          <div>${safeText(order.contactNumber)}</div>
+          <div>Tlf: ${safeText(order.contactNumber)}</div>
         </div>
         <div class="orders-table__column orders-table__column--products">
           ${renderOrderedProductsHtml(order.products)}

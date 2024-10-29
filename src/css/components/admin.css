@@ -310,6 +310,55 @@ select {
   margin-top: 1em;
 }
 
+@media (max-width: 768px) {
+  /* Applies to all search and filter sections */
+  .inventory-search, .inventory-filter, .orders-search, .orders-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .inventory-search__label,
+  .inventory-filter__label,
+  .orders-search__label,
+  .orders-filter__label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .inventory-search__input,
+  .orders-search__input,
+  .inventory-filter__select,
+  .orders-filter__select,
+  .inventory-search__button,
+  .inventory-search__button--reset,
+  .orders-search__button,
+  .orders-search__button--reset {
+    width: 100%;
+    max-width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+
+  .inventory-filter button,
+  .orders-filter button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .orders-filter__link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
 @media screen and (min-width: 768px) {
   .orders-search__no-result {
     margin-top: 4em;
@@ -603,9 +652,10 @@ button:hover {
 
 /* Logout Button */
 .logout {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 1em 0;
 }
 
 .logout__button {

@@ -97,7 +97,7 @@ function createCustomerInfoView() {
           type="tel"
           id="contact-number"
           required
-          placeholder="(+47) 12345678"
+          placeholder="12345678"
           oninput="updateContactNumber(this.value)"
           value="${model.inputs.shoppingCart.contactNumber}"
         />
