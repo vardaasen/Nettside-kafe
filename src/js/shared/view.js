@@ -31,7 +31,11 @@ function updateView() {
   }
 
   // Oppdater nettleserhistorikken
-  history.pushState({ page: currentPage }, '', `#${currentPage}`);
+  if (model.pages.includes(currentPage)) {
+    history.pushState({ page: currentPage }, '', `#${currentPage}`);
+  } else {
+    console.error('Invalid page index:', currentPage);
+  }
 }
 
 /**
@@ -90,11 +94,17 @@ window.addEventListener('popstate', (event) => {
  * skal vises. Hvis en hash finnes, settes `currentPageIndex` til den tilsvarende siden; ellers settes den
  * til `cafeMenu` som standard. Til slutt kalles `updateView()` for å rendre innholdet.
  *
- * @event DOMContentLoaded - Setter currentPageIndex basert på URL-hashen
+ * @event DOMContentLoaded - Setter currentPageIndex basert på URL-hashen.
+ * @example
+ * // Når dokumentet er lastet, oppdateres visningen basert på URL-hashen:
+ * window.addEventListener('DOMContentLoaded', () => { ... });
  */
 window.addEventListener('DOMContentLoaded', () => {
-  model.app.currentPageIndex = model.pages.indexOf(window.location.hash)
-    ? window.location.hash.substring(1)
-    : model.pages[cafeMenu];
+  const hash = window.location.hash.substring(1); // Ekstraherer hash uten #
+  const index = model.pages.indexOf(hash); // Får indeksen til siden basert på hash
+
+  // Setter currentPageIndex basert på hash, standard til cafeMenu hvis ikke funnet
+  model.app.currentPageIndex = index !== -1 ? index : cafeMenu;
   updateView();
 });
+

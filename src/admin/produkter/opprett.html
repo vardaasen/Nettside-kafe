@@ -6,12 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Opprett nytt produkt</title>
   <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+  <!-- build:admin-produkt-css -->
+  <link rel="stylesheet" href="../../css/modern-normalize.css">
+  <link rel="stylesheet" href="../../css/variables.css">
   <link rel="stylesheet" href="../../css/components/admin.css">
+  <link rel="stylesheet" href="../../css/components/modal.css">
+  <!-- endbuild -->
+
   <script src="../../js/auth/authController.js" defer></script>
   <script src="../../js/shared/model.js"></script>
   <script src="../../js/shared/common.js"></script>
   <script src="../../js/products/productAddController.js" defer></script>
   <script src="../../js/products/productAddView.js" defer></script>
+
 </head>
 
 <body>
@@ -52,10 +60,12 @@
     </div>
   </main>
 
+  <script>
+    initiateModelLocalStorage()
+    hamburger();
+  </script>
+
 </body>
 
 </html>
-<script>
-  initiateModelLocalStorage()
-  hamburger();
-</script>
+

@@ -54,7 +54,7 @@
 
 .header-button:hover {
   background-color: var(--color-accent--warm);
-  color: var(--color-text--dark-bg);
+  color: var(--color-text--light-bg);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -62,7 +62,7 @@
   display: flex;
   align-items: center;
   background-color: var(--color-accent--warm);
-  color: var(--color-text--dark-bg);
+  color: var(--color-text--light-bg);
   padding: 0.75rem 1.25rem;
   border-radius: 8px;
   border: none;

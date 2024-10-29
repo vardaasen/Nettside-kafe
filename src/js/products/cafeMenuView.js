@@ -109,7 +109,7 @@ function createCafeProductCardHtml(product) {
   return /* HTML*/ `
     <article class="product-card ${isOutOfStock ? 'product-card--inactive' : ''}">
       <header class="product-card__header" ${!isOutOfStock ? `onclick="openProductInfo(${product.productId})"` : ''}>
-        <img class="product-card__image" src="./img/cafe_menu/${product.image}" alt="${product.productName}">
+        <img class="product-card__image" src="./img/cafe_menu/${product.image}" alt="${product.productName}" width="300" height="300">
         <h2 class="product-card__title">${product.productName}</h2>
       </header>
       <footer class="product-card__footer">
@@ -174,7 +174,7 @@ function createCafeProductInfoOverlayElement() {
         </header>
 
         <div class="overlay__body">
-          <img src='./img/cafe_menu/${product.image}' alt="${product.productName}" class="overlay__image">
+          <img src='./img/cafe_menu/${product.image}' alt="${product.productName}" class="overlay__image" width="521" height="400">
           <p class="overlay__price">${product.unitPrice ? `${product.unitPrice} Kr` : 'Pris ikke tilgjengelig'}</p>
           <p class="overlay__description">${product.description}</p>
 

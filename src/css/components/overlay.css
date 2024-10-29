@@ -168,7 +168,7 @@
 .overlay-button {
   padding: 14px;
   background-color: var(--color-primary);
-  color: var(--color-text--dark-bg);
+  color: var(--color-accent--warm);
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -182,6 +182,7 @@
 .overlay-button:hover {
   background-color: var(--color-secondary--light);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  color: var(--color-text--light-bg);
 }
 
 /* Container for arranging elements side by side */

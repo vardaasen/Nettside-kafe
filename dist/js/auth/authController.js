@@ -1,0 +1,1 @@
+"true"!==localStorage.getItem("isLoggedIn")&&(window.location.href="index.html"),document.getElementById("logoutBtn")?.addEventListener("click",function(){localStorage.removeItem("isLoggedIn"),window.location.href="../index.html"});

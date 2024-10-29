@@ -1,10 +1,19 @@
-@import url("../modern-normalize.css");
-@import url("../variables.css");
-@import url("../components/modal.css");
-
 /* Base and Container */
 body {
   background-color: var(--color-background);
+}
+
+body,
+select {
+  line-height: 1.33;
+}
+
+input {
+  margin-right: 3px;
+}
+
+select {
+  padding: 3px 0;
 }
 
 .container {
@@ -67,10 +76,10 @@ body {
   font-size: 1rem;
   text-decoration: none;
   transition: color 0.3s ease;
+}
 
-  &:hover {
-    color: var(--color-text--dark-bg);
-  }
+.header__nav-link:hover {
+    color: var(--color-text--light-bg);
 }
 
 .header__link {
@@ -78,10 +87,10 @@ body {
   font-size: 1rem;
   text-decoration: none;
   transition: color 0.3s ease;
+}
 
-  &:hover {
+.header__link:hover {
     color: var(--color-text--light-bg);
-  }
 }
 
 .header-button {
@@ -178,7 +187,6 @@ body {
   }
 }
 
-/* Tables for Inventory and Orders */
 .inventory-table,
 .orders-table {
   width: 100%;
@@ -274,6 +282,10 @@ body {
   margin-bottom: 1em;
 }
 
+.order-status__button {
+  margin-top: 7px;
+}
+
 /* Inputs for Inventory */
 .inventory-table__input {
   width: 80px;
@@ -306,21 +318,24 @@ body {
 
 /* Buttons */
 button {
-  padding: 5px 10px;
-  background-color: var(--color-secondary--light);
-  color: var(--color-text--light-bg);
+  padding: 6px 10px 7px;
+  background-color: var(--color-primary);
+  color: var(--color-text--dark-bg);
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
-  a {
-    color: var(--color-secondary--dark);
-    text-decoration: none;
-  }
+  margin-right: 3px;
 }
+
+button a {
+    color: var(--color-text--dark-bg);
+    text-decoration: none;
+}
+
 button a:hover {
   color: var(--color-text--dark-bg);
 }
+
 button:hover {
   background-color: var(--color-secondary--dark);
   color: var(--color-text--dark-bg);
@@ -387,7 +402,7 @@ button:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  color: var(--color-text--dark-bg);
+  color: var(--color-text--light-bg);
 }
 
 .add-product-form__button--save {
@@ -403,7 +418,7 @@ button:hover {
 }
 
 .add-product-form__button--cancel:hover {
-  background-color: var(--color-accent--cold);
+  background-color: var(--color-primary);
 }
 
 @media screen and (min-width: 768px) {
@@ -503,10 +518,12 @@ button:hover {
 
 .edit-product-form__button--save {
   background-color: var(--color-secondary--light);
+  color: var(--color-text--light-bg);
 }
 
 .edit-product-form__button--cancel {
   background-color: var(--color-accent--warm);
+  color: var(--color-text--light-bg);
 }
 
 /* Login Page */
@@ -521,11 +538,8 @@ button:hover {
 
 .login-page__logo {
   margin-bottom: 30px;
-  width: 150px;
-  height: 150px;
-  background-image: url('../../img/logo.webp');
-  background-size: cover;
-  background-position: center;
+  max-width: 150px;
+  height: auto;
 }
 
 .login-form {
@@ -540,16 +554,17 @@ button:hover {
 
 .login-form__input {
   width: 100%;
-  padding: 10px;
+  padding: 8px;
   margin-bottom: 15px;
   border: 1px solid var(--color-border);
   border-radius: 4px;
+  line-height: 1.33;
 }
 
 .login-form__button {
   padding: 10px;
   background-color: var(--color-secondary--light);
-  color: var(--color-text--dark-bg);
+  color: var(--color-text--light-bg);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -579,7 +594,7 @@ button:hover {
 .toggle-password {
   position: absolute;
   right: 10px;
-  top: 50%;
+  top: 35%;
   transform: translateY(-50%);
   cursor: pointer;
   display: inline-flex;
@@ -617,4 +632,16 @@ button:hover {
   .orders-table__row {
     flex-direction: column;
   }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap;
 }

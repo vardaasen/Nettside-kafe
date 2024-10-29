@@ -1,0 +1,1 @@
+let loginModel={users:[{employeeID:"admin",password:"getFTW!"},{employeeID:"John",password:"qwertyFTW!"}],checkCredentials(s,o){return this.users.some(e=>e.employeeID===s&&e.password===o)}};

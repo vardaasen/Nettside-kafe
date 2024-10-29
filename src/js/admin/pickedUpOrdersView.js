@@ -22,7 +22,9 @@ const pickedUpOrdersView = {
     let filteredOrders = orders;
     if (searchQuery) {
       filteredOrders = filteredOrders.filter((order) => {
-        const nameMatch = order.customerName.toLowerCase().includes(searchQuery);
+        const nameMatch = order.customerName
+          .toLowerCase()
+          .includes(searchQuery);
         const idMatch = order.orderId.toString().includes(searchQuery);
         return nameMatch || idMatch;
       });
@@ -37,6 +39,9 @@ const pickedUpOrdersView = {
       orderRow.classList.add('orders-table__row');
 
       orderRow.innerHTML = `
+        <div class="orders-table__column orders-table__column--order-id">
+          <div>${order.orderId}</div>
+        </div>
         <div class="orders-table__column orders-table__column--customer">
           <div>${order.customerName}</div>
           <div>${order.contactNumber}</div>
@@ -68,8 +73,12 @@ const pickedUpOrdersView = {
  */
 function sortByPickupDateAndTime(orders) {
   return orders.sort((a, b) => {
-    const aDateTime = new Date(`${a.pickUpSchedule.date}T${a.pickUpSchedule.time}`);
-    const bDateTime = new Date(`${b.pickUpSchedule.date}T${b.pickUpSchedule.time}`);
+    const aDateTime = new Date(
+      `${a.pickUpSchedule.date}T${a.pickUpSchedule.time}`,
+    );
+    const bDateTime = new Date(
+      `${b.pickUpSchedule.date}T${b.pickUpSchedule.time}`,
+    );
     return bDateTime - aDateTime; // Sort descending for hentede orders
   });
 }

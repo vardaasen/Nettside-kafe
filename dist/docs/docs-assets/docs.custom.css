@@ -1,0 +1,244 @@
+:root {
+  /*********
+  TYPOGRAPHY
+  *********/
+  --color-text: #333;
+  --color-background: #eaf2dd;
+  --color-primary: #6D426D;
+  --color-secondary: #4a4a4a;
+  --color-accent: #ffb347;
+
+  --baseFontSize: 16px;
+  --sizeM: var(--baseFontSize);
+
+  --sizeL: calc(var(--sizeM) * 1.333);
+  --sizeXl: calc(var(--sizeL) * 1.333);
+  --sizeXxl: calc(var(--sizeXl) * 1.333);
+  --sizeXxxl: calc(var(--sizeXxl) * 1.333);
+
+  --sizeS: calc(var(--sizeM) / 1.333);
+  --sizeXs: calc(var(--sizeS) / 1.333);
+  --sizeXxs: calc(var(--sizeXs) / 1.333);
+  --sizeXxxs: calc(var(--sizeXxs) / 1.333);
+}
+
+/* Base Styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 20px;
+  color: var(--color-text);
+  font-size: var(--sizeL);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.33;
+  color: var(--color-secondary);
+}
+
+h1 {
+  font-size: var(--sizeXxl);
+  margin-top: 1.33em;
+}
+
+h2 {
+  font-size: var(--sizeXl);
+}
+
+h3 {
+  font-size: var(--sizeXl);
+}
+
+h4, h5, h6 {
+  font-size: var(--sizeM);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.project-header {
+  font-size: var(--sizeXxl);
+  font-weight: bold;
+  padding: 1rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  text-align: center;
+}
+
+section.project-introduction {
+  margin: 2em auto;
+  max-width: 1200px;
+  padding: 2rem;
+  background-color: var(--color-background);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+h1.project-introduction__title {
+  font-size: var(--sizeXxl);
+  color: var(--color-secondary);
+  text-align: center;
+  margin: 0 0 1em;
+}
+
+p.project-introduction__description {
+  font-size: var(--sizeM);
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  section.project-introduction {
+    padding: 1.5rem;
+  }
+
+  h1.project-introduction__title {
+    font-size: var(--sizeXl);
+  }
+
+  p.project-introduction__description {
+    font-size: var(--sizeS);
+    margin-bottom: 0.75rem;
+  }
+}
+
+
+section.project-approach {
+  margin: 0 auto;
+  max-width: 1600px;
+}
+
+h2.project-approach__title {
+  font-size: var(--sizeXxl);
+  margin: 1em 0;
+  color: var(--color-secondary);
+}
+
+.project-approach__description {
+  font-size: var(--sizeM);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+h2.project-approach__subtitle, h2.project-approach__methodology-subtitle, h2.project-technologies__subtitle, h2.project-javascript__subtitle {
+  font-size: var(--sizeXl);
+  margin-top: 1rem;
+  color: var(--color-secondary);
+}
+
+h3.project-approach__point, h3.project-technologies__point, h3.project-javascript__point {
+  font-size: var(--sizeL);
+  margin-top: 1.5rem;
+  color: var(--color-secondary);
+  font-weight: bold;
+}
+
+.project-approach__point-description, .project-technologies__point-description, .project-javascript__point-description {
+  font-size: var(--sizeM);
+  line-height: 1.6;
+  margin-top: 0.5rem;
+  color: var(--color-text);
+}
+
+li.project-technologies__list-item {
+  font-size: var(--sizeM);
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+  margin-left: var(--sizeXl);
+}
+
+/* Improved Layout and Design */
+.project-approach__methodology, .project-technologies, .project-javascript {
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-technologies:hover, .project-javascript:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-technologies__list {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Typography Utilities */
+.text-center {
+  text-align: center;
+}
+.text-bold {
+  font-weight: 700;
+}
+
+/* Layout Utilities */
+.margin-top-large {
+  margin-top: 2rem;
+}
+.margin-bottom-large {
+  margin-bottom: 2rem;
+}
+.padding-large {
+  padding: 2rem;
+}
+
+.link {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* Button Styles */
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: var(--sizeM);
+  font-weight: 700;
+  color: #fff;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-3px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+audio, pre {
+  width: 50%;
+}
+
+pre {
+  font-size: var(--sizeM);
+}
+
+@media screen and (max-width: 768px) {
+  audio, pre {
+    width: 90%;
+  }
+}

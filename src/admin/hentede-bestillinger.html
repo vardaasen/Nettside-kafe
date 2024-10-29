@@ -5,10 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hentede Bestillinger</title>
   <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+  <!-- build:admin-css -->
+  <link rel="stylesheet" href="../css/modern-normalize.css">
+  <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/components/admin.css">
+  <link rel="stylesheet" href="../css/components/modal.css">
+  <!-- endbuild -->
+
   <script src="../js/auth/authController.js" defer></script>
-  <script src="../js/shared/model.js"></script>
+    <script src="../js/shared/model.js"></script>
   <script src="../js/shared/common.js"></script>
+  <script src="../js/admin/pickedUpOrdersController.js" defer></script>
+  <script src="../js/admin/pickedUpOrdersView.js" defer></script>
+
 </head>
 <body>
   <header id="header-container" class="header-container">
@@ -46,6 +56,7 @@
 
     <div class="orders-table" role="table">
       <div class="orders-table__row orders-table__header">
+        <div class="orders-table__column orders-table__column--order-id" role="columnheader">Bestillings-ID</div>
         <div class="orders-table__column orders-table__column--customer" role="columnheader">Kunde</div>
         <div class="orders-table__column orders-table__column--products" role="columnheader">Produkter</div>
         <div class="orders-table__column orders-table__column--schedule" role="columnheader">Hentedato og -tid</div>
@@ -60,8 +71,7 @@
     </div>
   </main>
 
-  <script src="../js/admin/pickedUpOrdersController.js" defer></script>
-  <script src="../js/admin/pickedUpOrdersView.js" defer></script>
+
 </body>
 </html>
 <script>

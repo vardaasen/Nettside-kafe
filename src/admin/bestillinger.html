@@ -6,11 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bestillinger</title>
   <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+  <!-- build:admin-css -->
+  <link rel="stylesheet" href="../css/modern-normalize.css">
+  <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/components/admin.css">
+  <link rel="stylesheet" href="../css/components/modal.css">
+  <!-- endbuild -->
+
   <script src="../js/auth/authController.js" defer></script>
   <script src="../js/shared/model.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
+  <script src="../js/vendors/purify.min.js"></script>
   <script src="../js/shared/common.js"></script>
+  <script src="../js/admin/ordersController.js" defer></script>
+  <script src="../js/admin/ordersView.js" defer></script>
+
 </head>
 
 <body>
@@ -84,8 +94,6 @@
     </div>
   </div>
 
-  <script src="../js/admin/ordersController.js" defer></script>
-  <script src="../js/admin/ordersView.js" defer></script>
 </body>
 
 </html>

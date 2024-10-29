@@ -6,23 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Logg inn</title>
   <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+  <!-- build:admin-css -->
+  <link rel="stylesheet" href="../css/modern-normalize.css">
+  <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/components/admin.css">
+  <link rel="stylesheet" href="../css/components/modal.css">
+  <!-- endbuild -->
+
   <script>
    if (localStorage.getItem('isLoggedIn') === 'true') {
      window.location.href = 'bestillinger.html';
    }
   </script>
+
   <script src="../js/shared/model.js"></script>
   <script src="../js/auth/loginModel.js"></script>
   <script src="../js/auth/loginView.js"></script>
   <script src="../js/auth/loginController.js" defer></script>
+
+
 </head>
 
 <body class="login-page">
 
   <h1 class="visually-hidden">Logg inn på Bakst og Brygg ansatteportal</h1>
 
-  <div class="login-page__logo"></div>
+  <div class="login-page__logo"><a href="../index.html#kafeMeny"><img src="../img/logo.webp" alt="logo" width="150" height="150"></a></div>
 
   <form id="loginForm" class="login-form" aria-labelledby="loginFormTitle">
     <h2 id="loginFormTitle" class="visually-hidden">Logg inn</h2>
@@ -66,9 +76,8 @@
   <div id="loginError" style="color: red; display: none;" role="alert" aria-live="assertive">Ugyldig Ansatt ID eller passord</div>
 
   <script>
-   initiateModelLocalStorage();
+    initiateModelLocalStorage()
   </script>
-
 </body>
 
 </html>

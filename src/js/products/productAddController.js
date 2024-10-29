@@ -22,7 +22,7 @@ const productAddController = {
 
     model.products.push(newProduct);
     saveModel();
-    window.location.href = "index.html";
+    window.location.href = 'index.html';
   },
 
   getNextProductId() {
@@ -31,6 +31,6 @@ const productAddController = {
   },
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   productAddController.init();
 });

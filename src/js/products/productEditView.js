@@ -1,7 +1,7 @@
 const productEditView = {
-  populateForm: function(product) {
-    const form = document.getElementById("editProductForm");
-    form.classList.add("edit-product-form");
+  populateForm: function (product) {
+    const form = document.getElementById('editProductForm');
+    form.classList.add('edit-product-form');
 
     form.innerHTML = `
       <div class="edit-product-form__group">
@@ -24,11 +24,11 @@ const productEditView = {
         <label class="edit-product-form__label">Forhåndsbestilling:</label>
         <div class="edit-product-form__radio-group">
           <label>
-            <input type="radio" name="preorderRequired" value="true" ${product.preorderRequired ? "checked" : ""} />
+            <input type="radio" name="preorderRequired" value="true" ${product.preorderRequired ? 'checked' : ''} />
             Sant
           </label>
           <label>
-            <input type="radio" name="preorderRequired" value="false" ${product.preorderRequired === false ? "checked" : ""} />
+            <input type="radio" name="preorderRequired" value="false" ${product.preorderRequired === false ? 'checked' : ''} />
             Usant
           </label>
         </div>
@@ -45,12 +45,16 @@ const productEditView = {
         <input type="number" id="unitsInStock" value="${product.unitsInStock}" class="edit-product-form__input" />
       </div>
 
-      ${product.categoryIndex === 3 && product.type === 'standard' ? `
+      ${
+        product.categoryIndex === 3 && product.type === 'standard'
+          ? `
   <div class="edit-product-form__group">
     <label for="type" class="edit-product-form__label">Type:</label>
     <input type="text" id="type" value="${product.type}" class="edit-product-form__input" disabled />
   </div>
-` : ''}
+`
+          : ''
+      }
 
       <div id="themeFormContainer"></div>
 
@@ -67,10 +71,10 @@ const productEditView = {
     this.createDeleteConfirmationModal();
   },
 
-  showThemeForm: function(themes) {
-    const themeFormContainer = document.getElementById("themeFormContainer");
+  showThemeForm: function (themes) {
+    const themeFormContainer = document.getElementById('themeFormContainer');
     if (!themeFormContainer) {
-      console.error("Theme form container not found.");
+      console.error('Theme form container not found.');
       return;
     }
 
@@ -79,7 +83,7 @@ const productEditView = {
       <div class="edit-product-form__theme-container">
       <label for="themeSelector" class="edit-product-form__label">Velg tema:</label>
   <select id="themeSelector" class="edit-product-form__select" onchange="productEditView.showThemeDetails(this.value)">
-    ${themes.map(theme => `<option value="${theme.themeId}">${theme.themeName}</option>`).join('')}
+    ${themes.map((theme) => `<option value="${theme.themeId}">${theme.themeName}</option>`).join('')}
   </select>
   <button onclick="productEditController.addTheme(event)" class="edit-product-form__button edit-product-form__button--add">Legg til nytt tema</button>
 </div>
@@ -91,22 +95,26 @@ const productEditView = {
     }
   },
 
-  showThemeDetails: function(themeId, isNewTheme = false) {
+  showThemeDetails: function (themeId, isNewTheme = false) {
     const theme = isNewTheme
-      ? { themeId, themeName: "", basePrice: "", description: "" }
-      : model.themes.find(t => t.themeId == themeId);
+      ? { themeId, themeName: '', basePrice: '', description: '' }
+      : model.themes.find((t) => t.themeId == themeId);
 
     if (!theme) {
       console.error(`Theme with ID ${themeId} not found.`);
       return;
     }
 
-    const themeDetailsContainer = document.getElementById("themeDetailsContainer");
-    const imageUrl = model.themeImages[themeId] || "";
+    const themeDetailsContainer = document.getElementById(
+      'themeDetailsContainer',
+    );
+    const imageUrl = model.themeImages[themeId] || '';
 
-    const themeSelector = document.getElementById("themeSelector");
+    const themeSelector = document.getElementById('themeSelector');
     if (isNewTheme) {
-      themeSelector.innerHTML = `<option value="" disabled selected>Legg til...</option>` + themeSelector.innerHTML;
+      themeSelector.innerHTML =
+        `<option value="" disabled selected>Legg til...</option>` +
+        themeSelector.innerHTML;
     } else {
       themeSelector.value = themeId;
     }
@@ -128,7 +136,7 @@ const productEditView = {
         <label for="themeImageUrl" class="edit-product-form__label">Bilde URL:</label>
         <input type="text" id="themeImageUrl" value="${imageUrl}" class="edit-product-form__input" />
         <small class="add-product-form__help-text">Bruk <strong><em>standard-produktbilde.webp</em></strong> hvis det ikke finnes et bilde for produktet ennå.</small>
-        ${imageUrl ? `<img src="../../img/cakes/${imageUrl}" alt="${theme.themeName}" class="edit-product-form__image-preview" />` : ""}
+        ${imageUrl ? `<img src="../../img/cakes/${imageUrl}" alt="${theme.themeName}" class="edit-product-form__image-preview" />` : ''}
 
       </div>
       <button onclick="productEditController.saveTheme(event, ${theme.themeId})" class="edit-product-form__button edit-product-form__button--save">Lagre Tema</button>
@@ -136,9 +144,14 @@ const productEditView = {
     `;
   },
 
-  updateThemeSelector: function(themes, selectedThemeId = null) {
-    const themeSelector = document.getElementById("themeSelector");
-    themeSelector.innerHTML = themes.map(theme => `<option value="${theme.themeId}">${theme.themeName}</option>`).join('');
+  updateThemeSelector: function (themes, selectedThemeId = null) {
+    const themeSelector = document.getElementById('themeSelector');
+    themeSelector.innerHTML = themes
+      .map(
+        (theme) =>
+          `<option value="${theme.themeId}">${theme.themeName}</option>`,
+      )
+      .join('');
 
     if (selectedThemeId !== null) {
       themeSelector.value = selectedThemeId;
@@ -147,7 +160,7 @@ const productEditView = {
     }
   },
 
-  createDeleteConfirmationModal: function() {
+  createDeleteConfirmationModal: function () {
     const modalHtml = `
       <div id="deleteConfirmationModal" class="modal" style="display: none;">
         <div class="modal__content">
@@ -159,22 +172,23 @@ const productEditView = {
     `;
 
     document.body.insertAdjacentHTML('beforeend', modalHtml);
-    document.getElementById("cancelDeleteBtn").onclick = this.hideDeleteConfirmation;
+    document.getElementById('cancelDeleteBtn').onclick =
+      this.hideDeleteConfirmation;
   },
 
-  showDeleteConfirmation: function(event, themeId) {
+  showDeleteConfirmation: function (event, themeId) {
     event.preventDefault();
-    const modal = document.getElementById("deleteConfirmationModal");
-    modal.style.display = "flex";
+    const modal = document.getElementById('deleteConfirmationModal');
+    modal.style.display = 'flex';
 
-    document.getElementById("confirmDeleteBtn").onclick = () => {
+    document.getElementById('confirmDeleteBtn').onclick = () => {
       productEditController.deleteTheme(null, themeId);
       this.hideDeleteConfirmation();
     };
   },
 
-  hideDeleteConfirmation: function() {
-    const modal = document.getElementById("deleteConfirmationModal");
-    modal.style.display = "none";
-  }
+  hideDeleteConfirmation: function () {
+    const modal = document.getElementById('deleteConfirmationModal');
+    modal.style.display = 'none';
+  },
 };

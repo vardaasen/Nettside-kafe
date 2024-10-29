@@ -9,8 +9,8 @@ const productAddView = {
    * @function renderForm
    */
   renderForm() {
-    const form = document.getElementById("addProductForm");
-    form.classList.add("add-product-form");
+    const form = document.getElementById('addProductForm');
+    form.classList.add('add-product-form');
 
     form.innerHTML = `
       <div class="add-product-form__group">
@@ -79,16 +79,16 @@ const productAddView = {
    * @function handleCategoryChange
    */
   handleCategoryChange() {
-    const categorySelect = document.getElementById("category");
-    const typeField = document.getElementById("typeField");
+    const categorySelect = document.getElementById('category');
+    const typeField = document.getElementById('typeField');
 
     // Show 'type' field only when Kake category is selected (index 3)
-    if (categorySelect.value === "3") {
-      typeField.style.display = "flex";
-      document.getElementById("preorderRequired").checked = true; // Set default to true
+    if (categorySelect.value === '3') {
+      typeField.style.display = 'flex';
+      document.getElementById('preorderRequired').checked = true; // Set default to true
     } else {
-      typeField.style.display = "none";
-      document.getElementById("preorderRequired").checked = false; // Default to false
+      typeField.style.display = 'none';
+      document.getElementById('preorderRequired').checked = false; // Default to false
     }
-  }
+  },
 };

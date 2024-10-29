@@ -19,7 +19,10 @@ const pickedUpOrdersController = {
    * @function searchOrders
    */
   searchOrders() {
-    const searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+    const searchQuery = document
+      .getElementById('searchInput')
+      .value.trim()
+      .toLowerCase();
     this.displayOrders(searchQuery);
   },
 

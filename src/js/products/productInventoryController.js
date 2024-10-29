@@ -1,7 +1,16 @@
 const productInventoryController = {
-  init: function () {
+  initialize: function () {
+    this.loadData();
     this.attachEventListeners();
     productInventoryView.renderInventory(); // Display all products initially
+  },
+
+  loadData: function () {
+    // Refresh products data from localStorage
+    const savedProducts = localStorage.getItem("productInventory");
+    if (savedProducts) {
+      model.products = JSON.parse(savedProducts);
+    }
   },
 
   attachEventListeners() {
@@ -14,10 +23,10 @@ const productInventoryController = {
 
   updateProductQuantity(productId, addedQuantity) {
     model.addCustomQuantity(productId, addedQuantity);
-    this.init();
+    productInventoryView.renderInventory();
   },
 
-  addProduct(productId) {
+  addProduct() {
     window.location.href = `opprett.html`;
   },
 
@@ -30,7 +39,7 @@ const productInventoryController = {
     if (productIndex !== -1) {
       model.products.splice(productIndex, 1);
       saveModel();
-      this.init(); // Refreshes the inventory view after deletion
+      this.initialize(); // Refreshes the inventory view after deletion
     } else {
       console.error(`Produkt med ID ${productId} ikke funnet.`);
     }
@@ -61,9 +70,11 @@ const productInventoryController = {
   resetSearch() {
     document.getElementById("searchInput").value = '';
     document.getElementById("categoryFilter").value = 'Alle';
-    this.init(); // Refreshes the inventory view with all products
+    this.initialize(); // Refreshes the inventory view with all products
   }
 };
 
 // Initialize the inventory on page load
-productInventoryController.init();
+document.addEventListener("DOMContentLoaded", () => {
+  productInventoryController.initialize();
+});

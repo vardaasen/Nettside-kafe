@@ -60,14 +60,14 @@
   background-color: var(--color-primary);
   border: none;
   border-radius: 4px;
-  color: var(--color-text--dark-bg);
+  color: var(--color-accent--warm);
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
 .product-card__button-add:hover {
-  background-color: var(--color-secondary--light);
+  background-color: var(--color-secondary--dark);
 }
 
 .cart-icon {

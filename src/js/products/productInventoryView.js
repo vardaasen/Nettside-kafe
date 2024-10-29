@@ -40,12 +40,30 @@ const productInventoryView = {
   showDeleteConfirmation(productId) {
     const modal = document.getElementById("deleteConfirmationModal");
     modal.style.display = "flex";
+
+    // Ensure any previous event listeners are removed by cloning the button
+    // const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+    // confirmDeleteBtn.replaceWith(confirmDeleteBtn.cloneNode(true));
+
+    // Re-select the button after cloning to attach a fresh event listener
     document.getElementById("confirmDeleteBtn").onclick = () => {
       productInventoryController.confirmDelete(productId);
       this.closeModal();
     };
+
+    // Set up the cancel button normally
     document.getElementById("cancelDeleteBtn").onclick = this.closeModal;
   },
+  /*showDeleteConfirmation(productId) {
+    const modal = document.getElementById("deleteConfirmationModal");
+    modal.style.display = "flex";
+    document.getElementById("confirmDeleteBtn").onclick = () => {
+      productInventoryController.confirmDelete(productId);
+      this.closeModal();
+      window.location.reload()
+    };
+    document.getElementById("cancelDeleteBtn").onclick = this.closeModal;
+  },*/
 
   closeModal() {
     const modal = document.getElementById("deleteConfirmationModal");
