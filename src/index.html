@@ -95,8 +95,8 @@
     versionScript.onload = function () {
       const appVersion = window.appVersion || "default_version";
 
-      const mainCss = document.getElementById('main-css');
-      mainCss.href = `css/styles.css?v=${appVersion}`;
+//      const mainCss = document.getElementById('main-css');
+//      mainCss.href = `css/styles.css?v=${appVersion}`;
 
       const scripts = [
         'js/shared/model.js',
@@ -118,7 +118,7 @@
       let loadedScripts = 0;
       scripts.forEach(script => {
         const scriptElement = document.createElement('script');
-        scriptElement.src = `${script}?v=${appVersion}`;
+        scriptElement.src = `${script}`;
         scriptElement.onload = () => {
           loadedScripts++;
           if (loadedScripts === scripts.length) {
