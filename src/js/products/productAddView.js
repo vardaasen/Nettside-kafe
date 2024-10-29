@@ -1,9 +1,17 @@
 const productAddView = {
+  /**
+   * Renderer skjemaet for å legge til et nytt produkt.
+   *
+   * Funksjonen oppretter HTML-strukturen for skjemaet, inkludert felt for produktnavn, kategori,
+   * pris, lagerbeholdning, beskrivelse, bilde-URL, og forhåndsbestilling. Kategorivalget styrer
+   * også visningen av tilleggsfeltet "Type" basert på valgt kategori.
+   *
+   * @function renderForm
+   */
   renderForm() {
     const form = document.getElementById("addProductForm");
     form.classList.add("add-product-form");
 
-    // Initial form structure
     form.innerHTML = `
       <div class="add-product-form__group">
         <label for="productName" class="add-product-form__label">Produktnavn:</label>
@@ -61,6 +69,15 @@ const productAddView = {
     `;
   },
 
+  /**
+   * Håndterer endring av kategorifeltet og oppdaterer skjemaet basert på valgt kategori.
+   *
+   * Hvis kategorien "Kake" er valgt, vises "Type"-feltet, og forhåndsbestillingsfeltet settes til
+   * standardverdi "checked". For alle andre kategorier skjules "Type"-feltet, og forhåndsbestilling
+   * settes til "unchecked".
+   *
+   * @function handleCategoryChange
+   */
   handleCategoryChange() {
     const categorySelect = document.getElementById("category");
     const typeField = document.getElementById("typeField");

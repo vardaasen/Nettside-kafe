@@ -6,18 +6,17 @@
  */
 const ordersView = {
   /**
-   * Rendre alle bestillinger i brukergrensesnittet.
+   * Renderer bestillinger i brukergrensesnittet, filtrert etter status og søkekriterier.
    *
-   * Denne funksjonen henter bestillingsdata fra `model.orders`, filtrerer bort bestillinger
-   * som er markert som "Hentet," og sorterer dem etter hentedato og -tidspunkt. Hver bestilling
-   * vises med informasjon om kunde, produkter, hentetidspunkt og status. Brukeren kan også
-   * oppdatere statusen via en dropdown-meny og en "Oppdater"-knapp.
+   * Funksjonen tømmer først eksisterende innhold i bestillingscontaineren og filtrerer bestillingene
+   * basert på status og søkekriterier. Hvis ingen bestillinger samsvarer med kriteriene, vises en melding
+   * om at ingen bestillinger ble funnet. De filtrerte bestillingene sorteres deretter etter hente-dato og -tid.
+   * Til slutt opprettes det et rad-element for hver bestilling, som vises i bestillingscontaineren.
    *
-   * @function
-   * @name renderOrders
-   * @example
-   * // Rendre alle bestillinger:
-   * ordersView.renderOrders();
+   * @function renderOrders
+   * @param {Array<Object>} orders - Liste over bestillinger som skal vises.
+   * @param {string} [statusFilter='Alle'] - Valgt statusfilter for bestillingene, f.eks. 'Alle', 'Ny'.
+   * @param {string} [searchQuery=''] - Søkekriterium for kundenavn eller bestillings-ID.
    */
   renderOrders(orders, statusFilter = 'Alle', searchQuery = '') {
     const ordersContainer = document.getElementById('orders');
@@ -67,7 +66,7 @@ const ordersView = {
           ${renderOrderedProductsHtml(order.products)}
         </div>
         <div class="orders-table__column orders-table__column--schedule">
-          ${order.pickUpSchedule.date} ${safeText(order.pickUpSchedule.time)}
+          ${formatDateTime(order.pickUpSchedule.date, order.pickUpSchedule.time)}
         </div>
         <div class="orders-table__column orders-table__column--status">
           <div class="order-status">Status: ${order.status}</div>
@@ -90,6 +89,15 @@ const ordersView = {
     });
   },
 
+  /**
+   * Viser en melding når ingen bestillinger samsvarer med søkekriteriene.
+   *
+   * Funksjonen tømmer eksisterende innhold i bestillingscontaineren og viser en melding
+   * om at ingen resultater ble funnet, basert på den angitte meldingen.
+   *
+   * @function renderNoResultsMessage
+   * @param {string} message - Melding som skal vises når det ikke finnes noen treff.
+   */
   renderNoResultsMessage(message) {
     const ordersContainer = document.getElementById('orders');
     ordersContainer.innerHTML = `<p class="orders-search__no-result">${message}</p>`;
@@ -139,6 +147,7 @@ function sortByPickupDateAndTime(orders) {
  * @function
  * @param {Array<{productName: string, quantity: number, comment: string}>} orderProducts - En liste over produkter i en bestilling.
  * @returns {string} HTML-streng som representerer bestilte produkter.
+ * @private
  *
  * @example
  * const orderProductsHtml = renderOrderedProductsHtml(order.products);

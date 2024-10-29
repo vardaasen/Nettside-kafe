@@ -4,11 +4,21 @@
  * `pickedUpOrdersView` håndterer rendering av bestillingsinformasjon i brukergrensesnittet.
  */
 const pickedUpOrdersView = {
+  /**
+   * Renderer bestillinger som er hentet i brukergrensesnittet, filtrert etter søkekriterier.
+   *
+   * Funksjonen filtrerer bestillingene basert på søkekriterier, sorterer dem etter hente-dato og -tid,
+   * og genererer HTML for hver bestilling. Hvis ingen bestillinger finnes, vises en melding.
+   *
+   * @function renderOrders
+   * @param {Array<Object>} orders - Liste over bestillinger som skal vises.
+   * @param {string} [searchQuery=''] - Søkekriterium for kundenavn eller bestillings-ID.
+   */
   renderOrders(orders, searchQuery = '') {
     const ordersContainer = document.getElementById('orders');
     ordersContainer.innerHTML = '';
 
-    // Filter orders based on search query
+    // Filtrerer bestillinger basert på søkekriterier
     let filteredOrders = orders;
     if (searchQuery) {
       filteredOrders = filteredOrders.filter((order) => {
@@ -18,10 +28,10 @@ const pickedUpOrdersView = {
       });
     }
 
-    // Sort orders
+    // Sorterer bestillinger
     const sortedOrders = sortByPickupDateAndTime(filteredOrders);
 
-    // Render orders
+    // Renderer bestillinger
     sortedOrders.forEach((order) => {
       const orderRow = document.createElement('div');
       orderRow.classList.add('orders-table__row');
@@ -35,20 +45,27 @@ const pickedUpOrdersView = {
           ${renderOrderedProductsHtml(order.products)}
         </div>
         <div class="orders-table__column orders-table__column--schedule">
-          ${order.pickUpSchedule.date} ${order.pickUpSchedule.time}
+          ${formatDateTime(order.pickUpSchedule.date, order.pickUpSchedule.time)}
         </div>
       `;
 
       ordersContainer.appendChild(orderRow);
     });
 
-    // If no orders, display a message
+    // Viser melding hvis ingen bestillinger er funnet
     if (sortedOrders.length === 0) {
       ordersContainer.innerHTML = '<p>Ingen hentede bestillinger funnet.</p>';
     }
   },
 };
 
+/**
+ * Sorterer bestillinger etter hente-dato og -tid.
+ *
+ * @function sortByPickupDateAndTime
+ * @param {Array<Object>} orders - Liste over bestillinger som skal sorteres.
+ * @returns {Array<Object>} - Sortert liste over bestillinger, med de nyeste først.
+ */
 function sortByPickupDateAndTime(orders) {
   return orders.sort((a, b) => {
     const aDateTime = new Date(`${a.pickUpSchedule.date}T${a.pickUpSchedule.time}`);
@@ -57,6 +74,16 @@ function sortByPickupDateAndTime(orders) {
   });
 }
 
+/**
+ * Genererer HTML for produkter i en bestilling.
+ *
+ * Funksjonen tar en liste over produkter i en bestilling og returnerer en HTML-streng som representerer
+ * hvert produkt med navn, antall og kommentar.
+ *
+ * @function renderOrderedProductsHtml
+ * @param {Array<Object>} orderProducts - Liste over produkter i en bestilling.
+ * @returns {string} - HTML-streng som representerer produktene i bestillingen.
+ */
 function renderOrderedProductsHtml(orderProducts) {
   let html = '';
   orderProducts.forEach((product) => {

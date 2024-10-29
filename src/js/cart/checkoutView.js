@@ -126,23 +126,23 @@ function createCustomerInfoView() {
 }
 
 function createOrderConfirmation() {
+  const latestOrder = model.orders[model.orders.length - 1];
   return /* HTML */ `
     <div class="checkout-container">
       <h2>Takk for din bestilling!</h2>
 
       <div class="confirmation-details">
-        <p>Vi har mottatt din bestilling og den vil være klar til henting:</p>
+        <p>Vi har mottatt din bestilling med bestillings-ID: ${latestOrder.orderId}</p>
+        <p>Din bestilling vil være klar til henting:</p>
         <p class="pickup-time">
-          ${dayjs(model.inputs.shoppingCart.pickUpSchedule.date).format(
-            'DD. MMMM YYYY',
-          )}
-          kl. ${model.inputs.shoppingCart.pickUpSchedule.time}
+          ${dayjs(latestOrder.pickUpSchedule.date).format('DD. MMMM YYYY')}
+          kl. ${latestOrder.pickUpSchedule.time}
         </p>
 
-        <p>En bekreftelse er sendt til ditt telefonnummer.</p>
+        <p>En ansatt vil snart bekrefte bestillingen din via SMS.</p>
       </div>
 
-      <button onclick="model.app.currentPage='cafeMenu'; updateView();">
+      <button onclick="window.location.href='index.html#kafeMeny';">
         Tilbake til meny
       </button>
     </div>

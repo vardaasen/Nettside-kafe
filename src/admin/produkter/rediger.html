@@ -17,7 +17,7 @@
 <body>
   <header id="header-container" class="header-container">
     <div id="nav-row">
-      <a href="../../index.html"><img src="../../img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo" class="header__logo-image" role="button"></a>
+      <a href="../../index.html#kafeMeny"><img src="../../img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo" class="header__logo-image" role="button"></a>
 
       <button id="hamburger-menu" class="header-hamburger" aria-label="Åpne/lukke navigering">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -34,7 +34,7 @@
       </nav>
 
       <button class="header-button header-frontpage-link" aria-label="Tilbake til hovedsiden">
-        <a href="../../index.html" class="header__link">Til forsiden</a>
+        <a href="../../index.html#kafeMeny" class="header__link">Til forsiden</a>
       </button>
     </div>
   </header>
@@ -42,11 +42,11 @@
   <main class="container">
 
     <h1>Rediger produkt</h1>
-    <form id="editProductForm">
+    <form id="editProductForm" role="form" aria-labelledby="editProductTitle">
       <!-- Dynamisk innhold via javascript -->
     </form>
 
-    <div id="deleteConfirmationModal" class="modal" style="display: none;">
+    <div id="deleteConfirmationModal" class="modal" style="display: none;" role="dialog" aria-labelledby="deleteConfirmationTitle" aria-hidden="true">
       <div class="modal__content">
         <p>Er du sikker på at du vil slette dette temaet?</p>
         <button id="confirmDeleteBtn" class="modal__button modal__button--confirm">Ja</button>
@@ -57,7 +57,7 @@
 
 
     <div class="logout">
-      <button id="logoutBtn" class="logout__button">Logg ut</button>
+      <button id="logoutBtn" class="logout__button" aria-label="Logg ut fra systemet">Logg ut</button>
     </div>
   </main>
 
