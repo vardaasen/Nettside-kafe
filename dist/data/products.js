@@ -181,7 +181,7 @@
 //     unitPrice: 74,
 //     description:
 //       'Baguette med grillet biff, karamellisert løk og salat. Allergener: Hvete',
-//     image: 'biff_løkbaguette.webp',
+//     image: 'biff_lokbaguette.webp',
 //     preorderRequired: false,
 //     customizationAvailable: false,
 //     unitsInStock: 10,
