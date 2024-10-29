@@ -1,4 +1,4 @@
-const CACHE_NAME = "bakst-og-brygg-cache-v1.0.0-beta";
+const CACHE_NAME = "bakst-og-brygg-cache-v1.0.0.1-beta";
 const urlsToCache = [
   "/Nettside-kafe/",
   "/Nettside-kafe/index.html",
