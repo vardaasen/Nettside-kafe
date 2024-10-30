@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hentede Bestillinger</title>
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="../css/admin-styles.min.css">
+
+  <script src="../js/auth/authController.js" defer></script>
+    <script src="../js/shared/model.js"></script>
+  <script src="../js/shared/common.js"></script>
+  <script src="../js/admin/pickedUpOrdersController.js" defer></script>
+  <script src="../js/admin/pickedUpOrdersView.js" defer></script>
+
+</head>
+<body>
+  <header id="header-container" class="header-container">
+    <div id="nav-row">
+      <a href="../index.html#kafeMeny"><img src="../img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo" class="header__logo-image" role="button" aria-label="Gå til hovedsiden"></a>
+
+      <button id="hamburger-menu" class="header-hamburger" aria-label="Åpne/lukke navigering" aria-expanded="false" aria-controls="header__nav">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav class="header__nav" aria-label="Hovedmeny">
+        <button class="header-button" aria-label="Vis bestillinger"><a href="bestillinger.html" class="header__nav-link">Bestillinger</a></button>
+        <button class="header-button" aria-label="Vis lagerbeholdning"><a href="produkter/index.html" class="header__nav-link">Lagerbeholdning</a></button>
+      </nav>
+
+      <button class="header-button header-frontpage-link" aria-label="Tilbake til hovedsiden">
+        <a href="../index.html#kafeMeny" class="header__link">Til forsiden</a>
+      </button>
+    </div>
+  </header>
+  <main class="container">
+    <h1>Hentede bestillinger</h1>
+
+    <div class="orders-search" aria-live="polite">
+      <label for="searchInput" class="orders-search__label">Søk etter kunde eller bestillings-ID:</label>
+      <input type="text" id="searchInput" class="orders-search__input" placeholder="Skriv inn navn eller ID" aria-label="Søk etter kunde eller bestillings-ID" />
+      <button class="orders-search__button" onclick="pickedUpOrdersController.searchOrders()" aria-label="Søk etter hentede bestillinger">Søk</button>
+      <button class="orders-search__button orders-search__button--reset" onclick="pickedUpOrdersController.resetSearch()" aria-label="Nullstill søk">Nullstill</button>
+    </div>
+
+    <div class="orders-table" role="table">
+      <div class="orders-table__row orders-table__header">
+        <div class="orders-table__column orders-table__column--order-id" role="columnheader">Bestillings-ID</div>
+        <div class="orders-table__column orders-table__column--customer" role="columnheader">Kunde</div>
+        <div class="orders-table__column orders-table__column--products" role="columnheader">Produkter</div>
+        <div class="orders-table__column orders-table__column--schedule" role="columnheader">Hentedato og -tid</div>
+      </div>
+      <div id="orders" aria-live="polite">
+        <!-- Bestillingene blir dynamisk lagt til her via JavaScript -->
+      </div>
+    </div>
+
+    <div class="logout">
+      <button id="logoutBtn" class="logout__button" aria-label="Logg ut fra systemet">Logg ut</button>
+    </div>
+  </main>
+
+
+</body>
+</html>
+<script>
+  initiateModelLocalStorage()
+  hamburger();
+</script>

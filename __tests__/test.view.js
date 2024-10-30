@@ -8,7 +8,7 @@ jest.mock('../src/js/shared/view', () => ({
   updateView: jest.fn(),
 }));
 
-jest.mock('../src/js/products/cafe-menu-view', () => ({
+jest.mock('../src/js/products/cafeMenuView', () => ({
   createCafeMenuHtml: jest.fn(
     () => '<div id="cafe-menu-tab-row"><button>Baguette</button></div>',
   ),
@@ -22,7 +22,7 @@ import { updateView } from '../src/js/shared/view';
 import {
   createCafeMenuHtml,
   createThemeCakeMenuHtml,
-} from '../src/js/products/cafe-menu-view';
+} from '../src/js/products/cafeMenuView';
 
 describe('View Updates', () => {
   beforeEach(() => {

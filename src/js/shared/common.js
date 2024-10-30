@@ -18,31 +18,44 @@ function openProductInfo(id) {
   updateView();
 }
 
-/*
-function createOverlayWithContent(content) {
-  const overlay = document.createElement('div');
-  overlay.id = 'overlay';
-  overlay.innerHTML = `<div id="overlay-content">${content}</div>`;
-  overlay.addEventListener('click', (event) => {
-    if (event.target === overlay) {
-      closeOverlay();
-    }
-  });
-  return overlay;
-} */
-
 function closeOverlay() {
+  const selectedProduct = model.app.selectedProduct;
+
+  if (selectedProduct && selectedProduct.type === 'customizable') {
+    model.inputs.themeCakeMenu.size = 8;
+    model.inputs.themeCakeMenu.selectedThemeId = 1;
+    model.inputs.themeCakeMenu.selectedFlavor = 'Vanilje';
+    model.inputs.themeCakeMenu.quantity = 1;
+  } else if (selectedProduct) {
+    model.inputs.cakeMenu.size = 8;
+    model.inputs.cakeMenu.quantity = 1;
+  }
+
   model.app.selectedProduct = null;
+
+  model.inputs.cafeMenu.message = '';
+  model.inputs.cafeMenu.quantity = 1;
+  model.inputs.cakeMenu.size = 8;
+  model.inputs.cakeMenu.quantity = 1;
+  model.inputs.cakeMenu.message = '';
   updateView();
 }
 
 function getProductsForCurrentPage() {
-  const currentPage = model.app.currentPage;
-  if (currentPage === 'cafeMenu') {
+  if (model.app.currentPageIndex === cafeMenu) {
     return getProductsForCurrentTab();
-  } else {
-    return getProductsForCategory(currentPage);
+  } else if (model.app.currentPageIndex === cakes) {
+    return getProductsForCategory('cakes');
   }
+}
+
+function safeText(text) {
+  const sanitizedText = DOMPurify.sanitize(text);
+  return sanitizedText
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;');
 }
 
 /**
@@ -62,4 +75,23 @@ function hamburger() {
       document.querySelector('#header-container').classList.remove('is-active');
     });
   });
+}
+
+/**
+ * Formaterer en dato- og tidsstreng til formatet `DD-MM-YYYY HH:mm`.
+ *
+ * Denne funksjonen tar en dato i formatet `YYYY-MM-DD` og en tid i
+ * formatet `HH:mm`, og returnerer en kombinert streng i formatet `DD-MM-YYYY HH:mm`.
+ *
+ * @param {string} dateString - Dato-strengen i formatet `YYYY-MM-DD`.
+ * @param {string} timeString - Tidsstrengen i formatet `HH:mm`.
+ * @returns {string} Den formaterte dato- og tidsstrengen som `DD-MM-YYYY HH:mm`.
+ *
+ * @example
+ * // Returnerer '20-02-1974 14:00'
+ * formatDateTime('1974-02-20', '14:00');
+ */
+function formatDateTime(dateString, timeString) {
+  const [year, month, day] = dateString.split('-');
+  return `${day}-${month}-${year} ${timeString}`;
 }

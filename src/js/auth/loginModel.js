@@ -1,9 +1,12 @@
 /**
- * Modell for innlogging.
+ * Modell for håndtering av innlogging.
+ *
+ * `loginModel` inneholder en liste over brukere og metoder for å sjekke brukerlegitimasjon.
  */
 const loginModel = {
+
   /**
-   * Liste over brukere med ansatt ID og passord.
+   * Liste over registrerte brukere.
    * @type {Array<{employeeID: string, password: string}>}
    */
   users: [
@@ -12,10 +15,17 @@ const loginModel = {
   ],
 
   /**
-   * Sjekker om innloggingsinfo stemmer.
-   * @param {string} enteredID - Ansatt ID skrevet inn av brukeren.
-   * @param {string} enteredPassword - Passord skrevet inn av brukeren.
-   * @returns {boolean} Returnerer true hvis innloggingen er riktig.
+   * Sjekker om innloggingsinformasjonen er gyldig.
+   *
+   * Sammenligner det oppgitte bruker-ID og passord med de lagrede brukeropplysningene.
+   *
+   * @function
+   * @param {string} enteredID - Brukerens angitte ID.
+   * @param {string} enteredPassword - Brukerens angitte passord.
+   * @returns {boolean} `true` hvis legitimasjonen er gyldig, ellers `false`.
+   *
+   * @example
+   * const isValid = loginModel.checkCredentials('admin', 'getFTW!');
    */
   checkCredentials(enteredID, enteredPassword) {
     return this.users.some(

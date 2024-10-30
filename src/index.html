@@ -1,144 +1,240 @@
 <!doctype html>
 <html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Bakst og Brygg | Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe
+      online.
+    </title>
+    <meta
+      name="description"
+      content="Bakst og Brygg - Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online."
+    />
+    <link rel="manifest" href="manifest.json">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bakst og Brygg | Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.</title>
-  <meta name="description" content="Bakst og Brygg - Bakeri og Kafé i Oslo. Bestill baguetter, kaker og kaffe online.">
-  <link rel="stylesheet" id="main-css" href="css/styles.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/dayjs.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.10/locale/nb.js"></script>
-  <script>dayjs.locale('nb')</script>
+    <!-- build:css -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- endbuild -->
 
-  <!-- intl-tel-input CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.13/build/css/intlTelInput.css">
 
-  <!-- intl-tel-input JS -->
-  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.13/build/js/intlTelInput.min.js"></script>
 
-  <!-- libphonenumber-js for avansert validering -->
-  <script src="https://cdn.jsdelivr.net/npm/libphonenumber-js@1.9.50/bundle/libphonenumber-js.min.js"></script>
-</head>
+  </head>
 
-<body>
-  <header id="header-container">
-    <div id="nav-row">
-      <img onclick="switchMenu('cafeMenu')" src="img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo"
-        class="header__logo-image" role="button">
+  <body>
+    <header id="header-container">
+      <div id="nav-row">
+        <img
+          width="80"
+          height="80"
+          onclick="switchMenu(0)"
+          src="img/logo_bakst-og-brygg.webp"
+          alt="Bakst og Brygg logo"
+          class="header__logo-image"
+          role="button"
+          aria-label="Gå til hovedsiden"
+        />
 
-      <button id="hamburger-menu" class="header-hamburger" aria-label="Åpne/lukke navigering">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
+        <button
+          id="hamburger-menu"
+          class="header-hamburger"
+          aria-label="Åpne/lukke navigering"
+          aria-expanded="false"
+          aria-controls="header__nav"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
 
-      <nav class="header__nav" aria-label="Hovedmeny">
-        <button onclick="switchMenu('cafeMenu')" class="header-button" aria-label="Vis kafémenyen">Meny</button>
-        <button onclick="switchMenu('cakeThemes')" class="header-button" aria-label="Vis temakakemenyen">Temakaker</button>
-        <button onclick="switchMenu('cakes')" class="header-button" aria-label="Vis kakemenyen">Kaker</button>
-      </nav>
+        <nav class="header__nav" role="navigation" aria-label="Hovedmeny">
+          <button
+            onclick="switchMenu(0)"
+            class="header-button"
+            aria-label="Vis kafémenyen"
+          >
+            Meny
+          </button>
+          <button
+            onclick="switchMenu(1)"
+            class="header-button"
+            aria-label="Vis kakemenyen"
+          >
+            Kaker
+          </button>
+        </nav>
 
-      <button class="header-button header-cart" id="cartLink" onclick="showShoppingCart()" aria-label="Vis handlekurv">
-        <svg class="cart-icon" fill="currentColor" height="20px" width="20px"
-          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 487.1 487.1" xml:space="preserve">
-        <path
-          d="M342.3,137.978H385l-63.3-108.6c-5.1-8.8-16.4-11.8-25.2-6.6c-8.8,5.1-11.8,16.4-6.6,25.2L342.3,137.978z" />
-          <path d="M197.4,47.978c5.1-8.8,2.2-20.1-6.6-25.2s-20.1-2.2-25.2,6.6l-63.3,108.7H145L197.4,47.978z" />
-          <path d="M455.7,171.278H31.3c-17.3,0-31.3,14-31.3,31.3v34.7c0,17.3,14,31.3,31.3,31.3h9.8l30.2,163.7
+        <button
+          class="header-button header-cart"
+          id="cartLink"
+          onclick="showShoppingCart()"
+          aria-label="Vis handlekurv med antall varer"
+        >
+          <svg
+            class="cart-icon"
+            fill="currentColor"
+            height="20px"
+            width="20px"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 487.1 487.1"
+            xml:space="preserve"
+          >
+            <path
+              d="M342.3,137.978H385l-63.3-108.6c-5.1-8.8-16.4-11.8-25.2-6.6c-8.8,5.1-11.8,16.4-6.6,25.2L342.3,137.978z"
+            />
+            <path
+              d="M197.4,47.978c5.1-8.8,2.2-20.1-6.6-25.2s-20.1-2.2-25.2,6.6l-63.3,108.7H145L197.4,47.978z"
+            />
+            <path
+              d="M455.7,171.278H31.3c-17.3,0-31.3,14-31.3,31.3v34.7c0,17.3,14,31.3,31.3,31.3h9.8l30.2,163.7
               c3.8,19.3,21.4,34.6,39.7,34.6h12h78.8c8,0,18.4,0,29,0l0,0h9.6h9.6l0,0c10.6,0,21,0,29,0h78.8h12c18.3,0,35.9-15.3,39.7-34.6
               l30.4-163.8h15.9c17.3,0,31.3-14,31.3-31.3v-34.7C487,185.278,473,171.278,455.7,171.278z M172.8,334.878v70.6
               c0,10.1-8.2,17.7-17.7,17.7c-10.1,0-17.7-8.2-17.7-17.7v-29.6v-69.4c0-10.1,8.2-17.7,17.7-17.7c10.1,0,17.7,8.2,17.7,17.7V334.878
               z M229.6,334.878v70.6c0,10.1-8.2,17.7-17.7,17.7c-10.1,0-17.7-8.2-17.7-17.7v-29.6v-69.4c0-10.1,8.2-17.7,17.7-17.7
               s17.7,8.2,17.7,17.7V334.878z M286.7,375.878v29.6c0,9.5-7.6,17.7-17.7,17.7c-9.5,0-17.7-7.6-17.7-17.7v-70.6v-28.4
               c0-9.5,8.2-17.7,17.7-17.7s17.7,7.6,17.7,17.7V375.878z M343.5,375.878v29.6c0,9.5-7.6,17.7-17.7,17.7c-9.5,0-17.7-7.6-17.7-17.7
-              v-70.6v-28.4c0-9.5,7.6-17.7,17.7-17.7c9.5,0,17.7,7.6,17.7,17.7V375.878z" />
-      </svg>
-        Handlekurv (<span class="cart-count" id="cartCount">0</span>)
-      </button>
-    </div>
-  </header>
-
-  <div class="cart-notification" id="cartNotification">Produkt lagt til i handlekurven!</div>
-
-  <main id="app"></main>
-
-  <footer class="footer">
-    <div class="footer__content">
-      <div class="footer__section footer__section--contact">
-        <h3 class="footer__title">Kontakt oss</h3>
-        <p class="footer__text">Bakst og Brygg</p>
-        <p class="footer__text">Telefon: 123 45 678</p>
-        <p class="footer__text"><a href="mailto:kontakt@example.com" aria-label="Send e-post til kontakt@example.com">kontakt@example.com</a></p>
+              v-70.6v-28.4c0-9.5,7.6-17.7,17.7-17.7c9.5,0,17.7,7.6,17.7,17.7V375.878z"
+            />
+          </svg>
+          Handlekurv (<span class="cart-count" id="cartCount">0</span>)
+        </button>
       </div>
-      <div class="footer__section footer__section--hours">
-        <h3 class="footer__title">Åpningstider</h3>
-        <p class="footer__text">Mandag - Fredag: 08:00 - 16:00</p>
-        <p class="footer__text">Lørdag: 09:00 - 15:00</p>
-        <p class="footer__text">Søndag: Stengt</p>
-      </div>
-      <div class="footer__section footer__section--address">
-        <h3 class="footer__title">Besøk oss</h3>
-        <p class="footer__text">Adresse: Slottsplassen 1, 0010 Oslo</p>
-      </div>
+    </header>
+
+
+
+
+    <div
+      class="cart-notification"
+      id="cartNotification"
+      aria-live="assertive"
+      aria-hidden="true"
+    >
+      Produkt lagt til i handlekurven!
     </div>
-    <div class="footer__bottom">
-      <p class="footer__copyright"><a href="#" onclick="clearLocalStorage(); return false;">© 2024 Bakst og Brygg. Alle rettigheter reservert.</a></p>
-      <a class="footer__link footer__link--admin" href="admin/" aria-label="Gå til ansattportalen">Ansattportal</a>
-    </div>
-  </footer>
 
-  <!-- Dynamisk last inn version.js og cache-busting via timestamp -->
-  <script>
-    const timestamp = new Date().getTime();
-    const versionScript = document.createElement('script');
-    versionScript.src = `js/utils/version.js?v=${timestamp}`;
-    document.head.appendChild(versionScript);
+    <main id="app"></main>
 
-    versionScript.onload = function () {
-      const appVersion = window.appVersion || "default_version";
+    <button id="installButton" style="display: none;">Installer <br> Bakst og Brygg</button>
 
-      const mainCss = document.getElementById('main-css');
-      mainCss.href = `css/styles.css?v=${appVersion}`;
+    <footer class="footer">
 
-      const scripts = [
-        'js/shared/model.js',
-        'js/shared/common.js',
-        'js/products/cafe-menu-view.js',
-        'js/products/cake-menu-view.js',
-        'js/products/theme-menu-view.js',
-        'js/shared/view.js',
-        'js/products/cafe-menu-controller.js',
-        'js/products/cake-menu-controller.js',
-        'data/products.js',
-        'js/cart/cartView.js',
-        'js/cart/cartController.js',
-        'js/checkout/checkoutController.js',
-        'js/checkout/checkoutView.js',
-        'js/utils/clearLocalStorage.js',
-      ];
+      <div class="footer__content">
+        <div class="footer__section footer__section--contact">
+          <h3 class="footer__title">Kontakt oss</h3>
+          <p class="footer__text">Bakst og Brygg</p>
+          <p class="footer__text">Telefon: 123 45 678</p>
+          <p class="footer__text">
+            <a
+              href="mailto:kontakt@example.com"
+              aria-label="Send e-post til kontakt@example.com"
+              >kontakt@example.com</a
+            >
+          </p>
+        </div>
+        <div class="footer__section footer__section--hours">
+          <h3 class="footer__title">Åpningstider</h3>
+          <p class="footer__text">Mandag - Fredag: 08:00 - 16:00</p>
+          <p class="footer__text">Lørdag: 09:00 - 15:00</p>
+          <p class="footer__text">Søndag: Stengt</p>
+        </div>
+        <div class="footer__section footer__section--address">
+          <h3 class="footer__title">Besøk oss</h3>
+          <p class="footer__text">Adresse: Slottsplassen 1, 0010 Oslo</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          <a href="#" onclick="clearLocalStorage(); return false;"
+            >© 2024 Bakst og Brygg. Alle rettigheter reservert.</a
+          >
+        </p>
+        <a
+          class="footer__link footer__link--admin"
+          href="admin/"
+          aria-label="Gå til ansattportalen"
+          >Ansattportal</a
+        >
+      </div>
+    </footer>
 
-      let loadedScripts = 0;
-      scripts.forEach(script => {
-        const scriptElement = document.createElement('script');
-        scriptElement.src = `${script}?v=${appVersion}`;
-        scriptElement.onload = () => {
-          loadedScripts++;
-          if (loadedScripts === scripts.length) {
-            initiateModelLocalStorage(); // Kommenter ut denne linjen og ta bort kommentar fra getProducts() for å ikke bruke localStorage
-            // getProducts();
-            updateView();
-            hamburger();
+    <!-- build:js -->
+    <script src="js/shared/model.js"></script>
+    <script src="js/shared/common.js"></script>
+    <script src="js/shared/view.js"></script>
+    <script src="js/products/cafeMenuView.js"></script>
+    <script src="js/products/cakeMenuView.js"></script>
+    <script src="js/shared/controller.js"></script>
+    <script src="js/products/cafeMenuController.js"></script>
+    <script src="js/products/cakeMenuController.js"></script>
+    <script src="data/products.js"></script>
+    <script src="js/cart/cartController.js"></script>
+    <script src="js/cart/cartView.js"></script>
+    <script src="js/cart/checkoutController.js"></script>
+    <script src="js/cart/checkoutView.js"></script>
+    <script src="js/utils/clearLocalStorage.js"></script>
+    <!-- endbuild -->
+
+    <script src="js/vendors/dayjs.min.js"></script>
+    <script src="js/vendors/nb.js"></script>
+
+
+    <script>
+      initiateModelLocalStorage(); // 1. Kommenter ut for å ikke bruke localStorage
+      // getProducts(); // 2. Ta bort kommentar for å ikke bruke localStorage
+      updateView();
+      hamburger();
+      dayjs.locale('nb');
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/Nettside-kafe/service-worker.js").then(registration => {
+            console.log("Service Worker registered with scope:", registration.scope);
+          }).catch(error => {
+            console.error("Service Worker registration failed:", error);
+          });
+        });
+      }
+
+      let deferredPrompt;
+      const addButton = document.getElementById("installButton");
+
+      if (addButton) {
+
+        window.addEventListener("beforeinstallprompt", (e) => {
+          e.preventDefault();
+          deferredPrompt = e;
+          addButton.style.display = "block";
+        });
+
+
+        addButton.addEventListener("click", () => {
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+
+            deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === "accepted") {
+                console.log("Bruker aksepterte A2HS-forespørselen");
+              } else {
+                console.log("Bruker avviste A2HS-forespørselen");
+              }
+              deferredPrompt = null;
+              addButton.style.display = "none";
+            });
           }
-        };
-        document.head.appendChild(scriptElement);
-      });
-    };
-  </script>
-
-</body>
+        });
+      }
+    </script>
+  </body>
 </html>

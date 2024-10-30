@@ -39,3 +39,4 @@ node_modules/
 /.eslintcache
 package-lock.json
 
+/src/docs/docs-assets/scratch.html

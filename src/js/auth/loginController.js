@@ -1,9 +1,22 @@
 /**
  * Kontroller for innlogging.
+ *
+ * `loginController` håndterer innlogging ved å kontrollere brukerens
+ * legitimasjon mot lagrede data og administrere innloggingsstatus i `localStorage`.
  */
 const loginController = {
   /**
-   * Starter kontrolleren ved å legge til lytter for innloggingsskjemaet.
+   * Starter kontrolleren ved å legge til en lytter for innloggingsskjemaets innsending.
+   *
+   * Når skjemaet sendes inn, henter denne funksjonen innloggingsinformasjonen fra
+   * `loginView`, sjekker legitimasjonen ved hjelp av `loginModel`, og setter innloggingsstatusen
+   * hvis legitimasjonen er gyldig. Ved feil vises en feilmelding i grensesnittet.
+   *
+   * @method
+   * @name init
+   * @example
+   * // Starter kontrolleren når siden lastes:
+   * loginController.init();
    */
   init() {
     document.getElementById('loginForm').addEventListener('submit', (e) => {
@@ -24,7 +37,17 @@ const loginController = {
   },
 
   /**
-   * Setter innloggingsstatus i localStorage.
+   * Setter innloggingsstatus i `localStorage`.
+   *
+   * Funksjonen setter `isLoggedIn`-statusen til `true` i `localStorage`,
+   * noe som indikerer at brukeren er pålogget. Dette kan brukes senere for å
+   * kontrollere tilgang til andre deler av applikasjonen.
+   *
+   * @method
+   * @name setLoggedIn
+   * @example
+   * // Sett innloggingsstatus til true:
+   * loginController.setLoggedIn();
    */
   setLoggedIn() {
     localStorage.setItem('isLoggedIn', 'true');

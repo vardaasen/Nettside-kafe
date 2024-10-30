@@ -1,31 +1,124 @@
+/* Container and Heading */
 .checkout-container {
+  background-color: var(--color-background);
+  padding: 2rem;
+  border-radius: 8px;
   max-width: 600px;
   margin: 0 auto;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.checkout-container h1,
+.checkout-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+/* Form Groups for Inputs */
 .date-picker-container,
 .time-picker-container,
 .form-group {
   margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
+.date-picker-container label,
+.time-picker-container label,
 .form-group label {
-  display: block;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
-  font-weight: bold;
+  color: var(--color-secondary--dark);
 }
 
+.date-picker-container input,
+.time-picker-container select,
 .form-group input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
+  width: 50%; /* Adjust the width as needed */
+  max-width: 300px; /* Add a max-width for larger screens */
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
 }
 
+.date-picker-container input:focus,
+.time-picker-container select:focus,
+.form-group input:focus {
+  border-color: var(--color-accent--warm);
+  outline: none;
+}
+
+/* Order Summary */
+.order-summary {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--color-background-alt);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-summary h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.order-summary p {
+  font-size: 1.1rem;
+  color: var(--color-secondary--dark);
+  margin-bottom: 1.2rem;
+}
+
+/* Standout Styling for Pickup Time */
+.order-summary .pickup-time {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  background-color: var(--color-secondary--light);
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+/* Hover Effects */
+.order-summary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Confirmation Details */
+.confirmation-details {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--color-background-alt);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.confirmation-details p {
+  font-size: 1rem;
+  color: var(--color-secondary--dark);
+  margin-bottom: 1rem;
+}
+
+.confirmation-details .pickup-time {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+/* Buttons */
 .button-row {
   display: flex;
   justify-content: space-between;
@@ -34,40 +127,73 @@
 
 .button-row button {
   padding: 0.75rem 1.5rem;
+  font-size: 1rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .button-row button:first-child {
-  background-color: #f0f0f0;
+  background-color: #ccc;
+  color: #333;
+}
+
+.button-row button:first-child:hover {
+  background-color: #aaa;
 }
 
 .button-row button:last-child {
   background-color: var(--color-primary);
-  color: white;
+  color: var(--color-text--dark-bg);
 }
 
-/* Stil for intl-tel-input landsvelger */
-.intl-tel-input {
-  width: 100%;
+.button-row button:last-child:hover {
+  background-color: var(--color-secondary--light);
+  color: var(--color-text--light-bg);
 }
 
-.order-summary {
-  margin: 2rem 0;
-  padding: 1rem;
-  background-color: #f9f9f9;
+/* Button for Confirmation Page */
+.checkout-container button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
   border-radius: 4px;
+  cursor: pointer;
+  background-color: var(--color-primary);
+  color: var(--color-text--dark-bg);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 2rem;
+  width: auto; /* Keep button width auto on desktop */
 }
 
-.confirmation-details {
-  text-align: center;
-  margin: 2rem 0;
+.checkout-container button:hover {
+  background-color: var(--color-secondary--light);
 }
 
-.pickup-time {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--color-primary);
-  margin: 1rem 0;
+/* Full-width Button for Confirmation Page on Mobile */
+@media (max-width: 768px) {
+  .checkout-container button {
+    width: 100%; /* Full-width button on mobile */
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .button-row {
+    flex-direction: column;
+  }
+
+  .button-row button {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  /* Ensure input and select fields remain accessible on smaller screens */
+  .date-picker-container input,
+  .time-picker-container select,
+  .form-group input {
+    width: 100%;
+    max-width: 100%;
+  }
 }
