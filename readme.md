@@ -819,19 +819,36 @@ flowchart TB
   end
 
   subgraph Core["Core System"]
-    Model["model.js"]
-    BaseView["view.js"]
-    BaseController["controller.js"]
-    Common["common.js"]
+    Model["model.js<br>- products[]<br>- orders[]<br>- app{}<br>- inputs{}"]
+    BaseView["view.js<br>- updateView()<br>- createCurrentPageHtml()"]
+    BaseController["controller.js<br>- switchMenu()"]
+    Common["common.js<br>- getProductsForCategory()<br>- openProductInfo()"]
   end
 
-  subgraph Components["Key Components"]
-    Products["Products"]
-    Cart["Shopping Cart"]
-    Admin["Admin"]
+  subgraph Products["Product Management"]
+    CafeMenu["cafeMenuController.js<br>- switchTab()<br>- addToCart()"]
+    CafeView["cafeMenuView.js"]
+    CakeMenu["cakeMenuController.js"]
+    CakeView["cakeMenuView.js"]
+    ProductInv["productInventoryController.js"]
   end
 
-  Core --> Components
+  subgraph Cart["Shopping Cart"]
+    CartCtrl["cartController.js"]
+    CartView["cartView.js"]
+    CheckoutCtrl["checkoutController.js"]
+  end
+
+  subgraph Admin["Admin System"]
+    OrdersCtrl["ordersController.js"]
+    OrdersView["ordersView.js"]
+    Auth["authController.js"]
+  end
+
+  Core --> Products
+  Core --> Cart
+  Core --> Admin
   Frontend --> Core
 ```
 #update_architecture_end#
+
