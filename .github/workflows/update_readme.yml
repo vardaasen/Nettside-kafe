@@ -1,17 +1,20 @@
 name: Update README
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Build and Deploy to GitHub Pages"]
+    types:
+      - completed
     branches:
       - main
 
 jobs:
   update-readme:
     runs-on: ubuntu-latest
-
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v4
-
+      
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -19,102 +22,61 @@ jobs:
 
       - name: Create update script
         run: |
-          cat << \EOT > update-readme.js
+          cat > update-readme.js << 'EOF'
           const fs = require('fs');
-
-          // Les eksisterende README
           let content = fs.readFileSync('README.md', 'utf8');
-
-          // Oppdater prosjektstruktur
-          const structureUpdate = \`#update_structure_start#
-                                  \`\`\`
-                                  \${require('child_process').execSync('tree -I "node_modules|dist|coverage|.git"').toString()}
-                                  \`\`\`
-                                  #update_structure_end#\`;
-
+          
+          // Update structure
+          const structureUpdate = '#update_structure_start#\n' +
+            '```\n' +
+            require('child_process').execSync('tree -I "node_modules|dist|coverage|.git"').toString() +
+            '```\n' +
+            '#update_structure_end#';
+          
           content = content.replace(
             /#update_structure_start#[\s\S]*?#update_structure_end#/,
             structureUpdate
           );
-
-          // Oppdater arkitekturdiagram
-          const architectureUpdate = \`#update_architecture_start#
-                                     \`\`\`mermaid
-                                     flowchart TB
-                                       subgraph Frontend["Browser Entry Points"]
-                                         IndexHTML["index.html"]
-                                         AdminHTML["admin/*.html"]
-                                       end
-
-                                       subgraph Core["Core System"]
-                                         Model["model.js<br>- products[]<br>- orders[]<br>- app{}"]
-                                         BaseView["view.js"]
-                                         BaseController["controller.js"]
-                                         Common["common.js"]
-                                       end
-
-                                       subgraph Components["Key Components"]
-                                         Products["Products<br>- cafeMenu<br>- cakeMenu<br>- inventory"]
-                                         Cart["Shopping Cart<br>- cart<br>- checkout"]
-                                         Admin["Admin<br>- orders<br>- auth"]
-                                       end
-
-                                       Core --> Components
-                                       Frontend --> Core
-                                     \`\`\`
-                                     #update_architecture_end#\`;
-
+          
+          // Update architecture
+          const architectureUpdate = '#update_architecture_start#\n' +
+            '```mermaid\n' +
+            'flowchart TB\n' +
+            '  subgraph Frontend["Browser Entry Points"]\n' +
+            '    IndexHTML["index.html"]\n' +
+            '    AdminHTML["admin/*.html"]\n' +
+            '  end\n\n' +
+            '  subgraph Core["Core System"]\n' +
+            '    Model["model.js"]\n' +
+            '    BaseView["view.js"]\n' +
+            '    BaseController["controller.js"]\n' +
+            '    Common["common.js"]\n' +
+            '  end\n\n' +
+            '  subgraph Components["Key Components"]\n' +
+            '    Products["Products"]\n' +
+            '    Cart["Shopping Cart"]\n' +
+            '    Admin["Admin"]\n' +
+            '  end\n\n' +
+            '  Core --> Components\n' +
+            '  Frontend --> Core\n' +
+            '```\n' +
+            '#update_architecture_end#';
+          
           content = content.replace(
             /#update_architecture_start#[\s\S]*?#update_architecture_end#/,
             architectureUpdate
           );
-
-          // Oppdater infrastruktur
-          const infraUpdate = \`#update_infrastructure_start#
-                              \`\`\`mermaid
-                              flowchart TB
-                                subgraph Build["Build System"]
-                                  Gulp["gulp<br>- minify<br>- bundle<br>- deploy"]
-                                  Babel["babel<br>transpilation"]
-                                  ESLint["eslint + prettier"]
-                                end
-
-                                subgraph Runtime["Runtime"]
-                                  SW["ServiceWorker<br>- caching<br>- offline"]
-                                  LocalStorage["localStorage<br>- state<br>- cart"]
-                                end
-
-                                Build --> Runtime
-                              \`\`\`
-                              #update_infrastructure_end#\`;
-
-          content = content.replace(
-            /#update_infrastructure_start#[\s\S]*?#update_infrastructure_end#/,
-            infraUpdate
-          );
-
-          // Oppdater dokumentasjonslenker
-          const docsUpdate = \`#update_docs_start#
-                             - [Full Komponent Dokumentasjon](src/docs/index.html)
-                             - [Utviklingsoppsett](docs/development.md)
-                             - [Bidragsretningslinjer](docs/contributing.md)
-                             #update_docs_end#\`;
-
-          content = content.replace(
-            /#update_docs_start#[\s\S]*?#update_docs_end#/,
-            docsUpdate
-          );
-
+          
           fs.writeFileSync('README.md', content);
-          EOT
+          EOF
 
       - name: Run update script
         run: node update-readme.js
 
-      - name: Commit and Push README
+      - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add README.md
-          git commit -m "docs: update README sections" || echo "No changes to commit"
+          git diff --staged --quiet || git commit -m "docs: update README"
           git push
