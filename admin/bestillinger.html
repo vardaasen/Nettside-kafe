@@ -5,50 +5,94 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bestillinger</title>
-  <link rel="stylesheet" href="../css/components/admin.css">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="../css/admin-styles.min.css">
+
   <script src="../js/auth/authController.js" defer></script>
   <script src="../js/shared/model.js"></script>
+  <script src="../js/vendors/purify.min.js"></script>
+  <script src="../js/shared/common.js"></script>
+  <script src="../js/admin/ordersController.js" defer></script>
+  <script src="../js/admin/ordersView.js" defer></script>
+
 </head>
 
 <body>
-  <header class="header">
-    <div class="header__logo">
-      <img src="../img/logo.webp" alt="Logo" class="header__logo-image" />
-    </div>
-    <nav class="header__navbar">
-      <ul class="header__nav-list">
-        <li class="header__nav-item"><a href="#" class="header__nav-link">Bestillinger</a></li>
-        <li class="header__nav-item"><a href="lagerbeholdning.html" class="header__nav-link">Lagerbeholdning</a></li>
-      </ul>
-    </nav>
-    <div class="header__frontpage-link">
-      <a href="../index.html" class="header__link">Til forsiden</a>
+  <header id="header-container" class="header-container">
+    <div id="nav-row">
+      <a href="../index.html#kafeMeny"><img src="../img/logo_bakst-og-brygg.webp" alt="Bakst og Brygg logo"
+          class="header__logo-image" role="button" aria-label="Gå til hovedsiden"></a>
+
+      <button id="hamburger-menu" class="header-hamburger" aria-label="Åpne/lukke navigering" aria-expanded="false"
+        aria-controls="header__nav">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav class="header__nav" role="navigation" aria-label="Hovedmeny">
+        <button class="header-button" aria-label="Vis bestillinger"><a href="#"
+            class="header__nav-link">Bestillinger</a></button>
+        <button class="header-button" aria-label="Vis lagerbeholdning"><a href="produkter/index.html"
+            class="header__nav-link">Lagerbeholdning</a></button>
+      </nav>
+
+      <button class="header-button header-frontpage-link" aria-label="Tilbake til hovedsiden">
+        <a href="../index.html#kafeMeny" class="header__link">Til forsiden</a>
+      </button>
     </div>
   </header>
+
   <div class="container">
     <h1>Bestillinger</h1>
-    <div class="orders__table">
-      <div class="orders__row orders__header">
-        <div class="orders__column orders__column--customer">Kundenavn</div>
-        <div class="orders__column orders__column--products">Produkter</div>
-        <div class="orders__column orders__column--schedule">Hentedato og -tid</div>
-        <div class="orders__column orders__column--status">Status</div>
+
+    <div class="orders-search" aria-live="polite">
+      <label for="searchInput" class="orders-search__label">Søk etter kunde eller bestillings-ID:</label>
+      <input type="text" id="searchInput" class="orders-search__input" placeholder="Skriv inn navn eller ID"
+        aria-label="Søk etter kunde eller bestillings-ID" />
+      <button class="orders-search__button" onclick="ordersController.searchOrders()"
+        aria-label="Søk etter bestilling">Søk</button>
+      <button class="orders-search__button orders-search__button--reset" onclick="ordersController.resetSearch()"
+        aria-label="Nullstill søk">Nullstill</button>
+    </div>
+
+    <div class="orders-filter">
+      <label for="statusFilter" class="orders-filter__label">Filtrer etter status:</label>
+      <select id="statusFilter" class="orders-filter__select" onchange="ordersController.filterOrders()">
+        <option value="Alle">Alle</option>
+        <option value="Ny">Ny</option>
+        <option value="Under arbeid">Under arbeid</option>
+        <option value="Klar til henting">Klar til henting</option>
+      </select>
+      <button><a href="hentede-bestillinger.html" class="orders-filter__link">Vis hentede bestillinger</a></button>
+    </div>
+
+    <div class="orders-table" role="table">
+      <div class="orders-table__row orders-table__header">
+        <div class="orders-table__column orders-table__column--order-id" role="columnheader">Bestillings-ID</div>
+        <div class="orders-table__column orders-table__column--customer" role="columnheader">Kunde</div>
+        <div class="orders-table__column orders-table__column--products" role="columnheader">Produkter</div>
+        <div class="orders-table__column orders-table__column--schedule" role="columnheader">Hentedato og -tid</div>
+        <div class="orders-table__column orders-table__column--status" role="columnheader">Status</div>
       </div>
-      <div id="orders">
+      <div id="orders" aria-live="polite">
         <!-- Bestillingene blir dynamisk lagt til her via javascript -->
       </div>
     </div>
 
     <div class="logout">
-      <button id="logoutBtn" class="logout__button">Logg ut</button>
+      <button id="logoutBtn" class="logout__button" aria-label="Logg ut fra systemet">Logg ut</button>
     </div>
   </div>
 
-  <script src="../js/admin/ordersController.js" defer></script>
-  <script src="../js/admin/ordersView.js" defer></script>
 </body>
 
 </html>
 <script>
   initiateModelLocalStorage()
+  hamburger();
 </script>
