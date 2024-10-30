@@ -396,3 +396,160 @@ Koordinerer brukerinteraksjoner:
 - Jest for testing
 - ESLint/Prettier for kodeformatering
 - GitHub Actions for CI/CD
+
+# Prosjektinfrastruktur
+
+## Byggeverktøy og Konfigurasjon
+
+### Gulp (gulpfile.js)
+Håndterer byggeprosessen:
+```javascript
+// Hovedoppgaver
+- combine-main-css    // Kombinerer CSS-filer
+- combine-admin-css   // Kombinerer admin CSS
+- combine-main-js     // Bundler hovedscripts
+- uglify-admin-js     // Minifiserer admin-scripts
+- uglify-auth-js      // Minifiserer auth-scripts
+- uglify-product-js   // Minifiserer produkt-scripts
+- copy-files          // Kopierer statiske filer
+```
+
+### Babel (.babelrc)
+JavaScript kompilering:
+```json
+{
+  "presets": ["@babel/preset-env"]
+}
+```
+
+### ESLint (eslint.config.mjs)
+Kodestandard og linting:
+- Google style guide
+- Prettier integrasjon
+- Customiserte regler
+
+### Prettier (.prettierrc)
+Kodeformatering:
+```json
+{
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "singleQuote": true
+}
+```
+
+## GitHub Workflows
+
+### build_n_deploy.yml
+```yaml
+name: Build and Deploy
+on:
+  push:
+    branches: [main]
+jobs:
+  - Sjekker repository
+  - Bygger prosjektet
+  - Deployer til GitHub Pages
+```
+
+### publish.yml
+```yaml
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [1.0.0-beta]
+```
+
+## Progressive Web App
+
+### manifest.json
+```json
+{
+  "name": "Bakst og Brygg",
+  "start_url": "/Nettside-kafe/index.html",
+  "display": "standalone"
+}
+```
+
+### service-worker.js
+- Cache-håndtering
+- Offline støtte
+- Ressursoptimalisering
+
+## Prosjektstruktur
+
+### Rotkatalog
+```
+├── package.json        # Prosjektavhengigheter
+├── gulpfile.js        # Byggekonfigurasjon
+├── .babelrc           # Babel-konfigurasjon
+├── .editorconfig      # Editor-innstillinger
+├── .gitattributes     # Git-filhåndtering
+├── .gitignore         # Git-ignoreringer
+├── .prettierrc        # Kodeformatering
+├── eslint.config.mjs  # Linting-regler
+├── jest.config.js     # Test-konfigurasjon
+└── jsdoc.json         # Dokumentasjonsgenerering
+```
+
+### GitHub Workflows
+```
+.github/workflows/
+├── build_n_deploy.yml
+└── publish.yml
+```
+
+## NPM Scripts (package.json)
+```json
+{
+  "scripts": {
+    "build": "gulp",
+    "lint": "eslint ./src",
+    "format": "prettier --write ./src",
+    "doc": "jsdoc -c jsdoc.json",
+    "test": "jest"
+  }
+}
+```
+
+## Testing og Dokumentasjon
+- Jest for enhetstesting
+- JSDoc for dokumentasjon
+- Testing av:
+  - Menu Controller
+  - View
+  - Café Menu View
+
+## Deployment
+GitHub Pages via Actions:
+1. Bygger prosjektet med Gulp
+2. Kjører tester
+3. Genererer dokumentasjon
+4. Deployer til GitHub Pages
+
+## Avhengigheter
+Hovedavhengigheter:
+- Gulp for bygging
+- Babel for JS-kompilering
+- ESLint/Prettier for kodeformatering
+- Jest for testing
+- Firebase for backend
+- Express for lokal utvikling
+
+Utviklingsavhengigheter er definert i package.json
+
+## Miljøkonfigurasjon
+- .editorconfig for konsistent koding
+- .gitattributes for linjeskift
+- .gitignore for versjonskontr
+
+## Prosjektstruktur
+#update_structure_start#
+
+#update_structure_end#
+
+## Arkitektur
+
+#update_architecture_start#
+...
+#update_architecture_end#
