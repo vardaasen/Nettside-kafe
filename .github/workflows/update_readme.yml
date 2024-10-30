@@ -29,10 +29,10 @@ jobs:
           
           // Oppdater prosjektstruktur
           const structureUpdate = \`#update_structure_start#
-\`\`\`
-\${require('child_process').execSync('tree -I "node_modules|dist|coverage|.git"').toString()}
-\`\`\`
-#update_structure_end#\`;
+                                  \`\`\`
+                                  \${require('child_process').execSync('tree -I "node_modules|dist|coverage|.git"').toString()}
+                                  \`\`\`
+                                  #update_structure_end#\`;
 
           content = content.replace(
             /#update_structure_start#[\s\S]*?#update_structure_end#/,
@@ -41,31 +41,31 @@ jobs:
 
           // Oppdater arkitekturdiagram
           const architectureUpdate = \`#update_architecture_start#
-\`\`\`mermaid
-flowchart TB
-  subgraph Frontend["Browser Entry Points"]
-    IndexHTML["index.html"]
-    AdminHTML["admin/*.html"]
-  end
-
-  subgraph Core["Core System"]
-    Model["model.js<br>- products[]<br>- orders[]<br>- app{}"]
-    BaseView["view.js"]
-    BaseController["controller.js"]
-    Common["common.js"]
-  end
-
-  subgraph Components["Key Components"]
-    Products["Products<br>- cafeMenu<br>- cakeMenu<br>- inventory"]
-    Cart["Shopping Cart<br>- cart<br>- checkout"]
-    Admin["Admin<br>- orders<br>- auth"]
-  end
-
-  Core --> Components
-  Frontend --> Core
-\`\`\`
-#update_architecture_end#\`;
-
+                                     \`\`\`mermaid
+                                     flowchart TB
+                                       subgraph Frontend["Browser Entry Points"]
+                                         IndexHTML["index.html"]
+                                         AdminHTML["admin/*.html"]
+                                       end
+                                     
+                                       subgraph Core["Core System"]
+                                         Model["model.js<br>- products[]<br>- orders[]<br>- app{}"]
+                                         BaseView["view.js"]
+                                         BaseController["controller.js"]
+                                         Common["common.js"]
+                                       end
+                                     
+                                       subgraph Components["Key Components"]
+                                         Products["Products<br>- cafeMenu<br>- cakeMenu<br>- inventory"]
+                                         Cart["Shopping Cart<br>- cart<br>- checkout"]
+                                         Admin["Admin<br>- orders<br>- auth"]
+                                       end
+                                     
+                                       Core --> Components
+                                       Frontend --> Core
+                                     \`\`\`
+                                     #update_architecture_end#\`;
+                                     
           content = content.replace(
             /#update_architecture_start#[\s\S]*?#update_architecture_end#/,
             architectureUpdate
@@ -73,23 +73,23 @@ flowchart TB
 
           // Oppdater infrastruktur
           const infraUpdate = \`#update_infrastructure_start#
-\`\`\`mermaid
-flowchart TB
-  subgraph Build["Build System"]
-    Gulp["gulp<br>- minify<br>- bundle<br>- deploy"]
-    Babel["babel<br>transpilation"]
-    ESLint["eslint + prettier"]
-  end
-
-  subgraph Runtime["Runtime"]
-    SW["ServiceWorker<br>- caching<br>- offline"]
-    LocalStorage["localStorage<br>- state<br>- cart"]
-  end
-
-  Build --> Runtime
-\`\`\`
-#update_infrastructure_end#\`;
-
+                              \`\`\`mermaid
+                              flowchart TB
+                                subgraph Build["Build System"]
+                                  Gulp["gulp<br>- minify<br>- bundle<br>- deploy"]
+                                  Babel["babel<br>transpilation"]
+                                  ESLint["eslint + prettier"]
+                                end
+                              
+                                subgraph Runtime["Runtime"]
+                                  SW["ServiceWorker<br>- caching<br>- offline"]
+                                  LocalStorage["localStorage<br>- state<br>- cart"]
+                                end
+                              
+                                Build --> Runtime
+                              \`\`\`
+                              #update_infrastructure_end#\`;
+                              
           content = content.replace(
             /#update_infrastructure_start#[\s\S]*?#update_infrastructure_end#/,
             infraUpdate
@@ -97,11 +97,11 @@ flowchart TB
 
           // Oppdater dokumentasjonslenker
           const docsUpdate = \`#update_docs_start#
-- [Full Komponent Dokumentasjon](src/docs/index.html)
-- [Utviklingsoppsett](docs/development.md)
-- [Bidragsretningslinjer](docs/contributing.md)
-#update_docs_end#\`;
-
+                             - [Full Komponent Dokumentasjon](src/docs/index.html)
+                             - [Utviklingsoppsett](docs/development.md)
+                             - [Bidragsretningslinjer](docs/contributing.md)
+                             #update_docs_end#\`;
+                             
           content = content.replace(
             /#update_docs_start#[\s\S]*?#update_docs_end#/,
             docsUpdate
