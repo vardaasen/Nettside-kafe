@@ -545,11 +545,293 @@ Utviklingsavhengigheter er definert i package.json
 
 ## Prosjektstruktur
 #update_structure_start#
+```
+.
+├── __tests__
+│   ├── test.cafe-menu-view.js
+│   ├── test.index.html.js
+│   ├── test.menu-controller.js
+│   ├── test.model.js
+│   └── test.view.js
+├── eslint.config.mjs
+├── gulpfile.js
+├── img_originals
+│   ├── cakes
+│   │   ├── brownies.webp
+│   │   ├── cupcakes.webp
+│   │   ├── eplekake.webp
+│   │   ├── frukttaerte.webp
+│   │   ├── gulrotkake.webp
+│   │   ├── makroner.webp
+│   │   ├── marmorkake.webp
+│   │   ├── ostekake_baer.webp
+│   │   ├── pavlova.webp
+│   │   ├── red_velvet.webp
+│   │   ├── sitronkake.webp
+│   │   ├── sjokoladefondant.webp
+│   │   ├── sjokoladekake.webp
+│   │   ├── sjokolademousse.webp
+│   │   └── tiramisu.webp
+│   └── themes
+│       ├── anniversary.webp
+│       ├── birthday_adult.webp
+│       ├── birthday_child.webp
+│       ├── christmas.webp
+│       ├── easter.webp
+│       ├── halloween.webp
+│       ├── no_theme.webp
+│       ├── valentine.webp
+│       └── wedding.webp
+├── jest.setup.cjs
+├── jsdoc.json
+├── package.json
+├── readme.md
+├── src
+│   ├── admin
+│   │   ├── bestillinger.html
+│   │   ├── hentede-bestillinger.html
+│   │   ├── index.html
+│   │   └── produkter
+│   │       ├── index.html
+│   │       ├── opprett.html
+│   │       └── rediger.html
+│   ├── css
+│   │   ├── base
+│   │   │   └── base.css
+│   │   ├── components
+│   │   │   ├── admin.css
+│   │   │   ├── buttons.css
+│   │   │   ├── cart.css
+│   │   │   ├── checkout.css
+│   │   │   ├── modal.css
+│   │   │   ├── overlay.css
+│   │   │   ├── product-cards.css
+│   │   │   └── tabs.css
+│   │   ├── layout
+│   │   │   ├── footer.css
+│   │   │   ├── header.css
+│   │   │   ├── page.css
+│   │   │   └── product-grid.css
+│   │   ├── modern-normalize.css
+│   │   ├── state
+│   │   │   └── animation.css
+│   │   ├── styles.css
+│   │   └── variables.css
+│   ├── data
+│   │   ├── products.js
+│   │   └── products.json
+│   ├── docs
+│   │   ├── admin_ordersController.js.html
+│   │   ├── admin_ordersView.js.html
+│   │   ├── admin_pickedUpOrdersController.js.html
+│   │   ├── admin_pickedUpOrdersView.js.html
+│   │   ├── auth_authController.js.html
+│   │   ├── auth_loginController.js.html
+│   │   ├── auth_loginModel.js.html
+│   │   ├── auth_loginView.js.html
+│   │   ├── docs-assets
+│   │   │   ├── chill-cafe-music-in-perfect-fourth.mp3
+│   │   │   ├── docs.custom.css
+│   │   │   ├── index.html.md
+│   │   │   └── lighthouse.webp
+│   │   ├── fonts
+│   │   │   ├── Montserrat
+│   │   │   │   ├── Montserrat-Bold.eot
+│   │   │   │   ├── Montserrat-Bold.ttf
+│   │   │   │   ├── Montserrat-Bold.woff
+│   │   │   │   ├── Montserrat-Bold.woff2
+│   │   │   │   ├── Montserrat-Regular.eot
+│   │   │   │   ├── Montserrat-Regular.ttf
+│   │   │   │   ├── Montserrat-Regular.woff
+│   │   │   │   └── Montserrat-Regular.woff2
+│   │   │   └── Source-Sans-Pro
+│   │   │       ├── sourcesanspro-light-webfont.eot
+│   │   │       ├── sourcesanspro-light-webfont.svg
+│   │   │       ├── sourcesanspro-light-webfont.ttf
+│   │   │       ├── sourcesanspro-light-webfont.woff
+│   │   │       ├── sourcesanspro-light-webfont.woff2
+│   │   │       ├── sourcesanspro-regular-webfont.eot
+│   │   │       ├── sourcesanspro-regular-webfont.svg
+│   │   │       ├── sourcesanspro-regular-webfont.ttf
+│   │   │       ├── sourcesanspro-regular-webfont.woff
+│   │   │       └── sourcesanspro-regular-webfont.woff2
+│   │   ├── global.html
+│   │   ├── index.html
+│   │   ├── products_cafeMenuController.js.html
+│   │   ├── products_cafeMenuView.js.html
+│   │   ├── products_cakeMenuController.js.html
+│   │   ├── products_cakeMenuView.js.html
+│   │   ├── products_productAddView.js.html
+│   │   ├── scripts
+│   │   │   ├── collapse.js
+│   │   │   ├── commonNav.js
+│   │   │   ├── linenumber.js
+│   │   │   ├── nav.js
+│   │   │   ├── polyfill.js
+│   │   │   ├── prettify
+│   │   │   │   ├── Apache-License-2.0.txt
+│   │   │   │   ├── lang-css.js
+│   │   │   │   └── prettify.js
+│   │   │   └── search.js
+│   │   ├── shared_common.js.html
+│   │   ├── shared_controller.js.html
+│   │   ├── shared_model.js.html
+│   │   ├── shared_view.js.html
+│   │   ├── styles
+│   │   │   ├── jsdoc.css
+│   │   │   └── prettify.css
+│   │   └── utils_clearLocalStorage.js.html
+│   ├── favicon.ico
+│   ├── img
+│   │   ├── cafe_menu
+│   │   │   ├── americano.webp
+│   │   │   ├── biff_lokbaguette.webp
+│   │   │   ├── blt_sandwich.webp
+│   │   │   ├── brie_avokadobaguette.webp
+│   │   │   ├── cappuccino.webp
+│   │   │   ├── caprese_sandwich.webp
+│   │   │   ├── capresebaguette.webp
+│   │   │   ├── cortado.webp
+│   │   │   ├── egg_baconbaguette.webp
+│   │   │   ├── egg_rekebaguette.webp
+│   │   │   ├── eggesalat_sandwich.webp
+│   │   │   ├── espresso.webp
+│   │   │   ├── falafelbaguette.webp
+│   │   │   ├── flat_white.webp
+│   │   │   ├── grillet_ost_sandwich.webp
+│   │   │   ├── iskaffe.webp
+│   │   │   ├── kaffe_frappe.webp
+│   │   │   ├── kalkun_avokado_sandwich.webp
+│   │   │   ├── klubb_sandwich_kylling.webp
+│   │   │   ├── kyllingbaguette.webp
+│   │   │   ├── laks_kremostbaguette.webp
+│   │   │   ├── latte.webp
+│   │   │   ├── macchiato.webp
+│   │   │   ├── mocha.webp
+│   │   │   ├── nybrygget-kaffe.webp
+│   │   │   ├── rekebaguette.webp
+│   │   │   ├── ribbe_baguette.webp
+│   │   │   ├── roastbeefbaguette.webp
+│   │   │   ├── roastbiff_sandwich.webp
+│   │   │   ├── skinke_sveitser_sandwich.webp
+│   │   │   ├── skinkebaguette.webp
+│   │   │   ├── snitter_assortert.webp
+│   │   │   ├── snitter_avocado.webp
+│   │   │   ├── snitter_karbonade.webp
+│   │   │   ├── snitter_laks.webp
+│   │   │   ├── snitter_reker.webp
+│   │   │   ├── snitter_roastbiff.webp
+│   │   │   ├── spekematbaguette.webp
+│   │   │   ├── standard-produktbilde.webp
+│   │   │   ├── tunfiskbaguette.webp
+│   │   │   ├── tunfisksalat_sandwich.webp
+│   │   │   └── vegetarbaguette.webp
+│   │   ├── cakes
+│   │   │   ├── Barnebursdag.webp
+│   │   │   ├── Bryllup.webp
+│   │   │   ├── Halloween.webp
+│   │   │   ├── Jubileum.webp
+│   │   │   ├── Jul.webp
+│   │   │   ├── Konfirmasjon.webp
+│   │   │   ├── Valentin.webp
+│   │   │   ├── brownies.webp
+│   │   │   ├── bursdag-voksen.webp
+│   │   │   ├── cupcakes.webp
+│   │   │   ├── eplekake.webp
+│   │   │   ├── frukttaerte.webp
+│   │   │   ├── gulrotkake.webp
+│   │   │   ├── konfirmasjon.webp
+│   │   │   ├── makroner.webp
+│   │   │   ├── marmorkake.webp
+│   │   │   ├── ostekake_baer.webp
+│   │   │   ├── pavlova.webp
+│   │   │   ├── red_velvet.webp
+│   │   │   ├── sitronkake.webp
+│   │   │   ├── sjokoladefondant.webp
+│   │   │   ├── sjokoladekake.webp
+│   │   │   ├── sjokolademousse.webp
+│   │   │   ├── standard-produktbilde.webp
+│   │   │   ├── tiramisu.webp
+│   │   │   └── uten-tema.webp
+│   │   ├── icons
+│   │   │   ├── icon-192x192.png
+│   │   │   └── icon-512x512.png
+│   │   ├── logo.webp
+│   │   └── logo_bakst-og-brygg.webp
+│   ├── index.html
+│   ├── js
+│   │   ├── admin
+│   │   │   ├── ordersController.js
+│   │   │   ├── ordersView.js
+│   │   │   ├── pickedUpOrdersController.js
+│   │   │   └── pickedUpOrdersView.js
+│   │   ├── auth
+│   │   │   ├── authController.js
+│   │   │   ├── loginController.js
+│   │   │   ├── loginModel.js
+│   │   │   └── loginView.js
+│   │   ├── cart
+│   │   │   ├── cartController.js
+│   │   │   ├── cartView.js
+│   │   │   ├── checkoutController.js
+│   │   │   └── checkoutView.js
+│   │   ├── checkout
+│   │   │   └── checkoutView.js
+│   │   ├── products
+│   │   │   ├── cafeMenuController.js
+│   │   │   ├── cafeMenuView.js
+│   │   │   ├── cakeMenuController.js
+│   │   │   ├── cakeMenuView.js
+│   │   │   ├── productAddController.js
+│   │   │   ├── productAddView.js
+│   │   │   ├── productEditController.js
+│   │   │   ├── productEditView.js
+│   │   │   ├── productInventoryController.js
+│   │   │   └── productInventoryView.js
+│   │   ├── shared
+│   │   │   ├── common.js
+│   │   │   ├── controller.js
+│   │   │   ├── model.js
+│   │   │   └── view.js
+│   │   ├── utils
+│   │   │   ├── clearLocalStorage.js
+│   │   │   └── version.js
+│   │   └── vendors
+│   │       ├── dayjs.min.js
+│   │       ├── nb.js
+│   │       └── purify.min.js
+│   ├── manifest.json
+│   └── service-worker.js
+└── update-readme.js
 
+34 directories, 222 files
+```
 #update_structure_end#
 
 ## Arkitektur
 
 #update_architecture_start#
-...
+```mermaid
+flowchart TB
+  subgraph Frontend["Browser Entry Points"]
+    IndexHTML["index.html"]
+    AdminHTML["admin/*.html"]
+  end
+
+  subgraph Core["Core System"]
+    Model["model.js"]
+    BaseView["view.js"]
+    BaseController["controller.js"]
+    Common["common.js"]
+  end
+
+  subgraph Components["Key Components"]
+    Products["Products"]
+    Cart["Shopping Cart"]
+    Admin["Admin"]
+  end
+
+  Core --> Components
+  Frontend --> Core
+```
 #update_architecture_end#
