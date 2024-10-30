@@ -2,7 +2,8 @@ name: Update README
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
     paths-ignore:
       - 'README.md'
       - '.github/workflows/**'
@@ -10,10 +11,10 @@ on:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -23,10 +24,10 @@ jobs:
         run: |
           cat << \EOT > update-readme.js
           const fs = require('fs');
-          
+
           // Les eksisterende README
           let content = fs.readFileSync('README.md', 'utf8');
-          
+
           // Oppdater prosjektstruktur
           const structureUpdate = \`#update_structure_start#
                                   \`\`\`
@@ -47,25 +48,25 @@ jobs:
                                          IndexHTML["index.html"]
                                          AdminHTML["admin/*.html"]
                                        end
-                                     
+
                                        subgraph Core["Core System"]
                                          Model["model.js<br>- products[]<br>- orders[]<br>- app{}"]
                                          BaseView["view.js"]
                                          BaseController["controller.js"]
                                          Common["common.js"]
                                        end
-                                     
+
                                        subgraph Components["Key Components"]
                                          Products["Products<br>- cafeMenu<br>- cakeMenu<br>- inventory"]
                                          Cart["Shopping Cart<br>- cart<br>- checkout"]
                                          Admin["Admin<br>- orders<br>- auth"]
                                        end
-                                     
+
                                        Core --> Components
                                        Frontend --> Core
                                      \`\`\`
                                      #update_architecture_end#\`;
-                                     
+
           content = content.replace(
             /#update_architecture_start#[\s\S]*?#update_architecture_end#/,
             architectureUpdate
@@ -80,16 +81,16 @@ jobs:
                                   Babel["babel<br>transpilation"]
                                   ESLint["eslint + prettier"]
                                 end
-                              
+
                                 subgraph Runtime["Runtime"]
                                   SW["ServiceWorker<br>- caching<br>- offline"]
                                   LocalStorage["localStorage<br>- state<br>- cart"]
                                 end
-                              
+
                                 Build --> Runtime
                               \`\`\`
                               #update_infrastructure_end#\`;
-                              
+
           content = content.replace(
             /#update_infrastructure_start#[\s\S]*?#update_infrastructure_end#/,
             infraUpdate
@@ -101,7 +102,7 @@ jobs:
                              - [Utviklingsoppsett](docs/development.md)
                              - [Bidragsretningslinjer](docs/contributing.md)
                              #update_docs_end#\`;
-                             
+
           content = content.replace(
             /#update_docs_start#[\s\S]*?#update_docs_end#/,
             docsUpdate
