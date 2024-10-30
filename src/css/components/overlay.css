@@ -94,16 +94,40 @@
   line-height: 1.5;
 }
 
+/* General section styling */
+.overlay__section {
+  display: flex;
+  flex-direction: column;
+}
+
 .overlay__section--comment {
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
 }
 
-.overlay__label {
+/* Labels for size, theme, and flavor */
+.overlay__label,
+.overlay__sizeLabel,
+.overlay__themeLabel,
+.overlay__flavorLabel {
   font-weight: 600;
   margin-bottom: 8px;
   color: var(--color-secondary--dark);
+}
+
+/* Select inputs for size, theme, and flavor */
+.overlay__sizeSelect,
+.overlay__themeSelect,
+.overlay__flavorSelect {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 12px;
+  background-color: var(--color-accent--cold);
+  color: var(--color-secondary--dark);
+  margin-bottom: 20px;
 }
 
 .overlay__textarea {
@@ -130,7 +154,7 @@
   gap: 15px;
 }
 
-.overlay__input {
+.overlay__quantity-input {
   width: 80px;
   padding: 12px;
   font-size: 1rem;
@@ -144,7 +168,7 @@
 .overlay-button {
   padding: 14px;
   background-color: var(--color-primary);
-  color: var(--color-text--dark-bg);
+  color: var(--color-accent--warm);
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -158,7 +182,45 @@
 .overlay-button:hover {
   background-color: var(--color-secondary--light);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  color: var(--color-text--light-bg);
 }
+
+/* Container for arranging elements side by side */
+.overlay__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px; /* Adjust the gap between sections as needed */
+}
+
+/* Adjusted width for half-width sections */
+.overlay__section--half {
+  flex: 1;
+}
+
+/* Ensure the select elements take full width of their containers */
+.overlay__section--half .overlay__themeSelect,
+.overlay__section--half .overlay__sizeSelect {
+  width: 100%;
+}
+
+/* Adjust label alignment if necessary */
+.overlay__section--half .overlay__themeLabel,
+.overlay__section--half .overlay__sizeLabel {
+  margin-bottom: 8px;
+}
+
+/* Responsive adjustments if needed */
+@media (max-width: 768px) {
+  .overlay__row {
+    flex-direction: column;
+  }
+
+  .overlay__section--half {
+    width: 100%;
+  }
+}
+
 
 @media (min-width: 768px) {
   .overlay-footer {

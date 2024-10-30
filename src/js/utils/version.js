@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-const appVersion = "2024.10.24.1017";
-=======
-const appVersion = "2024.10.24.1017";
->>>>>>> upstream/main
-=======
-const appVersion = "2024.10.24.1017";
->>>>>>> upstream/main
+// prettier-ignore
+const appVersion = "2024.10.28.1046";
+
 window.appVersion = appVersion;
 console.log(`App versjon: ${appVersion}`);

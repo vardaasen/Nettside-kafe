@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>products/cakeMenuController.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    
+    <h2><a href="index.html">Home</a></h2><h3>Events</h3><ul><li><a href="global.html#event:DOMContentLoaded">DOMContentLoaded</a></li><li></li><li><a href="global.html#event:DOMContentLoaded-SettercurrentPageIndexbasertp%25C3%25A5URL-hashen.">DOMContentLoaded - Setter currentPageIndex basert på URL-hashen.</a></li><li><a href="global.html#event:DOMContentLoaded-initialiserer%2560loginView%2560">DOMContentLoaded - initialiserer `loginView`</a></li><li><a href="global.html#event:click-Hendelsensomtriggesn%25C3%25A5r%2560logoutBtn%2560klikkes.">click - Hendelsen som trigges når `logoutBtn` klikkes.</a></li><li><a href="global.html#event:popstate-OppdaterercurrentPageIndexbasertp%25C3%25A5historikktilstanden">popstate - Oppdaterer currentPageIndex basert på historikktilstanden</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addCafeProductToCart">addCafeProductToCart</a></li><li><a href="global.html#addCakeProductToCart">addCakeProductToCart</a></li><li><a href="global.html#addCustomQuantity">addCustomQuantity</a></li><li><a href="global.html#calculateCustomCakePrice">calculateCustomCakePrice</a></li><li><a href="global.html#calculateStandardCakePrice">calculateStandardCakePrice</a></li><li><a href="global.html#clearLocalStorage">clearLocalStorage</a></li><li><a href="global.html#createCafeMenuHtml">createCafeMenuHtml</a></li><li><a href="global.html#createCafeProductCardHtml">createCafeProductCardHtml</a></li><li><a href="global.html#createCafeProductInfoOverlayElement">createCafeProductInfoOverlayElement</a></li><li><a href="global.html#createCakeMenuHtml">createCakeMenuHtml</a></li><li><a href="global.html#createCakeProductCardHtml">createCakeProductCardHtml</a></li><li><a href="global.html#createCakeProductInfoOverlayElement">createCakeProductInfoOverlayElement</a></li><li><a href="global.html#createCakeProductsHtml">createCakeProductsHtml</a></li><li><a href="global.html#createCurrentPageHtml">createCurrentPageHtml</a></li><li><a href="global.html#createTabRowHtml">createTabRowHtml</a></li><li><a href="global.html#formatDateTime">formatDateTime</a></li><li><a href="global.html#getEmployeeID">getEmployeeID</a></li><li><a href="global.html#getPassword">getPassword</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getProductsForCurrentTab">getProductsForCurrentTab</a></li><li><a href="global.html#getProductsFromStore">getProductsFromStore</a></li><li><a href="global.html#hamburger">hamburger</a></li><li><a href="global.html#handleCategoryChange">handleCategoryChange</a></li><li><a href="global.html#hideError">hideError</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initPasswordToggle">initPasswordToggle</a></li><li><a href="global.html#initiateModelLocalStorage">initiateModelLocalStorage</a></li><li><a href="global.html#loginController">loginController</a></li><li><a href="global.html#loginModel">loginModel</a></li><li><a href="global.html#loginView">loginView</a></li><li><a href="global.html#model">model</a></li><li><a href="global.html#ordersController">ordersController</a></li><li><a href="global.html#ordersView">ordersView</a></li><li><a href="global.html#pickedUpOrdersController">pickedUpOrdersController</a></li><li><a href="global.html#pickedUpOrdersView">pickedUpOrdersView</a></li><li><a href="global.html#renderForm">renderForm</a></li><li><a href="global.html#renderNoResultsMessage">renderNoResultsMessage</a></li><li><a href="global.html#renderOrderedProductsHtml">renderOrderedProductsHtml</a></li><li><a href="global.html#renderOrders">renderOrders</a></li><li><a href="global.html#replaceModel">replaceModel</a></li><li><a href="global.html#resetSearch">resetSearch</a></li><li><a href="global.html#saveModel">saveModel</a></li><li><a href="global.html#searchOrders">searchOrders</a></li><li><a href="global.html#setLoggedIn">setLoggedIn</a></li><li><a href="global.html#setupSearchListener">setupSearchListener</a></li><li><a href="global.html#showError">showError</a></li><li><a href="global.html#sortByPickupDateAndTime">sortByPickupDateAndTime</a></li><li><a href="global.html#subtractOrderedQuantityFromUnitsInStock">subtractOrderedQuantityFromUnitsInStock</a></li><li><a href="global.html#switchMenu">switchMenu</a></li><li><a href="global.html#switchTab">switchTab</a></li><li><a href="global.html#togglePasswordVisibility">togglePasswordVisibility</a></li><li><a href="global.html#updateCakeSize">updateCakeSize</a></li><li><a href="global.html#updateComment">updateComment</a></li><li><a href="global.html#updateFlavor">updateFlavor</a></li><li><a href="global.html#updateOrderStatus">updateOrderStatus</a></li><li><a href="global.html#updatePriceDisplay">updatePriceDisplay</a></li><li><a href="global.html#updateStatus">updateStatus</a></li><li><a href="global.html#updateTheme">updateTheme</a></li><li><a href="global.html#updateView">updateView</a></li></ul>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">products/cakeMenuController.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Oppdaterer størrelsen på en kake og tilhørende pris basert på brukerens valg.
+ *
+ * Funksjonen justerer størrelsen for en kake, enten tilpassbar eller standard, og oppdaterer
+ * størrelsesetiketten på siden samt prisen. Prisen beregnes med hensyn til om produktet
+ * er tilpassbart eller standard, ved å bruke riktig funksjon for prisberegning.
+ *
+ * - Oppdaterer størrelse for tilpassbare kaker i `model.inputs.themeCakeMenu.size`.
+ * - Oppdaterer størrelse for standardkaker i `model.inputs.cakeMenu.size`.
+ * - Viser oppdatert pris i grensesnittet ved å kalle `updatePriceDisplay`.
+ *
+ * @function
+ * @name updateCakeSize
+ * @param {string|number} size - Den nye størrelsen som brukeren har valgt.
+ * @example
+ * // Sett størrelsen til 16 og oppdater visningen:
+ * updateCakeSize(16);
+ */
+function updateCakeSize(size) {
+  const selectedProduct = model.app.selectedProduct;
+
+  const sizeLabelElement = document.getElementById('selectedSize');
+  if (sizeLabelElement) {
+    sizeLabelElement.innerText = `Size: ${size}`;
+  }
+
+  let price;
+  if (selectedProduct.type === 'customizable') {
+    // For tilpassbare kaker
+    model.inputs.themeCakeMenu.size = parseInt(size);
+    price = model.calculateCustomCakePrice(
+      model.inputs.themeCakeMenu.selectedThemeId,
+      model.inputs.themeCakeMenu.size,
+    );
+    price = model.calculateCustomCakePrice(
+      model.inputs.themeCakeMenu.selectedThemeId,
+      model.inputs.themeCakeMenu.size,
+    );
+  } else {
+    // For standard kaker
+    model.inputs.cakeMenu.size = parseInt(size);
+    price = model.calculateStandardCakePrice(
+      selectedProduct.productId,
+      model.inputs.cakeMenu.size,
+    );
+    price = model.calculateStandardCakePrice(
+      selectedProduct.productId,
+      model.inputs.cakeMenu.size,
+    );
+  }
+
+  updatePriceDisplay(price);
+}
+
+/**
+ * Oppdaterer kake-temaet og justerer prisen og bildet basert på det nye temaet.
+ *
+ * Funksjonen setter det valgte temaet for en tilpassbar kake og oppdaterer
+ * prisen i henhold til det valgte temaet og størrelsen. I tillegg oppdaterer
+ * funksjonen kakebildet til å matche det nye temaet.
+ *
+ * - Oppdaterer valgt tema i `model.inputs.themeCakeMenu.selectedThemeId`.
+ * - Beregner ny pris for kaken og oppdaterer prisvisningen.
+ * - Endrer kakebildet til å reflektere det valgte temaet.
+ *
+ * @function
+ * @name updateTheme
+ * @param {string|number} themeId - ID for det valgte temaet.
+ * @example
+ * // Oppdater kake-tema til tema-ID 3 og oppdater visningen:
+ * updateTheme(3);
+ */
+function updateTheme(themeId) {
+  model.inputs.themeCakeMenu.selectedThemeId = parseInt(themeId);
+
+  const price = model.calculateCustomCakePrice(
+    model.inputs.themeCakeMenu.selectedThemeId,
+    model.inputs.themeCakeMenu.size,
+  );
+  updatePriceDisplay(price);
+
+  const themeImage = model.themeImages[themeId];
+  const cakeImageElement = document.getElementById('cakeImage');
+  if (cakeImageElement) {
+    cakeImageElement.src = `./img/cakes/${themeImage}`;
+  }
+}
+
+/**
+ * Oppdaterer prisvisningen for kaken i grensesnittet.
+ *
+ * Funksjonen finner prisvisningselementet i DOM-en og oppdaterer det med den nye prisen
+ * som sendes inn som parameter. Prisen vises i norske kroner (Kr).
+ *
+ * @function
+ * @name updatePriceDisplay
+ * @param {number} price - Den nye prisen som skal vises.
+ * @example
+ * // Oppdater prisen til 450 Kr i visningen:
+ * updatePriceDisplay(450);
+ */
+function updatePriceDisplay(price) {
+  const priceElement = document.getElementById('cakePrice');
+  if (priceElement) {
+    priceElement.innerText = `${price} Kr`;
+  }
+}
+
+/**
+ * Oppdaterer den valgte smaken for en tilpassbar kake.
+ *
+ * Funksjonen setter den angitte smaken som valgt smak i `model.inputs.themeCakeMenu.selectedFlavor`.
+ * Denne smaken brukes ved bestilling for å tilpasse kaken etter brukerens ønske.
+ *
+ * @function
+ * @name updateFlavor
+ * @param {string} flavor - Den nye smaken som brukeren har valgt.
+ * @example
+ * // Sett smaken til "Sjokolade":
+ * updateFlavor('Sjokolade');
+ */
+function updateFlavor(flavor) {
+  model.inputs.themeCakeMenu.selectedFlavor = flavor;
+}
+
+/**
+ * Legger en kake til i handlekurven, med spesifikasjoner for tilpassbare eller standardkaker.
+ *
+ * Funksjonen henter produktet ved hjelp av `productId` og håndterer forskjeller mellom
+ * tilpassbare og standardkaker. For tilpassbare kaker blir valgt tema, størrelse, og smak
+ * lagt til produktnavnet, og hvis ingen størrelse er valgt, settes den automatisk til 8.
+ * Deretter beregnes pris og mengde, og produktet legges til i handlekurven med
+ * den oppdaterte informasjonen.
+ *
+ * @function
+ * @name addCakeProductToCart
+ * @param {number} productId - ID-en til produktet som skal legges til i handlekurven.
+ * @example
+ * // Legg en tilpassbar kake til handlekurven med produkt-ID 5:
+ * addCakeProductToCart(5);
+ */
+function addCakeProductToCart(productId) {
+  const product = getProductFromId(productId);
+  if (!product) {
+    return;
+  } // Avslutt hvis produktet ikke finnes
+
+  const isCustomizable = product.type === 'customizable';
+
+  // Sett størrelse til 8 dersom ingen annen størrelse er valgt
+  if (
+    isCustomizable &amp;&amp;
+    (!model.inputs.themeCakeMenu.size || model.inputs.themeCakeMenu.size === 1)
+  ) {
+    model.inputs.themeCakeMenu.size = 8;
+  } else if (
+    !isCustomizable &amp;&amp;
+    (!model.inputs.cakeMenu.size || model.inputs.cakeMenu.size === 1)
+  ) {
+    model.inputs.cakeMenu.size = 8;
+  }
+
+  const quantity = isCustomizable
+    ? model.inputs.themeCakeMenu.quantity
+    : model.inputs.cakeMenu.quantity;
+  const price = isCustomizable
+    ? model.calculateCustomCakePrice(
+        model.inputs.themeCakeMenu.selectedThemeId,
+        model.inputs.themeCakeMenu.size,
+      )
+    : model.calculateStandardCakePrice(productId, model.inputs.cakeMenu.size);
+  const message = model.inputs.cakeMenu.message;
+
+  // Lag produktnavn med tema, størrelse og smak for tilpassbare kaker
+  let productName = product.productName;
+  if (isCustomizable) {
+    const theme = model.themes.find(
+      (t) => t.themeId === model.inputs.themeCakeMenu.selectedThemeId,
+    );
+    const themeName = theme ? ` - ${theme.themeName}` : '';
+    const sizeLabel = ` (${model.inputs.themeCakeMenu.size} personer)`;
+    const flavor = model.inputs.themeCakeMenu.selectedFlavor || 'Vanilje';
+
+    productName += `${themeName} - ${flavor}${sizeLabel}`;
+  } else {
+    // Legg til størrelse for standardkaker
+    const sizeLabel = ` (${model.inputs.cakeMenu.size} personer)`;
+    productName += sizeLabel;
+  }
+
+  // Legg produktet til i handlekurven med oppdatert navn
+  addToCart(productName, price, productId, quantity, message);
+  closeOverlay(); // Lukk overlay etter å ha lagt til i handlekurven
+}
+
+function updateCakeProductComment(text) {
+  model.inputs.cakeMenu.message = text;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Tue Oct 29 2024 19:05:26 GMT+0100 (Central European Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>

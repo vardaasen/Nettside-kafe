@@ -1,39 +1,54 @@
 /**
  * Visning for innlogging.
+ *
+ * `loginView` håndterer brukergrensesnittet for innloggingssiden ved å tilby metoder
+ * for å hente brukerdata, vise feilmeldinger og administrere passordsynlighet.
  */
 const loginView = {
   /**
-   * Henter Ansatt ID fra inputfeltet.
-   * @returns {string} Verdien fra Ansatt ID-feltet.
+   * Henter brukerens ansatt-ID fra input-feltet.
+   *
+   * @function getEmployeeID
+   * @returns {string} Ansatt-ID-en som er angitt av brukeren.
    */
   getEmployeeID() {
     return document.getElementById('employeeID').value;
   },
 
   /**
-   * Henter passord fra inputfeltet.
-   * @returns {string} Verdien fra passord-feltet.
+   * Henter brukerens passord fra input-feltet.
+   *
+   * @function getPassword
+   * @returns {string} Passordet som er angitt av brukeren.
    */
   getPassword() {
     return document.getElementById('password').value;
   },
 
   /**
-   * Viser feilmelding når innloggingen er feil.
+   * Viser feilmeldingen for innlogging.
+   *
+   * @function showError
    */
   showError() {
     document.getElementById('loginError').style.display = 'block';
   },
 
   /**
-   * Skjuler feilmelding.
+   * Skjuler feilmeldingen for innlogging.
+   *
+   * @function hideError
    */
   hideError() {
     document.getElementById('loginError').style.display = 'none';
   },
 
   /**
-   * Håndterer visning/skjuling av passord.
+   * Veksler synligheten til passordfeltet mellom skjult og synlig. Oppdaterer
+   * også ikonene for passordsynlighet (øye og øye med kryss).
+   *
+   * @function togglePasswordVisibility
+   *
    */
   togglePasswordVisibility() {
     const passwordInput = document.getElementById('password');
@@ -57,7 +72,11 @@ const loginView = {
   },
 
   /**
-   * Initialiserer passordfeltets visningsfunksjonalitet.
+   * Initialiserer knappen for å veksle passordsynlighet. Legger til en klikk-lytter
+   * på knappen som kaller `togglePasswordVisibility`.
+   *
+   * @function initPasswordToggle
+   *
    */
   initPasswordToggle() {
     const togglePasswordButton = document.getElementById('togglePassword');
@@ -71,7 +90,11 @@ const loginView = {
   },
 };
 
-// Kjører koden når DOM er ferdig lastet.
+/**
+ * Initialiserer `loginView` når innholdet på siden er lastet.
+ *
+ * @event DOMContentLoaded - initialiserer `loginView`
+ */
 document.addEventListener('DOMContentLoaded', function () {
   loginView.initPasswordToggle();
 });
