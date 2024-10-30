@@ -13,7 +13,9 @@ jobs:
     steps:
       - id: check
         run: |
-          if [ "${{ github.repository_owner }}" = "vardaasen" ]; then
+          if [[ "${{ github.actor }}" == "github-actions[bot]" ]]; then
+            echo "should_run=false" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.repository_owner }}" == "vardaasen" ]]; then
             echo "should_run=true" >> $GITHUB_OUTPUT
           else
             echo "should_run=false" >> $GITHUB_OUTPUT
