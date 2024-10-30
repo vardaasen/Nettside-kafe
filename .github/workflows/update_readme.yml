@@ -21,18 +21,18 @@ jobs:
 
       - name: Create update script
         run: |
-          cat > update-readme.js << 'EOF'
+          cat << \EOT > update-readme.js
           const fs = require('fs');
           
           // Les eksisterende README
           let content = fs.readFileSync('README.md', 'utf8');
           
           // Oppdater prosjektstruktur
-          const structureUpdate = `#update_structure_start#
+          const structureUpdate = \`#update_structure_start#
 \`\`\`
-${require('child_process').execSync('tree -I "node_modules|dist|coverage|.git"').toString()}
+\${require('child_process').execSync('tree -I "node_modules|dist|coverage|.git"').toString()}
 \`\`\`
-#update_structure_end#`;
+#update_structure_end#\`;
 
           content = content.replace(
             /#update_structure_start#[\s\S]*?#update_structure_end#/,
@@ -40,7 +40,7 @@ ${require('child_process').execSync('tree -I "node_modules|dist|coverage|.git"')
           );
 
           // Oppdater arkitekturdiagram
-          const architectureUpdate = `#update_architecture_start#
+          const architectureUpdate = \`#update_architecture_start#
 \`\`\`mermaid
 flowchart TB
   subgraph Frontend["Browser Entry Points"]
@@ -64,7 +64,7 @@ flowchart TB
   Core --> Components
   Frontend --> Core
 \`\`\`
-#update_architecture_end#`;
+#update_architecture_end#\`;
 
           content = content.replace(
             /#update_architecture_start#[\s\S]*?#update_architecture_end#/,
@@ -72,7 +72,7 @@ flowchart TB
           );
 
           // Oppdater infrastruktur
-          const infraUpdate = `#update_infrastructure_start#
+          const infraUpdate = \`#update_infrastructure_start#
 \`\`\`mermaid
 flowchart TB
   subgraph Build["Build System"]
@@ -88,7 +88,7 @@ flowchart TB
 
   Build --> Runtime
 \`\`\`
-#update_infrastructure_end#`;
+#update_infrastructure_end#\`;
 
           content = content.replace(
             /#update_infrastructure_start#[\s\S]*?#update_infrastructure_end#/,
@@ -96,11 +96,11 @@ flowchart TB
           );
 
           // Oppdater dokumentasjonslenker
-          const docsUpdate = `#update_docs_start#
+          const docsUpdate = \`#update_docs_start#
 - [Full Komponent Dokumentasjon](src/docs/index.html)
 - [Utviklingsoppsett](docs/development.md)
 - [Bidragsretningslinjer](docs/contributing.md)
-#update_docs_end#`;
+#update_docs_end#\`;
 
           content = content.replace(
             /#update_docs_start#[\s\S]*?#update_docs_end#/,
@@ -108,7 +108,7 @@ flowchart TB
           );
 
           fs.writeFileSync('README.md', content);
-          EOF
+          EOT
 
       - name: Run update script
         run: node update-readme.js
